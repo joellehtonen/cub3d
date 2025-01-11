@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_filetype.c                                :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 12:15:06 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/10 17:39:35 by eberkowi         ###   ########.fr       */
+/*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
+/*   Updated: 2025/01/10 17:37:24 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cu3ed.h"
+#include "../includes/cu3ed.h"
 
-void	validate_filetype(char *filename)
+static void	check_number_of_arguments(int n)
 {
-	int	i;
+	if (n != 2)
+		error_exit("Invalid number of arguments");	
+}
 
-	i = 0;
-	while (*filename)
-	{
-		if (*filename == '.')
-		{
-			if (ft_strncmp(filename, ".cub", 5))
-				error_exit("Invalid File: Invalid filetype");
-		}
-		filename++;
-	}
+int	main(int argc, char *argv[])
+{
+	check_number_of_arguments(argc);
+	validate_filetype(argv[1]);
+	create_map(argv[1]);
 }

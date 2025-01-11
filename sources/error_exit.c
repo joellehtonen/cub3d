@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cu3ed.h"
+#include "../includes/cu3ed.h"
 
 void	error_exit(char *error)
 {

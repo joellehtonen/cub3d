@@ -18,34 +18,41 @@ CFILES := main.c \
 			validate_filetype.c \
 			create_map.c
 
-HEADER = cu3ed.h
+HEADER = includes/cu3ed.h
 LIBFT := libft/libft.a
-MLX42 := MLX42/build/libmlx42.a
-LDFLAGS := -LMLX/build -lglfw
+#MLX42 := MLX42/build/libmlx42.a
+#LDFLAGS := -LMLX/build -lglfw
 
-OBJECTS := $(CFILES:.c=.o)
 
-.PHONY: all
-all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJECTS) $(HEADER)
-	$(CC) $(FLAGS) $(OBJECTS) $(LIBFT) $(MLX42) -o $(NAME) $(LDFLAGS)
+SRC_PATH := sources/
+OBJ_PATH := objects/
+
+CFILES := $(addprefix $(SRC_PATH), $(CFILES))
+OBJS := $(CFILES:$(SRC_PATH)%.c=$(OBJ_PATH)%.o)
+
+all: $(OBJ_PATH) $(NAME)
+
+$(OBJ_PATH):
+	mkdir -p $(OBJ_PATH)
+
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADER)
+	$(CC) $(FLAGS) -c $< -o $@
+
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) $(FLAGS) $(OBJS) $(LIBFT) -o $(NAME) $(LINKFLAGS)
+#$(LDFLAGS) 
+#$(MLX42)
 
 $(LIBFT):
 	make -C libft
 
-%.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@
-
-.PHONY: clean
 clean:
-	rm -f $(OBJECTS)
+	rm -rf $(OBJ_PATH)
 	make clean -C libft
 
-.PHONY: fclean
 fclean: clean
 	rm -f $(NAME)
 	make fclean -C libft
 
-.PHONY: re
 re: fclean all

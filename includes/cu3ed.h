@@ -17,8 +17,19 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "libft/libft.h"
-# include "MLX42/include/MLX42/MLX42.h"
+# include "../libft/libft.h"
+//# include "MLX42/include/MLX42/MLX42.h"
+
+struct s_cu3ed
+{
+    char	**map;
+    char	*path_to_north_texture;
+    char	*path_to_south_texture;
+    char	*path_to_west_texture;
+    char	*path_to_east_texture;
+    int		floor_rgb[3];
+    int		ceiling_rgb[3];
+} t_cu3ed;
 
 void	error_exit(char *error);
 void	validate_filetype(char *filename);

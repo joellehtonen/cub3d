@@ -10,40 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cu3ed.h"
+#include "../includes/cu3ed.h"
 
-static int	count_lines(char *filename)
+static void	get_num_of_lines(char *filename, int *num_of_lines)
 {
 	int		fd;
-	int		result;
 	char	*temp;
 
-	result = 0;
+	*num_of_lines = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		error_exit("Invalid file: File does not exist");
 	temp = get_next_line(fd);
 	while (temp)
 	{
-		result++;
+		(*num_of_lines)++;
 		free(temp);
 		temp = NULL;
 		temp = get_next_line(fd);
 	}
 	free(temp);
 	close(fd);
-	return (result);
+}
+
+static void check_for_empty_file(int num_of_lines)
+{
+	if (num_of_lines == 0)
+		error_exit("Invalid file: File is empty");	
 }
 
 void	create_map(char *filename)
 {
-	//int		file;
-	//int		i;
 	int		num_of_lines;
 
-	num_of_lines = count_lines(filename);
-	if (num_of_lines == 0)
-		error_exit("Invalid file: File is empty");
+	get_num_of_lines(filename, &num_of_lines);
+	check_for_empty_file(num_of_lines);
 	printf("num_of_lines = %d\n", num_of_lines); //REMOVE
 	
 	// file = open(filename, O_RDONLY);
