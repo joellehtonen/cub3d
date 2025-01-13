@@ -16,14 +16,13 @@ FLAGS := -Wall -Wextra -Werror
 CFILES := main.c \
 			error_exit.c \
 			validate_filetype.c \
-			create_map.c
+			create_copy_of_file.c \
+			parse_file.c
 
 HEADER = includes/cu3ed.h
 LIBFT := libft/libft.a
 #MLX42 := MLX42/build/libmlx42.a
 #LDFLAGS := -LMLX/build -lglfw
-
-
 
 SRC_PATH := sources/
 OBJ_PATH := objects/

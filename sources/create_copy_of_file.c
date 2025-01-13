@@ -20,7 +20,7 @@ static void	get_num_of_lines(char *filename, int *num_of_lines)
 	*num_of_lines = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		error_exit("Invalid file: File does not exist");
+		error_exit("Invalid file: Failed to open file");
 	temp = get_next_line(fd);
 	while (temp)
 	{
@@ -39,29 +39,44 @@ static void check_for_empty_file(int num_of_lines)
 		error_exit("Invalid file: File is empty");	
 }
 
-void	create_map(char *filename)
+static void	copy_file(t_main *main, char *filename)
+{
+	int		fd;
+	int		i;
+
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		error_exit("Invalid file: Failed to open file");
+	i = 0;
+	(main->file)[0] = get_next_line(fd);
+	while ((main->file)[i])
+		(main->file)[++i] = get_next_line(fd); //ADD MALLOC CHECK
+	(main->file)[i] = NULL;
+	close(fd);
+}
+
+static void	malloc_for_copy_file(t_main *main, int num_of_lines)
+{
+	main->file = (char **)malloc((num_of_lines + 1) * sizeof(char *));
+	if (!(main->file))
+		error_exit("Failed to malloc copy of file");
+}
+
+static void	print_file(char **file) //REMOVE
+{
+	int i = 0;
+
+	while (file[i])
+		printf("%s", file[i++]);
+}
+
+void	create_copy_of_file(t_main *main, char *filename)
 {
 	int		num_of_lines;
 
 	get_num_of_lines(filename, &num_of_lines);
 	check_for_empty_file(num_of_lines);
-	printf("num_of_lines = %d\n", num_of_lines); //REMOVE
-	
-	// file = open(filename, O_RDONLY);
-	// if (!file)
-	// 	error_exit("Invalid file: Could not open file");
-	// s->map = (char **)malloc(((s->line_num + 1) * sizeof(char *)) + 1);
-	// if (!s->map)
-	// 	error_exit("Failed to malloc map array");
-	// i = 0;
-	// s->map[i] = get_next_line(file);
-	// while (s->map[i])
-	// {
-	// 	i++;
-	// 	s->map[i] = get_next_line(file);
-	// }
-	// s->map_height = i - 1;
-	// s->map[i] = 0;
-	// remove_newlines(s);
-	// close(file);
+	malloc_for_copy_file(main, num_of_lines);
+	copy_file(main, filename);
+	print_file(main->file); //REMOVE
 }

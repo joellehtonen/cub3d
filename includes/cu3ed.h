@@ -20,19 +20,21 @@
 # include "../libft/libft.h"
 //# include "MLX42/include/MLX42/MLX42.h"
 
-struct s_cu3ed
+typedef struct s_main
 {
     char	**map;
+	char	**file;
     char	*path_to_north_texture;
     char	*path_to_south_texture;
     char	*path_to_west_texture;
     char	*path_to_east_texture;
-    int		floor_rgb[3];
-    int		ceiling_rgb[3];
-} t_cu3ed;
+    int		*floor_rgb;
+    int		*ceiling_rgb;
+} t_main;
 
 void	error_exit(char *error);
 void	validate_filetype(char *filename);
-void	create_map(char *filename);
+void	create_copy_of_file(t_main *main, char *filename);
+void    parse_file(t_main *main);
 
 #endif
