@@ -6,7 +6,7 @@
 #    By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/10 17:38:46 by eberkowi         ###   ########.fr        #
+#    Updated: 2025/01/13 16:49:42 by eberkowi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,14 @@ CFILES := main.c \
 			error_exit.c \
 			validate_filetype.c \
 			create_copy_of_file.c \
-			parse_file.c
+			parse_file.c \
+			free_all.c \
+			check_for_path.c
 
 HEADER = includes/cu3ed.h
 LIBFT := libft/libft.a
-#MLX42 := MLX42/build/libmlx42.a
-#LDFLAGS := -LMLX/build -lglfw
+MLX42 := MLX42/build/libmlx42.a
+LDFLAGS := -LMLX/build -lglfw
 
 SRC_PATH := sources/
 OBJ_PATH := objects/
@@ -39,9 +41,7 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADER)
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) $(LIBFT) -o $(NAME) $(LINKFLAGS)
-#$(LDFLAGS) 
-#$(MLX42)
+	$(CC) $(FLAGS) $(OBJS) $(LIBFT) $(MLX42) -o $(NAME) $(LDFLAGS) 
 
 $(LIBFT):
 	make -C libft

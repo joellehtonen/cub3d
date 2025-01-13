@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_map.c                                       :+:      :+:    :+:   */
+/*   create_copy_of_file.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 10:47:42 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/10 17:46:43 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:41:16 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void check_for_empty_file(int num_of_lines)
 		error_exit("Invalid file: File is empty");	
 }
 
-static void	copy_file(t_main *main, char *filename)
+static void	copy_file(t_game *game, char *filename)
 {
 	int		fd;
 	int		i;
@@ -48,35 +48,35 @@ static void	copy_file(t_main *main, char *filename)
 	if (fd == -1)
 		error_exit("Invalid file: Failed to open file");
 	i = 0;
-	(main->file)[0] = get_next_line(fd);
-	while ((main->file)[i])
-		(main->file)[++i] = get_next_line(fd); //ADD MALLOC CHECK
-	(main->file)[i] = NULL;
+	(game->file)[0] = get_next_line(fd);
+	while ((game->file)[i])
+		(game->file)[++i] = get_next_line(fd); //ADD MALLOC CHECK AND FREE PREVIOUS
+	(game->file)[i] = NULL;
 	close(fd);
 }
 
-static void	malloc_for_copy_file(t_main *main, int num_of_lines)
+static void	malloc_for_copy_file(t_game *game, int num_of_lines)
 {
-	main->file = (char **)malloc((num_of_lines + 1) * sizeof(char *));
-	if (!(main->file))
+	game->file = (char **)malloc((num_of_lines + 1) * sizeof(char *));
+	if (!(game->file))
 		error_exit("Failed to malloc copy of file");
 }
 
-static void	print_file(char **file) //REMOVE
-{
-	int i = 0;
+// static void	print_file(char **file) //REMOVE
+// {
+// 	int i = 0;
 
-	while (file[i])
-		printf("%s", file[i++]);
-}
+// 	while (file[i])
+// 		printf("%s", file[i++]);
+// }
 
-void	create_copy_of_file(t_main *main, char *filename)
+void	create_copy_of_file(t_game *game, char *filename)
 {
 	int		num_of_lines;
 
 	get_num_of_lines(filename, &num_of_lines);
 	check_for_empty_file(num_of_lines);
-	malloc_for_copy_file(main, num_of_lines);
-	copy_file(main, filename);
-	print_file(main->file); //REMOVE
+	malloc_for_copy_file(game, num_of_lines);
+	copy_file(game, filename);
+	//print_file(game->file); //REMOVE
 }

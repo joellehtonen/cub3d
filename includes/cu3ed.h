@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/10 17:41:11 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:49:34 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "../libft/libft.h"
-//# include "MLX42/include/MLX42/MLX42.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 
-typedef struct s_main
+typedef struct s_game
 {
     char	**map;
 	char	**file;
@@ -30,11 +30,14 @@ typedef struct s_main
     char	*path_to_east_texture;
     int		*floor_rgb;
     int		*ceiling_rgb;
-} t_main;
+} t_game;
 
 void	error_exit(char *error);
+void	error_exit_and_free(t_game *game, char *error);
 void	validate_filetype(char *filename);
-void	create_copy_of_file(t_main *main, char *filename);
-void    parse_file(t_main *main);
+void	create_copy_of_file(t_game *game, char *filename);
+void    parse_file(t_game *game);
+void	free_all(t_game *game);
+void	check_for_path(t_game *game, int i, int *j, char **path);
 
 #endif
