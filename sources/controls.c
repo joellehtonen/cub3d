@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/14 14:53:20 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/14 16:14:28 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,18 @@ static int	move_right(t_game *game)
 		return (0);
 }
 
+static int	rotate_left(t_game *game)
+{
+	//something
+	return (1);
+}
+
+static int	rotate_right(t_game *game)
+{
+	//something
+	return (1);
+}
+
 void	controls(void *content)
 {
 	int		movement;
@@ -120,4 +132,8 @@ void	controls(void *content)
 		movement += move_left(game);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
 		movement += move_right(game);
+	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
+		movement += rotate_left(game);
+	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
+		movement += rotate_right(game);
 }

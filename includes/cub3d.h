@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/14 15:52:21 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/14 16:04:45 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 # define TILE_SIZE 64
 # define MOVE_SIZE 14
 # define MOVE_SPEED 4
-# define PI 3.1415926535
+# define PI 3.1415926535 //replace with M_PI?
 # define FOV 60
-# define ROTATION_SPEED 4 // a random value for testing
+# define ROTATE_SPEED 4 // a random value for testing
 # define WIDTH 1920 // can be changed
 # define HEIGHT 1080 // can be changed
 

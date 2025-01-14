@@ -1,4 +1,16 @@
-#include "../includes/cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
+/*   Updated: 2025/01/14 16:04:16 by jlehtone         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/cub3d.h"
 
 // Pythagora's theorem: a^2 + b^2 = c^2
 // We need to find the value of c, where c is the distance between two points A(a,0) and B(0,b) on a 2D plane. 
