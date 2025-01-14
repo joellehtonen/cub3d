@@ -6,11 +6,11 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 10:47:42 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/13 16:41:16 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/14 09:57:04 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cu3ed.h"
+#include "../includes/cub3d.h"
 
 static void	get_num_of_lines(char *filename, int *num_of_lines)
 {

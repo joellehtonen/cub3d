@@ -6,11 +6,11 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:15:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/13 16:10:13 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:26:42 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cu3ed.h"
+#include "../includes/cub3d.h"
 
 void	error_exit_and_free(t_game *game, char *error)
 {

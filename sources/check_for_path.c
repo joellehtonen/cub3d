@@ -6,11 +6,11 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:48:28 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/13 16:51:02 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/14 09:36:54 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cu3ed.h"
+#include "../includes/cub3d.h"
 
 static int get_path_length(int j, char *fileline)
 {
