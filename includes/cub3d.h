@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/14 15:03:51 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/14 15:12:49 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define TILE_SIZE 64
-# define MOVE_SIZE 14 //56
+# define MOVE_SIZE 14
 # define MOVE_SPEED 4
 
 typedef struct s_box

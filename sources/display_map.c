@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:45:15 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/14 14:51:17 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/14 15:11:47 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,18 @@
 
 static int	images_to_window(t_game *game, int x, int y)
 {
-	int	sz;
-
-	sz = game->image_size;
 	if (game->map[y][x] == '1')
-		if (mlx_image_to_window(game->mlx, game->wall_img, x * sz, y * sz) < 0)
+		if (mlx_image_to_window(game->mlx, game->wall_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
 			return (0);
 	if (game->map[y][x] == '0')
-		if (mlx_image_to_window(game->mlx, game->floor_img, x * sz, y * sz) < 0)
+		if (mlx_image_to_window(game->mlx, game->floor_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
 			return (0);
 	if (game->map[y][x] == 'N')
 	{
-		if (mlx_image_to_window(game->mlx, game->floor_img, x * sz, y * sz) < 0)
+		if (mlx_image_to_window(game->mlx, game->floor_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
 			return (0);
-		game->player.x = x * sz;
-		game->player.y = y * sz;
+		game->player.x = x * TILE_SIZE;
+		game->player.y = y * TILE_SIZE;
 	}
 	return (1);
 }
