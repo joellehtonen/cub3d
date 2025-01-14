@@ -1,4 +1,4 @@
-#include "../includes/cu3ed.h"
+#include "../includes/cub3d.h"
 
 // Pythagora's theorem: a^2 + b^2 = c^2
 // We need to find the value of c, where c is the distance between two points A(a,0) and B(0,b) on a 2D plane. 
