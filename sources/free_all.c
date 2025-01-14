@@ -6,11 +6,11 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:52:26 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/13 16:02:16 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:25:54 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cu3ed.h"
+#include "../includes/cub3d.h"
 
 static void free_array_of_strings(char ***arr)
 {

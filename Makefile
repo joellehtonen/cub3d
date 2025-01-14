@@ -6,11 +6,11 @@
 #    By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/13 16:49:42 by eberkowi         ###   ########.fr        #
+#    Updated: 2025/01/14 11:12:05 by eberkowi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := cu3ed
+NAME := cub3d
 CC := cc
 FLAGS := -Wall -Wextra -Werror
 CFILES := main.c \
@@ -19,9 +19,14 @@ CFILES := main.c \
 			create_copy_of_file.c \
 			parse_file.c \
 			free_all.c \
-			check_for_path.c
+			check_for_path.c \
+			create_textures.c \
+			create_images.c \
+			resize_images.c \
+			display_map.c \
+			controls.c
 
-HEADER = includes/cu3ed.h
+HEADER = includes/cub3d.h
 LIBFT := libft/libft.a
 MLX42 := MLX42/build/libmlx42.a
 LDFLAGS := -LMLX/build -lglfw
