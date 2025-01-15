@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/14 16:04:45 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/15 15:27:46 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define MOVE_SPEED 4
 # define PI 3.1415926535 //replace with M_PI?
 # define FOV 60
-# define ROTATE_SPEED 4 // a random value for testing
+# define ROTATE_SPEED 1 // a random value for testing
 # define WIDTH 1920 // can be changed
 # define HEIGHT 1080 // can be changed
 
@@ -36,7 +36,7 @@ typedef struct s_ray
     int y;
     int angle; // += turn_direction * rotation_speed;
     //int rotation_speed; // already defined in header
-    int turn_direction;
+    //int turn_direction;
 } t_ray;
 
 typedef struct s_box
@@ -75,6 +75,7 @@ typedef struct s_game
 	mlx_image_t			*floor_img;
 	mlx_texture_t		*player_texture;
 	struct s_player		player;
+	struct s_ray		ray;
 	int width;
 	int height;
 	int image_size;
@@ -91,6 +92,10 @@ void	create_textures(t_game *game);
 void	create_images(t_game *game);
 void	resize_images(t_game *game);
 void	display_map(t_game *game);
-void	controls(void *content);
+void	controls(t_game *game);
+
+void	raycasting(t_game *game);
+void	init_ray(t_game *game);
+void	rendering(void *content);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/14 16:04:16 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/15 15:35:30 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@
 // isRayFacingRight = rayAngle < (0.5 * pi) [90] || rayAngle > (1.5 * pi) [270];
 // isRayFacingLeft  = !isRayFacingRight;
 
-
-// left key = player.angle -=0.1; player.
-
 void init_ray(t_game *game)
 {
 	// maybe not necessary to count degrees first
 	// if supposed to face North = 0, if South = 180, East = 90, West = 270. Assume North for now.
 	game->player.angle_degree = 0;
 	game->player.angle_radian = game->player.angle_degree * (PI / 180);
+	game->ray.y = (game->player.y / TILE_SIZE) * TILE_SIZE;
+	game->ray.x = game->player.x + (game->ray.y - game->player.y) / tan(game->ray.angle);
+	game->ray.angle = game->player.angle_degree - (FOV / 2);
 	game->player.dx = cos(game->player.angle_radian);
 	game->player.dy = sin(game->player.angle_radian);
 }
@@ -49,20 +49,7 @@ void raycasting(t_game *game)
 	double	h_inter; //horizontal intersection of the ray
 	double	v_inter; //vertical intersection of the ray
 	int		ray;
+	game = game;
 
 	ray = 0; //first ray, last one will be 60
-
-	game->ray.angle = game->player.angle_degree - (FOV / 2);
-	// now i wanna count the x & y coords of the ray end point, if ray is one tile_size long
-	game->ray.y = (game->player.y / TILE_SIZE) * TILE_SIZE; //basically the y coord in pixels?
-	game->ray.y = game->player.y; //perhaps this is enough
-	game->ray.x = game->player.x + (game->ray.y - game->player.y) / tan(game->ray.angle);
-
-	if (game->player.angle_degree < 0)
-		game->player.angle_degree = 360;
-	if (game->player.angle_degree > 360)
-		game->player.angle_degree = 0;
-
-	
-
 }
