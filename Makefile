@@ -6,7 +6,7 @@
 #    By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/15 15:34:46 by kattimaijan      ###   ########.fr        #
+#    Updated: 2025/01/15 18:48:55 by kattimaijan      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ CFILES := main.c \
 			display_map.c \
 			controls.c \
 			rendering.c \
-			raycasting.c
+			raycasting/raycasting.c \
+			raycasting/raycasting_utils.c
 
 HEADER = includes/cub3d.h
 LIBFT := libft/libft.a

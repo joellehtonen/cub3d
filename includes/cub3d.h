@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/15 15:27:46 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/15 18:48:30 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,14 @@
 
 typedef struct s_ray
 {
-    int x;
-    int y;
-    int angle; // += turn_direction * rotation_speed;
+    int		x;
+    int		y;
+    int		angle; // += turn_direction * rotation_speed;
     //int rotation_speed; // already defined in header
     //int turn_direction;
+	double	distance;
+	bool	ray_points_left;
+	bool	ray_points_up;
 } t_ray;
 
 typedef struct s_box
@@ -96,6 +99,7 @@ void	controls(t_game *game);
 
 void	raycasting(t_game *game);
 void	init_ray(t_game *game);
+void	determine_ray_direction(t_game *game);
 void	rendering(void *content);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/15 15:35:30 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/15 18:51:08 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,42 @@ void init_ray(t_game *game)
 	// maybe not necessary to count degrees first
 	// if supposed to face North = 0, if South = 180, East = 90, West = 270. Assume North for now.
 	game->player.angle_degree = 0;
-	game->player.angle_radian = game->player.angle_degree * (PI / 180);
+	//game->player.angle_radian = game->player.angle_degree * (PI / 180); //determine this when needed, maybe within a func instead of within struct
+	game->ray.angle = game->player.angle_degree - (FOV / 2);
+	if (game->ray.angle < 0)
+		game->ray.angle += 360;
 	game->ray.y = (game->player.y / TILE_SIZE) * TILE_SIZE;
 	game->ray.x = game->player.x + (game->ray.y - game->player.y) / tan(game->ray.angle);
-	game->ray.angle = game->player.angle_degree - (FOV / 2);
-	game->player.dx = cos(game->player.angle_radian);
-	game->player.dy = sin(game->player.angle_radian);
+	game->ray.distance = 0;
+	game->player.dx = 0;
+	game->player.dy = 0;
+	// game->player.dx = cos(game->player.angle_radian);
+	// game->player.dy = sin(game->player.angle_radian);
+	// these are determined based on the starting direction, maybe create a func later for it
+	game->ray.ray_points_left = false; //or true if points straight up???
+	game->ray.ray_points_up = true;
+}
+
+static void	choose_shorter_distance(t_game *game, double h_inter, double v_inter)
+{
+	if (h_inter <= v_inter)
+		game->ray.distance = h_inter;
+	else
+		game->ray.distance = v_inter;
+}
+
+static double find_horizontal_intersection(t_game *game)
+{
+	float	x;
+	float	y;
+	float	x_step;
+	float	y_step;
+
+	// r
+	if (game->ray.ray_points_up)
+		
+
+	// ray
 }
 
 void raycasting(t_game *game)
@@ -49,7 +79,13 @@ void raycasting(t_game *game)
 	double	h_inter; //horizontal intersection of the ray
 	double	v_inter; //vertical intersection of the ray
 	int		ray;
-	game = game;
 
 	ray = 0; //first ray, last one will be 60
+	while (ray <= 60)
+	{
+		h_inter = find_horizontal_intersection(game);
+		v_inter = find_vertical_intersection(game);
+		choose_shorter_distance(game, h_inter, v_inter);
+		ray++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/15 15:15:41 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/15 18:43:27 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,23 +106,25 @@ static void	move_right(t_game *game)
 
 static void	rotate_left(t_game *game)
 {
-	game->ray.angle -= ROTATE_SPEED;
+	//game->ray.angle -= ROTATE_SPEED; //do this in raycasting.c
 	game->player.angle_radian -= ROTATE_SPEED;
 	if (game->player.angle_radian < 0)
-		game->player.angle_radian = 2 * PI; // or += ???
-	game->player.dx = cos(game->player.angle_radian); // */times something?
-	game->player.dy = sin(game->player.angle_radian); // */times something?	
+		game->player.angle_radian += 2 * PI; // or += ???
+	game->player.dx = cos(game->player.angle_radian); //* ROTATE_SPEED;
+	game->player.dy = sin(game->player.angle_radian); //* ROTATE_SPEED;
+	determine_ray_direction(game);
 	return ;
 }
 
 static void	rotate_right(t_game *game)
 {
-	game->ray.angle += ROTATE_SPEED;
+	//game->ray.angle += ROTATE_SPEED; //determine this in raycasting.c
 	game->player.angle_radian += ROTATE_SPEED;
 	if (game->player.angle_radian > 2 * PI)
-		game->player.angle_radian = 0; // or += 2 * PI???
-	game->player.dx = cos(game->player.angle_radian); // */times something?
-	game->player.dy = sin(game->player.angle_radian); // */times something?	
+		game->player.angle_radian -= 2 * PI; // or += 2 * PI???
+	game->player.dx = cos(game->player.angle_radian);// * ROTATE_SPEED;
+	game->player.dy = sin(game->player.angle_radian);// * ROTATE_SPEED;
+	determine_ray_direction(game);
 	return ;
 }
 

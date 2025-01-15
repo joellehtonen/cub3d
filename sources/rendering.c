@@ -6,5 +6,5 @@ void rendering(void * content)
     game = (t_game *)content;
 
     controls(game);
-    //raycasting(game);
+    raycasting(game);
 }
