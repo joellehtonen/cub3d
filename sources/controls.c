@@ -6,15 +6,21 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/15 18:43:27 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/16 18:38:24 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static int	is_wall(t_game *game, int x, int y)
+// changed this to float, not sure if it still works as it should
+static int	is_wall(t_game *game, float x, float y)
 {
-	if (game->map[y / TILE_SIZE][x / TILE_SIZE] == '1')
+	int x_map;
+	int y_map;
+
+	x_map = floor(x);
+	y_map = floor(y);
+	if (game->map[y_map / TILE_SIZE][x_map / TILE_SIZE] == '1')
 		return (true);
 	else
 		return (false);

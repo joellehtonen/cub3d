@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/15 18:48:30 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/16 18:40:38 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct s_ray
     //int rotation_speed; // already defined in header
     //int turn_direction;
 	double	distance;
-	bool	ray_points_left;
-	bool	ray_points_up;
+	bool	direction_left;
+	bool	direction_up;
 } t_ray;
 
 typedef struct s_box

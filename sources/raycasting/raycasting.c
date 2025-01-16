@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/15 18:51:08 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/16 20:39:02 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void init_ray(t_game *game)
 	// game->player.dx = cos(game->player.angle_radian);
 	// game->player.dy = sin(game->player.angle_radian);
 	// these are determined based on the starting direction, maybe create a func later for it
-	game->ray.ray_points_left = false; //or true if points straight up???
-	game->ray.ray_points_up = true;
+	game->ray.direction_left = false; //or true if points straight up???
+	game->ray.direction_up = true;
 }
 
 static void	choose_shorter_distance(t_game *game, double h_inter, double v_inter)
@@ -60,18 +60,56 @@ static void	choose_shorter_distance(t_game *game, double h_inter, double v_inter
 		game->ray.distance = v_inter;
 }
 
+static double find_vertical_intersection(t_game *game)
+{
+	float	point_x;
+	float	point_y;
+	float	step_x;
+	float	step_y;
+	double	distance;
+
+	point_x = floor(game->player.x / TILE_SIZE) * TILE_SIZE; // this always rounds it to the leftmost line on the grid
+	if (game->ray.direction_left == false)
+		point_x += TILE_SIZE;
+	point_y = (point_x - game->player.x) / tan(game->player.angle_radian) + game->player.y; // or -tan?
+	step_x = TILE_SIZE;
+	step_y = step_x / tan(game->player.angle_radian);
+	while (is_wall(game, point_x, point_y) == false)
+	{
+		if (game->ray.direction_left == true)
+			point_x -= step_x;
+		else
+			point_x += step_x;
+		point_y += step_y;
+	}
+	distance = sqrt(pow(point_x - game->player.x, 2) + pow(point_y - game->player.y, 2));
+	return (distance);
+}
+
 static double find_horizontal_intersection(t_game *game)
 {
-	float	x;
-	float	y;
-	float	x_step;
-	float	y_step;
+	float	point_x;
+	float	point_y;
+	float	step_x;
+	float	step_y;
+	double	distance;
 
-	// r
-	if (game->ray.ray_points_up)
-		
-
-	// ray
+	point_y = floor(game->player.y / TILE_SIZE) * TILE_SIZE;
+	if (game->ray.direction_up == false)
+		point_y += TILE_SIZE;
+	point_x = (point_y - game->player.y) / tan(game->player.angle_radian) + game->player.x; // or -tan?
+	step_y = TILE_SIZE;
+	step_x = step_y / tan(game->player.angle_radian);
+	while (is_wall(game, point_x, point_y) == false)
+	{
+		if (game->ray.direction_up == true)
+			point_y -= step_y;
+		else
+			point_y += step_y;
+		point_x += step_x;
+	}
+	distance = sqrt(pow(point_x - game->player.x, 2) + pow(point_y - game->player.y, 2));
+	return (distance);
 }
 
 void raycasting(t_game *game)
@@ -86,6 +124,8 @@ void raycasting(t_game *game)
 		h_inter = find_horizontal_intersection(game);
 		v_inter = find_vertical_intersection(game);
 		choose_shorter_distance(game, h_inter, v_inter);
+		// render_wall(game); // to do
+		// render_ray(game); // for testing
 		ray++;
 	}
 }
