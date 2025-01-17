@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/17 16:55:56 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/17 20:53:03 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@
 # define ROTATE_SPEED 0.01 // a random value for testing
 # define MAP_WIDTH 1920 // can be changed
 # define MAP_HEIGHT 1080 // can be changed
+
+# define FORWARD 0
+# define LEFT (PI / 2)
+# define BACKWARD PI
+# define RIGHT (3 * PI / 2)
 
 typedef struct s_ray
 {
@@ -61,7 +66,8 @@ typedef struct s_player
 	int 			dx;
     int 			dy;
     double 			angle_degree;
-    float 			angle_radian; // = angle_degree * (PI / 180);
+    float 			angle_radian;
+	int				initial_direction;
 	mlx_image_t		*player_img;
 }	t_player;
 
@@ -100,7 +106,7 @@ void	create_textures(t_game *game);
 void	create_images(t_game *game);
 void	resize_images(t_game *game);
 void	display_map(t_game *game);
-void	controls(t_game *game);
+bool	controls(t_game *game);
 void 	draw_line(t_game *game);
 
 void	raycasting(t_game *game);

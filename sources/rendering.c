@@ -2,10 +2,14 @@
 
 void rendering(void * content)
 {
-    t_game *game;
-    game = (t_game *)content;
+    t_game  *game;
+    game =  (t_game *)content;
+    bool     movement;
 
-    controls(game);
-    raycasting(game);
-	draw_line(game);
+    movement = controls(game);
+    if (movement == true)
+    {
+        raycasting(game);
+        draw_line(game);
+    }
 }
