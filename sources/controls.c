@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/16 18:38:24 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/17 09:41:08 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-// changed this to float, not sure if it still works as it should
-static int	is_wall(t_game *game, float x, float y)
-{
-	int x_map;
-	int y_map;
-
-	x_map = floor(x);
-	y_map = floor(y);
-	if (game->map[y_map / TILE_SIZE][x_map / TILE_SIZE] == '1')
-		return (true);
-	else
-		return (false);
-}
 
 static void	move_up(t_game *game)
 {
