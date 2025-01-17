@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:28:30 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/17 10:30:49 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/17 12:12:27 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ bool	is_wall_float(t_game *game, float x, float y)
 	int x_map;
 	int y_map;
 
-	x_map = (floor(x / TILE_SIZE)); //or just typecast to int?
+	x_map = floor(x / TILE_SIZE); //or just typecast to int?
 	y_map = floor(y / TILE_SIZE);
 	// x_map = (int)x;
 	// y_map = (int)y;
-	if (x_map < 0 || y_map < 0 || x_map > MAP_WIDTH || y_map > MAP_HEIGHT)
+	if (x_map < 0 || y_map < 0 || x_map > game->width || y_map > game->height)
 	{
-		printf("ERROR! - INFINITY!!! --- ");
+		printf("ERROR! - INFINITY!!! --- x_map: %d, y_map: %d   ", x_map, y_map);
 		return (true);
 	}
 	if (game->map[y_map / TILE_SIZE][x_map / TILE_SIZE] == '1')
