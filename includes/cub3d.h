@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/17 10:01:47 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/17 12:17:10 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_game
 	mlx_texture_t		*floor_texture;
 	mlx_image_t			*floor_img;
 	mlx_texture_t		*player_texture;
+	mlx_image_t			*minimap_img;
 	struct s_player		player;
 	struct s_ray		ray;
 	int width;
@@ -96,6 +97,7 @@ void	create_images(t_game *game);
 void	resize_images(t_game *game);
 void	display_map(t_game *game);
 void	controls(t_game *game);
+void 	draw_line(t_game *game);
 
 void	raycasting(t_game *game);
 void	init_ray(t_game *game);
@@ -104,5 +106,6 @@ void	choose_shorter_distance(t_game *game, double h_inter, double v_inter);
 void	rendering(void *content);
 bool	is_wall(t_game *game, int x, int y); //maybe redundant to have 2 versions
 bool	is_wall_float(t_game *game, float x, float y);
+
 
 #endif

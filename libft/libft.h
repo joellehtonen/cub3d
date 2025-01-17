@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:56:28 by eberkowi          #+#    #+#             */
-/*   Updated: 2024/07/19 11:10:20 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/17 12:18:33 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 char	*get_next_line(int fd);
 int		ft_printf(char *str, ...);
+double 	ft_abs_double(double n);
+int 	ft_abs(int n);
 
 #endif
