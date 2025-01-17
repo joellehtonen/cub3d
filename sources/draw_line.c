@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:42:01 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/17 16:25:06 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/17 22:05:32 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static void clear_line(t_game *game)
 
 void draw_line(t_game *game)
 {
-	printf("game_ray_x = %f and %d, game_ray_y = %f and %d\n", game->ray.x, (int)game->ray.x, game->ray.y, (int)game->ray.y);
+	//printf("game_ray_x = %f and %d, game_ray_y = %f and %d\n", game->ray.x, (int)game->ray.x, game->ray.y, (int)game->ray.y);
 	clear_line(game);
     bresenham_line(game, game->player.x, game->player.y, (int)game->ray.x, (int)game->ray.y);
 	//bresenham_line(game, game->player.x, game->player.y, game->player.x, game->player.y - 100);

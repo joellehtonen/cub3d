@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/17 21:19:24 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/17 21:22:50 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 
 static void determine_initial_player_direction(t_game *game)
 {
-	game->player.initial_direction = FORWARD; //for testing
+	game->player.initial_direction = FORWARD; //for testing, determine later by the symbol on the map
 	game->player.angle_radian = game->player.initial_direction;
 	game->ray.direction_up = false;
 	game->ray.direction_left = false;

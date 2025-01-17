@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/17 20:53:03 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/17 21:35:11 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 
 # define FORWARD 0
 # define LEFT (PI / 2)
-# define BACKWARD PI
+# define BACK PI
 # define RIGHT (3 * PI / 2)
 
 typedef struct s_ray
