@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/17 09:41:08 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:55:05 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ static void	rotate_left(t_game *game)
 {
 	//game->ray.angle -= ROTATE_SPEED; //do this in raycasting.c
 	game->player.angle_radian -= ROTATE_SPEED;
+	game->player.player_img->instances[0] 
 	if (game->player.angle_radian < 0)
 		game->player.angle_radian += 2 * PI; // or += ???
 	game->player.dx = cos(game->player.angle_radian); //* ROTATE_SPEED;
