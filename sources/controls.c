@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/17 13:34:32 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:52:16 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	move_up(t_game *game)
 	{
 		game->player.player_img->instances[0].y -= MOVE_SPEED;
 		//game->player.y -= MOVE_SPEED;
-		game->player.y -= (sin(game->player.angle_radian) * MOVE_SPEED);
+		game->player.y -= (cos(game->player.angle_radian) * MOVE_SPEED);
 		return ;
 	}
 	else
@@ -47,7 +47,7 @@ static void	move_down(t_game *game)
 	{
 		game->player.player_img->instances[0].y += MOVE_SPEED;
 		//game->player.y += MOVE_SPEED;
-		game->player.y += (sin(game->player.angle_radian) * MOVE_SPEED);
+		game->player.y += (cos(game->player.angle_radian) * MOVE_SPEED);
 		return ;
 	}
 	else
