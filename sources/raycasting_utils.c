@@ -17,7 +17,15 @@ void	determine_ray_direction(t_game *game)
 void	choose_shorter_distance(t_game *game, double h_inter, double v_inter)
 {
 	if (h_inter <= v_inter)
+	{
 		game->ray.distance = h_inter;
+		game->ray.x = game->ray.hx;
+		game->ray.y = game->ray.hy;
+	}
 	else
+	{
 		game->ray.distance = v_inter;
+		game->ray.x = game->ray.vx;
+		game->ray.y = game->ray.vy;
+	}
 }

@@ -3,16 +3,9 @@
 -can textures be opaque? pixels be opaque? can there be see-through wall etc?
 
 
+- put 1s to empty spaces when parsing
+
+
 RAYCASTING NOTES
-
-Rotation Update — it is resolved based on the current direction and rotation speed.
-Forward/Backward Movements — it is resolved based on the current position of the player, 
-rotation angle and the up and down direction.
-Left & Right Movements — it is resolved by adding the new angle rotation angle + (pi / 2), 
-and the left and right direction.
-
-Pythagora's theorem: a^2 + b^2 = c^2
-We need to find the value of c, where c is the distance between two points A(a,0) and B(0,b) on a 2D plane. 
-The formula to find c is c = sqrt(a^2 + b^2). 
 
 The flag (-O3 -ffast-math) is used for optimization.
