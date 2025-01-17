@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/17 16:39:25 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:23:27 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void init_ray(t_game *game)
 	// if supposed to face North = 0, if South = 180, East = 90, West = 270. Assume North for now.
 	game->player.angle_degree = 0;
 	game->player.angle_radian = game->player.angle_degree * (PI / 180) ; //determine this when needed, maybe within a func instead of within struct
-	game->ray.angle = (PI * 0.5) - game->player.angle_degree - (FOV / 2);
+	game->ray.angle = game->player.angle_degree - (FOV / 2);
 	if (game->ray.angle < 0)
 		game->ray.angle += 360;
 	game->ray.y = (game->player.y / TILE_SIZE) * TILE_SIZE;
