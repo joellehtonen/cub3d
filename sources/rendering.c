@@ -7,4 +7,5 @@ void rendering(void * content)
 
     controls(game);
     raycasting(game);
+	draw_line(game);
 }
