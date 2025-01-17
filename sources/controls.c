@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/17 12:00:02 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:54:53 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@ static void	move_up(t_game *game)
 	if (!is_wall(game, ghost_box.x, ghost_box.y)
 		&& !is_wall(game, ghost_box.x + MOVE_SIZE, ghost_box.y))
 	{
-		game->player.player_img->instances[0].y -= MOVE_SPEED;
-		//game->player.y -= MOVE_SPEED;
-		game->player.y -= (sin(game->player.angle_radian) * MOVE_SPEED);
+		// game->player.x += (cos(game->player.angle_radian) * MOVE_SPEED);
+		// game->player.y += (sin(game->player.angle_radian) * MOVE_SPEED);
+		game->player.x += (sin(game->player.angle_radian) * MOVE_SPEED);
+		game->player.y -= (cos(game->player.angle_radian) * MOVE_SPEED); //THESE DONT ALL MAKE SENSE, APPARENTLY COS OF THE DIFFERENCE BETWEEN 0 DEGREE IN MATH AND 0 DEGREE IN NAVIGATION
+		game->player.player_img->instances[0].x = game->player.x;
+		game->player.player_img->instances[0].y = game->player.y;
 		return ;
 	}
 	else
@@ -45,9 +48,12 @@ static void	move_down(t_game *game)
 	if (!is_wall(game, ghost_box.x, ghost_box.y + MOVE_SIZE)
 		&& !is_wall(game, ghost_box.x + MOVE_SIZE, ghost_box.y + MOVE_SIZE))
 	{
-		game->player.player_img->instances[0].y += MOVE_SPEED;
-		//game->player.y += MOVE_SPEED;
-		game->player.y += (sin(game->player.angle_radian) * MOVE_SPEED);
+		// game->player.x -= (cos(game->player.angle_radian) * MOVE_SPEED);
+		// game->player.y -= (sin(game->player.angle_radian) * MOVE_SPEED);
+		game->player.x -= (sin(game->player.angle_radian) * MOVE_SPEED);
+		game->player.y += (cos(game->player.angle_radian) * MOVE_SPEED);
+		game->player.player_img->instances[0].x = game->player.x;
+		game->player.player_img->instances[0].y = game->player.y;
 		return ;
 	}
 	else
@@ -66,10 +72,12 @@ static void	move_left(t_game *game)
 	if (!is_wall(game, ghost_box.x, ghost_box.y)
 		&& !is_wall(game, ghost_box.x, ghost_box.y + MOVE_SIZE))
 	{
-		game->player.player_img->instances[0].x -= MOVE_SPEED;
-		//game->player.x -= MOVE_SPEED;
+		// game->player.x += (sin(game->player.angle_radian) * MOVE_SPEED);
+		// game->player.y -= (cos(game->player.angle_radian) * MOVE_SPEED);
 		game->player.x -= (cos(game->player.angle_radian) * MOVE_SPEED);
-		return ;
+		game->player.y -= (sin(game->player.angle_radian) * MOVE_SPEED); 
+		game->player.player_img->instances[0].x = game->player.x;
+		game->player.player_img->instances[0].y = game->player.y;
 	}
 	else
 		return ;
@@ -87,9 +95,12 @@ static void	move_right(t_game *game)
 	if (!is_wall(game, ghost_box.x + MOVE_SIZE, ghost_box.y)
 		&& !is_wall(game, ghost_box.x + MOVE_SIZE, ghost_box.y + MOVE_SIZE))
 	{
-		game->player.player_img->instances[0].x += MOVE_SPEED;
-		//game->player.x += MOVE_SPEED;
+		// game->player.x -= (sin(game->player.angle_radian) * MOVE_SPEED);
+		// game->player.y += (cos(game->player.angle_radian) * MOVE_SPEED);
 		game->player.x += (cos(game->player.angle_radian) * MOVE_SPEED);
+		game->player.y += (sin(game->player.angle_radian) * MOVE_SPEED);
+		game->player.player_img->instances[0].x = game->player.x;
+		game->player.player_img->instances[0].y = game->player.y;
 		return ;
 	}
 	else
@@ -100,7 +111,6 @@ static void	rotate_left(t_game *game)
 {
 	//game->ray.angle -= ROTATE_SPEED; //do this in raycasting.c
 	game->player.angle_radian -= ROTATE_SPEED;
-	// game->player.player_img->instances[0] 
 	if (game->player.angle_radian < 0)
 		game->player.angle_radian += 2 * PI; // or += ???
 	game->player.dx = cos(game->player.angle_radian); //* ROTATE_SPEED;

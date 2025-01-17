@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:45:15 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/14 15:11:47 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:42:07 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ void	display_map(t_game *game)
 		y++;
 	}
 	if (mlx_image_to_window(game->mlx, game->player.player_img, game->player.x, game->player.y) < 0)
+		return ; //add fail check here
+	if (mlx_image_to_window(game->mlx, game->minimap_img, 0, 0) < 0)
 		return ; //add fail check here
 }

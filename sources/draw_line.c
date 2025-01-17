@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:42:01 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/17 10:58:30 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:44:52 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ static void print_points(t_game *game, int points[10000][2], int num_of_points)
     while (i < num_of_points)
     {
         //printf("x = %d, y = %d\n", points[i][0], points[i][1]);
-		mlx_put_pixel(game->minimap, points[i][0], points[i][1], 0xff00ffff);
-		
+		mlx_put_pixel(game->minimap_img, points[i][0], points[i][1], 0xff00ffff);
         i++;
     }
 }
@@ -36,8 +35,6 @@ static void store_points(t_game *game, int current_x, int current_y, int end_x, 
 
 	// printf("delta_x = %f\n", delta_x);
 	// printf("delta_y = %f\n", delta_y);
-
-
 	
     int dif_x;
     int dif_y;
@@ -80,12 +77,12 @@ static void clear_line(t_game *game)
 	int x;
 
 	y = 0;
-	while (y < (int)game->minimap->height)
+	while (y < (int)game->minimap_img->height)
 	{
 		x = 0;
-		while (x < (int)game->minimap->width)
+		while (x < (int)game->minimap_img->width)
 		{
-			mlx_put_pixel(game->minimap, x, y, 0x00000000);
+			mlx_put_pixel(game->minimap_img, x, y, 0x00000000);
 			x++;
 		}
 		y++;
@@ -94,7 +91,6 @@ static void clear_line(t_game *game)
 
 void draw_line(t_game *game)
 {
-	(void)game;
 	clear_line(game);
     store_points(game, game->player.x, game->player.y, 0, 0);
 }

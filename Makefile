@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+         #
+#    By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/17 09:50:31 by jlehtone         ###   ########.fr        #
+#    Updated: 2025/01/17 12:17:24 by eberkowi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ CFILES := main.c \
 			rendering.c \
 			raycasting.c \
 			raycasting_utils.c \
-			checks.c
+			checks.c \
+			draw_line.c
 
 HEADER = includes/cub3d.h
 LIBFT := libft/libft.a

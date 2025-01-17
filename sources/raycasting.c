@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/17 10:10:40 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:10:10 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void init_ray(t_game *game)
 	// maybe not necessary to count degrees first
 	// if supposed to face North = 0, if South = 180, East = 90, West = 270. Assume North for now.
 	game->player.angle_degree = 0;
-	//game->player.angle_radian = game->player.angle_degree * (PI / 180); //determine this when needed, maybe within a func instead of within struct
-	game->ray.angle = game->player.angle_degree - (FOV / 2);
+	game->player.angle_radian = game->player.angle_degree * (PI / 180) ; //determine this when needed, maybe within a func instead of within struct
+	game->ray.angle = (PI * 0.5) - game->player.angle_degree - (FOV / 2);
 	if (game->ray.angle < 0)
 		game->ray.angle += 360;
 	game->ray.y = (game->player.y / TILE_SIZE) * TILE_SIZE;
@@ -74,6 +74,8 @@ static double find_vertical_intersection(t_game *game)
 			point_x += step_x;
 		point_y += step_y;
 	}
+	game->ray.vx = point_x;
+	game->ray.vy = point_y;
 	distance = sqrt(pow(point_x - game->player.x, 2) + pow(point_y - game->player.y, 2));
 	return (distance);
 }
@@ -100,6 +102,8 @@ static double find_horizontal_intersection(t_game *game)
 			point_y += step_y;
 		point_x += step_x;
 	}
+	game->ray.hx = point_x;
+	game->ray.hy = point_y;
 	distance = sqrt(pow(point_x - game->player.x, 2) + pow(point_y - game->player.y, 2));
 	return (distance);
 }

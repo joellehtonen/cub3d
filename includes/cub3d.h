@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/17 10:01:47 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:09:15 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,19 @@
 # define MOVE_SPEED 4
 # define PI 3.1415926535 //replace with M_PI?
 # define FOV 60
-# define ROTATE_SPEED 1 // a random value for testing
+# define ROTATE_SPEED 0.01 // a random value for testing
 # define MAP_WIDTH 1920 // can be changed
 # define MAP_HEIGHT 1080 // can be changed
 
 typedef struct s_ray
 {
-    int		x;
-    int		y;
-    int		angle; // += turn_direction * rotation_speed;
+    double	x;
+	double	y;
+	double	hx;
+	double	hy;
+	double	vx;
+	double	vy;
+    double	angle; // += turn_direction * rotation_speed;
     //int rotation_speed; // already defined in header
     //int turn_direction;
 	double	distance;
@@ -77,6 +81,7 @@ typedef struct s_game
 	mlx_texture_t		*floor_texture;
 	mlx_image_t			*floor_img;
 	mlx_texture_t		*player_texture;
+	mlx_image_t			*minimap_img;
 	struct s_player		player;
 	struct s_ray		ray;
 	int width;
@@ -96,6 +101,7 @@ void	create_images(t_game *game);
 void	resize_images(t_game *game);
 void	display_map(t_game *game);
 void	controls(t_game *game);
+void 	draw_line(t_game *game);
 
 void	raycasting(t_game *game);
 void	init_ray(t_game *game);
@@ -104,5 +110,6 @@ void	choose_shorter_distance(t_game *game, double h_inter, double v_inter);
 void	rendering(void *content);
 bool	is_wall(t_game *game, int x, int y); //maybe redundant to have 2 versions
 bool	is_wall_float(t_game *game, float x, float y);
+
 
 #endif
