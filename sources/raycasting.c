@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/17 16:10:10 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:39:25 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,14 +115,14 @@ void raycasting(t_game *game)
 	int		ray;
 
 	ray = 0;
-	while (ray <= 60)
-	{
+	// while (ray <= 60)
+	// {
 		h_inter = find_horizontal_intersection(game);
 		v_inter = find_vertical_intersection(game);
 		choose_shorter_distance(game, h_inter, v_inter);
 		// render_wall(game); // to do
 		// render_ray(game); // for testing/minimap
-		printf("The ray hits wall in: %f\n", game->ray.distance); // CAN BE REMOVED LATER
-		ray++;
-	}
+		//printf("The ray hits wall in: %f\n", game->ray.distance); // CAN BE REMOVED LATER
+	// 	ray++;
+	// }
 }

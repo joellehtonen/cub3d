@@ -20,12 +20,28 @@ void	choose_shorter_distance(t_game *game, double h_inter, double v_inter)
 	{
 		game->ray.distance = h_inter;
 		game->ray.x = game->ray.hx;
+		if (game->ray.x > 10000)
+			game->ray.x = 10000;
+		if (game->ray.x < -10000)
+			game->ray.x = -10000;
 		game->ray.y = game->ray.hy;
+		if (game->ray.y > 10000)
+			game->ray.y = 10000;
+		if (game->ray.y < -10000)
+			game->ray.y = -10000;
 	}
 	else
 	{
 		game->ray.distance = v_inter;
 		game->ray.x = game->ray.vx;
+		if (game->ray.x > 10000)
+			game->ray.x = 10000;
+		if (game->ray.x < -10000)
+			game->ray.x = -10000;
 		game->ray.y = game->ray.vy;
+		if (game->ray.y > 10000)
+			game->ray.y = 10000;
+		if (game->ray.y < -10000)
+			game->ray.y = -10000;
 	}
 }
