@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/18 12:05:26 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/18 18:12:15 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ static bool	rotate_player(t_game *game, double direction)
 	game->player.dx = cos(game->player.angle_radian);
 	game->player.dy = sin(game->player.angle_radian);
 	game->ray.angle = game->player.angle_radian - (FOV / 2);
+	if (game->ray.angle < 0)
+		game->ray.angle += (2 * PI);
+	if (game->ray.angle >= (2 * PI))
+		game->ray.angle -= (2 * PI);
 	determine_ray_direction(game);
 	return (true);
 }
@@ -51,61 +55,6 @@ static bool	move_player(t_game *game, double direction)
 	else
 		return (false);
 }
-
-// static bool	move_player_up_down(t_game *game, double direction)
-// {
-// 	double	new_x;
-// 	double	new_y;
-	
-// 	if (direction == FORWARD)
-// 	{
-// 		new_x = game->player.x + cos(game->player.angle_radian) * MOVE_SPEED;
-// 		new_y = game->player.y - sin(game->player.angle_radian) * MOVE_SPEED;
-// 	}
-// 	else if (direction == BACK)
-// 	{
-// 		new_x = game->player.x - cos(game->player.angle_radian) * MOVE_SPEED;
-// 		new_y = game->player.y + sin(game->player.angle_radian) * MOVE_SPEED;
-// 	}
-// 	if (is_wall(game, new_x, new_y) == false)
-// 	{
-// 		game->player.x = new_x;
-// 		game->player.y = new_y;
-// 		game->player.player_img->instances[0].x = new_x;
-// 		game->player.player_img->instances[0].y = new_y;
-// 		return (true);
-// 	}
-// 	else
-// 		return (false);
-// }
-
-// static bool	move_player_left_right(t_game *game, double direction)
-// {
-// 	double	new_x;
-// 	double	new_y;
-	
-// 	if (direction == LEFT)
-// 	{
-// 		new_x = game->player.x + sin(game->player.angle_radian) * MOVE_SPEED;
-// 		new_y = game->player.y - cos(game->player.angle_radian) * MOVE_SPEED;
-// 	}
-// 	else if (direction == RIGHT)
-// 	{
-// 		new_x = game->player.x - sin(game->player.angle_radian) * MOVE_SPEED;
-// 		new_y = game->player.y + cos(game->player.angle_radian) * MOVE_SPEED;
-// 	}
-// 	if (is_wall(game, new_x, new_y) == false)
-// 	{
-// 		game->player.x = new_x;
-// 		game->player.y = new_y;
-// 		game->player.player_img->instances[0].x = new_x;
-// 		game->player.player_img->instances[0].y = new_y;
-// 		return (true);
-// 	}
-// 	else
-// 		return (false);
-// }
-
 
 bool controls(t_game *game)
 {

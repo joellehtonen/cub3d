@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/18 12:06:24 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/18 19:34:30 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,14 @@ static double find_vertical_intersection(t_game *game)
 	point_x = floor(game->player.x / TILE_SIZE) * TILE_SIZE;
 	if (game->ray.direction_left == false)
 		point_x += TILE_SIZE;
-	point_y = (point_x - game->player.x) / tan(game->player.angle_radian) + game->player.y; // or -tan?
-	step_x = TILE_SIZE;
-	step_y = step_x / tan(game->player.angle_radian);
+	if (fabs(tan(game->player.angle_radian)) < 0.001)
+		point_y = game->player.y;
+	else
+		point_y = (point_x - game->player.x) / tan(game->player.angle_radian) + game->player.y;
+	calculate_vertical_steps(game, &step_x, &step_y);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
-		if (game->ray.direction_left == true)
-			point_x -= step_x;
-		else
-			point_x += step_x;
+		point_x += step_x;
 		point_y += step_y;
 	}
 	game->ray.vx = point_x;
@@ -95,15 +94,14 @@ static double find_horizontal_intersection(t_game *game)
 	point_y = floor(game->player.y / TILE_SIZE) * TILE_SIZE;
 	if (game->ray.direction_up == false)
 		point_y += TILE_SIZE;
-	point_x = (point_y - game->player.y) / tan(game->player.angle_radian) + game->player.x; // or -tan?
-	step_y = TILE_SIZE;
-	step_x = step_y / tan(game->player.angle_radian);
+	if (fabs(tan(game->player.angle_radian)) < 0.0001)
+		point_x = game->player.x;
+	else
+		point_x = (point_y - game->player.y) / tan(game->player.angle_radian) + game->player.x;
+	calculate_horizontal_steps(game, &step_x, &step_y);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
-		if (game->ray.direction_up == true)
-			point_y -= step_y;
-		else
-			point_y += step_y;
+		point_y += step_y;
 		point_x += step_x;
 	}
 	game->ray.hx = point_x;
@@ -116,17 +114,19 @@ void raycasting(t_game *game)
 {
 	double	h_inter;
 	double	v_inter;
-	// int		ray;
+	int		ray;
 
-	// ray = 0;
-	// while (ray <= 60)
-	// {
+	ray = 0;
+	while (ray <= 60)
+	{
+		printf("RAY ANGLE = %f\n", game->ray.angle);
 		h_inter = find_horizontal_intersection(game);
 		v_inter = find_vertical_intersection(game);
 		choose_shorter_distance(game, h_inter, v_inter);
 		// render_wall(game); // to do
 		// render_ray(game); // for testing/minimap
 		//printf("The ray hits wall in: %f\n", game->ray.distance); // CAN BE REMOVED LATER
-	// 	ray++;
-	// }
+		game->ray.angle++;
+		ray++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/18 07:45:20 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/18 12:16:12 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@
 # define TILE_SIZE 64
 # define MOVE_SIZE 14
 # define MOVE_SPEED 4
-# define PI 3.14159265358979323846 //replace with M_PI?
+# define PI 3.14159265358979323846
 # define FOV 60
 # define ROTATE_SPEED 0.01 // a random value for testing
 # define MAP_WIDTH 1920 // can be changed
 # define MAP_HEIGHT 1080 // can be changed
 
 # define FORWARD 0
-# define LEFT (PI / 2)
+# define RIGHT (PI / 2)
 # define BACK PI
-# define RIGHT (3 * PI / 2)
+# define LEFT (3 * PI / 2)
 
 typedef struct s_ray
 {
