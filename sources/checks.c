@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:28:30 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/17 22:06:41 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/18 07:21:47 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	is_wall_float(t_game *game, float x, float y)
 
 	x_int = floor(x / TILE_SIZE);
 	y_int = floor(y / TILE_SIZE);
-	printf("x int is %d, y int is %d\n", x_int, y_int);
+	printf("X_INT is %d, Y_INT is %d\n", x_int, y_int);
 	if (x_int < 0 || y_int < 0 || x_int > game->width || y_int > game->height)
 	{
 		//printf("ERROR! - INFINITY!!! --- x_int: %d, y_int: %d   ", x_int, y_int);

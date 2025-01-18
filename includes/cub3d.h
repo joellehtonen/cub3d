@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/17 21:35:11 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/18 07:45:20 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define TILE_SIZE 64
 # define MOVE_SIZE 14
 # define MOVE_SPEED 4
-# define PI 3.1415926535 //replace with M_PI?
+# define PI 3.14159265358979323846 //replace with M_PI?
 # define FOV 60
 # define ROTATE_SPEED 0.01 // a random value for testing
 # define MAP_WIDTH 1920 // can be changed
