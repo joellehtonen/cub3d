@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/18 19:34:30 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/18 20:28:21 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,10 @@ static void determine_initial_player_direction(t_game *game)
 void init_ray(t_game *game)
 {
 	determine_initial_player_direction(game);
-	game->ray.angle = game->player.angle_radian - (FOV / 2);
-	if (game->ray.angle < 0)
-		game->ray.angle += 2 * PI;
-	game->ray.y = (game->player.y / TILE_SIZE) * TILE_SIZE;
-	game->ray.x = game->player.x + (game->ray.y - game->player.y) / tan(game->ray.angle);
+	game->ray.y = 0; //(game->player.y / TILE_SIZE) * TILE_SIZE;
+	game->ray.x = 0; //game->player.x + (game->ray.y - game->player.y) / tan(game->ray.angle);
 	game->ray.distance = 0;
+	game->ray.fov_radian = FOV * (PI / 180);
 	game->player.dx = 0;
 	game->player.dy = 0;
 }
@@ -67,7 +65,7 @@ static double find_vertical_intersection(t_game *game)
 	point_x = floor(game->player.x / TILE_SIZE) * TILE_SIZE;
 	if (game->ray.direction_left == false)
 		point_x += TILE_SIZE;
-	if (fabs(tan(game->player.angle_radian)) < 0.001)
+	if (fabs(tan(game->player.angle_radian)) < 0.0001)
 		point_y = game->player.y;
 	else
 		point_y = (point_x - game->player.x) / tan(game->player.angle_radian) + game->player.y;
@@ -115,9 +113,12 @@ void raycasting(t_game *game)
 	double	h_inter;
 	double	v_inter;
 	int		ray;
+	int		degree;
 
+	game->ray.angle = game->player.angle_radian - (FOV / 2);
+	degree = game->ray.fov_radian / FOV;
 	ray = 0;
-	while (ray <= 60)
+	while (ray < FOV)
 	{
 		printf("RAY ANGLE = %f\n", game->ray.angle);
 		h_inter = find_horizontal_intersection(game);
@@ -126,7 +127,7 @@ void raycasting(t_game *game)
 		// render_wall(game); // to do
 		// render_ray(game); // for testing/minimap
 		//printf("The ray hits wall in: %f\n", game->ray.distance); // CAN BE REMOVED LATER
-		game->ray.angle++;
+		game->ray.angle += degree;
 		ray++;
 	}
 }

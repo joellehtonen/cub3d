@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/18 12:16:12 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/18 20:23:40 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,8 @@ typedef struct s_ray
 	double	hy;
 	double	vx;
 	double	vy;
-    double	angle; // += turn_direction * rotation_speed;
-    //int rotation_speed; // already defined in header
-    //int turn_direction;
+    double	angle;
+	double	fov_radian;	
 	double	distance;
 	bool	direction_left;
 	bool	direction_up;
@@ -108,13 +107,18 @@ void	resize_images(t_game *game);
 void	display_map(t_game *game);
 bool	controls(t_game *game);
 void 	draw_line(t_game *game);
-
+// raycasting functions
 void	raycasting(t_game *game);
 void	init_ray(t_game *game);
 void	determine_ray_direction(t_game *game);
+void	reset_ray_angle(t_game *game);
+void	calculate_horizontal_steps(t_game *game, float *x_step, float *y_step);
+void	calculate_vertical_steps(t_game *game, float *x_step, float *y_step);
 void	choose_shorter_distance(t_game *game, double h_inter, double v_inter);
+// main loops
 void	rendering(void *content);
-bool	is_wall(t_game *game, int x, int y); //maybe redundant to have 2 versions
+// checks
+bool	is_wall(t_game *game, int x, int y);
 bool	is_wall_float(t_game *game, float x, float y);
 
 
