@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/20 12:16:05 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:53:53 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,8 @@ static void	initialize_variables(t_game *game)
 	game->width = TILE_SIZE * 20;
 	game->height = TILE_SIZE * 10;
 	game->image_size = TILE_SIZE;
+	game->starting_direction = 0;
 }
-
-// static void temp_copy_file_to_map(t_game *game)
-// {
-// 	int i = 0;
-// 	while (game->file[i])
-// 		i++;
-// 	game->map = malloc((i + 1) * sizeof(char *));
-// 	i = 0;
-// 	while (game->file[i])
-// 	{
-// 		game->map[i] = ft_strdup(game->file[i]);
-// 		i++;
-// 	}
-// 	game->map[i] = NULL;
-// }
 
 int	main(int argc, char *argv[])
 {
@@ -69,7 +55,6 @@ int	main(int argc, char *argv[])
 	validate_filetype(argv[1]);
 	create_copy_of_file(&game, argv[1]);
 	parse_file(&game);
-	//temp_copy_file_to_map(&game); //REMOVE
 
 	//MLX ---------------------------------------------------------------------
 	// game.mlx = mlx_init(game.width, game.height, "cub3d", true);

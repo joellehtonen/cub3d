@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/20 14:03:20 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:47:38 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@
 # define HEIGHT 1080 // can be changed
 # define FLOOR_RGB 100
 # define CEILING_RGB 101
+# define NORTH 100
+# define SOUTH 101
+# define WEST 102
+# define EAST 103
 
 typedef struct s_ray
 {
@@ -76,6 +80,7 @@ typedef struct s_game
 	int		ceiling_B;
 	int		found_floor_rgb;
 	int		found_ceiling_rgb;
+	int		starting_direction;
 	mlx_t				*mlx;
 	mlx_texture_t		*wall_texture;
 	mlx_image_t			*wall_img;
@@ -102,5 +107,6 @@ void	display_map(t_game *game);
 void	controls(void *content);
 void 	check_for_rgb(t_game *game, int i, int *j, int element);
 void	copy_map(t_game *game, char **file);
+void	validate_map(t_game *game);
 
 #endif

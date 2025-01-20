@@ -6,7 +6,7 @@
 #    By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/20 12:31:55 by eberkowi         ###   ########.fr        #
+#    Updated: 2025/01/20 14:37:32 by eberkowi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ CFILES := main.c \
 			resize_images.c \
 			display_map.c \
 			controls.c \
-			copy_map.c
+			copy_map.c \
+			validate_map.c
 
 HEADER = includes/cub3d.h
 LIBFT := libft/libft.a
