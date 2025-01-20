@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/20 14:29:24 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:35:38 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,7 @@ static void check_for_path_or_rgb(t_game *game, int i, int *j)
 		check_for_rgb(game, i, j, CEILING_RGB);
 }
 
-static void print_paths_and_rgb(t_game *game) //REMOVE
-{
-	printf("NO = %s\n", game->path_to_north_texture);
-	printf("SO = %s\n", game->path_to_south_texture);
-	printf("WE = %s\n", game->path_to_west_texture);
-	printf("EA = %s\n", game->path_to_east_texture);
-	printf("F  = %d,%d,%d\n", game->floor_R, game->floor_G, game->floor_B);
-	printf("C  = %d,%d,%d\n", game->ceiling_R, game->ceiling_G, game->ceiling_B);
-}
+
 
 static int check_for_all_paths(t_game *game)
 {
@@ -57,7 +49,7 @@ static void validate_rgb(t_game *game)
 		error_exit_and_free(game, "RGB missing or out of range");
 }
 
-static void print_map(char **map)
+static void print_map(char **map) //REMOVE
 {
 	int i = 0;
 
@@ -69,21 +61,29 @@ static void print_map(char **map)
 	}
 }
 
-void    parse_file(t_game *game)
+static void print_paths_and_rgb(t_game *game) //REMOVE
 {
-	int i;
+	printf("NO = %s\n", game->path_to_north_texture);
+	printf("SO = %s\n", game->path_to_south_texture);
+	printf("WE = %s\n", game->path_to_west_texture);
+	printf("EA = %s\n", game->path_to_east_texture);
+	printf("F  = %d,%d,%d\n", game->floor_R, game->floor_G, game->floor_B);
+	printf("C  = %d,%d,%d\n", game->ceiling_R, game->ceiling_G, game->ceiling_B);
+}
+
+static void loop_through_file(t_game *game, int *i)
+{
 	int j;
 	int break_while;
 
-
 	break_while = 0;
-	i = 0;
-    while ((game->file)[i])
+	*i = 0;
+    while ((game->file)[*i])
 	{
 		j = 0;
-		while ((game->file)[i][j])
+		while ((game->file)[*i][j])
 		{
-			check_for_path_or_rgb(game, i, &j);
+			check_for_path_or_rgb(game, *i, &j);
 			if (check_for_all_paths(game) && game->found_floor_rgb &&
 				game->found_ceiling_rgb)
 			{
@@ -92,17 +92,23 @@ void    parse_file(t_game *game)
 			}
 			j++;
 		}
+		(*i)++;
 		if (break_while)
 			break ;
-		i++;
 	}
-	print_paths_and_rgb(game); //REMOVE
+}
+
+void    parse_file(t_game *game)
+{
+	int i;
+
+	loop_through_file(game, &i);
 	if (!(check_for_all_paths(game)))
 		error_exit_and_free(game, "Missing path to texture");
 	validate_rgb(game);
-	i++;
 	while (game->file[i][0] == '\n')
 		i++;
 	copy_map(game, game->file + i);
+	print_paths_and_rgb(game); //REMOVE
 	print_map(game->map); //REMOVE
 }
