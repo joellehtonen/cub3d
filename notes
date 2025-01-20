@@ -12,6 +12,8 @@ The flag (-O3 -ffast-math) is used for optimization.
 
 TO FIX:
 
+- we are not properly updating map size?! => causes crashes with is_map
+
 - ray goes thru the wall
 - ray doesnt always find the wall
 - ray jumps weirdly?
