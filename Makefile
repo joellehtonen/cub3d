@@ -6,7 +6,7 @@
 #    By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/14 11:12:05 by eberkowi         ###   ########.fr        #
+#    Updated: 2025/01/20 12:03:07 by eberkowi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ CFILES := main.c \
 			parse_file.c \
 			free_all.c \
 			check_for_path.c \
+			check_for_rgb.c \
 			create_textures.c \
 			create_images.c \
 			resize_images.c \

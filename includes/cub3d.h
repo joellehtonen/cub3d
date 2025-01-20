@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/14 15:52:21 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:21:31 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define ROTATION_SPEED 4 // a random value for testing
 # define WIDTH 1920 // can be changed
 # define HEIGHT 1080 // can be changed
+# define FLOOR_RGB 100
+# define CEILING_RGB 101
 
 typedef struct s_ray
 {
@@ -66,8 +68,14 @@ typedef struct s_game
     char	*path_to_south_texture;
     char	*path_to_west_texture;
     char	*path_to_east_texture;
-    int		*floor_rgb;
-    int		*ceiling_rgb;
+    int		floor_R;
+	int		floor_G;
+	int		floor_B;
+    int		ceiling_R;
+	int		ceiling_G;
+	int		ceiling_B;
+	int		found_floor_rgb;
+	int		found_ceiling_rgb;
 	mlx_t				*mlx;
 	mlx_texture_t		*wall_texture;
 	mlx_image_t			*wall_img;
@@ -92,5 +100,6 @@ void	create_images(t_game *game);
 void	resize_images(t_game *game);
 void	display_map(t_game *game);
 void	controls(void *content);
+void 	check_for_rgb(t_game *game, int i, int *j, int element);
 
 #endif
