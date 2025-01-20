@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/20 12:21:31 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:03:20 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ void	resize_images(t_game *game);
 void	display_map(t_game *game);
 void	controls(void *content);
 void 	check_for_rgb(t_game *game, int i, int *j, int element);
+void	copy_map(t_game *game, char **file);
 
 #endif
