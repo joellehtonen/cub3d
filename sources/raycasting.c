@@ -6,35 +6,31 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/21 16:36:27 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/21 21:04:12 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-//soh = Sine = Opposite / Hypotenuse
-//cah = Cosine = Adjacent / Hypotenuse
-//toa = Tangent = Opposite / Adjacent
-
 static void determine_initial_player_direction(t_game *game)
 {
-	game->player.initial_direction = FORWARD; //for testing, determine later by the symbol on the map. also now points to east
+	game->player.initial_direction = NORTH; //for testing, determine later by the symbol on the map. also now points to east
 	game->player.angle_radian = game->player.initial_direction;
 	game->ray.direction_up = false;
 	game->ray.direction_left = false;
-	if (game->player.initial_direction == FORWARD)
-		game->ray.direction_up = true;
-	else if (game->player.initial_direction == LEFT)
-		game->ray.direction_left = true;
+	// if (game->player.initial_direction == NORTH)
+	// 	game->ray.direction_up = true;
+	// else if (game->player.initial_direction == WEST)
+	// 	game->ray.direction_left = true;
+	printf("initial player angle radian: %f\n", game->player.angle_degree);
 }
 
 void init_ray(t_game *game)
 {
 	determine_initial_player_direction(game);
-	game->ray.y = 0; //(game->player.y / TILE_SIZE) * TILE_SIZE;
-	game->ray.x = 0; //game->player.x + (game->ray.y - game->player.y) / tan(game->ray.angle);
+	game->ray.y = 0;
+	game->ray.x = 0;
 	game->ray.distance = 0;
-	game->ray.fov_radian = FOV * (PI / 180);
 	game->player.dx = 0;
 	game->player.dy = 0;
 	
@@ -58,7 +54,7 @@ static double find_vertical_intersection(t_game *game)
 	else
 		point_y = (point_x - game->player.x) / tan(game->player.angle_radian) + game->player.y;
 	calculate_vertical_step(game, &step_x, &step_y);
-	printf("vertical step_X is %f, step_Y %f\n", step_x, step_y);
+	//printf("vertical step_X is %f, step_Y %f\n", step_x, step_y);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
 		point_x += step_x;
@@ -66,7 +62,7 @@ static double find_vertical_intersection(t_game *game)
 	}
 	game->ray.vx = point_x;
 	game->ray.vy = point_y;
-	printf("wall found. vertical intersection at x: %f, y: %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
+	//printf("wall found. vertical intersection at x: %f, y: %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
 	distance = sqrt(pow(point_x - game->player.x, 2) + pow(point_y - game->player.y, 2));
 	return (distance);
 }
@@ -89,7 +85,7 @@ static double find_horizontal_intersection(t_game *game)
 	else
 		point_x = (point_y - game->player.y) / tan(game->player.angle_radian) + game->player.x;
 	calculate_horizontal_step(game, &step_x, &step_y);
-	printf("horizontal step_X is %f, step_Y %f\n", step_x, step_y);
+	//printf("horizontal step_X is %f, step_Y %f\n", step_x, step_y);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
 		point_y += step_y;
@@ -97,7 +93,7 @@ static double find_horizontal_intersection(t_game *game)
 	}
 	game->ray.hx = point_x;
 	game->ray.hy = point_y;
-	printf("wall found. horizontal intersection at x: %f, y: %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
+	//printf("wall found. horizontal intersection at x: %f, y: %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
 	distance = sqrt(pow(point_x - game->player.x, 2) + pow(point_y - game->player.y, 2));
 	return (distance);
 }

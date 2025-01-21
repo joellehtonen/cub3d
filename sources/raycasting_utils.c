@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:08:49 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/21 16:18:09 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/21 19:54:33 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ void	calculate_vertical_step(t_game *game, float *step_x, float *step_y)
 
 void	determine_ray_direction(t_game *game)
 {
-	if ((game->ray.angle >= 0 && game->ray.angle <= PI / 2)
-		|| (game->ray.angle <= 2 * PI && game->ray.angle >= 3 * PI / 2))
+	if (game->ray.angle >= 0 && game->ray.angle <= PI)
 	{
 		game->ray.direction_up = true;
 		printf("ray points up\n");
@@ -69,7 +68,7 @@ void	determine_ray_direction(t_game *game)
 		game->ray.direction_up = false;
 		printf("ray points down\n");
 	}
-	if (game->ray.angle >= 0 && game->ray.angle <= PI)
+	if (game->ray.angle >= PI / 2 && game->ray.angle <= 3 * (PI / 2))
 	{
 		game->ray.direction_left = true;
 		printf("ray points left\n");

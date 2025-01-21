@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/21 11:38:05 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/21 21:01:17 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,14 @@
 # define MAP_HEIGHT 1080 // can be changed
 
 # define FORWARD 0
-# define RIGHT (PI / 2)
+# define RIGHT (3 * PI / 2)
 # define BACK PI
-# define LEFT (3 * PI / 2)
+# define LEFT (PI / 2)
+
+# define NORTH LEFT
+# define EAST FORWARD
+# define SOUTH RIGHT
+# define WEST BACK
 
 typedef struct s_ray
 {
@@ -44,7 +49,6 @@ typedef struct s_ray
 	double	vx;
 	double	vy;
     double	angle;
-	double	fov_radian;	
 	double	distance;
 	bool	direction_left;
 	bool	direction_up;
