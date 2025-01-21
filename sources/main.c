@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:28:30 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/21 09:10:43 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:06:09 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static void	initialize_variables(t_game *game)
 	game->wall_img = NULL;
 	game->wall_texture = NULL;
 	game->minimap_img = NULL;
-	game->width = TILE_SIZE * 20;
-	game->height = TILE_SIZE * 10;
+	game->width = TILE_SIZE * 3; //1280
+	game->height = TILE_SIZE * 3;
 	game->image_size = TILE_SIZE;
 }
 

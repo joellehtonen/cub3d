@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:08:49 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/21 11:45:21 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:18:09 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,28 +88,14 @@ void	choose_shorter_distance(t_game *game, double h_inter, double v_inter)
 	{
 		game->ray.distance = h_inter;
 		game->ray.x = game->ray.hx;
-		if (game->ray.x > 10000)
-			game->ray.x = 10000;
-		if (game->ray.x < -10000)
-			game->ray.x = -10000;
 		game->ray.y = game->ray.hy;
-		if (game->ray.y > 10000)
-			game->ray.y = 10000;
-		if (game->ray.y < -10000)
-			game->ray.y = -10000;
+		printf("h_inter chosen!\n");
 	}
 	else
 	{
 		game->ray.distance = v_inter;
 		game->ray.x = game->ray.vx;
-		if (game->ray.x > 10000)
-			game->ray.x = 10000;
-		if (game->ray.x < -10000)
-			game->ray.x = -10000;
 		game->ray.y = game->ray.vy;
-		if (game->ray.y > 10000)
-			game->ray.y = 10000;
-		if (game->ray.y < -10000)
-			game->ray.y = -10000;
+		printf("v_inter chosen!\n");
 	}
 }
