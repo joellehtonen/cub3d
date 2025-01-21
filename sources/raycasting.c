@@ -3,37 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/18 20:28:21 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/21 11:57:19 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-// Pythagora's theorem: a^2 + b^2 = c^2
-// We need to find the value of c, where c is the distance between two points A(a,0) and B(0,b) on a 2D plane. 
-// The formula to find c is c = sqrt(a^2 + b^2). 
-
 //soh = Sine = Opposite / Hypotenuse
 //cah = Cosine = Adjacent / Hypotenuse
 //toa = Tangent = Opposite / Adjacent
 
-// h_inter = (game.ray->x/TILE_SIZE) * TILE_SIZE;
-// x_inter = game.ray->x + (h_inter - game.ray->y) / tan(game.ray->rotation_angle);
-// y_step = TILE_SIZE;
-// x_step = TILE_SIZE / tan(game.ray->rotation_angle);
-// c = sqrt(a^2 + b^2);
-
-// isRayFacingDown  = rayAngle > 0 && rayAngle < pi [180];
-// isRayFacingUp    = !isRayFacingDown;
-// isRayFacingRight = rayAngle < (0.5 * pi) [90] || rayAngle > (1.5 * pi) [270];
-// isRayFacingLeft  = !isRayFacingRight;
-
 static void determine_initial_player_direction(t_game *game)
 {
-	game->player.initial_direction = FORWARD; //for testing, determine later by the symbol on the map
+	game->player.initial_direction = FORWARD; //for testing, determine later by the symbol on the map. also now points to east
 	game->player.angle_radian = game->player.initial_direction;
 	game->ray.direction_up = false;
 	game->ray.direction_left = false;
@@ -52,6 +37,7 @@ void init_ray(t_game *game)
 	game->ray.fov_radian = FOV * (PI / 180);
 	game->player.dx = 0;
 	game->player.dy = 0;
+	
 }
 
 static double find_vertical_intersection(t_game *game)
@@ -65,11 +51,11 @@ static double find_vertical_intersection(t_game *game)
 	point_x = floor(game->player.x / TILE_SIZE) * TILE_SIZE;
 	if (game->ray.direction_left == false)
 		point_x += TILE_SIZE;
-	if (fabs(tan(game->player.angle_radian)) < 0.0001)
-		point_y = game->player.y;
+	if (fabs(tan(game->player.angle_radian)) == 0)
+		point_y = game->player.y; 
 	else
 		point_y = (point_x - game->player.x) / tan(game->player.angle_radian) + game->player.y;
-	calculate_vertical_steps(game, &step_x, &step_y);
+	calculate_vertical_step(game, &step_x, &step_y);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
 		point_x += step_x;
@@ -92,11 +78,11 @@ static double find_horizontal_intersection(t_game *game)
 	point_y = floor(game->player.y / TILE_SIZE) * TILE_SIZE;
 	if (game->ray.direction_up == false)
 		point_y += TILE_SIZE;
-	if (fabs(tan(game->player.angle_radian)) < 0.0001)
+	if (fabs(tan(game->player.angle_radian)) == 0)
 		point_x = game->player.x;
 	else
 		point_x = (point_y - game->player.y) / tan(game->player.angle_radian) + game->player.x;
-	calculate_horizontal_steps(game, &step_x, &step_y);
+	calculate_horizontal_step(game, &step_x, &step_y);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
 		point_y += step_y;
@@ -118,16 +104,16 @@ void raycasting(t_game *game)
 	game->ray.angle = game->player.angle_radian - (FOV / 2);
 	degree = game->ray.fov_radian / FOV;
 	ray = 0;
-	while (ray < FOV)
-	{
-		printf("RAY ANGLE = %f\n", game->ray.angle);
+	// while (ray < FOV)
+	// {
+	// 	printf("RAY ANGLE = %f\n", game->ray.angle);
 		h_inter = find_horizontal_intersection(game);
 		v_inter = find_vertical_intersection(game);
 		choose_shorter_distance(game, h_inter, v_inter);
 		// render_wall(game); // to do
 		// render_ray(game); // for testing/minimap
 		//printf("The ray hits wall in: %f\n", game->ray.distance); // CAN BE REMOVED LATER
-		game->ray.angle += degree;
-		ray++;
-	}
+		// game->ray.angle += degree;
+		// ray++;
+	// }
 }

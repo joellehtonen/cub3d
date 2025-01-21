@@ -12,13 +12,13 @@ The flag (-O3 -ffast-math) is used for optimization.
 
 TO FIX:
 
-- we are not properly updating map size?! => causes crashes with is_map
+- we are not properly updating map size => causes crashes with is_map
 
 - ray goes thru the wall
 - ray doesnt always find the wall
 - ray jumps weirdly?
 - all these result in wall_check getting weird numbers and causing segfault
-- ray angle not resetting properly
+- ray angle not resetting properly. also going to minus FIXED!!
 - draw line not starting from the front?
 - depending on player angle, either up/left or down/right movements happen in an angle
-- starting position/rotation sometimes angled (might be related to the problem above)
+- starting position/rotation angled when not forward, right/left/back all start from bottom right (might be related to the problem above)

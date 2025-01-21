@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting_utils.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/21 09:08:49 by jlehtone          #+#    #+#             */
+/*   Updated: 2025/01/21 11:45:21 by jlehtone         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
+
 void	reset_ray_angle(t_game *game)
 {
 	if (game->ray.angle < 0)
@@ -7,12 +20,12 @@ void	reset_ray_angle(t_game *game)
 		game->ray.angle -= 2 * PI;
 }
 
-void	calculate_horizontal_steps(t_game *game, float *step_x, float *step_y)
+void	calculate_horizontal_step(t_game *game, float *step_x, float *step_y)
 {
 	*step_y = TILE_SIZE;
 	if (game->ray.direction_up == true)
 		*step_y *= -1;
-	if (fabs(tan(game->player.angle_radian)) < 0.0001)
+	if (fabs(tan(game->player.angle_radian)) == 0)
 		*step_x = 0;
 	else
 	{
@@ -25,12 +38,12 @@ void	calculate_horizontal_steps(t_game *game, float *step_x, float *step_y)
 	}
 }
 
-void	calculate_vertical_steps(t_game *game, float *step_x, float *step_y)
+void	calculate_vertical_step(t_game *game, float *step_x, float *step_y)
 {
 	*step_x = TILE_SIZE;
 	if (game->ray.direction_left == true)
 		*step_x *= -1;
-	if (fabs(tan(game->player.angle_radian)) < 0.0001)
+	if (fabs(tan(game->player.angle_radian)) == 0)
 		*step_y = 0;
 	else
 	{
@@ -47,13 +60,25 @@ void	determine_ray_direction(t_game *game)
 {
 	if ((game->ray.angle >= 0 && game->ray.angle <= PI / 2)
 		|| (game->ray.angle <= 2 * PI && game->ray.angle >= 3 * PI / 2))
+	{
 		game->ray.direction_up = true;
+		printf("ray points up\n");
+	}
 	else
+	{
 		game->ray.direction_up = false;
+		printf("ray points down\n");
+	}
 	if (game->ray.angle >= 0 && game->ray.angle <= PI)
+	{
 		game->ray.direction_left = true;
+		printf("ray points left\n");
+	}
 	else
+	{
 		game->ray.direction_left = false;
+		printf("ray points right\n");
+	}
 	return ;
 }
 

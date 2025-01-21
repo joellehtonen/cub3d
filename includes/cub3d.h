@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/18 20:23:40 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/21 11:38:05 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define MOVE_SIZE 14
 # define MOVE_SPEED 4
 # define PI 3.14159265358979323846
-# define FOV 60
+# define FOV (60 * (PI / 180))
 # define ROTATE_SPEED 0.01 // a random value for testing
 # define MAP_WIDTH 1920 // can be changed
 # define MAP_HEIGHT 1080 // can be changed
@@ -112,8 +112,8 @@ void	raycasting(t_game *game);
 void	init_ray(t_game *game);
 void	determine_ray_direction(t_game *game);
 void	reset_ray_angle(t_game *game);
-void	calculate_horizontal_steps(t_game *game, float *x_step, float *y_step);
-void	calculate_vertical_steps(t_game *game, float *x_step, float *y_step);
+void	calculate_horizontal_step(t_game *game, float *x_step, float *y_step);
+void	calculate_vertical_step(t_game *game, float *x_step, float *y_step);
 void	choose_shorter_distance(t_game *game, double h_inter, double v_inter);
 // main loops
 void	rendering(void *content);

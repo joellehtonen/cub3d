@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/18 18:12:15 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/21 10:49:17 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,28 @@ static bool	rotate_player(t_game *game, double direction)
 	{
 		game->player.angle_radian -= ROTATE_SPEED;
 		if (game->player.angle_radian < 0)
+		{
+			printf("PLAYER ANGLE RADIAN = %f = LESS THAN 0! RESET!\n", game->player.angle_radian);
 			game->player.angle_radian += (2 * PI);
+		}
 	}
 	else if (direction == RIGHT)
 	{
 		game->player.angle_radian += ROTATE_SPEED;
 		if (game->player.angle_radian >= (2 * PI))
+		{
+			printf("PLAYER ANGLE RADIAN = %f = MORE THAN 2 PI! RESET!\n", game->player.angle_radian);
 			game->player.angle_radian -= (2 * PI);
+		}
 	}	
 	game->player.dx = cos(game->player.angle_radian);
 	game->player.dy = sin(game->player.angle_radian);
 	game->ray.angle = game->player.angle_radian - (FOV / 2);
-	if (game->ray.angle < 0)
-		game->ray.angle += (2 * PI);
-	if (game->ray.angle >= (2 * PI))
-		game->ray.angle -= (2 * PI);
+	reset_ray_angle(game);
 	determine_ray_direction(game);
+	printf("player angle degree = %f\n", game->player.angle_radian * (180 / PI));
+	printf("player angle radian = %f\n", game->player.angle_radian);
+	printf("ray angle = %f\n", game->ray.angle);
 	return (true);
 }
 
