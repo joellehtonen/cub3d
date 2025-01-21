@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/21 16:16:32 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/21 16:36:27 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static double find_vertical_intersection(t_game *game)
 	{
 		point_x += step_x;
 		point_y += step_y;
-		//printf("adding vert step!!!\n");
 	}
 	game->ray.vx = point_x;
 	game->ray.vy = point_y;
@@ -95,7 +94,6 @@ static double find_horizontal_intersection(t_game *game)
 	{
 		point_y += step_y;
 		point_x += step_x;
-		//printf("adding hori step!!!\n");
 	}
 	game->ray.hx = point_x;
 	game->ray.hy = point_y;
