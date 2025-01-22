@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:23:16 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/20 16:45:09 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/22 10:00:57 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,26 @@ static void check_for_surrounding_walls(t_game *game, int x, int y)
 	
 }
 
+static void validate_width_and_height_in_tiles(t_game *game)
+{
+	int i;
+	int temp;
+
+	i = 0;
+	while (game->map[i])
+	{
+		temp = ft_strlen(game->map[i++]);
+		if (temp > game->width_in_tiles)
+			game->width_in_tiles = temp;
+	}
+	if (game->width_in_tiles > MAX_WIDTH_IN_TILES)
+		error_exit_and_free(game, "Map is too large");
+	if (i > MAX_HEIGHT_IN_TILES)
+		error_exit_and_free(game, "Map is too large");
+	else
+		game->height_in_tiles = i;
+}
+
 void validate_map(t_game *game)
 {
 	int x;
@@ -74,6 +94,7 @@ void validate_map(t_game *game)
 			check_for_invalid_char(game, game->map[y][x]);
 			check_for_player_direction(game, game->map[y][x]);
 			check_for_surrounding_walls(game, x, y);
+			validate_width_and_height_in_tiles(game);
 			x++;
 		}
 		y++;	

@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/20 14:47:38 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/22 09:55:05 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define TILE_SIZE 64
+# define WINDOW_WIDTH 1920
+# define WINDOW_HEIGHT 1080
+# define MAX_WIDTH_IN_TILES 30
+# define MAX_HEIGHT_IN_TILES 16
 # define MOVE_SIZE 14
 # define MOVE_SPEED 4
 # define PI 3.1415926535
 # define FOV 60
 # define ROTATION_SPEED 4 // a random value for testing
-# define WIDTH 1920 // can be changed
-# define HEIGHT 1080 // can be changed
 # define FLOOR_RGB 100
 # define CEILING_RGB 101
 # define NORTH 100
@@ -88,9 +90,10 @@ typedef struct s_game
 	mlx_image_t			*floor_img;
 	mlx_texture_t		*player_texture;
 	struct s_player		player;
-	int width;
-	int height;
-	int image_size;
+	int window_width;
+	int window_height;
+	int width_in_tiles;
+	int height_in_tiles;
 } t_game;
 
 void	error_exit(char *error);
