@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/22 11:02:07 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:51:01 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void determine_initial_player_direction(t_game *game)
 	game->player.angle_radian = game->player.initial_direction;
 	game->ray.direction_up = false;
 	game->ray.direction_left = false;
-	// if (game->player.initial_direction == NORTH)
-	// 	game->ray.direction_up = true;
-	// else if (game->player.initial_direction == WEST)
-	// 	game->ray.direction_left = true;
+	if (game->player.initial_direction == NORTH)
+		game->ray.direction_up = true;
+	else if (game->player.initial_direction == WEST)
+		game->ray.direction_left = true;
 }
 
 void init_ray(t_game *game)
@@ -52,7 +52,7 @@ static double find_vertical_intersection(t_game *game)
 	else
 		point_y = (point_x - game->player.x) / tan(game->ray.angle) + game->player.y;
 	calculate_vertical_step(game, &step_x, &step_y);
-	printf("vertical point_X is %f, point_Y %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
+	//printf("vertical point_X is %f, point_Y %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
 		//printf("vertical wall not found at x: %f, y: %f, stepping\n", point_x, point_y);
@@ -82,7 +82,7 @@ static double find_horizontal_intersection(t_game *game)
 	else
 		point_x = (point_y - game->player.y) / tan(game->ray.angle) + game->player.x;
 	calculate_horizontal_step(game, &step_x, &step_y);
-	printf("horizontal point_X is %f, point_Y %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
+	//printf("horizontal point_X is %f, point_Y %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
 		//printf("horizontal wall not found at x: %f, y: %f, stepping\n", point_x, point_y);
