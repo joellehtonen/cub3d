@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 09:28:30 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/22 11:06:30 by jlehtone         ###   ########.fr       */
+/*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
+/*   Updated: 2025/01/22 11:26:27 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,38 +21,29 @@ static void	check_number_of_arguments(int n)
 
 static void	initialize_variables(t_game *game)
 {
-    game->map = NULL;
 	game->file = NULL;
+	game->floor_img = NULL;
+	game->floor_texture = NULL;
+	game->found_ceiling_rgb = 0;
+	game->found_floor_rgb = 0;
+	game->height_in_tiles = 0;
+	game->minimap_img = NULL;
+	game->mlx = NULL;
+	game->starting_direction = 0;
+	game->wall_img = NULL;
+	game->wall_texture = NULL;
+	game->width_in_tiles = 0;
+    game->map = NULL;
     game->path_to_north_texture = NULL;
 	game->path_to_south_texture = NULL;
 	game->path_to_west_texture = NULL;
 	game->path_to_east_texture = NULL;
-    game->floor_rgb = NULL;
-	game->ceiling_rgb = NULL;
-	game->mlx = NULL;
-	game->floor_img = NULL;
-	game->floor_texture = NULL;
-	game->wall_img = NULL;
-	game->wall_texture = NULL;
-	game->minimap_img = NULL;
-	game->width = TILE_SIZE * 3; //1280
-	game->height = TILE_SIZE * 3;
-	game->image_size = TILE_SIZE;
-}
-
-static void temp_copy_file_to_map(t_game *game)
-{
-	int i = 0;
-	while (game->file[i])
-		i++;
-	game->map = malloc((i + 1) * sizeof(char *));
-	i = 0;
-	while (game->file[i])
-	{
-		game->map[i] = ft_strdup(game->file[i]);
-		i++;
-	}
-	game->map[i] = NULL;
+	game->floor_R = -1;
+	game->floor_G = -1;
+	game->floor_B = -1;
+	game->ceiling_R = -1;
+	game->ceiling_G = -1;
+	game->ceiling_B = -1;
 }
 
 int	main(int argc, char *argv[])
@@ -65,10 +56,9 @@ int	main(int argc, char *argv[])
 	validate_filetype(argv[1]);
 	create_copy_of_file(&game, argv[1]);
 	parse_file(&game);
-	temp_copy_file_to_map(&game); //REMOVE
 
 	//MLX ---------------------------------------------------------------------
-	game.mlx = mlx_init(game.width, game.height, "cub3d", true);
+	game.mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d", true);
 	if (!(game.mlx))
 		error_exit_and_free(&game, "MLX failed to initialize");
 	create_textures(&game);

@@ -6,22 +6,11 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/14 15:37:36 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:11:07 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-// static void check_for_rgb(t_game *game, int i, int *j, int **rgb)
-// {
-// 	*j += 2;
-// 	//Left off here trying to make 3 strings of the rgb info, to then
-// 	//convert to atoi to ints
-// 	*rgb = (int *)malloc(3 * sizeof(int));
-// 	if (!*rgb)
-// 		error_exit_and_free(game, "Failed to malloc rgb array of ints");
-	
-// }
 
 static void check_for_path_or_rgb(t_game *game, int i, int *j)
 {
@@ -33,33 +22,68 @@ static void check_for_path_or_rgb(t_game *game, int i, int *j)
 		check_for_path(game, i, j, &game->path_to_west_texture);
 	if (!ft_strncmp("EA ./", (game->file)[i] + *j, 5))
 		check_for_path(game, i, j, &game->path_to_east_texture);
-	// if (!ft_strncmp("F ", (game->file)[i] + *j), 2)
-	// 	check_for_rgb(game, i, j, &game->floor_rgb);
+	if (!ft_strncmp("F ", (game->file)[i] + *j, 2))
+		check_for_rgb(game, i, j, FLOOR_RGB);
+	if (!ft_strncmp("C ", (game->file)[i] + *j, 2))
+		check_for_rgb(game, i, j, CEILING_RGB);
 }
 
-// static void print_paths_and_rgb(t_game *game) //REMOVE
-// {
-// 	printf("NO = %s\n", game->path_to_north_texture);
-// 	printf("SO = %s\n", game->path_to_south_texture);
-// 	printf("WE = %s\n", game->path_to_west_texture);
-// 	printf("EA = %s\n", game->path_to_east_texture);
-// }
+static int check_for_all_paths(t_game *game)
+{
+	if (!game->path_to_north_texture || !game->path_to_south_texture ||
+		!game->path_to_west_texture || !game->path_to_east_texture)
+		return (0);
+	return (1);
+}
+
+static void validate_rgb(t_game *game)
+{
+	if (game->floor_R < 0 || game->floor_R > 255 ||
+		game->floor_G < 0 || game->floor_G > 255 ||
+		game->floor_B < 0 || game->floor_B > 255 ||
+		game->ceiling_R < 0 || game->ceiling_R > 255 ||
+		game->ceiling_G < 0 || game->ceiling_G > 255 ||
+		game->ceiling_B < 0 || game->ceiling_B > 255)
+		error_exit_and_free(game, "RGB missing or out of range");
+}
+
+static void loop_through_file(t_game *game, int *i)
+{
+	int j;
+	int break_while;
+
+	break_while = 0;
+	*i = 0;
+    while ((game->file)[*i])
+	{
+		j = 0;
+		while ((game->file)[*i][j])
+		{
+			check_for_path_or_rgb(game, *i, &j);
+			if (check_for_all_paths(game) && game->found_floor_rgb &&
+				game->found_ceiling_rgb)
+			{
+				break_while = 1;
+				break ;
+			}
+			j++;
+		}
+		(*i)++;
+		if (break_while)
+			break ;
+	}
+}
 
 void    parse_file(t_game *game)
 {
 	int i;
-	int j;
 
-	i = 0;
-    while ((game->file)[i])
-	{
-		j = 0;
-		while ((game->file)[i][j])
-		{
-			check_for_path_or_rgb(game, i, &j);
-			j++;
-		}
+	loop_through_file(game, &i);
+	if (!(check_for_all_paths(game)))
+		error_exit_and_free(game, "Missing path to texture");
+	validate_rgb(game);
+	while (game->file[i][0] == '\n')
 		i++;
-	}
-	//print_paths_and_rgb(game); //REMOVE
+	copy_map(game, game->file + i);
+	validate_map(game);
 }
