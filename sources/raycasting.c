@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/21 21:04:12 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/22 17:11:29 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void init_ray(t_game *game)
 	game->ray.distance = 0;
 	game->player.dx = 0;
 	game->player.dy = 0;
-	
+
 }
 
 static double find_vertical_intersection(t_game *game)
