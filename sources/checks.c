@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:28:30 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/22 12:36:35 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/22 23:00:30 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	is_wall_float(t_game *game, float x, float y)
 	// 	y_int -= 1;
 	printf("WALL_CHECK: X_INT is %d, Y_INT is %d\n", x_int, y_int);
 	//if (x_int < 0 || y_int < 0 || x_int > (WINDOW_WIDTH / TILE_SIZE) - 1 || y_int > (WINDOW_HEIGHT / TILE_SIZE) - 1)
-	if (x_int < 0 || y_int < 0 || x_int > 3 - 1 || y_int > 3 - 1)
+	if (x_int < 0 || y_int < 0 || x_int > 5 - 1 || y_int > 5 - 1)
 	{
 		printf("ERROR! - INFINITY!!! --- x_int: %d, y_int: %d\n", x_int, y_int);
 		return (true);

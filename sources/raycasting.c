@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/22 21:44:56 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/22 22:54:50 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,9 @@ static double find_vertical_intersection(t_game *game)
 	point_x = floor(game->player.x / TILE_SIZE) * TILE_SIZE;
 	if (game->ray.direction_left == false)
 		point_x += TILE_SIZE;
-	if (fabs(tan(game->ray.angle)) < 0.00001)
-		point_y = INFINITY;
-	else if (game->ray.direction_left == false)
-		point_y = game->player.y + (point_x - game->player.x) * tan(game->ray.angle);
+	// if (fabs(tan(game->ray.angle)) < 0.00001)
+	// 	point_y = INFINITY;
+	point_y = game->player.y + (point_x - game->player.x) * tan(game->ray.angle);
 	calculate_vertical_step(game, &step_x, &step_y);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
@@ -92,16 +91,16 @@ static double find_horizontal_intersection(t_game *game)
 	point_y = floor(game->player.y / TILE_SIZE) * TILE_SIZE;
 	if (game->ray.direction_up == false)
 		point_y += TILE_SIZE;
-	if (fabs(tan(game->ray.angle)) < 0.00001)
-		point_x = INFINITY;
-	else
-		point_x = game->player.x + (point_y - game->player.y) / tan(game->ray.angle);
+	// if (fabs(tan(game->ray.angle)) < 0.00001)
+	// 	point_x = INFINITY;
+	// else
+	point_x = game->player.x + (point_y - game->player.y) / tan(game->ray.angle);
 
-	printf("\nhorizontal point_X is %f, point_Y %f\n", point_x, point_y);
-	printf("player x pos = %f, player y pos = %f\n", game->player.x, game->player.y);
-	printf("tan value is %f\n", tan(game->ray.angle));
-	printf("point y - player y = %f...\n", (point_y - game->player.y));
-	printf("... divided by tan(angle) === %f\n", ((point_y - game->player.y) / tan(game->ray.angle)));
+	// printf("\nhorizontal point_X is %f, point_Y %f\n", point_x, point_y);
+	// printf("player x pos = %f, player y pos = %f\n", game->player.x, game->player.y);
+	// printf("tan value is %f\n", tan(game->ray.angle));
+	// printf("point y - player y = %f...\n", (point_y - game->player.y));
+	// printf("... divided by tan(angle) === %f\n", ((point_y - game->player.y) / tan(game->ray.angle)));
 	calculate_horizontal_step(game, &step_x, &step_y);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
