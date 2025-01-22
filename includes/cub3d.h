@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/22 10:27:33 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/22 10:31:15 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define RIGHT (PI / 2)
 # define BACK PI
 # define LEFT (3 * PI / 2)
-# define ROTATION_SPEED 0.01 // a random value for testing
+# define ROTATE_SPEED 0.01 // a random value for testing
 # define FLOOR_RGB 100
 # define CEILING_RGB 101
 # define NORTH 100
