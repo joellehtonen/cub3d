@@ -6,35 +6,40 @@
 #    By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/17 12:17:24 by eberkowi         ###   ########.fr        #
+#    Updated: 2025/01/22 10:37:45 by eberkowi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := cub3d
 CC := cc
-FLAGS := -ggdb3 -g -Wall -Wextra -Werror
+FLAGS := -Wall -Wextra -Werror -ggdb3 -g
 CFILES := main.c \
-			error_exit.c \
-			validate_filetype.c \
-			create_copy_of_file.c \
-			parse_file.c \
-			free_all.c \
 			check_for_path.c \
-			create_textures.c \
-			create_images.c \
-			resize_images.c \
-			display_map.c \
-			controls.c \
-			rendering.c \
-			raycasting.c \
-			raycasting_utils.c \
+			check_for_rgb.c \
 			checks.c \
-			draw_line.c
+			controls.c \
+			copy_map.c \
+			create_copy_of_file.c \
+			create_images.c \
+			create_textures.c \
+			display_map.c \
+			draw_line.c \
+			error_exit.c \
+			free_all.c \
+			loop_through_file.c \
+			parse_file.c \
+			raycasting_utils.c \
+			raycasting.c \
+			rendering.c \
+			resize_images.c \
+			validate_filetype.c \
+			validate_map.c \
 
 HEADER = includes/cub3d.h
 LIBFT := libft/libft.a
 MLX42 := MLX42/build/libmlx42.a
-LDFLAGS := -LMLX/build -lglfw -lm
+LDFLAGS := -LMLX/build -lglfw
+LMFLAG = -lm
 
 SRC_PATH := sources/
 OBJ_PATH := objects/
@@ -51,7 +56,7 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADER)
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) $(LIBFT) $(MLX42) -o $(NAME) $(LDFLAGS) 
+	$(CC) $(FLAGS) $(OBJS) $(LIBFT) $(MLX42) -o $(NAME) $(LDFLAGS) $(LMFLAG)
 
 $(LIBFT):
 	make -C libft

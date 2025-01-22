@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/21 10:49:17 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/22 10:46:46 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,19 @@
 
 static bool	rotate_player(t_game *game, double direction)
 {
-	if (direction == LEFT)
-	{
-		game->player.angle_radian -= ROTATE_SPEED;
-		if (game->player.angle_radian < 0)
-		{
-			printf("PLAYER ANGLE RADIAN = %f = LESS THAN 0! RESET!\n", game->player.angle_radian);
-			game->player.angle_radian += (2 * PI);
-		}
-	}
-	else if (direction == RIGHT)
+	if (direction == RIGHT)
 	{
 		game->player.angle_radian += ROTATE_SPEED;
-		if (game->player.angle_radian >= (2 * PI))
-		{
-			printf("PLAYER ANGLE RADIAN = %f = MORE THAN 2 PI! RESET!\n", game->player.angle_radian);
-			game->player.angle_radian -= (2 * PI);
-		}
-	}	
-	game->player.dx = cos(game->player.angle_radian);
-	game->player.dy = sin(game->player.angle_radian);
-	game->ray.angle = game->player.angle_radian - (FOV / 2);
-	reset_ray_angle(game);
+		game->ray.angle += ROTATE_SPEED;
+	}
+	else if (direction == LEFT)
+	{
+		game->player.angle_radian -= ROTATE_SPEED;
+		game->ray.angle -= ROTATE_SPEED;
+	}
+	// game->player.dx = cos(game->player.angle_radian);
+	// game->player.dy = sin(game->player.angle_radian);
+	reset_angles(game);
 	determine_ray_direction(game);
 	printf("player angle degree = %f\n", game->player.angle_radian * (180 / PI));
 	printf("player angle radian = %f\n", game->player.angle_radian);

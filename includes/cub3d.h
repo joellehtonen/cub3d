@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/21 21:01:17 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/22 12:56:19 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define TILE_SIZE 64
+# define WINDOW_WIDTH 1920
+# define WINDOW_HEIGHT 1080
+# define MAX_WIDTH_IN_TILES 30
+# define MAX_HEIGHT_IN_TILES 16
 # define MOVE_SIZE 14
 # define MOVE_SPEED 4
 # define PI 3.14159265358979323846
@@ -31,14 +35,18 @@
 # define MAP_HEIGHT 1080 // can be changed
 
 # define FORWARD 0
-# define RIGHT (3 * PI / 2)
+# define RIGHT (PI / 2)
 # define BACK PI
-# define LEFT (PI / 2)
+# define LEFT (3 * PI / 2)
 
 # define NORTH LEFT
 # define EAST FORWARD
 # define SOUTH RIGHT
 # define WEST BACK
+
+# define ROTATE_SPEED 0.01 // a random value for testing
+# define FLOOR_RGB 100
+# define CEILING_RGB 101
 
 typedef struct s_ray
 {
@@ -64,13 +72,13 @@ typedef struct s_box
 
 typedef struct s_player
 {
-	int				x;
-	int				y;
+	double			x;
+	double			y;
 	int 			dx;
     int 			dy;
     double 			angle_degree;
     float 			angle_radian;
-	int				initial_direction;
+	float			initial_direction;
 	mlx_image_t		*player_img;
 }	t_player;
 
@@ -82,8 +90,15 @@ typedef struct s_game
     char	*path_to_south_texture;
     char	*path_to_west_texture;
     char	*path_to_east_texture;
-    int		*floor_rgb;
-    int		*ceiling_rgb;
+    int		floor_R;
+	int		floor_G;
+	int		floor_B;
+    int		ceiling_R;
+	int		ceiling_G;
+	int		ceiling_B;
+	int		found_floor_rgb;
+	int		found_ceiling_rgb;
+	float	starting_direction;
 	mlx_t				*mlx;
 	mlx_texture_t		*wall_texture;
 	mlx_image_t			*wall_img;
@@ -92,10 +107,11 @@ typedef struct s_game
 	mlx_texture_t		*player_texture;
 	mlx_image_t			*minimap_img;
 	struct s_player		player;
+	int window_width;
+	int window_height;
+	int width_in_tiles;
+	int height_in_tiles;
 	struct s_ray		ray;
-	int width;
-	int height;
-	int image_size;
 } t_game;
 
 void	error_exit(char *error);
@@ -115,7 +131,7 @@ void 	draw_line(t_game *game);
 void	raycasting(t_game *game);
 void	init_ray(t_game *game);
 void	determine_ray_direction(t_game *game);
-void	reset_ray_angle(t_game *game);
+void	reset_angles(t_game *game);
 void	calculate_horizontal_step(t_game *game, float *x_step, float *y_step);
 void	calculate_vertical_step(t_game *game, float *x_step, float *y_step);
 void	choose_shorter_distance(t_game *game, double h_inter, double v_inter);
@@ -125,5 +141,8 @@ void	rendering(void *content);
 bool	is_wall(t_game *game, int x, int y);
 bool	is_wall_float(t_game *game, float x, float y);
 
+void 	check_for_rgb(t_game *game, int i, int *j, int element);
+void	copy_map(t_game *game, char **file);
+void	validate_map(t_game *game);
 
 #endif

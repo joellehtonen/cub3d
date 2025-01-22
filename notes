@@ -1,5 +1,7 @@
--Map must be surrounded by walls. No two different sections?
--in map.cub, do N E W S need to be in the same order as pdf??
+MAP PARSING NOTES
+
+-Map must be surrounded by walls.
+-There can be islands
 -can textures be opaque? pixels be opaque? can there be see-through wall etc?
 
 
@@ -17,8 +19,9 @@ TO FIX:
 - ray goes thru the wall
 - ray doesnt always find the wall
 - ray jumps weirdly?
-- all these result in wall_check getting weird numbers and causing segfault
+- moving changes check ray intersections are checked
+- all these result in wall_check getting weird numbers and causing segfault FIXED!!
 - ray angle not resetting properly. also going to minus FIXED!!
-- draw line not starting from the front?
+- draw line not starting from the front? FIXED
 - depending on player angle, either up/left or down/right movements happen in an angle
 - starting position/rotation angled when not forward, right/left/back all start from bottom right (might be related to the problem above)

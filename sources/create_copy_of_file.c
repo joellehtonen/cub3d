@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 10:47:42 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/14 09:57:04 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:11:01 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	copy_file(t_game *game, char *filename)
 	i = 0;
 	(game->file)[0] = get_next_line(fd);
 	while ((game->file)[i])
-		(game->file)[++i] = get_next_line(fd); //ADD MALLOC CHECK AND FREE PREVIOUS
+		(game->file)[++i] = get_next_line(fd); //ADD MALLOC CHECK AND IF FAIL FREE PREVIOUS
 	(game->file)[i] = NULL;
 	close(fd);
 }
