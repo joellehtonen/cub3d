@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:42:01 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/22 10:38:32 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:11:30 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,17 @@ static void bresenham_line(t_game *game, int x1, int y1, int x2, int y2)
     int sy = (y1 < y2) ? 1 : -1;
     int err = dx - dy;
 
-    while (1) {
-		if (x1 > 0 && x1 < WINDOW_HEIGHT && y1 > 0 && y1 < WINDOW_HEIGHT)
+    while (1) 
+	{
+		if (x1 > 0 && x1 < WINDOW_WIDTH && y1 > 0 && y1 < WINDOW_HEIGHT)
         	mlx_put_pixel(game->minimap_img, x1, y1, 0xff00ffff);
-        
-        if (x1 == x2 && y1 == y2) break;
-
+        if (x1 == x2 && y1 == y2)
+			break;
         int e2 = 2 * err;
-        
         if (e2 > -dy) {
             err -= dy;
             x1 += sx;
         }
-        
         if (e2 < dx) {
             err += dx;
             y1 += sy;
@@ -60,9 +58,9 @@ static void clear_line(t_game *game)
 
 void draw_line(t_game *game)
 {
-	//printf("game_ray_x = %f and %d, game_ray_y = %f and %d\n", game->ray.x, (int)game->ray.x, game->ray.y, (int)game->ray.y);
 	clear_line(game);
+	if ((int)game->ray.x < 0 || (int)game->ray.x > WINDOW_WIDTH ||
+		(int)game->ray.y < 0 || (int)game->ray.y > WINDOW_HEIGHT)
+		error_exit_and_free(game, "JOEL THIS IS ON YOU!!");
     bresenham_line(game, game->player.x, game->player.y, (int)game->ray.x, (int)game->ray.y);
-	//bresenham_line(game, game->player.x, game->player.y, game->player.x, game->player.y - 100);
-	
 }

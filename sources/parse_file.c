@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/22 11:11:07 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:56:59 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ static void loop_through_file(t_game *game, int *i)
 				break_while = 1;
 				break ;
 			}
-			j++;
+			if ((game->file)[*i][j])
+				j++;
 		}
 		(*i)++;
 		if (break_while)
