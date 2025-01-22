@@ -1,5 +1,7 @@
--Map must be surrounded by walls. No two different sections?
--in map.cub, do N E W S need to be in the same order as pdf??
+MAP PARSING NOTES
+
+-Map must be surrounded by walls.
+-There can be islands
 -can textures be opaque? pixels be opaque? can there be see-through wall etc?
 
 

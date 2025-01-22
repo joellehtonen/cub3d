@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:37:40 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/15 16:13:03 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/20 15:04:37 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void	copy_map(t_game *game, char **file)
 			error_exit_and_free(game, "Failed to malloc map");
 		i++;
 	}
+	game->map[i] = NULL;
 	remove_newlines(game);
 }
