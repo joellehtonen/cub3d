@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/22 12:56:19 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/22 21:14:45 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define TILE_SIZE 64
-# define WINDOW_WIDTH 1920
-# define WINDOW_HEIGHT 1080
+# define WINDOW_WIDTH 720 //1920
+# define WINDOW_HEIGHT 480 //1080
 # define MAX_WIDTH_IN_TILES 30
 # define MAX_HEIGHT_IN_TILES 16
 # define MOVE_SIZE 14
 # define MOVE_SPEED 4
 # define PI 3.14159265358979323846
 # define FOV (60 * (PI / 180))
-# define ROTATE_SPEED 0.01 // a random value for testing
-# define MAP_WIDTH 1920 // can be changed
-# define MAP_HEIGHT 1080 // can be changed
+# define ROTATE_SPEED 0.05 // a random value for testing
+# define MAP_WIDTH 720 // can be changed
+# define MAP_HEIGHT 480 // can be changed
 
 # define FORWARD 0
 # define RIGHT (PI / 2)
@@ -44,7 +44,6 @@
 # define SOUTH RIGHT
 # define WEST BACK
 
-# define ROTATE_SPEED 0.01 // a random value for testing
 # define FLOOR_RGB 100
 # define CEILING_RGB 101
 

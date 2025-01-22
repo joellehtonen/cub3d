@@ -16,6 +16,8 @@ TO FIX:
 
 - we are not properly updating map size => causes crashes with is_map
 
+- player x and y dont need to be floats?
+
 - ray goes thru the wall
 - ray doesnt always find the wall
 - ray jumps weirdly?

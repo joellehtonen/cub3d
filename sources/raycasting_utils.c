@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:08:49 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/22 11:42:49 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/22 20:57:06 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	calculate_horizontal_step(t_game *game, float *step_x, float *step_y)
 		*step_x = 0;
 	else
 	{
-		*step_x = *step_y * tan(game->player.angle_radian);
+		*step_x = *step_y / tan(game->ray.angle);
 		if ((game->ray.direction_left == true && *step_x > 0)
 			|| (game->ray.direction_left == false && *step_x < 0))
 		{
@@ -51,7 +51,7 @@ void	calculate_vertical_step(t_game *game, float *step_x, float *step_y)
 		*step_y = 0;
 	else
 	{
-		*step_y = *step_x * tan(game->player.angle_radian);
+		*step_y = *step_x * tan(game->ray.angle);
 		if ((game->ray.direction_up == true && *step_y > 0)
 			|| (game->ray.direction_up == false && *step_y < 0))
 		{
