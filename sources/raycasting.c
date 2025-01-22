@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/21 21:04:12 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/22 09:04:27 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,19 @@ static void determine_initial_player_direction(t_game *game)
 	// 	game->ray.direction_up = true;
 	// else if (game->player.initial_direction == WEST)
 	// 	game->ray.direction_left = true;
-	printf("initial player angle radian: %f\n", game->player.angle_degree);
 }
 
 void init_ray(t_game *game)
 {
 	determine_initial_player_direction(game);
+	game->ray.angle = game->player.angle_radian + (FOV / 2);
+	printf("initial player angle radian: %f\n", game->player.angle_radian);
+	printf("initial ray angle: %f\n", game->ray.angle);
 	game->ray.y = 0;
 	game->ray.x = 0;
 	game->ray.distance = 0;
-	game->player.dx = 0;
-	game->player.dy = 0;
+	// game->player.dx = 0;
+	// game->player.dy = 0;
 	
 }
 
@@ -44,6 +46,7 @@ static double find_vertical_intersection(t_game *game)
 	float	step_y;
 	double	distance;
 
+	return 0;
 	point_x = floor(game->player.x / TILE_SIZE) * TILE_SIZE;
 	if (game->ray.direction_left == false)
 		point_x += TILE_SIZE;
@@ -75,6 +78,7 @@ static double find_horizontal_intersection(t_game *game)
 	float	step_y;
 	double	distance;
 
+	return 0;
 	point_y = floor(game->player.y / TILE_SIZE) * TILE_SIZE;
 	if (game->ray.direction_up == false)
 		point_y += TILE_SIZE;

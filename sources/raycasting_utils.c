@@ -3,22 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:08:49 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/21 19:54:33 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/22 08:58:05 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	reset_ray_angle(t_game *game)
+void	reset_angles(t_game *game)
 {
 	if (game->ray.angle < 0)
 		game->ray.angle += 2 * PI;
 	if (game->ray.angle > 2 * PI)
 		game->ray.angle -= 2 * PI;
+	if (game->player.angle_radian < 0)
+		game->player.angle_radian += 2 * PI;
+	if (game->player.angle_radian > 2 * PI)
+		game->player.angle_radian -= 2 * PI;
 }
+
+
 
 void	calculate_horizontal_step(t_game *game, float *step_x, float *step_y)
 {

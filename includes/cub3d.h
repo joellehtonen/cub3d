@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/21 21:01:17 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/22 09:01:51 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_player
     int 			dy;
     double 			angle_degree;
     float 			angle_radian;
-	int				initial_direction;
+	float			initial_direction;
 	mlx_image_t		*player_img;
 }	t_player;
 
@@ -115,7 +115,7 @@ void 	draw_line(t_game *game);
 void	raycasting(t_game *game);
 void	init_ray(t_game *game);
 void	determine_ray_direction(t_game *game);
-void	reset_ray_angle(t_game *game);
+void	reset_angles(t_game *game);
 void	calculate_horizontal_step(t_game *game, float *x_step, float *y_step);
 void	calculate_vertical_step(t_game *game, float *x_step, float *y_step);
 void	choose_shorter_distance(t_game *game, double h_inter, double v_inter);
