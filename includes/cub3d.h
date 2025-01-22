@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/22 11:25:17 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:30:39 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ typedef struct s_game
 	int		ceiling_B;
 	int		found_floor_rgb;
 	int		found_ceiling_rgb;
-	int		starting_direction;
+	float	starting_direction;
 	mlx_t				*mlx;
 	mlx_texture_t		*wall_texture;
 	mlx_image_t			*wall_img;
