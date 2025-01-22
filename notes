@@ -17,7 +17,7 @@ TO FIX:
 - ray goes thru the wall
 - ray doesnt always find the wall
 - ray jumps weirdly?
-- all these result in wall_check getting weird numbers and causing segfault
+- all these result in wall_check getting weird numbers and causing segfault FIXED!!
 - ray angle not resetting properly. also going to minus FIXED!!
 - draw line not starting from the front?
 - depending on player angle, either up/left or down/right movements happen in an angle

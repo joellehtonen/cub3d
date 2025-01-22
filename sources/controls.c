@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/22 08:59:22 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/22 10:46:46 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static bool	rotate_player(t_game *game, double direction)
 {
-	if (direction == LEFT)
+	if (direction == RIGHT)
 	{
 		game->player.angle_radian += ROTATE_SPEED;
 		game->ray.angle += ROTATE_SPEED;
 	}
-	else if (direction == RIGHT)
+	else if (direction == LEFT)
 	{
 		game->player.angle_radian -= ROTATE_SPEED;
 		game->ray.angle -= ROTATE_SPEED;

@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/22 09:01:51 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:13:48 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@
 # define MAP_HEIGHT 1080 // can be changed
 
 # define FORWARD 0
-# define RIGHT (3 * PI / 2)
+# define RIGHT (PI / 2)
 # define BACK PI
-# define LEFT (PI / 2)
+# define LEFT (3 * PI / 2)
 
 # define NORTH LEFT
 # define EAST FORWARD

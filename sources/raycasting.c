@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/22 09:04:27 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:02:07 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void determine_initial_player_direction(t_game *game)
 {
-	game->player.initial_direction = NORTH; //for testing, determine later by the symbol on the map. also now points to east
+	game->player.initial_direction = EAST; //for testing, determine later by the symbol on the map. also now points to east
 	game->player.angle_radian = game->player.initial_direction;
 	game->ray.direction_up = false;
 	game->ray.direction_left = false;
@@ -27,9 +27,7 @@ static void determine_initial_player_direction(t_game *game)
 void init_ray(t_game *game)
 {
 	determine_initial_player_direction(game);
-	game->ray.angle = game->player.angle_radian + (FOV / 2);
-	printf("initial player angle radian: %f\n", game->player.angle_radian);
-	printf("initial ray angle: %f\n", game->ray.angle);
+	game->ray.angle = game->player.angle_radian - (FOV / 2);
 	game->ray.y = 0;
 	game->ray.x = 0;
 	game->ray.distance = 0;
@@ -46,20 +44,18 @@ static double find_vertical_intersection(t_game *game)
 	float	step_y;
 	double	distance;
 
-	return 0;
 	point_x = floor(game->player.x / TILE_SIZE) * TILE_SIZE;
 	if (game->ray.direction_left == false)
 		point_x += TILE_SIZE;
-	// if (fabs(tan(game->player.angle_radian)) == 0)
-	// 	point_y = game->player.y; 
-	if (game->ray.angle == PI / 2 || game->ray.angle == 3 * PI / 2)
+	if (fabs(tan(game->ray.angle)) < 0.00001)
 		point_y = INFINITY;
 	else
-		point_y = (point_x - game->player.x) / tan(game->player.angle_radian) + game->player.y;
+		point_y = (point_x - game->player.x) / tan(game->ray.angle) + game->player.y;
 	calculate_vertical_step(game, &step_x, &step_y);
-	//printf("vertical step_X is %f, step_Y %f\n", step_x, step_y);
+	printf("vertical point_X is %f, point_Y %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
+		//printf("vertical wall not found at x: %f, y: %f, stepping\n", point_x, point_y);
 		point_x += step_x;
 		point_y += step_y;
 	}
@@ -78,20 +74,18 @@ static double find_horizontal_intersection(t_game *game)
 	float	step_y;
 	double	distance;
 
-	return 0;
 	point_y = floor(game->player.y / TILE_SIZE) * TILE_SIZE;
 	if (game->ray.direction_up == false)
 		point_y += TILE_SIZE;
-	// if (fabs(tan(game->player.angle_radian)) == 0)
-	// 	point_x = game->player.x;
-	if (game->ray.angle == 0 || game->ray.angle == PI)
+	if (fabs(tan(game->ray.angle)) < 0.00001)
 		point_x = INFINITY;
 	else
-		point_x = (point_y - game->player.y) / tan(game->player.angle_radian) + game->player.x;
+		point_x = (point_y - game->player.y) / tan(game->ray.angle) + game->player.x;
 	calculate_horizontal_step(game, &step_x, &step_y);
-	//printf("horizontal step_X is %f, step_Y %f\n", step_x, step_y);
+	printf("horizontal point_X is %f, point_Y %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
+		//printf("horizontal wall not found at x: %f, y: %f, stepping\n", point_x, point_y);
 		point_y += step_y;
 		point_x += step_x;
 	}
@@ -109,7 +103,7 @@ void raycasting(t_game *game)
 	// int		ray;
 	// int		degree;
 
-	// game->ray.angle = game->player.angle_radian - (FOV / 2);
+	// game->ray.angle = game->player.angle_radian + (FOV / 2);
 	// degree = game->ray.fov_radian / FOV;
 	// ray = 0;
 	// while (ray < FOV)
@@ -121,7 +115,7 @@ void raycasting(t_game *game)
 		choose_shorter_distance(game, h_inter, v_inter);
 		// render_wall(game); // to do
 		// render_ray(game); // for testing/minimap
-		//printf("The ray hits wall in: %f\n", game->ray.distance); // CAN BE REMOVED LATER
+		// printf("The ray hits wall in: %f\n", game->ray.distance); // CAN BE REMOVED LATER
 		// game->ray.angle += degree;
 		// ray++;
 	// }
