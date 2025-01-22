@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/22 10:26:35 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:11:14 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,19 @@ static void	check_number_of_arguments(int n)
 
 static void	initialize_variables(t_game *game)
 {
-    game->map = NULL;
 	game->file = NULL;
+	game->floor_img = NULL;
+	game->floor_texture = NULL;
+	game->found_ceiling_rgb = 0;
+	game->found_floor_rgb = 0;
+	game->height_in_tiles = 0;
+	game->minimap_img = NULL;
+	game->mlx = NULL;
+	game->starting_direction = 0;
+	game->wall_img = NULL;
+	game->wall_texture = NULL;
+	game->width_in_tiles = 0;
+    game->map = NULL;
     game->path_to_north_texture = NULL;
 	game->path_to_south_texture = NULL;
 	game->path_to_west_texture = NULL;
@@ -33,17 +44,6 @@ static void	initialize_variables(t_game *game)
 	game->ceiling_R = -1;
 	game->ceiling_G = -1;
 	game->ceiling_B = -1;
-	game->found_floor_rgb = 0;
-	game->found_ceiling_rgb = 0;
-	game->mlx = NULL;
-	game->floor_img = NULL;
-	game->floor_texture = NULL;
-	game->wall_img = NULL;
-	game->wall_texture = NULL;
-	game->starting_direction = 0;
-	game->width_in_tiles = 0;
-	game->height_in_tiles = 0;
-	game->minimap_img = NULL;
 }
 
 int	main(int argc, char *argv[])

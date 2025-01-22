@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/20 16:52:55 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:11:07 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,29 +47,6 @@ static void validate_rgb(t_game *game)
 		error_exit_and_free(game, "RGB missing or out of range");
 }
 
-// static void print_map(char **map) //REMOVE
-// {
-// 	int i = 0;
-
-// 	printf("Map ----------------------------------------------------------\n");
-// 	while (map[i])
-// 	{
-// 		printf("%s\n", map[i]);
-// 		i++;
-// 	}
-// 	printf("--------------------------------------------------------------\n");
-// }
-
-// static void print_paths_and_rgb(t_game *game) //REMOVE
-// {
-// 	printf("NO = %s\n", game->path_to_north_texture);
-// 	printf("SO = %s\n", game->path_to_south_texture);
-// 	printf("WE = %s\n", game->path_to_west_texture);
-// 	printf("EA = %s\n", game->path_to_east_texture);
-// 	printf("F  = %d,%d,%d\n", game->floor_R, game->floor_G, game->floor_B);
-// 	printf("C  = %d,%d,%d\n", game->ceiling_R, game->ceiling_G, game->ceiling_B);
-// }
-
 static void loop_through_file(t_game *game, int *i)
 {
 	int j;
@@ -108,8 +85,5 @@ void    parse_file(t_game *game)
 	while (game->file[i][0] == '\n')
 		i++;
 	copy_map(game, game->file + i);
-	//print_paths_and_rgb(game); //REMOVE
-	//print_map(game->map); //REMOVE
 	validate_map(game);
-	//printf("Starting Direction = %d\n", game->starting_direction); //REMOVE
 }
