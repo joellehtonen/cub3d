@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/22 11:31:59 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:56:19 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ typedef struct s_box
 
 typedef struct s_player
 {
-	int				x;
-	int				y;
+	double			x;
+	double			y;
 	int 			dx;
     int 			dy;
     double 			angle_degree;

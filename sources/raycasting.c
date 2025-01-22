@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/22 11:51:01 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:52:56 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ static double find_vertical_intersection(t_game *game)
 	if (fabs(tan(game->ray.angle)) < 0.00001)
 		point_y = INFINITY;
 	else
-		point_y = (point_x - game->player.x) / tan(game->ray.angle) + game->player.y;
+		point_y = game->player.y + (point_x - game->player.x) / tan(game->ray.angle);
 	calculate_vertical_step(game, &step_x, &step_y);
-	//printf("vertical point_X is %f, point_Y %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
+	printf("vertical point_X is %f, point_Y %f\n", point_x, point_y);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
-		//printf("vertical wall not found at x: %f, y: %f, stepping\n", point_x, point_y);
+		printf("vertical wall not found at x: %f, y: %f, stepping\n", point_x, point_y);
 		point_x += step_x;
 		point_y += step_y;
 	}
 	game->ray.vx = point_x;
 	game->ray.vy = point_y;
-	//printf("wall found. vertical intersection at x: %f, y: %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
+	printf("wall found. vertical intersection at x: %f, y: %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
 	distance = sqrt(pow(point_x - game->player.x, 2) + pow(point_y - game->player.y, 2));
 	return (distance);
 }
@@ -80,18 +80,18 @@ static double find_horizontal_intersection(t_game *game)
 	if (fabs(tan(game->ray.angle)) < 0.00001)
 		point_x = INFINITY;
 	else
-		point_x = (point_y - game->player.y) / tan(game->ray.angle) + game->player.x;
+		point_x = game->player.x + (point_y - game->player.y) / tan(game->ray.angle);
 	calculate_horizontal_step(game, &step_x, &step_y);
-	//printf("horizontal point_X is %f, point_Y %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
+	printf("horizontal point_X is %f, point_Y %f\n", point_x, point_y);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
-		//printf("horizontal wall not found at x: %f, y: %f, stepping\n", point_x, point_y);
+		printf("horizontal wall not found at x: %f, y: %f, stepping\n", point_x, point_y);
 		point_y += step_y;
 		point_x += step_x;
 	}
 	game->ray.hx = point_x;
 	game->ray.hy = point_y;
-	//printf("wall found. horizontal intersection at x: %f, y: %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
+	printf("wall found. horizontal intersection at x: %f, y: %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
 	distance = sqrt(pow(point_x - game->player.x, 2) + pow(point_y - game->player.y, 2));
 	return (distance);
 }
