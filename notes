@@ -16,11 +16,14 @@ TO FIX:
 
 - we are not properly updating map size => causes crashes with is_map
 
+- player x and y dont need to be floats?
+
 - ray goes thru the wall
 - ray doesnt always find the wall
 - ray jumps weirdly?
+- moving changes check ray intersections are checked
 - all these result in wall_check getting weird numbers and causing segfault FIXED!!
 - ray angle not resetting properly. also going to minus FIXED!!
-- draw line not starting from the front?
+- draw line not starting from the front? FIXED
 - depending on player angle, either up/left or down/right movements happen in an angle
 - starting position/rotation angled when not forward, right/left/back all start from bottom right (might be related to the problem above)
