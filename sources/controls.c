@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/23 11:40:40 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/23 18:59:07 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ static bool	rotate_player(t_game *game, double direction)
 		game->player.angle_radian -= ROTATE_SPEED;
 		game->ray.angle -= ROTATE_SPEED;
 	}
-	// game->player.dx = cos(game->player.angle_radian);
-	// game->player.dy = sin(game->player.angle_radian);
 	reset_angles(game);
 	determine_ray_direction(game);
 	// printf("player angle degree = %f\n", game->player.angle_radian * (180 / PI));

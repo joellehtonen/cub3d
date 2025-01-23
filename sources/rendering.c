@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:35:13 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/23 11:54:05 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/23 19:03:26 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void rendering(void * content)
     movement = controls(game);
     if (movement == true)
     {
+        clear_line(game);
         raycasting(game);
+        //draw_line(game);
     }
 }

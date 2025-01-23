@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:28:30 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/23 11:53:20 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/23 18:45:01 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ bool	is_wall_float(t_game *game, float x, float y)
 	if (game->ray.direction_up == true && fmod(y, TILE_SIZE) == 0)
 		y_int -= 1;
 	//printf("WALL_CHECK: X_INT is %d, Y_INT is %d\n", x_int, y_int);
-	if (x_int < 0 || y_int < 0 || x_int > (WINDOW_WIDTH / TILE_SIZE) - 1 || y_int > (WINDOW_HEIGHT / TILE_SIZE) - 1)
+	//printf("width = %d, height = %d\n", game->width_in_tiles, game->height_in_tiles);
+	if (x_int < 0 || y_int < 0 || x_int > (game->width_in_tiles - 1) || y_int > (game->height_in_tiles - 1))
 	{
 		//printf("ERROR! - INFINITY!!! --- x_int: %d, y_int: %d\n", x_int, y_int);
 		return (true);

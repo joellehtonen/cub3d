@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/23 11:52:04 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/23 17:49:31 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define TILE_SIZE 64
-# define WINDOW_WIDTH 720 //1920
-# define WINDOW_HEIGHT 480 //1080
+# define WINDOW_WIDTH 1920
+# define WINDOW_HEIGHT 1080
 # define MAX_WIDTH_IN_TILES 30
 # define MAX_HEIGHT_IN_TILES 16
 # define MOVE_SIZE 14
 # define MOVE_SPEED 4
 # define PI 3.14159265358979323846
 # define FOV (60 * (PI / 180))
-# define ROTATE_SPEED 0.08 // a random value for testing
+# define ROTATE_SPEED 0.02 // a random value for testing
 # define MAP_WIDTH 720 // can be changed
 # define MAP_HEIGHT 480 // can be changed
 
@@ -126,6 +126,7 @@ void	resize_images(t_game *game);
 void	display_map(t_game *game);
 bool	controls(t_game *game);
 void 	draw_line(t_game *game);
+void 	clear_line(t_game *game);
 // raycasting functions
 void	raycasting(t_game *game);
 void	init_ray(t_game *game);

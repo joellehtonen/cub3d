@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/23 11:48:14 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/23 19:03:31 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,32 @@
 
 static void determine_initial_player_direction(t_game *game)
 {
-	game->player.initial_direction = EAST; //for testing, determine later by the symbol on the map. also now points to east
+	game->player.initial_direction = NORTH; //determine later by the symbol on the map
 	game->player.angle_radian = game->player.initial_direction;
-	game->ray.direction_up = false;
-	game->ray.direction_left = false;
-	if (game->player.initial_direction == NORTH)
-	{
-		game->ray.direction_up = true;
-		game->ray.direction_left = true;
-	}
-	else if (game->player.initial_direction == WEST)
-	{
-		game->ray.direction_up = false;
-		game->ray.direction_left = true;
-	}
-	else if (game->player.initial_direction == SOUTH)
-	{
-		game->ray.direction_up = false;
-		game->ray.direction_left = false;
-	}
-	else if (game->player.initial_direction == EAST)
-	{
-		game->ray.direction_up = true;
-		game->ray.direction_left = false;
-	}
+	// game->ray.angle = game->player.angle_radian - (FOV / 2);
+	// determine_ray_direction(game);
+	// game->ray.direction_up = false;
+	// game->ray.direction_left = false;
+	// if (game->player.initial_direction == NORTH)
+	// {
+	// 	game->ray.direction_up = true;
+	// 	game->ray.direction_left = true;
+	// }
+	// else if (game->player.initial_direction == WEST)
+	// {
+	// 	game->ray.direction_up = false;
+	// 	game->ray.direction_left = true;
+	// }
+	// else if (game->player.initial_direction == SOUTH)
+	// {
+	// 	game->ray.direction_up = false;
+	// 	game->ray.direction_left = false;
+	// }
+	// else if (game->player.initial_direction == EAST)
+	// {
+	// 	game->ray.direction_up = true;
+	// 	game->ray.direction_left = false;
+	// }
 }
 
 void init_ray(t_game *game)
@@ -119,11 +121,14 @@ void raycasting(t_game *game)
 	double	degree;
 
 	degree = FOV / 60;
-	//printf("degree = %f\n", degree);
 	game->ray.angle = game->player.angle_radian - (FOV / 2);
+	//printf("initial ray angle = %f, initial player angle = %f\n", game->ray.angle, game->player.angle_radian);
+	//printf("ray.x is %f, and ray.y %f\n", game->ray.x, game->ray.y);
 	ray = 0;
 	while (ray < 60)
 	{
+		reset_angles(game);
+		determine_ray_direction(game);
 		h_inter = find_horizontal_intersection(game);
 		v_inter = find_vertical_intersection(game);
 		//printf("h_inter is %f, v_inter is %f\n", h_inter, v_inter);
@@ -131,8 +136,8 @@ void raycasting(t_game *game)
 		draw_line(game);
 		// render_wall(game); // to do
 		game->ray.angle += degree;
-		//printf("ray angle = %f\n", game->ray.angle);
 		ray++;
-		//printf("ray = %d\n", ray);
+		//printf("ray %d, ray angle %f\n", ray, game->ray.angle);
 	}
+	//clear_line(game);
 }
