@@ -6,17 +6,16 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/22 11:57:48 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:03:49 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/cub3d.h"
 
 static void	check_number_of_arguments(int n)
 {
 	if (n != 2)
-		error_exit("Invalid number of arguments");	
+		error_exit("Invalid number of arguments");
 }
 
 static void	initialize_variables(t_game *game)
@@ -33,8 +32,8 @@ static void	initialize_variables(t_game *game)
 	game->wall_img = NULL;
 	game->wall_texture = NULL;
 	game->width_in_tiles = 0;
-    game->map = NULL;
-    game->path_to_north_texture = NULL;
+	game->map = NULL;
+	game->path_to_north_texture = NULL;
 	game->path_to_south_texture = NULL;
 	game->path_to_west_texture = NULL;
 	game->path_to_east_texture = NULL;
@@ -48,7 +47,7 @@ static void	initialize_variables(t_game *game)
 
 int	main(int argc, char *argv[])
 {
-	t_game game;
+	t_game	game;
 
 	//Init and parsing --------------------------------------------------------
 	initialize_variables(&game);
