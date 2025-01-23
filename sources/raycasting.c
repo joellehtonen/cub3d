@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/23 11:43:41 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/23 11:48:14 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,10 +116,10 @@ void raycasting(t_game *game)
 	double	h_inter;
 	double	v_inter;
 	int		ray;
-	float	degree;
+	double	degree;
 
 	degree = FOV / 60;
-	printf("degree = %f\n", degree);
+	//printf("degree = %f\n", degree);
 	game->ray.angle = game->player.angle_radian - (FOV / 2);
 	ray = 0;
 	while (ray < 60)
@@ -131,7 +131,7 @@ void raycasting(t_game *game)
 		draw_line(game);
 		// render_wall(game); // to do
 		game->ray.angle += degree;
-		printf("ray angle = %f\n", game->ray.angle);
+		//printf("ray angle = %f\n", game->ray.angle);
 		ray++;
 		//printf("ray = %d\n", ray);
 	}
