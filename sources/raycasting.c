@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/22 22:54:50 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/23 11:43:41 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,9 @@ static void determine_initial_player_direction(t_game *game)
 void init_ray(t_game *game)
 {
 	determine_initial_player_direction(game);
-	game->ray.angle = game->player.angle_radian - (FOV / 2);
 	game->ray.y = 0;
 	game->ray.x = 0;
 	game->ray.distance = 0;
-	// game->player.dx = 0;
-	// game->player.dy = 0;
-	
 }
 
 static double find_vertical_intersection(t_game *game)
@@ -75,7 +71,7 @@ static double find_vertical_intersection(t_game *game)
 	}
 	game->ray.vx = point_x;
 	game->ray.vy = point_y;
-	printf("wall found. vertical intersection at x: %f, y: %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
+	//printf("wall found. vertical intersection at x: %f, y: %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
 	distance = sqrt(pow(point_x - game->player.x, 2) + pow(point_y - game->player.y, 2));
 	return (distance);
 }
@@ -104,13 +100,13 @@ static double find_horizontal_intersection(t_game *game)
 	calculate_horizontal_step(game, &step_x, &step_y);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
-		printf("horizontal wall not found at x: %f, y: %f, stepping\n", point_x, point_y);
+		//printf("horizontal wall not found at x: %f, y: %f, stepping\n", point_x, point_y);
 		point_y += step_y;
 		point_x += step_x;
 	}
 	game->ray.hx = point_x;
 	game->ray.hy = point_y;
-	printf("wall found. horizontal intersection at x: %f, y: %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
+	//printf("wall found. horizontal intersection at x: %f, y: %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
 	distance = sqrt(pow(point_x - game->player.x, 2) + pow(point_y - game->player.y, 2));
 	return (distance);
 }
@@ -119,23 +115,24 @@ void raycasting(t_game *game)
 {
 	double	h_inter;
 	double	v_inter;
-	// int		ray;
-	// int		degree;
+	int		ray;
+	float	degree;
 
-	// game->ray.angle = game->player.angle_radian + (FOV / 2);
-	// degree = game->ray.fov_radian / FOV;
-	// ray = 0;
-	// while (ray < FOV)
-	// {
-	// 	printf("RAY ANGLE = %f\n", game->ray.angle);
+	degree = FOV / 60;
+	printf("degree = %f\n", degree);
+	game->ray.angle = game->player.angle_radian - (FOV / 2);
+	ray = 0;
+	while (ray < 60)
+	{
 		h_inter = find_horizontal_intersection(game);
 		v_inter = find_vertical_intersection(game);
-		printf("h_inter is %f, v_inter is %f\n", h_inter, v_inter);
+		//printf("h_inter is %f, v_inter is %f\n", h_inter, v_inter);
 		choose_shorter_distance(game, h_inter, v_inter);
+		draw_line(game);
 		// render_wall(game); // to do
-		// render_ray(game); // for testing/minimap
-		// printf("The ray hits wall in: %f\n", game->ray.distance); // CAN BE REMOVED LATER
-		// game->ray.angle += degree;
-		// ray++;
-	// }
+		game->ray.angle += degree;
+		printf("ray angle = %f\n", game->ray.angle);
+		ray++;
+		//printf("ray = %d\n", ray);
+	}
 }

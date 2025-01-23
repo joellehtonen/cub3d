@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:08:49 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/22 22:22:13 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/23 11:45:13 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,42 +55,40 @@ void	determine_ray_direction(t_game *game)
 	if (game->ray.angle >= PI && game->ray.angle <= PI * 2)
 	{
 		game->ray.direction_up = true;
-		printf("ray points up\n");
+		//printf("ray points up\n");
 	}
 	else
 	{
 		game->ray.direction_up = false;
-		printf("ray points down\n");
+		//printf("ray points down\n");
 	}
 	if (game->ray.angle >= PI / 2 && game->ray.angle <= 3 * (PI / 2))
 	{
 		game->ray.direction_left = true;
-		printf("ray points left\n");
+		//printf("ray points left\n");
 	}
 	else
 	{
 		game->ray.direction_left = false;
-		printf("ray points right\n");
+		//printf("ray points right\n");
 	}
 	return ;
 }
 
 void	choose_shorter_distance(t_game *game, double h_inter, double v_inter)
 {
-	if (h_inter == INFINITY || v_inter == INFINITY)
-		return ;
 	if (h_inter <= v_inter)
 	{
 		game->ray.distance = h_inter;
 		game->ray.x = game->ray.hx;
 		game->ray.y = game->ray.hy;
-		printf("h_inter chosen!\n");
+		//printf("h_inter chosen!\n");
 	}
 	else
 	{
 		game->ray.distance = v_inter;
 		game->ray.x = game->ray.vx;
 		game->ray.y = game->ray.vy;
-		printf("v_inter chosen!\n");
+		//printf("v_inter chosen!\n");
 	}
 }

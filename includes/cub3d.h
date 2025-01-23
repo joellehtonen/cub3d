@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/22 22:18:18 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/23 11:44:08 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define MOVE_SPEED 4
 # define PI 3.14159265358979323846
 # define FOV (60 * (PI / 180))
-# define ROTATE_SPEED 0.05 // a random value for testing
+# define ROTATE_SPEED 0.08 // a random value for testing
 # define MAP_WIDTH 720 // can be changed
 # define MAP_HEIGHT 480 // can be changed
 
