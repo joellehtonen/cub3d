@@ -13,6 +13,10 @@ RAYCASTING NOTES
 The flag (-O3 -ffast-math) is used for optimization.
 
 TO DO:
+- rename draw-line functions to be more clearly about minimap
+- make a faster put_pixel by modifying mlx_image_t pixel data directly
+- we need set_pixel function to make transparent pixels, since mlx_image only accepts uint8, without alpha channel.
+-> but this can be fixed/circumvented with a separate function to modify pixel data
 
 TO FIX:
 - movement still angled
