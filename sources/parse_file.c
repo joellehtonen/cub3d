@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/23 15:00:21 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:46:42 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,6 @@ void	parse_file(t_game *game)
 		i++;
 	copy_map(game, game->file + i);
 	validate_map(game);
+	if (game->starting_direction == 0)
+		error_exit_and_free(game, "Missing player on map");
 }

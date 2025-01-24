@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:23:16 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/22 10:00:57 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:47:15 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ static void check_for_player_direction(t_game *game, char c)
 		(c == 'N' || c == 'S' || c == 'W' || c == 'E'))
 		error_exit_and_free(game, "Map contains more than one player position");
 	if (c == 'N')
-		game->starting_direction = NORTH;
+		game->starting_direction = STARTING_NORTH;
 	else if (c == 'S')
-		game->starting_direction = SOUTH;
+		game->starting_direction = STARTING_SOUTH;
 	else if (c == 'W')
-		game->starting_direction = WEST;
+		game->starting_direction = STARTING_WEST;
 	else if (c == 'E')
-		game->starting_direction = EAST;
+		game->starting_direction = STARTING_EAST;
 }
 
 static int is_empty_space(char c)

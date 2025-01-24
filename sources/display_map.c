@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:45:15 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/17 13:42:07 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:43:45 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static int	images_to_window(t_game *game, int x, int y)
 	if (game->map[y][x] == '0')
 		if (mlx_image_to_window(game->mlx, game->floor_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
 			return (0);
-	if (game->map[y][x] == 'N')
+	if (game->map[y][x] == 'N' || game->map[y][x] == 'S' ||
+		game->map[y][x] == 'W' || game->map[y][x] == 'E')
 	{
 		if (mlx_image_to_window(game->mlx, game->floor_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
 			return (0);

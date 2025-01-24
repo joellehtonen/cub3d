@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/24 09:41:04 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:46:31 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@
 # define EAST FORWARD
 # define SOUTH RIGHT
 # define WEST BACK
+
+# define STARTING_NORTH 200
+# define STARTING_SOUTH 201
+# define STARTING_WEST 202
+# define STARTING_EAST 203
 
 # define FLOOR_RGB 100
 # define CEILING_RGB 101
@@ -94,7 +99,7 @@ typedef struct s_game
 	int		ceiling_B;
 	int		found_floor_rgb;
 	int		found_ceiling_rgb;
-	float	starting_direction;
+	int		starting_direction;
 	mlx_t				*mlx;
 	mlx_texture_t		*wall_texture;
 	mlx_image_t			*wall_img;
