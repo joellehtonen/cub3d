@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/24 10:46:31 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/24 12:10:18 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,10 @@
 # define BACK PI
 # define LEFT (3 * PI / 2)
 
-# define NORTH LEFT
-# define EAST FORWARD
-# define SOUTH RIGHT
-# define WEST BACK
-
-# define STARTING_NORTH 200
-# define STARTING_SOUTH 201
-# define STARTING_WEST 202
-# define STARTING_EAST 203
+# define NORTH 200
+# define EAST 201
+# define SOUTH 202
+# define WEST 203
 
 # define FLOOR_RGB 100
 # define CEILING_RGB 101
