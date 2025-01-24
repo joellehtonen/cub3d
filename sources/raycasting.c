@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/24 15:20:03 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:47:17 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void raycasting(t_game *game)
 
 	degree = FOV / WINDOW_WIDTH;
 	game->ray.angle = game->player.angle - (FOV / 2);
-	clear_frame(game); // will this conflict with cutting minimap hole?
+	//clear_frame(game); // will this conflict with minimap?
 	ray = 0;
 	while (ray < WINDOW_WIDTH)
 	{
