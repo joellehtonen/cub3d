@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/24 09:55:12 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/24 12:42:04 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void raycasting(t_game *game)
 		//printf("h_inter is %f, v_inter is %f\n", h_inter, v_inter);
 		choose_shorter_distance(game, h_inter, v_inter);
 		draw_line(game);
-		//draw_walls(game);
+		render_walls(game);
 		game->ray.angle += degree;
 		ray++;
 		//printf("ray %d, ray angle %f\n", ray, game->ray.angle);

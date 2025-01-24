@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/24 09:41:04 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/24 12:45:09 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ typedef struct s_game
 	int		found_ceiling_rgb;
 	float	starting_direction;
 	mlx_t				*mlx;
+	mlx_image_t			*frame;
 	mlx_texture_t		*wall_texture;
 	mlx_image_t			*wall_img;
 	mlx_texture_t		*floor_texture;
@@ -121,20 +122,21 @@ void	create_textures(t_game *game);
 void	create_images(t_game *game);
 void	resize_images(t_game *game);
 void	display_map(t_game *game);
-bool	controls(t_game *game);
-void 	draw_line(t_game *game);
-void 	clear_line(t_game *game);
 // raycasting functions
 void	raycasting(t_game *game);
 void	determine_ray_direction(t_game *game);
-void	determine_player_direction(t_game *game);
 void	reset_angles(t_game *game);
 void	choose_shorter_distance(t_game *game, double h_inter, double v_inter);
-// main loops
+// main loop
 void	rendering(void *content);
+bool	controls(t_game *game);
 // checks
 bool	is_wall(t_game *game, int x, int y);
 bool	is_wall_float(t_game *game, float x, float y);
+// drawing functions
+void 	draw_line(t_game *game);
+void 	clear_line(t_game *game);
+void    render_frame(t_game *game);
 
 void 	check_for_rgb(t_game *game, int i, int *j, int element);
 void	copy_map(t_game *game, char **file);

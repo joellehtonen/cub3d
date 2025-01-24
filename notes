@@ -13,10 +13,6 @@ RAYCASTING NOTES
 The flag (-O3 -ffast-math) is used for optimization.
 
 TO DO:
-- flag or a way to know which direction player starts in
 
 TO FIX:
-
-- ray jumps weirdly when moving
-- first rotation jumps the ray and the angle, but only if start pos other than north
-- ray angle is more than player angle (should be less)
+- movement still angled

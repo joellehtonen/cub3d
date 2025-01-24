@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_images.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:36:29 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/17 13:40:15 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/24 12:47:55 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

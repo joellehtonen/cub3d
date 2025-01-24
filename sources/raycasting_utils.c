@@ -6,17 +6,11 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:08:49 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/24 09:41:51 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:43:44 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void determine_player_direction(t_game *game)
-{
-	game->player.initial_direction = NORTH; //determine later by the symbol on the map
-	game->player.angle = game->player.initial_direction;
-}
 
 void	reset_angles(t_game *game)
 {
