@@ -12,15 +12,11 @@ RAYCASTING NOTES
 
 The flag (-O3 -ffast-math) is used for optimization.
 
+TO DO:
+- flag or a way to know which direction player starts in
+
 TO FIX:
 
-- we are not properly updating map size => causes crashes with is_map
-
-- ray goes thru the wall
-- ray doesnt always find the wall
-- ray jumps weirdly?
-- all these result in wall_check getting weird numbers and causing segfault FIXED!!
-- ray angle not resetting properly. also going to minus FIXED!!
-- draw line not starting from the front?
-- depending on player angle, either up/left or down/right movements happen in an angle
-- starting position/rotation angled when not forward, right/left/back all start from bottom right (might be related to the problem above)
+- ray jumps weirdly when moving
+- first rotation jumps the ray and the angle, but only if start pos other than north
+- ray angle is more than player angle (should be less)

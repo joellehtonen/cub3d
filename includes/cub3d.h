@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/22 11:30:39 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/24 09:41:04 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@
 # define MOVE_SPEED 4
 # define PI 3.14159265358979323846
 # define FOV (60 * (PI / 180))
-# define ROTATE_SPEED 0.01 // a random value for testing
-# define MAP_WIDTH 1920 // can be changed
-# define MAP_HEIGHT 1080 // can be changed
+# define ROTATE_SPEED 0.02 // a random value for testing
+// # define MAP_WIDTH 720 // can be changed
+// # define MAP_HEIGHT 480 // can be changed
 
 # define FORWARD 0
 # define RIGHT (PI / 2)
@@ -44,20 +44,19 @@
 # define SOUTH RIGHT
 # define WEST BACK
 
-# define ROTATE_SPEED 0.01 // a random value for testing
 # define FLOOR_RGB 100
 # define CEILING_RGB 101
 
 typedef struct s_ray
 {
-    double	x;
-	double	y;
-	double	hx;
-	double	hy;
-	double	vx;
-	double	vy;
-    double	angle;
-	double	distance;
+    float	x;
+	float	y;
+	float	hx;
+	float	hy;
+	float	vx;
+	float	vy;
+    float	angle;
+	double	length;
 	bool	direction_left;
 	bool	direction_up;
 } t_ray;
@@ -74,10 +73,7 @@ typedef struct s_player
 {
 	int				x;
 	int				y;
-	int 			dx;
-    int 			dy;
-    double 			angle_degree;
-    float 			angle_radian;
+    float 			angle;
 	float			initial_direction;
 	mlx_image_t		*player_img;
 }	t_player;
@@ -127,13 +123,12 @@ void	resize_images(t_game *game);
 void	display_map(t_game *game);
 bool	controls(t_game *game);
 void 	draw_line(t_game *game);
+void 	clear_line(t_game *game);
 // raycasting functions
 void	raycasting(t_game *game);
-void	init_ray(t_game *game);
 void	determine_ray_direction(t_game *game);
+void	determine_player_direction(t_game *game);
 void	reset_angles(t_game *game);
-void	calculate_horizontal_step(t_game *game, float *x_step, float *y_step);
-void	calculate_vertical_step(t_game *game, float *x_step, float *y_step);
 void	choose_shorter_distance(t_game *game, double h_inter, double v_inter);
 // main loops
 void	rendering(void *content);

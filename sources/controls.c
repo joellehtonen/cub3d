@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/22 10:46:46 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/24 09:55:41 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,19 @@ static bool	rotate_player(t_game *game, double direction)
 {
 	if (direction == RIGHT)
 	{
-		game->player.angle_radian += ROTATE_SPEED;
+		game->player.angle += ROTATE_SPEED;
 		game->ray.angle += ROTATE_SPEED;
 	}
 	else if (direction == LEFT)
 	{
-		game->player.angle_radian -= ROTATE_SPEED;
+		game->player.angle -= ROTATE_SPEED;
 		game->ray.angle -= ROTATE_SPEED;
 	}
-	// game->player.dx = cos(game->player.angle_radian);
-	// game->player.dy = sin(game->player.angle_radian);
 	reset_angles(game);
 	determine_ray_direction(game);
-	printf("player angle degree = %f\n", game->player.angle_radian * (180 / PI));
-	printf("player angle radian = %f\n", game->player.angle_radian);
-	printf("ray angle = %f\n", game->ray.angle);
+	// printf("player angle degree = %f\n", game->player.angle_radian * (180 / PI));
+	// printf("player angle radian = %f\n", game->player.angle_radian);
+	// printf("ray angle = %f\n", game->ray.angle);
 	return (true);
 }
 
@@ -39,8 +37,8 @@ static bool	move_player(t_game *game, double direction)
 	double	new_x;
 	double	new_y;
 	
-	new_x = game->player.x + cos(game->player.angle_radian + direction) * MOVE_SPEED;
-	new_y = game->player.y + sin(game->player.angle_radian + direction) * MOVE_SPEED;
+	new_x = game->player.x + cos(game->player.angle + direction) * MOVE_SPEED;
+	new_y = game->player.y + sin(game->player.angle + direction) * MOVE_SPEED;
 	if (is_wall(game, new_x, new_y) == false)
 	{
 		game->player.x = new_x;

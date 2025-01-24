@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/23 15:03:49 by eberkowi         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/01/24 10:34:37 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ int	main(int argc, char *argv[])
 	create_images(&game);
 	resize_images(&game);
 	display_map(&game);
-	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
-	init_ray(&game); //we can find a better/more logical place for this
+	//mlx_set_setting(MLX_STRETCH_IMAGE, 1);
+	determine_player_direction(&game);
 	mlx_loop_hook(game.mlx, &rendering, &game);
 	mlx_loop(game.mlx);
 	free_all(&game);
