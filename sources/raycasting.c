@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/24 14:32:59 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/24 15:20:03 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,11 @@ static double find_vertical_intersection(t_game *game)
 	calculate_vertical_step(game, &step_x, &step_y);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
-		//printf("vertical wall not found at x: %f, y: %f, stepping\n", point_x, point_y);
 		point_x += step_x;
 		point_y += step_y;
 	}
 	game->ray.vx = point_x;
 	game->ray.vy = point_y;
-	//printf("wall found. vertical intersection at x: %f, y: %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
 	distance = sqrt(pow(point_x - game->player.x, 2) + pow(point_y - game->player.y, 2));
 	return (distance);
 }
@@ -79,13 +77,11 @@ static double find_horizontal_intersection(t_game *game)
 	calculate_horizontal_step(game, &step_x, &step_y);
 	while (is_wall_float(game, point_x, point_y) == false)
 	{
-		//printf("horizontal wall not found at x: %f, y: %f, stepping\n", point_x, point_y);
 		point_y += step_y;
 		point_x += step_x;
 	}
 	game->ray.hx = point_x;
 	game->ray.hy = point_y;
-	//printf("wall found. horizontal intersection at x: %f, y: %f\n", point_x / TILE_SIZE, point_y / TILE_SIZE);
 	distance = sqrt(pow(point_x - game->player.x, 2) + pow(point_y - game->player.y, 2));
 	return (distance);
 }
@@ -97,23 +93,21 @@ void raycasting(t_game *game)
 	int		ray;
 	float	degree;
 
-	degree = FOV / 60;
+	degree = FOV / WINDOW_WIDTH;
 	game->ray.angle = game->player.angle - (FOV / 2);
-	//printf("initial ray angle = %f, initial player angle = %f\n", game->ray.angle, game->player.angle_radian);
-	//printf("ray.x is %f, and ray.y %f\n", game->ray.x, game->ray.y);
+	clear_frame(game); // will this conflict with cutting minimap hole?
 	ray = 0;
-	while (ray < 60)
+	while (ray < WINDOW_WIDTH)
 	{
 		reset_angles(game);
 		determine_ray_direction(game);
 		h_inter = find_horizontal_intersection(game);
 		v_inter = find_vertical_intersection(game);
-		//printf("h_inter is %f, v_inter is %f\n", h_inter, v_inter);
 		choose_shorter_distance(game, h_inter, v_inter);
 		draw_line(game);
-		render_frame(game);
+		render_ray_into_frame(game, ray);
 		game->ray.angle += degree;
 		ray++;
-		//printf("ray %d, ray angle %f\n", ray, game->ray.angle);
 	}
+	mlx_image_to_window(game->mlx, game->frame, 0, 0);
 }

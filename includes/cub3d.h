@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/24 12:45:09 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/24 15:20:17 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@
 # define MOVE_SPEED 4
 # define PI 3.14159265358979323846
 # define FOV (60 * (PI / 180))
-# define ROTATE_SPEED 0.02 // a random value for testing
-// # define MAP_WIDTH 720 // can be changed
-// # define MAP_HEIGHT 480 // can be changed
+# define ROTATE_SPEED 0.02
 
 # define FORWARD 0
 # define RIGHT (PI / 2)
@@ -136,7 +134,8 @@ bool	is_wall_float(t_game *game, float x, float y);
 // drawing functions
 void 	draw_line(t_game *game);
 void 	clear_line(t_game *game);
-void    render_frame(t_game *game);
+void    render_ray_into_frame(t_game *game, int ray);
+void	clear_frame(t_game *game);
 
 void 	check_for_rgb(t_game *game, int i, int *j, int element);
 void	copy_map(t_game *game, char **file);
