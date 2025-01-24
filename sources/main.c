@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/23 11:53:52 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/24 09:13:36 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main(int argc, char *argv[])
 	resize_images(&game);
 	display_map(&game);
 	//mlx_set_setting(MLX_STRETCH_IMAGE, 1);
-	init_ray(&game); //we can find a better/more logical place for this
+	determine_player_direction(&game);
 	mlx_loop_hook(game.mlx, &rendering, &game);
 	mlx_loop(game.mlx);
 	free_all(&game);

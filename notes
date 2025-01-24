@@ -12,6 +12,9 @@ RAYCASTING NOTES
 
 The flag (-O3 -ffast-math) is used for optimization.
 
+TO DO:
+- flag or a way to know which direction player starts in
+
 TO FIX:
 
 - ray jumps weirdly when moving
