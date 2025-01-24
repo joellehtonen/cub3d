@@ -6,7 +6,7 @@
 #    By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/24 11:35:53 by jlehtone         ###   ########.fr        #
+#    Updated: 2025/01/24 17:19:08 by jlehtone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ CFILES := main.c \
 			resize_images.c \
 			validate_filetype.c \
 			validate_map.c \
-			draw_walls.c
+			draw_walls.c \
+			init_ray.c
 
 HEADER = includes/cub3d.h
 LIBFT := libft/libft.a

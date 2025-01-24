@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/24 16:44:42 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:21:08 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ void	create_images(t_game *game);
 void	resize_images(t_game *game);
 void	display_map(t_game *game);
 // raycasting functions
+void 	init_ray(t_game *game);
 void	raycasting(t_game *game);
 void	determine_ray_direction(t_game *game);
 void	reset_angles(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/24 16:53:16 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:11:25 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,23 @@ void	draw_background(t_game *game)
 	int	i;
 	int j;
 
+	game->background = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	// add checks
 	i = 0;
-	return ;
 	while (i < WINDOW_WIDTH)
 	{
 		j = 0;
 		while (j < WINDOW_HEIGHT / 2)
-			mlx_put_pixel(game->background, i, j++, 0x0000FFFF); //green for testing
+			mlx_put_pixel(game->background, i, j++, 0x00FFFFFF); //green for testing
 		while (j < WINDOW_HEIGHT)
-			mlx_put_pixel(game->background, i, j++, 0x000000FF); //yellow for testing
+			mlx_put_pixel(game->background, i, j++, 0x0000FFFF); //yellow for testing
 		i++;
 	}
 }
 
 static void	draw_floor_ceiling(t_game *game, int ray)
 {
+	return ;
 	int	i;
 
 	i = 0;

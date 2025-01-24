@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/24 16:25:27 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:19:47 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,9 @@ int	main(int argc, char *argv[])
 	create_textures(&game);
 	create_images(&game);
 	resize_images(&game);
-	//draw_background(&game);
 	display_map(&game);
 	//mlx_set_setting(MLX_STRETCH_IMAGE, 1);
-	game.player.angle = game.starting_direction;
+	init_ray(&game);
 	mlx_loop_hook(game.mlx, &rendering, &game);
 	mlx_loop(game.mlx);
 	free_all(&game);
