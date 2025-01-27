@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:59:10 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/27 13:58:21 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:20:30 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ int	get_color(t_game *game)
 {
 	if (game->ray.horizontal == true)
 	{
-		// if (game->ray.direction_up == true)
-		// 	return (0x0000AAAA);
-		// else
+		if (game->ray.direction_up == true)
+			return (0xCD5C5CFF);
+		else
 			return (0x8B0000FF);
 	}
 	else
 	{
 		// if (game->ray.direction_up == true)
-		// 	return (0x00CCCCCC);
+		// 	return (0xDC143C00);
 		// else
 			return (0xB22222FF);
 	}

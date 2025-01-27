@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/27 13:54:20 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:34:29 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ void raycasting(t_game *game)
 	degree = FOV / WINDOW_WIDTH;
 	game->ray.angle = game->player.angle - (FOV / 2);
 	//clear_frame(game);
+	// if (game->frame != NULL)
+	// 	mlx_delete_image(game->mlx, game->frame);
 	ray = 0;
 	while (ray < WINDOW_WIDTH)
 	{

@@ -6,12 +6,11 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/27 14:01:06 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:40:18 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
 
 // void	draw_background(t_game *game)
 // {
@@ -42,11 +41,22 @@ static void	draw_floor_ceiling(t_game *game, int ray)
 	while (i < WINDOW_HEIGHT / 2)
 	{
 		if (place_for_minimap(game, ray, i) == false)
-			mlx_put_pixel(game->frame, ray, i, 0x87CEEBFF);
+		{
+			if (DARK == 1)
+				mlx_put_pixel(game->frame, ray, i, 0x000000FF);
+			else
+				mlx_put_pixel(game->frame, ray, i, 0x87CEEBFF);
+		}
 		i++;
 	}
 	while (i < WINDOW_HEIGHT)
-		mlx_put_pixel(game->frame, ray, i++, 0xC2B280FF);
+	{
+		if (DARK == 1)
+			mlx_put_pixel(game->frame, ray, i, 0x000000FF);
+		else
+			mlx_put_pixel(game->frame, ray, i, 0xC2B280FF);
+		i++;
+	}
 }
 
 static void draw_walls(t_game *game, float top, float bottom, int ray)
@@ -54,6 +64,21 @@ static void draw_walls(t_game *game, float top, float bottom, int ray)
 	int color;
 
 	color = get_color(game);
+	while (top <= bottom)
+	{
+		if (place_for_minimap(game, ray, top) == false)
+			mlx_put_pixel(game->frame, ray, top, color);
+		top++;
+		if (top >= WINDOW_HEIGHT)
+			break ;
+	}
+}
+
+static void draw_black(t_game *game, float top, float bottom, int ray)
+{
+	int color;
+
+	color = 0x000000FF;
 	while (top <= bottom)
 	{
 		if (place_for_minimap(game, ray, top) == false)
@@ -93,5 +118,13 @@ void    render_ray_into_frame(t_game *game, int ray)
 	if (wall_bottom > WINDOW_HEIGHT)
 		wall_bottom = WINDOW_HEIGHT;
 	draw_floor_ceiling(game, ray);
-	draw_walls(game, wall_top, wall_bottom, ray);
+	if (DARK == 1)
+	{
+		if (game->ray.length < 99)
+			draw_walls(game, wall_top, wall_bottom, ray);
+		else
+			draw_black(game, wall_top, wall_bottom, ray);
+	}
+	else
+		draw_walls(game, wall_top, wall_bottom, ray);
 }

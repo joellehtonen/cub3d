@@ -6,13 +6,13 @@
 #    By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/27 12:59:53 by jlehtone         ###   ########.fr        #
+#    Updated: 2025/01/27 14:32:03 by jlehtone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := cub3d
 CC := cc
-FLAGS := -Wall -Wextra -Werror -ggdb3 -g
+FLAGS := -Wall -Wextra -Werror -ggdb3 -g -pg
 CFILES := main.c \
 			check_for_path.c \
 			check_for_rgb.c \

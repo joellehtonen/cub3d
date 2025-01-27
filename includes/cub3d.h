@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/27 13:17:52 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:41:10 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@
 
 # define FLOOR_RGB 100
 # define CEILING_RGB 101
+
+# define DARK 0
 
 typedef struct s_ray
 {
