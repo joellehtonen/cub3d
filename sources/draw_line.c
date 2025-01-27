@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:42:01 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/27 11:11:35 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:06:38 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void bresenham_line(t_game *game, int x1, int y1, int x2, int y2)
     while (1) 
 	{
 		if (x1 > 0 && x1 < WINDOW_WIDTH && y1 > 0 && y1 < WINDOW_HEIGHT)
-        	mlx_put_pixel(game->minimap_img, x1, y1, 0xff0000ff);
+        	mlx_put_pixel(game->minimap_img, x1, y1, 0xff000088);
         if (x1 == x2 && y1 == y2)
 			break;
         int e2 = 2 * err;
