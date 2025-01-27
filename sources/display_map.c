@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:45:15 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/24 15:38:44 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:21:11 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void	display_map(t_game *game)
 		return ; //add fail check here
 	if (mlx_image_to_window(game->mlx, game->minimap_img, 0, 0) < 0)
 		return ; //add fail check here
+	mlx_set_instance_depth(&game->minimap_img->instances[0], 3);
 }

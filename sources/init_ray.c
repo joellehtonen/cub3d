@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:19:13 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/24 17:23:09 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:51:01 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void init_ray(t_game *game)
 {
-	draw_background(game);
-	mlx_image_to_window(game->mlx, game->background, 0, 0);
-	game->background->instances[0].z = -1;
+	//draw_background(game);
 	game->player.angle = game->starting_direction;
 }

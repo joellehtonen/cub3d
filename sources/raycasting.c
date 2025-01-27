@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/24 17:17:08 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:22:42 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void raycasting(t_game *game)
 
 	degree = FOV / WINDOW_WIDTH;
 	game->ray.angle = game->player.angle - (FOV / 2);
-	//clear_frame(game); // will this conflict with minimap? also not doing anything atm
+	//clear_frame(game);
 	ray = 0;
 	while (ray < WINDOW_WIDTH)
 	{
@@ -104,10 +104,11 @@ void raycasting(t_game *game)
 		h_inter = find_horizontal_intersection(game);
 		v_inter = find_vertical_intersection(game);
 		choose_shorter_distance(game, h_inter, v_inter);
-		draw_line(game);
 		render_ray_into_frame(game, ray);
+		draw_line(game);
 		game->ray.angle += degree;
 		ray++;
 	}
 	mlx_image_to_window(game->mlx, game->frame, 0, 0);
+	mlx_set_instance_depth(&game->frame->instances[0], 0);
 }

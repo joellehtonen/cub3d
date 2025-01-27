@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/24 17:11:25 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:19:13 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,45 +17,63 @@ static void	correct_distortion(t_game *game)
 	game->ray.length = game->ray.length * cos(game->ray.angle - game->player.angle);
 }
 
-void	draw_background(t_game *game)
-{
-	int	i;
-	int j;
+// void	draw_background(t_game *game)
+// {
+// 	int	i;
+// 	int j;
 
-	game->background = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-	// add checks
-	i = 0;
-	while (i < WINDOW_WIDTH)
-	{
-		j = 0;
-		while (j < WINDOW_HEIGHT / 2)
-			mlx_put_pixel(game->background, i, j++, 0x00FFFFFF); //green for testing
-		while (j < WINDOW_HEIGHT)
-			mlx_put_pixel(game->background, i, j++, 0x0000FFFF); //yellow for testing
-		i++;
-	}
-}
+// 	game->background = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+// 	// add checks
+// 	i = 0;
+// 	while (i < WINDOW_WIDTH)
+// 	{
+// 		j = 0;
+// 		while (j < WINDOW_HEIGHT / 2)
+// 			mlx_put_pixel(game->background, i, j++, 0x00FFFFFF);
+// 		while (j < WINDOW_HEIGHT)
+// 			mlx_put_pixel(game->background, i, j++, 0x0066FFFF);
+// 		i++;
+// 	}
+// 	mlx_image_to_window(game->mlx, game->background, 0, 0);
+// 	game->background->instances[0].z = -2;
+// }
 
 static void	draw_floor_ceiling(t_game *game, int ray)
 {
-	return ;
 	int	i;
 
 	i = 0;
 	while (i < WINDOW_HEIGHT / 2)
-		mlx_put_pixel(game->frame, ray, i++, 0x0000FFFF); //green for testing
+		mlx_put_pixel(game->frame, ray, i++, 0x87CEEBFF);
 	while (i < WINDOW_HEIGHT)
-		mlx_put_pixel(game->frame, ray, i++, 0x000000FF); //yellow for testing
+		mlx_put_pixel(game->frame, ray, i++, 0xC2B280FF);
+}
+
+static int	get_color(t_game *game)
+{
+	if (game->ray.horizontal == true)
+	{
+		// if (game->ray.direction_up == true)
+		// 	return (0x0000AAAA);
+		// else
+			return (0x8B0000FF);
+	}
+	else
+	{
+		// if (game->ray.direction_up == true)
+		// 	return (0x00CCCCCC);
+		// else
+			return (0xB22222FF);
+	}
 }
 
 static void draw_walls(t_game *game, float top, float bottom, int ray)
 {
 	int color;
 
-	color = 0x00FFFFFF; //later determine based direction, even later replace by textures
+	color = get_color(game);
 	while (top <= bottom)
 	{
-		//if ()
 		mlx_put_pixel(game->frame, ray, top, color);
 		top++;
 		if (top >= WINDOW_HEIGHT)
@@ -63,20 +81,19 @@ static void draw_walls(t_game *game, float top, float bottom, int ray)
 	}
 }
 
-void	clear_frame(t_game *game)
-{
-	int			i;
-	int			black;
+// void	clear_frame(t_game *game)
+// {
+// 	int			i;
+// 	int			alpha;
 	
-	black = 0xFF0000;
-	i = 0;
-	return ;
-	while (i < (WINDOW_HEIGHT * WINDOW_HEIGHT))
-	{
-		game->frame->pixels[i] = (uint8_t)black;
-		i++;
-	}
-}
+// 	alpha = 0x00000000;
+// 	i = 0;
+// 	while (i < (WINDOW_HEIGHT * WINDOW_HEIGHT))
+// 	{
+// 		((uint32_t *)game->frame->pixels)[i] = alpha;
+// 		i++;
+// 	}
+// }
 
 void    render_ray_into_frame(t_game *game, int ray)
 {

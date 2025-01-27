@@ -22,3 +22,5 @@ TO DO:
 TO FIX:
 - movement still angled
 - weird jagged corners in up/left walls = related to fmod???
+- issue is starting direction is anything except north. not starting in the map???
+- program slows down as it runs

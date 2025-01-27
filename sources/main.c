@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/24 17:19:47 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:15:02 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	initialize_variables(t_game *game)
 {
 	game->file = NULL;
 	game->frame = NULL;
+	game->background =NULL;
 	game->floor_img = NULL;
 	game->floor_texture = NULL;
 	game->found_ceiling_rgb = 0;

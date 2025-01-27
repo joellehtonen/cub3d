@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/24 17:21:08 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:23:04 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 # define WINDOW_HEIGHT 1080
 # define MAX_WIDTH_IN_TILES 60
 # define MAX_HEIGHT_IN_TILES 32
-# define MOVE_SIZE 14
+# define MOVE_SIZE 16
 # define MOVE_SPEED 4
 # define PI 3.14159265358979323846
 # define FOV (60 * (PI / 180))
-# define ROTATE_SPEED 0.02
+# define ROTATE_SPEED 0.04
 
 # define FORWARD 0
 # define RIGHT (PI / 2)
@@ -57,6 +57,7 @@ typedef struct s_ray
 	double	length;
 	bool	direction_left;
 	bool	direction_up;
+	bool	horizontal;
 } t_ray;
 
 typedef struct s_box

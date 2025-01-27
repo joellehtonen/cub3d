@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:08:49 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/24 10:43:44 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:23:49 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ void	choose_shorter_distance(t_game *game, double h_inter, double v_inter)
 		game->ray.length = h_inter;
 		game->ray.x = game->ray.hx;
 		game->ray.y = game->ray.hy;
-		//printf("h_inter chosen!\n");
+		game->ray.horizontal = true;
 	}
 	else
 	{
 		game->ray.length = v_inter;
 		game->ray.x = game->ray.vx;
 		game->ray.y = game->ray.vy;
-		//printf("v_inter chosen!\n");
+		game->ray.horizontal = false;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:42:01 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/24 15:41:18 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:11:35 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,5 @@ void clear_line(t_game *game)
 void draw_line(t_game *game)
 {
 	//clear_line(game);
-	// if ((int)game->ray.x < 0 || (int)game->ray.x > WINDOW_WIDTH ||
-	// 	(int)game->ray.y < 0 || (int)game->ray.y > WINDOW_HEIGHT)
-	// 	error_exit_and_free(game, "JOEL THIS IS ON YOU!!"); // Ethan is so mean :(
     bresenham_line(game, game->player.x, game->player.y, (int)game->ray.x, (int)game->ray.y);
-    //printf("drawing a line at x%f, y%f... player angle is %f, and ray angle is %f\n", game->ray.x, game->ray.y, game->player.angle_radian, game->ray.angle);
 }
