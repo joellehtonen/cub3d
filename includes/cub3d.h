@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/27 14:41:10 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:11:50 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define PI 3.14159265358979323846
 # define FOV (60 * (PI / 180))
 # define ROTATE_SPEED 0.04
+# define DEGREE FOV / WINDOW_WIDTH;
 
 # define FORWARD 0
 # define RIGHT (PI / 2)
@@ -142,6 +143,7 @@ bool	is_wall_float(t_game *game, float x, float y);
 void 	draw_line(t_game *game);
 void 	clear_line(t_game *game);
 void    render_ray_into_frame(t_game *game, int ray);
+void    render_ray_into_frame_dark(t_game *game, int ray);
 // void	clear_frame(t_game *game);
 void	correct_distortion(t_game *game);
 int		get_color(t_game *game);

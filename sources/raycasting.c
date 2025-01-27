@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/27 14:34:29 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:55:54 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,7 @@ void raycasting(t_game *game)
 	double	h_inter;
 	double	v_inter;
 	int		ray;
-	float	degree;
 
-	degree = FOV / WINDOW_WIDTH;
 	game->ray.angle = game->player.angle - (FOV / 2);
 	//clear_frame(game);
 	// if (game->frame != NULL)
@@ -106,10 +104,13 @@ void raycasting(t_game *game)
 		h_inter = find_horizontal_intersection(game);
 		v_inter = find_vertical_intersection(game);
 		choose_shorter_distance(game, h_inter, v_inter);
-		render_ray_into_frame(game, ray);
+		if (DARK == 0)
+			render_ray_into_frame(game, ray);
+		else
+			render_ray_into_frame_dark(game, ray);
 		//display_map(game);
 		draw_line(game); //maybe rename this
-		game->ray.angle += degree;
+		game->ray.angle += DEGREE;
 		ray++;
 	}
 	mlx_image_to_window(game->mlx, game->frame, 0, 0);

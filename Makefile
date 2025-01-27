@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+         #
+#    By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/27 14:32:03 by jlehtone         ###   ########.fr        #
+#    Updated: 2025/01/27 17:15:33 by kattimaijan      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,8 @@ CFILES := main.c \
 			validate_filetype.c \
 			validate_map.c \
 			draw_walls.c \
-			draw_utils.c \
-			init_ray.c
-
+			draw_walls_dark.c \
+			draw_utils.c
 HEADER = includes/cub3d.h
 LIBFT := libft/libft.a
 MLX42 := MLX42/build/libmlx42.a

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/27 14:08:22 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:45:11 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int argc, char *argv[])
 	resize_images(&game);
 	display_map(&game);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
-	//init_ray(&game);
+	// draw_background(&game);
 	game.player.angle = game.starting_direction;
 	mlx_loop_hook(game.mlx, &rendering, &game);
 	mlx_loop(game.mlx);

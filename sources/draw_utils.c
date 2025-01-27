@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:59:10 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/27 14:20:30 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:18:29 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,23 @@ int	get_color(t_game *game)
 	}
 	else
 	{
-		// if (game->ray.direction_up == true)
-		// 	return (0xDC143C00);
-		// else
+		if (game->ray.direction_left == true)
+			return (0xFF8C00FF);
+		else
 			return (0xB22222FF);
 	}
 }
+
+// void	clear_frame(t_game *game)
+// {
+// 	int			i;
+// 	int			alpha;
+	
+// 	alpha = 0x00000000;
+// 	i = 0;
+// 	while (i < (WINDOW_HEIGHT * WINDOW_HEIGHT))
+// 	{
+// 		((uint32_t *)game->frame->pixels)[i] = alpha;
+// 		i++;
+// 	}
+// }
