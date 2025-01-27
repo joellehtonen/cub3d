@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/27 11:22:42 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 13:54:20 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,14 @@ void raycasting(t_game *game)
 		v_inter = find_vertical_intersection(game);
 		choose_shorter_distance(game, h_inter, v_inter);
 		render_ray_into_frame(game, ray);
-		draw_line(game);
+		//display_map(game);
+		draw_line(game); //maybe rename this
 		game->ray.angle += degree;
 		ray++;
 	}
 	mlx_image_to_window(game->mlx, game->frame, 0, 0);
-	mlx_set_instance_depth(&game->frame->instances[0], 0);
+	//mlx_set_instance_depth(&game->frame->instances[0], 1);
+	//mlx_image_to_window(game->mlx, game->minimap_img, 0, 0);
+	//mlx_set_instance_depth(&game->frame->instances[0], game->layers);
 }
+ 

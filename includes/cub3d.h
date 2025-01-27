@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/27 10:23:04 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 13:17:52 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <math.h>
 # include "../libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
+//# include "/home/jlehtone/Desktop/git_home/cub3d/MLX42/include/MLX42/MLX42_Int.h"
 
 # define TILE_SIZE 32
 # define WINDOW_WIDTH 1920
@@ -98,9 +99,9 @@ typedef struct s_game
 	mlx_image_t			*frame;
 	mlx_image_t			*background;
 	mlx_texture_t		*wall_texture;
-	mlx_image_t			*wall_img; //we ought to rename these to refer to (mini)map
+	mlx_image_t			*wall_img; //maybe we ought to rename these to refer to (mini)map
 	mlx_texture_t		*floor_texture;
-	mlx_image_t			*floor_img; //we ought to rename these to refer to (mini)map
+	mlx_image_t			*floor_img; //maybe we ought to rename these to refer to (mini)map
 	mlx_texture_t		*player_texture;
 	mlx_image_t			*minimap_img;
 	struct s_player		player;
@@ -123,7 +124,7 @@ void	create_images(t_game *game);
 void	resize_images(t_game *game);
 void	display_map(t_game *game);
 // raycasting functions
-void 	init_ray(t_game *game);
+//void 	init_ray(t_game *game);
 void	raycasting(t_game *game);
 void	determine_ray_direction(t_game *game);
 void	reset_angles(t_game *game);
@@ -135,11 +136,14 @@ bool	controls(t_game *game);
 bool	is_wall(t_game *game, int x, int y);
 bool	is_wall_float(t_game *game, float x, float y);
 // drawing functions
-void	draw_background(t_game *game);
+// void	draw_background(t_game *game);
 void 	draw_line(t_game *game);
 void 	clear_line(t_game *game);
 void    render_ray_into_frame(t_game *game, int ray);
-void	clear_frame(t_game *game);
+// void	clear_frame(t_game *game);
+void	correct_distortion(t_game *game);
+int		get_color(t_game *game);
+bool	place_for_minimap(t_game* game, int y, int x);
 
 void 	check_for_rgb(t_game *game, int i, int *j, int element);
 void	copy_map(t_game *game, char **file);

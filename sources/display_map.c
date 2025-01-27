@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:45:15 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/27 11:21:11 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/27 13:04:12 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 static int	images_to_window(t_game *game, int x, int y)
 {
 	if (game->map[y][x] == '1')
+	{
 		if (mlx_image_to_window(game->mlx, game->wall_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
 			return (0);
+	}
 	if (game->map[y][x] == '0')
+	{
 		if (mlx_image_to_window(game->mlx, game->floor_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
 			return (0);
-	if (game->map[y][x] == 'N')
+	}
+	if (game->map[y][x] == 'N') //add other directions as well
 	{
 		if (mlx_image_to_window(game->mlx, game->floor_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
 			return (0);
@@ -51,5 +55,4 @@ void	display_map(t_game *game)
 		return ; //add fail check here
 	if (mlx_image_to_window(game->mlx, game->minimap_img, 0, 0) < 0)
 		return ; //add fail check here
-	mlx_set_instance_depth(&game->minimap_img->instances[0], 3);
 }
