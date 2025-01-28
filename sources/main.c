@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/28 09:56:11 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:03:18 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	initialize_variables(t_game *game)
 	game->file = NULL;
 	game->frame = NULL;
 	game->background =NULL;
-	game->floor_img = NULL;
+	game->minimap_floor_img = NULL;
 	game->floor_texture = NULL;
 	game->found_ceiling_rgb = 0;
 	game->found_floor_rgb = 0;
@@ -31,7 +31,7 @@ static void	initialize_variables(t_game *game)
 	game->minimap_img = NULL;
 	game->mlx = NULL;
 	game->starting_direction = 0;
-	game->wall_img = NULL;
+	game->minimap_wall_img = NULL;
 	game->wall_texture = NULL;
 	game->width_in_tiles = 0;
 	game->map = NULL;
@@ -45,6 +45,8 @@ static void	initialize_variables(t_game *game)
 	game->ceiling_R = -1;
 	game->ceiling_G = -1;
 	game->ceiling_B = -1;
+	game->floor_RGB = 0;
+	game->ceiling_RGB = 0;
 }
 
 int	main(int argc, char *argv[])

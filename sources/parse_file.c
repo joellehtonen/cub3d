@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/24 10:46:42 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:59:00 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ static void	loop_through_file(t_game *game, int *i)
 	}
 }
 
+
+
 void	parse_file(t_game *game)
 {
 	int	i;
@@ -83,6 +85,8 @@ void	parse_file(t_game *game)
 	if (!(check_for_all_paths(game)))
 		error_exit_and_free(game, "Missing path to texture");
 	validate_rgb(game);
+	game->floor_RGB = (game->floor_R << 24) | (game->floor_G  << 16) | game->floor_B << 8 | 255;
+	game->ceiling_RGB = (game->ceiling_R << 24) | (game->ceiling_G  << 16) | game->ceiling_B << 8 | 255;
 	while (game->file[i][0] == '\n')
 		i++;
 	copy_map(game, game->file + i);

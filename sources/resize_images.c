@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:42:02 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/23 15:02:52 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:03:18 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	resize_images(t_game *game)
 {
-	if (!mlx_resize_image(game->wall_img, TILE_SIZE, TILE_SIZE))
+	if (!mlx_resize_image(game->minimap_wall_img, TILE_SIZE, TILE_SIZE))
 		error_exit_and_free(game, "MLX failed to resize an image");
-	if (!mlx_resize_image(game->floor_img, TILE_SIZE, TILE_SIZE))
+	if (!mlx_resize_image(game->minimap_floor_img, TILE_SIZE, TILE_SIZE))
 		error_exit_and_free(game, "MLX failed to resize an image");
 	if (!mlx_resize_image(game->player.player_img, TILE_SIZE / 4,
 			TILE_SIZE / 4))

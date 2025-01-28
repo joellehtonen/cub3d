@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/28 12:02:39 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:05:04 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,11 @@ typedef struct s_game
     int		floor_R;
 	int		floor_G;
 	int		floor_B;
-	int		floor_RGB;
+	unsigned int		floor_RGB;
     int		ceiling_R;
 	int		ceiling_G;
 	int		ceiling_B;
-	int		ceiling_RGB;
+	unsigned int		ceiling_RGB;
 	bool	found_floor_rgb;
 	bool	found_ceiling_rgb;
 	float	starting_direction;
@@ -98,9 +98,9 @@ typedef struct s_game
 	mlx_image_t			*frame;
 	mlx_image_t			*background;
 	mlx_texture_t		*wall_texture;
-	mlx_image_t			*wall_img; //maybe we ought to rename these to refer to (mini)map
+	mlx_image_t			*minimap_wall_img;
 	mlx_texture_t		*floor_texture;
-	mlx_image_t			*floor_img; //maybe we ought to rename these to refer to (mini)map
+	mlx_image_t			*minimap_floor_img;
 	mlx_texture_t		*player_texture;
 	mlx_image_t			*minimap_img;
 	struct s_player		player;
@@ -146,5 +146,6 @@ bool	place_for_minimap(t_game* game, int y, int x);
 void 	check_for_rgb(t_game *game, int i, int *j, int element);
 void	copy_map(t_game *game, char **file);
 void	validate_map(t_game *game);
+void 	rgb_to_hex(t_game *game);
 
 #endif
