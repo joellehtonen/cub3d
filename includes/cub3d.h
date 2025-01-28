@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/28 11:54:39 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:00:03 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_ray
 	float	vy;
     float	angle;
 	double	length;
+	float	wall_height;
 	bool	direction_left;
 	bool	direction_up;
 	bool	horizontal;
@@ -135,15 +136,14 @@ bool	controls(t_game *game);
 bool	is_wall(t_game *game, int x, int y);
 bool	is_wall_float(t_game *game, float x, float y);
 // drawing functions
-// void	draw_background(t_game *game);
 void 	draw_line(t_game *game);
 void 	clear_line(t_game *game);
 void    render_ray_into_frame(t_game *game, int ray);
 void    render_ray_into_frame_dark(t_game *game, int ray);
-// void	clear_frame(t_game *game);
 void	correct_distortion(t_game *game);
 int		get_color(t_game *game);
 bool	place_for_minimap(t_game* game, int y, int x);
+uint32_t	get_pixel_color(t_game *game, int x, int y);
 
 void 	check_for_rgb(t_game *game, int i, int *j, int element);
 void	copy_map(t_game *game, char **file);

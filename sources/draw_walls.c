@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/28 08:48:07 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:09:11 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,19 @@ static void	draw_floor_ceiling(t_game *game, int ray)
 	}
 }
 
-static void draw_walls(t_game *game, float top, float bottom, int ray)
+static void draw_walls(t_game *game, float start, float end, int ray)
 {
-	int color;
+	uint32_t color;
 
-	color = get_color(game);
-	while (top <= bottom && top < WINDOW_HEIGHT)
+	//color = get_color(game);
+	while (start <= end && start < WINDOW_HEIGHT)
 	{
-		if (place_for_minimap(game, ray, top) == false)
-			mlx_put_pixel(game->frame, ray, top, color);
-		top++;
+		if (place_for_minimap(game, ray, start) == false)
+		{
+			color = get_pixel_color(game, ray, start);
+			mlx_put_pixel(game->frame, ray, start, color);
+		}
+		start++;
 	}
 }
 

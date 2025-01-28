@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/27 17:45:11 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/28 13:11:48 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void	initialize_variables(t_game *game)
 {
 	game->file = NULL;
 	game->frame = NULL;
-	game->background =NULL;
 	game->floor_img = NULL;
 	game->floor_texture = NULL;
 	game->found_ceiling_rgb = 0;
