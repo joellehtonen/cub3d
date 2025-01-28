@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/28 16:00:03 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/28 21:19:24 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define TILE_SIZE 32
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
+# define MINIMAP_WIDTH 533
+# define MINIMAP_HEIGHT 300
 # define MAX_WIDTH_IN_TILES 60
 # define MAX_HEIGHT_IN_TILES 32
 # define MOVE_SIZE 16
@@ -38,10 +40,10 @@
 # define BACK PI
 # define LEFT (3 * PI / 2)
 
-# define NORTH LEFT
-# define EAST FORWARD
-# define SOUTH RIGHT
-# define WEST BACK
+# define NORTH 200
+# define EAST 201
+# define SOUTH 202
+# define WEST 203
 
 # define FLOOR_RGB 100
 # define CEILING_RGB 101
@@ -84,11 +86,11 @@ typedef struct s_game
     int		floor_R;
 	int		floor_G;
 	int		floor_B;
-	int		floor_RGB;
+	unsigned int		floor_RGB;
     int		ceiling_R;
 	int		ceiling_G;
 	int		ceiling_B;
-	int		ceiling_RGB;
+	unsigned int		ceiling_RGB;
 	bool	found_floor_rgb;
 	bool	found_ceiling_rgb;
 	float	starting_direction;
@@ -99,14 +101,12 @@ typedef struct s_game
 	mlx_texture_t		*south_texture;
 	mlx_texture_t		*west_texture;
 	mlx_texture_t		*wall_texture;
-	mlx_image_t			*wall_img; //maybe we ought to rename these to refer to (mini)map
+	mlx_image_t			*minimap_wall_img;
 	mlx_texture_t		*floor_texture;
-	mlx_image_t			*floor_img; //maybe we ought to rename these to refer to (mini)map
+	mlx_image_t			*minimap_floor_img;
 	mlx_texture_t		*player_texture;
 	mlx_image_t			*minimap_img;
 	struct s_player		player;
-	int window_width;
-	int window_height;
 	int width_in_tiles;
 	int height_in_tiles;
 	struct s_ray		ray;
@@ -148,5 +148,6 @@ uint32_t	get_pixel_color(t_game *game, int x, int y);
 void 	check_for_rgb(t_game *game, int i, int *j, int element);
 void	copy_map(t_game *game, char **file);
 void	validate_map(t_game *game);
+void 	rgb_to_hex(t_game *game);
 
 #endif

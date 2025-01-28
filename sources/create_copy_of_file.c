@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 10:47:42 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/22 11:11:01 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:53:21 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ static void	get_num_of_lines(char *filename, int *num_of_lines)
 	close(fd);
 }
 
-static void check_for_empty_file(int num_of_lines)
+static void	check_for_empty_file(int num_of_lines)
 {
 	if (num_of_lines == 0)
-		error_exit("Invalid file: File is empty");	
+		error_exit("Invalid file: File is empty");
 }
 
 static void	copy_file(t_game *game, char *filename)
@@ -50,7 +50,7 @@ static void	copy_file(t_game *game, char *filename)
 	i = 0;
 	(game->file)[0] = get_next_line(fd);
 	while ((game->file)[i])
-		(game->file)[++i] = get_next_line(fd); //ADD MALLOC CHECK AND IF FAIL FREE PREVIOUS
+		(game->file)[++i] = get_next_line(fd);
 	(game->file)[i] = NULL;
 	close(fd);
 }
@@ -62,14 +62,6 @@ static void	malloc_for_copy_file(t_game *game, int num_of_lines)
 		error_exit("Failed to malloc copy of file");
 }
 
-// static void	print_file(char **file) //REMOVE
-// {
-// 	int i = 0;
-
-// 	while (file[i])
-// 		printf("%s", file[i++]);
-// }
-
 void	create_copy_of_file(t_game *game, char *filename)
 {
 	int		num_of_lines;
@@ -78,5 +70,4 @@ void	create_copy_of_file(t_game *game, char *filename)
 	check_for_empty_file(num_of_lines);
 	malloc_for_copy_file(game, num_of_lines);
 	copy_file(game, filename);
-	//print_file(game->file); //REMOVE
 }

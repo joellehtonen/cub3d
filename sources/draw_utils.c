@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:59:10 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/28 14:22:21 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/28 21:19:56 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 bool	place_for_minimap(t_game* game, int x, int y)
 {
-	if (x < (game->width_in_tiles * TILE_SIZE) && y < (game->height_in_tiles * TILE_SIZE))
+	(void)game;
+	if (x < (MINIMAP_WIDTH) && y < (MINIMAP_HEIGHT))
 		return (true);
 	else
 		return (false);

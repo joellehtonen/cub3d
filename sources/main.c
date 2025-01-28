@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/28 13:11:48 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/28 21:20:21 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "../includes/cub3d.h"
 
 static void	check_number_of_arguments(int n)
 {
 	if (n != 2)
-		error_exit("Invalid number of arguments");	
+		error_exit("Invalid number of arguments");
 }
 
 static void	initialize_variables(t_game *game)
@@ -32,11 +30,11 @@ static void	initialize_variables(t_game *game)
 	game->minimap_img = NULL;
 	game->mlx = NULL;
 	game->starting_direction = 0;
-	game->wall_img = NULL;
+	game->minimap_wall_img = NULL;
 	game->wall_texture = NULL;
 	game->width_in_tiles = 0;
-    game->map = NULL;
-    game->path_to_north_texture = NULL;
+	game->map = NULL;
+	game->path_to_north_texture = NULL;
 	game->path_to_south_texture = NULL;
 	game->path_to_west_texture = NULL;
 	game->path_to_east_texture = NULL;
@@ -46,11 +44,13 @@ static void	initialize_variables(t_game *game)
 	game->ceiling_R = -1;
 	game->ceiling_G = -1;
 	game->ceiling_B = -1;
+	game->floor_RGB = 0;
+	game->ceiling_RGB = 0;
 }
 
 int	main(int argc, char *argv[])
 {
-	t_game game;
+	t_game	game;
 
 	//Init and parsing --------------------------------------------------------
 	initialize_variables(&game);
