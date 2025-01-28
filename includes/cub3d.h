@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/28 09:57:33 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:02:39 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define TILE_SIZE 32
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
+# define MINIMAP_WIDTH 533
+# define MINIMAP_HEIGHT 300
 # define MAX_WIDTH_IN_TILES 60
 # define MAX_HEIGHT_IN_TILES 32
 # define MOVE_SIZE 16
@@ -102,8 +104,6 @@ typedef struct s_game
 	mlx_texture_t		*player_texture;
 	mlx_image_t			*minimap_img;
 	struct s_player		player;
-	int window_width;
-	int window_height;
 	int width_in_tiles;
 	int height_in_tiles;
 	struct s_ray		ray;

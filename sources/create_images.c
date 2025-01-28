@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:36:29 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/28 09:55:23 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:03:24 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	create_images(t_game *game)
 	if (!game->player.player_img)
 		error_exit_and_free(game, "MLX failed to create player image");
 	game->minimap_img = mlx_new_image(game->mlx,
-			TILE_SIZE * 20, TILE_SIZE * 10);
+			MINIMAP_WIDTH, MINIMAP_HEIGHT);
 }
