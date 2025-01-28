@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/28 09:50:12 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:54:39 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <math.h>
 # include "../libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
-//# include "/home/jlehtone/Desktop/git_home/cub3d/MLX42/include/MLX42/MLX42_Int.h"
 
 # define TILE_SIZE 32
 # define WINDOW_WIDTH 1920
@@ -94,7 +93,10 @@ typedef struct s_game
 	float	starting_direction;
 	mlx_t				*mlx;
 	mlx_image_t			*frame;
-	mlx_image_t			*background;
+	mlx_texture_t		*north_texture;
+	mlx_texture_t		*east_texture;
+	mlx_texture_t		*south_texture;
+	mlx_texture_t		*west_texture;
 	mlx_texture_t		*wall_texture;
 	mlx_image_t			*wall_img; //maybe we ought to rename these to refer to (mini)map
 	mlx_texture_t		*floor_texture;
