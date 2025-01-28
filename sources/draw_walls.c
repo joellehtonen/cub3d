@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/27 18:16:47 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/28 08:48:07 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void draw_walls(t_game *game, float top, float bottom, int ray)
 	int color;
 
 	color = get_color(game);
-	while (top <= bottom)
+	while (top <= bottom && top < WINDOW_HEIGHT)
 	{
 		if (place_for_minimap(game, ray, top) == false)
 			mlx_put_pixel(game->frame, ray, top, color);

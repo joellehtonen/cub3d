@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:59:10 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/27 18:18:29 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/28 09:38:24 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	correct_distortion(t_game *game)
 	game->ray.length = game->ray.length * cos(game->ray.angle - game->player.angle);
 }
 
-int	get_color(t_game *game)
+int	get_color(t_game *game) //later change this to get the textures
 {
 	if (game->ray.horizontal == true)
 	{

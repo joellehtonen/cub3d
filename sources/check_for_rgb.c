@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_for_rgb.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:16:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/20 12:21:40 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:03:28 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

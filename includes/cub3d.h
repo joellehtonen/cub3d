@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/27 18:11:50 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/28 09:50:12 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 # define MAX_WIDTH_IN_TILES 60
 # define MAX_HEIGHT_IN_TILES 32
 # define MOVE_SIZE 16
-# define MOVE_SPEED 4
+# define MOVE_SPEED 6
 # define PI 3.14159265358979323846
 # define FOV (60 * (PI / 180))
-# define ROTATE_SPEED 0.04
+# define ROTATE_SPEED 0.4
 # define DEGREE FOV / WINDOW_WIDTH;
 
 # define FORWARD 0
@@ -64,14 +64,6 @@ typedef struct s_ray
 	bool	horizontal;
 } t_ray;
 
-typedef struct s_box
-{	
-	int	x;
-	int	y;
-	int	width;
-	int	height;
-}	t_box;
-
 typedef struct s_player
 {
 	int				x;
@@ -92,9 +84,11 @@ typedef struct s_game
     int		floor_R;
 	int		floor_G;
 	int		floor_B;
+	int		floor_RGB;
     int		ceiling_R;
 	int		ceiling_G;
 	int		ceiling_B;
+	int		ceiling_RGB;
 	bool	found_floor_rgb;
 	bool	found_ceiling_rgb;
 	float	starting_direction;
