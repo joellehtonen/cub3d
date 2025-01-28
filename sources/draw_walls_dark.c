@@ -1,54 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_walls.c                                       :+:      :+:    :+:   */
+/*   draw_walls_dark.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/28 08:48:07 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/28 08:48:14 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-// void	draw_background(t_game *game)
-// {
-// 	int	i;
-// 	int j;
-
-// 	game->background = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-// 	// add checks
-// 	i = 0;
-// 	while (i < WINDOW_WIDTH)
-// 	{
-// 		j = 0;
-// 		while (j < WINDOW_HEIGHT / 2)
-// 			mlx_put_pixel(game->background, i, j++, 0x00FFFFFF);
-// 		while (j < WINDOW_HEIGHT)
-// 			mlx_put_pixel(game->background, i, j++, 0x0066FFFF);
-// 		i++;
-// 	}
-// 	mlx_image_to_window(game->mlx, game->background, 0, 0);
-// 	game->background->instances[0].z = -2;
-// }
-
-static void	draw_floor_ceiling(t_game *game, int ray)
+static void	draw_floor_ceiling_dark(t_game *game, int ray)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (i < WINDOW_HEIGHT / 2)
 	{
 		if (place_for_minimap(game, ray, i) == false)
-			mlx_put_pixel(game->frame, ray, i, 0x87CEEBFF);
+			mlx_put_pixel(game->frame, ray, i, 0x000000FF); //ceiling
 		i++;
 	}
+	while (i < WINDOW_HEIGHT / 1.5)
+		mlx_put_pixel(game->frame, ray, i++, 0x000000FF); //distant floor
 	while (i < WINDOW_HEIGHT)
-	{
-		mlx_put_pixel(game->frame, ray, i, 0xC2B280FF);
-		i++;
-	}
+		mlx_put_pixel(game->frame, ray, i++, 0x00000000); //closer floor
 }
 
 static void draw_walls(t_game *game, float top, float bottom, int ray)
@@ -61,10 +39,25 @@ static void draw_walls(t_game *game, float top, float bottom, int ray)
 		if (place_for_minimap(game, ray, top) == false)
 			mlx_put_pixel(game->frame, ray, top, color);
 		top++;
+		if (top >= WINDOW_HEIGHT)
+			break ;
 	}
 }
 
-void    render_ray_into_frame(t_game *game, int ray)
+static void draw_black(t_game *game, float top, float bottom, int ray)
+{
+	int color;
+
+	color = 0x000000FF;
+	while (top <= bottom)
+	{
+		if (place_for_minimap(game, ray, top) == false)
+			mlx_put_pixel(game->frame, ray, top, color);
+		top++;
+	}
+}
+
+void    render_ray_into_frame_dark(t_game *game, int ray)
 {
 	float		wall_height;
 	float		wall_top;
@@ -78,6 +71,9 @@ void    render_ray_into_frame(t_game *game, int ray)
 	wall_bottom = (WINDOW_HEIGHT / 2) + (wall_height / 2);
 	if (wall_bottom > WINDOW_HEIGHT)
 		wall_bottom = WINDOW_HEIGHT;
-	draw_floor_ceiling(game, ray);
-	draw_walls(game, wall_top, wall_bottom, ray);
+	draw_floor_ceiling_dark(game, ray);
+	if (game->ray.length < 95)
+		draw_walls(game, wall_top, wall_bottom, ray);
+	else
+		draw_black(game, wall_top, wall_bottom, ray);
 }

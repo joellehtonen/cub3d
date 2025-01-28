@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:36:29 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/23 15:02:08 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:55:23 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	create_images(t_game *game)
 {
+	game->frame = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	game->wall_img = mlx_texture_to_image(game->mlx, game->wall_texture);
 	if (!game->wall_img)
 		error_exit_and_free(game, "MLX failed to create wall image");

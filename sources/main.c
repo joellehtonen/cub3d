@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/24 12:00:48 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:56:11 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static void	check_number_of_arguments(int n)
 static void	initialize_variables(t_game *game)
 {
 	game->file = NULL;
+	game->frame = NULL;
+	game->background =NULL;
 	game->floor_img = NULL;
 	game->floor_texture = NULL;
 	game->found_ceiling_rgb = 0;
@@ -64,8 +66,9 @@ int	main(int argc, char *argv[])
 	create_images(&game);
 	resize_images(&game);
 	display_map(&game);
-	//mlx_set_setting(MLX_STRETCH_IMAGE, 1);
-	determine_player_direction(&game);
+	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
+	// draw_background(&game);
+	game.player.angle = game.starting_direction;
 	mlx_loop_hook(game.mlx, &rendering, &game);
 	mlx_loop(game.mlx);
 	free_all(&game);

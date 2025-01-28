@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/24 09:55:41 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:20:20 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static bool	move_player(t_game *game, double direction)
 		game->player.y = new_y;
 		game->player.player_img->instances[0].x = new_x;
 		game->player.player_img->instances[0].y = new_y;
+		
 		return (true);
 	}
 	else

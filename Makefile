@@ -6,13 +6,13 @@
 #    By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/24 09:15:30 by jlehtone         ###   ########.fr        #
+#    Updated: 2025/01/28 08:52:45 by jlehtone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := cub3d
 CC := cc
-FLAGS := -Wall -Wextra -Werror -ggdb3 -g
+FLAGS := -Wall -Wextra -Werror -ggdb3 -g -pg -O3 -ffast-math
 CFILES := main.c \
 			check_for_path.c \
 			check_for_rgb.c \
@@ -34,7 +34,9 @@ CFILES := main.c \
 			resize_images.c \
 			validate_filetype.c \
 			validate_map.c \
-
+			draw_walls.c \
+			draw_walls_dark.c \
+			draw_utils.c
 HEADER = includes/cub3d.h
 LIBFT := libft/libft.a
 MLX42 := MLX42/build/libmlx42.a

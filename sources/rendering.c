@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:35:13 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/24 09:13:23 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/24 15:51:18 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void    rendering(void * content)
     game =  (t_game *)content;
     bool     movement;
 
+    raycasting(game);
     movement = controls(game);
     if (movement == true)
     {
         clear_line(game);
         raycasting(game);
-        //draw_line(game);
     }
 }
