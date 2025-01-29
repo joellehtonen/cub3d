@@ -6,7 +6,7 @@
 #    By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/28 13:27:33 by eberkowi         ###   ########.fr        #
+#    Updated: 2025/01/28 16:54:23 by eberkowi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CFILES := main.c \
 			create_copy_of_file.c \
 			create_images.c \
 			create_textures.c \
-			display_map.c \
+			display_images.c \
 			draw_line.c \
 			error_exit.c \
 			free_all.c \
@@ -36,7 +36,8 @@ CFILES := main.c \
 			validate_map.c \
 			draw_walls.c \
 			draw_walls_dark.c \
-			draw_utils.c
+			draw_utils.c \
+			torch_animation.c
 HEADER = includes/cub3d.h
 LIBFT := libft/libft.a
 MLX42 := MLX42/build/libmlx42.a

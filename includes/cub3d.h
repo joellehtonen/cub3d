@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/28 14:05:04 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:06:35 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,9 @@ typedef struct s_game
 	mlx_image_t			*minimap_floor_img;
 	mlx_texture_t		*player_texture;
 	mlx_image_t			*minimap_img;
+	mlx_texture_t		*torch_animation_textures[8];
+	mlx_image_t			*torch_animation_images[8];
+	int					frame_counter;
 	struct s_player		player;
 	int width_in_tiles;
 	int height_in_tiles;
@@ -119,7 +122,7 @@ void	check_for_path(t_game *game, int i, int *j, char **path);
 void	create_textures(t_game *game);
 void	create_images(t_game *game);
 void	resize_images(t_game *game);
-void	display_map(t_game *game);
+void	display_images(t_game *game);
 // raycasting functions
 //void 	init_ray(t_game *game);
 void	raycasting(t_game *game);
@@ -147,5 +150,6 @@ void 	check_for_rgb(t_game *game, int i, int *j, int element);
 void	copy_map(t_game *game, char **file);
 void	validate_map(t_game *game);
 void 	rgb_to_hex(t_game *game);
+void	torch_animation(t_game *game);
 
 #endif

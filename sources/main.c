@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/28 14:03:18 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:53:39 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void	initialize_variables(t_game *game)
 	game->ceiling_B = -1;
 	game->floor_RGB = 0;
 	game->ceiling_RGB = 0;
+	game->frame_counter = 0;
 }
 
 int	main(int argc, char *argv[])
@@ -67,7 +68,7 @@ int	main(int argc, char *argv[])
 	create_textures(&game);
 	create_images(&game);
 	resize_images(&game);
-	display_map(&game);
+	display_images(&game);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	// draw_background(&game);
 	game.player.angle = game.starting_direction;

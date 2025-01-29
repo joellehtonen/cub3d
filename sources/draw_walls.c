@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/28 14:01:10 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:46:11 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	draw_floor_ceiling(t_game *game, int ray)
 	i = 0;
 	while (i < WINDOW_HEIGHT / 2)
 	{
-		if (place_for_minimap(game, ray, i) == false)
+		//if (place_for_minimap(game, ray, i) == false)
 			mlx_put_pixel(game->frame, ray, i, game->ceiling_RGB);
 		i++;
 	}
@@ -58,7 +58,7 @@ static void draw_walls(t_game *game, float top, float bottom, int ray)
 	color = get_color(game);
 	while (top <= bottom && top < WINDOW_HEIGHT)
 	{
-		if (place_for_minimap(game, ray, top) == false)
+		//if (place_for_minimap(game, ray, top) == false)
 			mlx_put_pixel(game->frame, ray, top, color);
 		top++;
 	}
