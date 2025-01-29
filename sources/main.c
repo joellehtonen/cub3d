@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/29 11:56:06 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/29 12:04:45 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void	initialize_variables(t_game *game)
 	game->ceiling_B = -1;
 	game->floor_RGB = 0;
 	game->ceiling_RGB = 0;
+	game->frame_counter = 0;
 }
 
 int	main(int argc, char *argv[])
@@ -66,7 +67,7 @@ int	main(int argc, char *argv[])
 	create_textures(&game);
 	create_images(&game);
 	resize_images(&game);
-	display_map(&game);
+	display_images(&game);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	// draw_background(&game);
 	game.player.angle = game.starting_direction;

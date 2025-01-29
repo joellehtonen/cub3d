@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:45:15 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/28 14:03:18 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:53:52 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,16 @@ static int	images_to_window(t_game *game, int x, int y)
 		game->player.x = x * TILE_SIZE;
 		game->player.y = y * TILE_SIZE;
 	}
+	
 	return (1);
 }
 
-void	display_map(t_game *game)
+void	display_images(t_game *game)
 {
 	int	x;
 	int	y;
 
+	mlx_image_to_window(game->mlx, game->frame, 0, 0);
 	y = 0;
 	while (game->map[y])
 	{

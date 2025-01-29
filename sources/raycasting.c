@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/27 17:55:54 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/28 16:45:07 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,8 @@ void raycasting(t_game *game)
 		game->ray.angle += DEGREE;
 		ray++;
 	}
-	mlx_image_to_window(game->mlx, game->frame, 0, 0);
+	// mlx_image_to_window(game->mlx, game->frame, 0, 0);
+	
 	//mlx_set_instance_depth(&game->frame->instances[0], 1);
 	//mlx_image_to_window(game->mlx, game->minimap_img, 0, 0);
 	//mlx_set_instance_depth(&game->frame->instances[0], game->layers);

@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/29 11:27:58 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/29 12:04:39 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	draw_floor_ceiling(t_game *game, int ray)
 	i = 0;
 	while (i < WINDOW_HEIGHT / 2)
 	{
-		if (place_for_minimap(game, ray, i) == false)
+		//if (place_for_minimap(game, ray, i) == false)
 			mlx_put_pixel(game->frame, ray, i, game->ceiling_RGB);
 		i++;
 	}

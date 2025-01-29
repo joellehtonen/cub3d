@@ -6,7 +6,7 @@
 #    By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/28 21:20:30 by kattimaijan      ###   ########.fr        #
+#    Updated: 2025/01/29 12:05:05 by kattimaijan      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CFILES := main.c \
 			create_copy_of_file.c \
 			create_images.c \
 			create_textures.c \
-			display_map.c \
+			display_images.c \
 			draw_line.c \
 			error_exit.c \
 			free_all.c \
@@ -37,6 +37,7 @@ CFILES := main.c \
 			draw_walls.c \
 			draw_walls_dark.c \
 			draw_utils.c \
+			torch_animation.c \
 			get_pixel_data.c
 HEADER = includes/cub3d.h
 LIBFT := libft/libft.a

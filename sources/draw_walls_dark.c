@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls_dark.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/28 08:48:14 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:06:09 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	draw_floor_ceiling_dark(t_game *game, int ray)
 			mlx_put_pixel(game->frame, ray, i, 0x000000FF); //ceiling
 		i++;
 	}
-	while (i < WINDOW_HEIGHT / 1.5)
+	while (i < WINDOW_HEIGHT / 1.3)
 		mlx_put_pixel(game->frame, ray, i++, 0x000000FF); //distant floor
 	while (i < WINDOW_HEIGHT)
 		mlx_put_pixel(game->frame, ray, i++, 0x00000000); //closer floor
@@ -72,7 +72,7 @@ void    render_ray_into_frame_dark(t_game *game, int ray)
 	if (wall_bottom > WINDOW_HEIGHT)
 		wall_bottom = WINDOW_HEIGHT;
 	draw_floor_ceiling_dark(game, ray);
-	if (game->ray.length < 95)
+	if (game->ray.length < 60)
 		draw_walls(game, wall_top, wall_bottom, ray);
 	else
 		draw_black(game, wall_top, wall_bottom, ray);
