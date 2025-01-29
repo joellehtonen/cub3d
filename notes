@@ -13,13 +13,12 @@ RAYCASTING NOTES
 The flag (-O3 -ffast-math) is used for optimization.
 
 TO DO:
-- rename draw-line functions to be more clearly about minimap
 - make a faster put_pixel by modifying mlx_image_t pixel data directly?
-- RGB needs to be single variable
-
+- take rgb values from the map file
+- bobbing motion to animation when walking (up/down)
+- move zippo left/right when rotating
 
 TO FIX:
 - movement still angled
 - issue is starting direction is anything except north. not starting in the map???
 - program slows down as it runs! 
-- minimap on top works, but i would like it to be a bit transparent, meaning that we would have to find a new solution (draw it last)

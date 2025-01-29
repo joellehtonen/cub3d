@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls_dark.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/28 17:06:09 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/29 20:58:30 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,28 @@
 
 static void	draw_floor_ceiling_dark(t_game *game, int ray)
 {
-	int		i;
+	int			i;
+	uint32_t	color;
+	int			counter;
 
 	i = 0;
+	color = 0x00000000;
+	counter = 0;
 	while (i < WINDOW_HEIGHT / 2)
 	{
-		if (place_for_minimap(game, ray, i) == false)
-			mlx_put_pixel(game->frame, ray, i, 0x000000FF); //ceiling
+		mlx_put_pixel(game->frame, ray, i, 0x000000FF); //ceiling
 		i++;
 	}
-	while (i < WINDOW_HEIGHT / 1.3)
-		mlx_put_pixel(game->frame, ray, i++, 0x000000FF); //distant floor
-	while (i < WINDOW_HEIGHT)
-		mlx_put_pixel(game->frame, ray, i++, 0x00000000); //closer floor
+	i = WINDOW_HEIGHT;
+	while (i > WINDOW_HEIGHT / 2)
+	{
+		mlx_put_pixel(game->frame, ray, i--, color);
+		counter++;
+		if (counter % 3 != 0)
+			color++;
+		if (color >= 255)
+			color = 255;
+	}
 }
 
 static void draw_walls(t_game *game, float top, float bottom, int ray)
