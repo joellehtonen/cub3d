@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/29 12:03:17 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/29 14:22:51 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,8 @@ void    render_ray_into_frame_dark(t_game *game, int ray);
 void	correct_distortion(t_game *game);
 int		get_color(t_game *game);
 bool	place_for_minimap(t_game* game, int y, int x);
-uint32_t	get_pixel_color(t_game *game, int y);
+uint32_t	find_pixel_color(t_game *game, mlx_texture_t *texture, int y);
+uint32_t	extract_color_data(mlx_texture_t *texture, int location);
 
 void 	check_for_rgb(t_game *game, int i, int *j, int element);
 void	copy_map(t_game *game, char **file);
