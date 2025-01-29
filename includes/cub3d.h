@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/29 14:22:51 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/29 18:13:11 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@
 # define WINDOW_HEIGHT 1080
 # define MINIMAP_WIDTH 533
 # define MINIMAP_HEIGHT 300
-# define MAX_WIDTH_IN_TILES 60
-# define MAX_HEIGHT_IN_TILES 32
+# define MAX_WIDTH_IN_TILES 120
+# define MAX_HEIGHT_IN_TILES 64
 # define MOVE_SIZE 16
 # define MOVE_SPEED 6
 # define PI 3.14159265358979323846
 # define FOV (60 * (PI / 180))
-# define ROTATE_SPEED 0.4
+# define ROTATE_SPEED 0.2
 # define DEGREE FOV / WINDOW_WIDTH;
 
 # define FORWARD 0
@@ -49,6 +49,13 @@
 # define CEILING_RGB 101
 
 # define DARK 0
+
+# define FLAME_SIZE 500
+# define FLAME_X 1160
+# define FLAME_Y 600
+# define ZIPPO_SIZE 700
+# define ZIPPO_X FLAME_X - 228
+# define ZIPPO_Y FLAME_Y + 100
 
 typedef struct s_ray
 {
@@ -107,8 +114,11 @@ typedef struct s_game
 	mlx_image_t			*minimap_floor_img;
 	mlx_texture_t		*player_texture;
 	mlx_image_t			*minimap_img;
-	mlx_texture_t		*torch_animation_textures[8];
-	mlx_image_t			*torch_animation_images[8];
+	mlx_texture_t		*torch_animation_textures[12];
+	mlx_image_t			*torch_animation_images[12];
+	mlx_image_t			*torch_img;
+	mlx_texture_t		*zippo_texture;
+	mlx_image_t			*zippo_img;
 	int					frame_counter;
 	struct s_player		player;
 	int width_in_tiles;
