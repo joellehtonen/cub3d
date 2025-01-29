@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/28 17:06:35 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:31:38 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 //# include "/home/jlehtone/Desktop/git_home/cub3d/MLX42/include/MLX42/MLX42_Int.h"
 
 # define TILE_SIZE 32
+# define FLAME_SIZE 250
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
 # define MINIMAP_WIDTH 533
@@ -33,7 +34,7 @@
 # define MOVE_SPEED 6
 # define PI 3.14159265358979323846
 # define FOV (60 * (PI / 180))
-# define ROTATE_SPEED 0.4
+# define ROTATE_SPEED 0.2
 # define DEGREE FOV / WINDOW_WIDTH;
 
 # define FORWARD 0
@@ -103,8 +104,9 @@ typedef struct s_game
 	mlx_image_t			*minimap_floor_img;
 	mlx_texture_t		*player_texture;
 	mlx_image_t			*minimap_img;
-	mlx_texture_t		*torch_animation_textures[8];
-	mlx_image_t			*torch_animation_images[8];
+	mlx_texture_t		*torch_animation_textures[12];
+	mlx_image_t			*torch_animation_images[12];
+	mlx_image_t			*torch_img;
 	int					frame_counter;
 	struct s_player		player;
 	int width_in_tiles;

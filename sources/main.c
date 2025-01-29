@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/28 16:53:39 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:11:15 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	initialize_variables(t_game *game)
 	game->floor_RGB = 0;
 	game->ceiling_RGB = 0;
 	game->frame_counter = 0;
+	game->torch_img = NULL;
 }
 
 int	main(int argc, char *argv[])

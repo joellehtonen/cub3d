@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:30:46 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/28 14:52:34 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:24:58 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,20 @@ static void create_torch_textures(t_game *game)
 {
 	int i;
 
-	(game->torch_animation_textures)[0] = mlx_load_png("textures/torch/frame_01.png");
-	(game->torch_animation_textures)[1] = mlx_load_png("textures/torch/frame_01.png");
-	(game->torch_animation_textures)[2] = mlx_load_png("textures/torch/frame_02.png");
-	(game->torch_animation_textures)[3] = mlx_load_png("textures/torch/frame_03.png");
-	(game->torch_animation_textures)[4] = mlx_load_png("textures/torch/frame_04.png");
-	(game->torch_animation_textures)[5] = mlx_load_png("textures/torch/frame_05.png");
-	(game->torch_animation_textures)[6] = mlx_load_png("textures/torch/frame_06.png");
-	(game->torch_animation_textures)[7] = mlx_load_png("textures/torch/frame_07.png");
+	(game->torch_animation_textures)[0] = mlx_load_png("textures/torch/flame1.png");
+	(game->torch_animation_textures)[1] = mlx_load_png("textures/torch/flame2.png");
+	(game->torch_animation_textures)[2] = mlx_load_png("textures/torch/flame3.png");
+	(game->torch_animation_textures)[3] = mlx_load_png("textures/torch/flame4.png");
+	(game->torch_animation_textures)[4] = mlx_load_png("textures/torch/flame5.png");
+	(game->torch_animation_textures)[5] = mlx_load_png("textures/torch/flame6.png");
+	(game->torch_animation_textures)[6] = mlx_load_png("textures/torch/flame7.png");
+	(game->torch_animation_textures)[7] = mlx_load_png("textures/torch/flame8.png");
+	(game->torch_animation_textures)[8] = mlx_load_png("textures/torch/flame9.png");
+	(game->torch_animation_textures)[9] = mlx_load_png("textures/torch/flame10.png");
+	(game->torch_animation_textures)[10] = mlx_load_png("textures/torch/flame11.png");
+	(game->torch_animation_textures)[11] = mlx_load_png("textures/torch/flame12.png");
 	i = 0;
-	while (i < 8)
+	while (i < 12)
 	{
 		if (!((game->torch_animation_textures)[i]))
 			error_exit_and_free(game, "MLX failed to load torch texture");

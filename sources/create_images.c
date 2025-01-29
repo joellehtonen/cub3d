@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:36:29 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/28 16:20:03 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/29 12:24:10 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ static void create_torch_images(t_game *game)
 {
 	int i;
 
+	game->torch_img = mlx_new_image(game->mlx, FLAME_SIZE, FLAME_SIZE);
 	i = 0;
-	while (i < 8)
+	while (i < 12)
 	{
 		(game->torch_animation_images)[i] = mlx_texture_to_image(game->mlx, (game->torch_animation_textures)[i]);
 		if (!(game->torch_animation_images)[i])
