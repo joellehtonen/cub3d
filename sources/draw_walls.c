@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/29 18:11:14 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/29 21:17:04 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static void draw_walls(t_game *game, int start, int end, int ray)
 		color = extract_color_data(texture, ((texture->width * (int)texture_y + texture_x) * 4));
 		mlx_put_pixel(game->frame, ray, start, color);
 		start++;
-		//texture_y = (int)texture_y % texture->height;
 		texture_y += step;
 		if (texture_y >= texture->height)
 			texture_y -= texture->height;
@@ -88,7 +87,7 @@ static void	draw_floor_ceiling(t_game *game, int ray)
 	while (i < WINDOW_HEIGHT / 2)
 	{
 		//if (place_for_minimap(game, ray, i) == false)
-			mlx_put_pixel(game->frame, ray, i, game->ceiling_RGB);
+		mlx_put_pixel(game->frame, ray, i, game->ceiling_RGB);
 		i++;
 	}
 	while (i < WINDOW_HEIGHT)
