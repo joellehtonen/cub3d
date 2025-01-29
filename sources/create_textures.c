@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:30:46 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/29 12:24:58 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:48:30 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ void	create_textures(t_game *game)
 		error_exit_and_free(game, "MLX failed to load floor texture");
 	game->player_texture = mlx_load_png("textures/player.png");
 	if (!game->player_texture)
+		error_exit_and_free(game, "MLX failed to load player texture");
+	game->zippo_texture = mlx_load_png("textures/zippo.png");
+	if (!game->zippo_texture)
 		error_exit_and_free(game, "MLX failed to load player texture");
 	create_torch_textures(game);
 }

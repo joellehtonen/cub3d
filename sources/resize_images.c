@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:42:02 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/29 11:22:30 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:49:51 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	resize_images(t_game *game)
 		error_exit_and_free(game, "MLX failed to resize an image");
 	if (!mlx_resize_image(game->player.player_img, TILE_SIZE / 4,
 			TILE_SIZE / 4))
+		error_exit_and_free(game, "MLX failed to resize an image");
+	if (!mlx_resize_image(game->zippo_img, ZIPPO_SIZE, ZIPPO_SIZE))
 		error_exit_and_free(game, "MLX failed to resize an image");
 	resize_torch_images(game);
 }

@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:45:15 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/29 12:30:02 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:51:14 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	display_images(t_game *game)
 		return ; //add fail check here
 	if (mlx_image_to_window(game->mlx, game->minimap_img, 0, 0) < 0)
 		return ; //add fail check here
-	if (mlx_image_to_window(game->mlx, game->torch_img, 1160, 600) < 0)
+	if (mlx_image_to_window(game->mlx, game->zippo_img, ZIPPO_X, ZIPPO_Y) < 0)
+		return ; //add fail check here
+	if (mlx_image_to_window(game->mlx, game->torch_img, FLAME_X, FLAME_Y) < 0)
 		return ; //add fail check here
 }
