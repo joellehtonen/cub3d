@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/28 21:19:24 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/29 11:27:24 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_ray
     float	angle;
 	double	length;
 	float	wall_height;
+	// float	wall_x_hit;
 	bool	direction_left;
 	bool	direction_up;
 	bool	horizontal;
@@ -143,7 +144,7 @@ void    render_ray_into_frame_dark(t_game *game, int ray);
 void	correct_distortion(t_game *game);
 int		get_color(t_game *game);
 bool	place_for_minimap(t_game* game, int y, int x);
-uint32_t	get_pixel_color(t_game *game, int x, int y);
+uint32_t	get_pixel_color(t_game *game, int y);
 
 void 	check_for_rgb(t_game *game, int i, int *j, int element);
 void	copy_map(t_game *game, char **file);

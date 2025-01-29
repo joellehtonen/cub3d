@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/28 21:20:08 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/29 11:27:58 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	draw_floor_ceiling(t_game *game, int ray)
 	}
 }
 
-static void draw_walls(t_game *game, float start, float end, int ray)
+static void draw_walls(t_game *game, int start, int end, int ray)
 {
 	uint32_t color;
 
@@ -60,7 +60,7 @@ static void draw_walls(t_game *game, float start, float end, int ray)
 	{
 		if (place_for_minimap(game, ray, start) == false)
 		{
-			color = get_pixel_color(game, ray, start);
+			color = get_pixel_color(game, start);
 			mlx_put_pixel(game->frame, ray, start, color);
 		}
 		start++;
@@ -69,18 +69,17 @@ static void draw_walls(t_game *game, float start, float end, int ray)
 
 void    render_ray_into_frame(t_game *game, int ray)
 {
-	float		wall_height;
 	float		wall_top;
 	float		wall_bottom;
 
 	correct_distortion(game);
-	wall_height = TILE_SIZE * WINDOW_HEIGHT / game->ray.length;
-	wall_top = (WINDOW_HEIGHT / 2) - (wall_height / 2);
+	game->ray.wall_height = TILE_SIZE * WINDOW_HEIGHT / game->ray.length;
+	wall_top = (WINDOW_HEIGHT / 2) - (game->ray.wall_height / 2);
 	if (wall_top < 0)
 		wall_top = 0;
-	wall_bottom = (WINDOW_HEIGHT / 2) + (wall_height / 2);
+	wall_bottom = (WINDOW_HEIGHT / 2) + (game->ray.wall_height / 2);
 	if (wall_bottom > WINDOW_HEIGHT)
 		wall_bottom = WINDOW_HEIGHT;
 	draw_floor_ceiling(game, ray);
-	draw_walls(game, wall_top, wall_bottom, ray);
+	draw_walls(game, (int)wall_top, (int)wall_bottom, ray);
 }

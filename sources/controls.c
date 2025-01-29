@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/24 10:20:20 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:56:58 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ bool controls(t_game *game)
 {
 	bool	movement;
 	
+	movement = false;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 	{
 		free_all(game);

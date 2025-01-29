@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:28:30 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/27 14:16:33 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:44:29 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 bool	is_wall_float(t_game *game, float x, float y)
 {
-	int x_int;
-	int y_int;
+	int		x_int;
+	int		y_int;
 
 	x_int = floor(x / TILE_SIZE);
 	if (game->ray.direction_left == true && fabs(fmod(x, TILE_SIZE)) < 0.0001)
@@ -26,7 +26,9 @@ bool	is_wall_float(t_game *game, float x, float y)
 	if (x_int < 0 || y_int < 0 || x_int > (game->width_in_tiles - 1) || y_int > (game->height_in_tiles - 1))
 		return (true);
 	if (game->map[y_int][x_int] == '1')
+	{
 		return (true);
+	}
 	else
 		return (false);
 }

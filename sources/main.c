@@ -6,7 +6,7 @@
 /*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/28 21:20:21 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/29 11:56:06 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	initialize_variables(t_game *game)
 {
 	game->file = NULL;
 	game->frame = NULL;
-	game->floor_img = NULL;
+	game->minimap_floor_img = NULL;
 	game->floor_texture = NULL;
 	game->found_ceiling_rgb = 0;
 	game->found_floor_rgb = 0;
