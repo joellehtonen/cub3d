@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls_dark.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/29 21:17:32 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/30 09:01:28 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,24 +86,23 @@ static void	draw_floor_ceiling_dark(t_game *game, int ray)
 	uint32_t	color;
 	int			counter;
 
-	i = 0;
+	i = WINDOW_HEIGHT - 1;
 	//color = 0x50400000;
 	color = 0x0000000;
 	counter = 0;
-	while (i < WINDOW_HEIGHT / 2)
-	{
-		mlx_put_pixel(game->frame, ray, i, 0x000000FF); //ceiling
-		i++;
-	}
-	i = WINDOW_HEIGHT;
 	while (i > WINDOW_HEIGHT / 2)
 	{
-		mlx_put_pixel(game->frame, ray, i--, color);
+		mlx_put_pixel(game->frame, ray, i, color);
+		i--;
 		counter++;
 		if (counter % 3 != 0)
 			color++;
 		if (color >= 255)
 			color = 255;
+	}
+	while (i > 0)
+	{
+		mlx_put_pixel(game->frame, ray, i--, 0x000000FF); //ceiling
 	}
 }
 
@@ -114,8 +113,8 @@ static void draw_walls(t_game *game, float top, float bottom, int ray)
 	color = get_color(game);
 	while (top <= bottom && top < WINDOW_HEIGHT)
 	{
-		if (place_for_minimap(game, ray, top) == false)
-			mlx_put_pixel(game->frame, ray, top, color);
+		// if (place_for_minimap(game, ray, top) == false)
+		mlx_put_pixel(game->frame, ray, top, color);
 		top++;
 	}
 }
@@ -127,8 +126,8 @@ static void draw_black(t_game *game, float top, float bottom, int ray)
 	color = 0x000000FF;
 	while (top <= bottom)
 	{
-		if (place_for_minimap(game, ray, top) == false)
-			mlx_put_pixel(game->frame, ray, top, color);
+		//if (place_for_minimap(game, ray, top) == false)
+		mlx_put_pixel(game->frame, ray, top, color);
 		top++;
 	}
 }

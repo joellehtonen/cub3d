@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/29 21:17:04 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/30 08:53:33 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void draw_walls(t_game *game, int start, int end, int ray)
 	float			texture_y;
 	float			step;
 	
+	printf("ray is %d\n", ray);
 	//color = get_color(game);
 	texture = choose_texture(game);
 	step = texture->height / game->ray.wall_height;

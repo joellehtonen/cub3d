@@ -17,6 +17,7 @@ TO DO:
 - take rgb values from the map file
 - bobbing motion to animation when walking (up/down)
 - move zippo left/right when rotating
+- separate bonus stuff to its files, add make bonus
 
 TO FIX:
 - movement still angled
