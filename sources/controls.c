@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/30 14:44:03 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:01:23 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ static bool	move_player(t_game *game, double direction)
 		&& is_wall(game, ghost_box.bottom_left_x, ghost_box.bottom_left_y) == false \
 		&& is_wall(game, ghost_box.bottom_right_x, ghost_box.bottom_right_y) == false)
 	{
-		zippo_up_and_down(game);
 		game->player.x = new_x;
 		game->player.y = new_y;
 		game->player.player_img->instances[0].x = new_x;
@@ -125,6 +124,8 @@ bool controls(t_game *game)
 		movement = move_player(game, LEFT);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
 		movement = move_player(game, RIGHT);
+	if (movement == true)
+		zippo_up_and_down(game);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
 		movement = rotate_player(game, LEFT);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
