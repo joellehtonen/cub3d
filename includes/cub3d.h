@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/30 12:14:33 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:44:30 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@
 # define ZIPPO_SIZE 700
 # define ZIPPO_X FLAME_X - 228
 # define ZIPPO_Y FLAME_Y + 100
+# define ZIPPO_MOVE_SPD 6
+# define ZIPPO_BOB_SPD 8
 
 typedef struct s_ray
 {
@@ -135,6 +137,7 @@ typedef struct s_game
 	int					zippo_x;
 	int					zippo_y;
 	int					frame_counter;
+	int					zippo_counter;
 	struct s_player		player;
 	int width_in_tiles;
 	int height_in_tiles;

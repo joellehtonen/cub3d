@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   torch_animation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:33:42 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/30 12:15:25 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:22:57 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ void disable_all_flames(t_game *game)
 	}
 }
 
-static void update_flame_positions(t_game *game)
+static void update_positions(t_game *game)
 {
 	int i;
 
+	game->zippo_img->instances->x = game->zippo_x;
+	game->zippo_img->instances->y = game->zippo_y;
 	i = 0;
 	while (i < 12)
 	{
@@ -39,7 +41,7 @@ static void update_flame_positions(t_game *game)
 
 void torch_animation(t_game *game)
 {
-	update_flame_positions(game);
+	update_positions(game);
 	game->flame_img[game->frame_counter / 6]->enabled = false;
 	game->frame_counter = (game->frame_counter + 1) % 33;
 	//ft_memcpy(game->flame_mem_img->pixels, game->flame_img[game->frame_counter / 6]->pixels, FLAME_SIZE * FLAME_SIZE * 4);

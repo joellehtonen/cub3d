@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/30 11:13:09 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:26:06 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static void	initialize_variables(t_game *game)
 	game->flame_y = FLAME_Y;
 	game->zippo_x = ZIPPO_X;
 	game->zippo_y = ZIPPO_Y;
+	game->zippo_counter = 0;
 }
 
 int	main(int argc, char *argv[])
