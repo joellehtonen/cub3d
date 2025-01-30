@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   torch_animation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:33:42 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/29 13:29:35 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:28:20 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

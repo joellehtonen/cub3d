@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/30 09:53:39 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:53:09 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,22 @@ typedef struct s_ray
 	bool	horizontal;
 } t_ray;
 
+typedef struct s_box
+{
+	float	top_left_x;
+	float	top_left_y;
+	float	top_right_x;
+	float	top_right_y;
+	float	bottom_left_x;
+	float	bottom_left_y;
+	float	bottom_right_x;
+	float	bottom_right_y;
+} t_box;
+
 typedef struct s_player
 {
-	int				x;
-	int				y;
+	float			x;
+	float			y;
     float 			angle;
 	float			initial_direction;
 	mlx_image_t		*player_img;
