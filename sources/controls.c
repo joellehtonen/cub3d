@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/29 11:56:58 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/30 09:49:28 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ static bool	rotate_player(t_game *game, double direction)
 	}
 	reset_angles(game);
 	determine_ray_direction(game);
-	// printf("player angle degree = %f\n", game->player.angle_radian * (180 / PI));
-	// printf("player angle radian = %f\n", game->player.angle_radian);
-	// printf("ray angle = %f\n", game->ray.angle);
 	return (true);
 }
 

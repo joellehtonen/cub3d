@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/30 09:01:28 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/30 09:52:14 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,40 @@ static void draw_walls(t_game *game, float top, float bottom, int ray)
 	color = get_color(game);
 	while (top <= bottom && top < WINDOW_HEIGHT)
 	{
-		// if (place_for_minimap(game, ray, top) == false)
 		mlx_put_pixel(game->frame, ray, top, color);
 		top++;
 	}
+}
+
+static void draw_gradient(t_game *game, float top, float bottom, int ray)
+{
+	int color;
+	// int	minimum_ray;
+	// float step;
+	
+	// minimum_ray = 60;
+	// step = (game->ray.length - minimum_ray) / 10;
+	// color = 0x000000FF * step;
+	if (game->ray.length > 69)
+		color = 0x000000EE;
+	else if (game->ray.length > 68)
+		color = 0x000000DD;
+	else if (game->ray.length > 67)
+		color = 0x000000CC;
+	else if (game->ray.length > 66)
+		color = 0x000000BB;
+	else if (game->ray.length > 65)
+		color = 0x000000AA;
+	else if (game->ray.length > 64)
+		color = 0x00000088;
+	else if (game->ray.length > 63)
+		color = 0x00000066;
+	else if (game->ray.length > 62)
+		color = 0x00000044;
+	else if (game->ray.length > 61)
+		color = 0x00000022;
+	while (top <= bottom)
+		mlx_put_pixel(game->frame, ray, top++, color);
 }
 
 static void draw_black(t_game *game, float top, float bottom, int ray)
@@ -126,7 +156,6 @@ static void draw_black(t_game *game, float top, float bottom, int ray)
 	color = 0x000000FF;
 	while (top <= bottom)
 	{
-		//if (place_for_minimap(game, ray, top) == false)
 		mlx_put_pixel(game->frame, ray, top, color);
 		top++;
 	}
@@ -149,6 +178,8 @@ void    render_ray_into_frame_dark(t_game *game, int ray)
 	draw_floor_ceiling_dark(game, ray);
 	if (game->ray.length < 60)
 		draw_walls(game, wall_top, wall_bottom, ray);
+	else if (game->ray.length > 60 && game->ray.length < 70)
+		draw_gradient(game, wall_top, wall_bottom, ray);
 	else
 		draw_black(game, wall_top, wall_bottom, ray);
 }

@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/30 08:57:03 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/30 09:53:39 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define FLOOR_RGB 100
 # define CEILING_RGB 101
 
-# define DARK 1
+# define DARK 0
 
 # define FLAME_SIZE 500
 # define FLAME_X 1160
