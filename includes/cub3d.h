@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/30 14:44:30 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:12:16 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 # define TILE_SIZE 32
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
-# define MINIMAP_WIDTH 533
-# define MINIMAP_HEIGHT 300
-# define MAX_WIDTH_IN_TILES 120
-# define MAX_HEIGHT_IN_TILES 64
+# define MINIMAP_WIDTH 640
+# define MINIMAP_HEIGHT 320
+# define MAX_WIDTH_IN_TILES 80
+# define MAX_HEIGHT_IN_TILES 40
 # define MOVE_SIZE 16
 # define MOVE_SPEED 6
 # define PI 3.14159265358979323846
@@ -132,6 +132,8 @@ typedef struct s_game
 	mlx_image_t			*flame_mem_img;
 	mlx_texture_t		*zippo_texture;
 	mlx_image_t			*zippo_img;
+	mlx_texture_t		*empty_map_texture;
+	mlx_image_t			*empty_map_img;
 	int					flame_x;
 	int					flame_y;
 	int					zippo_x;
