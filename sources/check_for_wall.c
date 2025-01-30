@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checks.c                                           :+:      :+:    :+:   */
+/*   check_for_wall.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:28:30 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/30 10:53:03 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:45:32 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-bool	is_wall_float(t_game *game, float x, float y)
+bool	is_wall_ray(t_game *game, float x, float y)
 {
-	int x_int;
-	int y_int;
+	int	x_int;
+	int	y_int;
 
 	x_int = floor(x / TILE_SIZE);
 	if (game->ray.direction_left == true && fabs(fmod(x, TILE_SIZE)) < 0.0001)
@@ -23,8 +23,12 @@ bool	is_wall_float(t_game *game, float x, float y)
 	y_int = floor(y / TILE_SIZE);
 	if (game->ray.direction_up == true && fabs(fmod(y, TILE_SIZE)) < 0.0001)
 		y_int -= 1;
-	if (x_int < 0 || y_int < 0 || x_int > (game->width_in_tiles - 1) || y_int > (game->height_in_tiles - 1))
+	if (x_int < 0 || y_int < 0 \
+		|| x_int > (game->width_in_tiles - 1) \
+		|| y_int > (game->height_in_tiles - 1))
 		return (true);
+	// printf("Accessing map at x_int = %d, y_int = %d\n", x_int, y_int);
+	// printf("Map width in tiles = %d, map height in tiles = %d\n", game->width_in_tiles, game->height_in_tiles);
 	if (game->map[y_int][x_int] == '1')
 		return (true);
 	else
@@ -37,4 +41,4 @@ bool	is_wall(t_game *game, int x, int y)
 		return (true);
 	else
 		return (false);
-} 
+}

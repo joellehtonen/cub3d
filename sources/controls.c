@@ -6,14 +6,43 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/30 12:53:40 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:51:22 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+static void zippo_animation_recenter(t_game *game)
+{
+	if (game->flame_x > FLAME_X)
+	{
+		game->flame_x -= ZIPPO_MOVE_SPD;
+		game->zippo_x -= ZIPPO_MOVE_SPD;
+	}
+	else if (game->flame_x < FLAME_X)
+	{
+		game->flame_x += ZIPPO_MOVE_SPD;
+		game->zippo_x += ZIPPO_MOVE_SPD;
+	}
+}
+
+static void zippo_animation_rotate(t_game *game, double direction)
+{
+	if (direction == LEFT)
+	{
+		game->flame_x += ZIPPO_MOVE_SPD;
+		game->zippo_x += ZIPPO_MOVE_SPD;
+	}
+	else
+	{
+		game->flame_x -= ZIPPO_MOVE_SPD;
+		game->zippo_x -= ZIPPO_MOVE_SPD;
+	}
+}
+
 static bool	rotate_player(t_game *game, double direction)
 {
+	zippo_animation_rotate(game, direction);
 	if (direction == RIGHT)
 	{
 		game->player.angle += ROTATE_SPEED;
@@ -29,12 +58,27 @@ static bool	rotate_player(t_game *game, double direction)
 	return (true);
 }
 
+static void zippo_up_and_down(t_game *game)
+{
+	game->zippo_counter = (game->zippo_counter + 1) % 10;
+	if (game->zippo_counter < 5)
+	{
+		game->flame_y -= ZIPPO_BOB_SPD;
+		game->zippo_y -= ZIPPO_BOB_SPD;
+	}
+	else
+	{
+		game->flame_y += ZIPPO_BOB_SPD;
+		game->zippo_y += ZIPPO_BOB_SPD;	
+	}
+}
+
 static bool	move_player(t_game *game, double direction)
 {
 	float	new_x;
 	float	new_y;
 	t_box	ghost_box;
-	
+
 	new_x = game->player.x + cos(game->player.angle + direction) * MOVE_SPEED;
 	new_y = game->player.y + sin(game->player.angle + direction) * MOVE_SPEED;
 	ghost_box = (t_box){new_x - MOVE_SIZE, new_y - MOVE_SIZE, \
@@ -52,6 +96,7 @@ static bool	move_player(t_game *game, double direction)
 		&& is_wall(game, ghost_box.bottom_left_x, ghost_box.bottom_left_y) == false \
 		&& is_wall(game, ghost_box.bottom_right_x, ghost_box.bottom_right_y) == false)
 	{
+		zippo_up_and_down(game);
 		game->player.x = new_x;
 		game->player.y = new_y;
 		game->player.player_img->instances[0].x = new_x;
@@ -82,7 +127,9 @@ bool controls(t_game *game)
 		movement = move_player(game, RIGHT);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
 		movement = rotate_player(game, LEFT);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
+	else if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
 		movement = rotate_player(game, RIGHT);
+	else
+		zippo_animation_recenter(game);
 	return (movement);
 }

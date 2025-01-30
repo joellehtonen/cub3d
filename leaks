@@ -1,0 +1,227 @@
+==288870== 1,128 bytes in 1 blocks are possibly lost in loss record 5,547 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4C934: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x403365: create_torch_images (create_images.c:23)
+==288870==    by 0x403365: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 1,128 bytes in 1 blocks are possibly lost in loss record 5,548 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4C934: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x40338E: create_torch_images (create_images.c:23)
+==288870==    by 0x40338E: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 1,128 bytes in 1 blocks are possibly lost in loss record 5,549 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4C934: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x4033B7: create_torch_images (create_images.c:23)
+==288870==    by 0x4033B7: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 1,128 bytes in 1 blocks are possibly lost in loss record 5,550 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4C934: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x4033E0: create_torch_images (create_images.c:23)
+==288870==    by 0x4033E0: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 1,128 bytes in 1 blocks are possibly lost in loss record 5,551 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4C934: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x403409: create_torch_images (create_images.c:23)
+==288870==    by 0x403409: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 1,128 bytes in 1 blocks are possibly lost in loss record 5,552 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4C934: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x403432: create_torch_images (create_images.c:23)
+==288870==    by 0x403432: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 1,128 bytes in 1 blocks are possibly lost in loss record 5,553 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4C934: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x40345B: create_torch_images (create_images.c:23)
+==288870==    by 0x40345B: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 1,128 bytes in 1 blocks are possibly lost in loss record 5,554 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4C934: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x403484: create_torch_images (create_images.c:23)
+==288870==    by 0x403484: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 1,128 bytes in 1 blocks are possibly lost in loss record 5,555 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4C934: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x4034AD: create_torch_images (create_images.c:23)
+==288870==    by 0x4034AD: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 1,128 bytes in 1 blocks are possibly lost in loss record 5,556 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4C934: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x4034D6: create_torch_images (create_images.c:23)
+==288870==    by 0x4034D6: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 1,128 bytes in 1 blocks are possibly lost in loss record 5,557 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4C934: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x4034FF: create_torch_images (create_images.c:23)
+==288870==    by 0x4034FF: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 1,200 bytes in 10 blocks are possibly lost in loss record 5,565 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B39111: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B3DD03: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B40661: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x407D6A: mlx_loop (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x402720: main (main.c:81)
+
+==288870== 40 bytes in 1 blocks are possibly lost in loss record 2,238 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4CAB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x403365: create_torch_images (create_images.c:23)
+==288870==    by 0x403365: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 40 bytes in 1 blocks are possibly lost in loss record 2,239 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4CAB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x40338E: create_torch_images (create_images.c:23)
+==288870==    by 0x40338E: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 40 bytes in 1 blocks are possibly lost in loss record 2,240 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4CAB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x4033B7: create_torch_images (create_images.c:23)
+==288870==    by 0x4033B7: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 40 bytes in 1 blocks are possibly lost in loss record 2,241 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4CAB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x4033E0: create_torch_images (create_images.c:23)
+==288870==    by 0x4033E0: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 40 bytes in 1 blocks are possibly lost in loss record 2,242 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4CAB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x403409: create_torch_images (create_images.c:23)
+==288870==    by 0x403409: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 40 bytes in 1 blocks are possibly lost in loss record 2,243 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4CAB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x403432: create_torch_images (create_images.c:23)
+==288870==    by 0x403432: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 40 bytes in 1 blocks are possibly lost in loss record 2,244 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4CAB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x40345B: create_torch_images (create_images.c:23)
+==288870==    by 0x40345B: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 40 bytes in 1 blocks are possibly lost in loss record 2,245 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4CAB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x403484: create_torch_images (create_images.c:23)
+==288870==    by 0x403484: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 40 bytes in 1 blocks are possibly lost in loss record 2,246 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4CAB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x4034AD: create_torch_images (create_images.c:23)
+==288870==    by 0x4034AD: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 40 bytes in 1 blocks are possibly lost in loss record 2,247 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4CAB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x4034D6: create_torch_images (create_images.c:23)
+==288870==    by 0x4034D6: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)
+==288870== 
+==288870== 40 bytes in 1 blocks are possibly lost in loss record 2,248 of 5,992
+==288870==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==288870==    by 0x5B4CAB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x5B4CFB8: ??? (in /usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so)
+==288870==    by 0x406F99: mlx_new_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x408680: mlx_texture_to_image (in /home/jlehtone/Desktop/git_home/cub3d/cub3d)
+==288870==    by 0x4034FF: create_torch_images (create_images.c:23)
+==288870==    by 0x4034FF: create_images (create_images.c:48)
+==288870==    by 0x4026CF: main (main.c:74)

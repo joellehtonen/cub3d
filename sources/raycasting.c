@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/28 16:45:07 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:02:25 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static double find_vertical_intersection(t_game *game)
 		point_x += TILE_SIZE;
 	point_y = game->player.y + (point_x - game->player.x) * tan(game->ray.angle);
 	calculate_vertical_step(game, &step_x, &step_y);
-	while (is_wall_float(game, point_x, point_y) == false)
+	while (is_wall_ray(game, point_x, point_y) == false)
 	{
 		point_x += step_x;
 		point_y += step_y;
@@ -75,7 +75,7 @@ static double find_horizontal_intersection(t_game *game)
 		point_y += TILE_SIZE;
 	point_x = game->player.x + (point_y - game->player.y) / tan(game->ray.angle);
 	calculate_horizontal_step(game, &step_x, &step_y);
-	while (is_wall_float(game, point_x, point_y) == false)
+	while (is_wall_ray(game, point_x, point_y) == false)
 	{
 		point_y += step_y;
 		point_x += step_x;

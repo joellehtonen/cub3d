@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:35:13 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/29 18:15:00 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/30 15:23:48 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,5 @@ void    rendering(void * content)
         clear_line(game);
         raycasting(game);
     }
-	//mlx_image_to_window(game->mlx, game->torch_animation_images[0], 0, 0);
 	torch_animation(game);
 }

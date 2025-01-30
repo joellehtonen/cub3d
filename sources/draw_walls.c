@@ -6,37 +6,37 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/30 09:31:00 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:43:19 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static mlx_texture_t *choose_texture(t_game *game)
+mlx_texture_t	*choose_texture(t_game *game)
 {
-	mlx_texture_t *texture;
-	
+	mlx_texture_t	*texture;
+
 	if (game->ray.horizontal == true)
 	{
-		if (game->ray.direction_up == true) //south texture
+		if (game->ray.direction_up == true)
 			texture = game->south_texture;
-		else //north texture
+		else
 			texture = game->north_texture;
 	}
 	else
 	{
-		if (game->ray.direction_left == true) //east texture
+		if (game->ray.direction_left == true)
 			texture = game->east_texture;
-		else //west texture
+		else
 			texture = game->west_texture;
 	}
 	return (texture);
 }
 
-static int	get_x_coordinate(t_game *game, mlx_texture_t *texture)
+int	get_x_coordinate(t_game *game, mlx_texture_t *texture)
 {
 	int	x;
-	
+
 	if (game->ray.horizontal == true)
 	{
 		if (game->ray.direction_up == false)
@@ -54,23 +54,23 @@ static int	get_x_coordinate(t_game *game, mlx_texture_t *texture)
 	return (x);
 }
 
-static void draw_walls(t_game *game, int start, int end, int ray)
+static void	draw_walls(t_game *game, int start, int end, int ray)
 {
 	mlx_texture_t	*texture;
-	uint32_t 		color;
+	uint32_t		color;
 	int				texture_x;
 	float			texture_y;
 	float			step;
-	
-	//color = get_color(game);
+
 	texture = choose_texture(game);
 	step = texture->height / game->ray.wall_height;
-	texture_y = (start - (WINDOW_HEIGHT / 2) + (game->ray.wall_height / 2)) * step;
+	texture_y = (start - (WINDOW_HEIGHT / 2) + \
+		(game->ray.wall_height / 2)) * step;
 	texture_x = get_x_coordinate(game, texture);
 	while (start <= end && start < WINDOW_HEIGHT)
 	{
-		// if (place_for_minimap(game, ray, start) == false)
-		color = extract_color_data(texture, ((texture->width * (int)texture_y + texture_x) * 4));
+		color = extract_color_data(texture, &color, ((texture->width * \
+			(int)texture_y + texture_x) * 4));
 		mlx_put_pixel(game->frame, ray, start, color);
 		start++;
 		texture_y += step;
@@ -86,7 +86,6 @@ static void	draw_floor_ceiling(t_game *game, int ray)
 	i = 0;
 	while (i < WINDOW_HEIGHT / 2)
 	{
-		//if (place_for_minimap(game, ray, i) == false)
 		mlx_put_pixel(game->frame, ray, i, game->ceiling_RGB);
 		i++;
 	}
@@ -97,10 +96,10 @@ static void	draw_floor_ceiling(t_game *game, int ray)
 	}
 }
 
-void    render_ray_into_frame(t_game *game, int ray)
+void	render_ray_into_frame(t_game *game, int ray)
 {
-	float		wall_top;
-	float		wall_bottom;
+	float	wall_top;
+	float	wall_bottom;
 
 	correct_distortion(game);
 	game->ray.wall_height = TILE_SIZE * WINDOW_HEIGHT / game->ray.length;

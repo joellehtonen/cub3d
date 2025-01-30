@@ -23,7 +23,7 @@ TO DO:
 TO FIX:
 - program slows down as it runs! 
 
-ACCEPTABLE LEAKS (from mlx42)
+ACCEPTABLE LEAKS (from mlx42) (without suppression)
 ==270281== LEAK SUMMARY:
 ==270281==    definitely lost: 0 bytes in 1 blocks
 ==270281==    indirectly lost: 0 bytes in 0 blocks
@@ -31,3 +31,24 @@ ACCEPTABLE LEAKS (from mlx42)
 ==270281==    still reachable: 317,955 bytes in 3,106 blocks
 ==270281==         suppressed: 0 bytes in 0 blocks
 ==270281== Rerun with --leak-check=full to see details of leaked memory
+
+
+LEAKS AND STUFF
+ASAN_OPTIONS=detect_leaks=1 ./cub3d
+ASAN_OPTIONS=detect_leaks=1:strict_init_order=true:malloc_context_size=50 ./cub3d
+valgrind --suppressions=mlx42.supp --leak-check=full ./cub3d
+
+
+sources/parse_file.c:86:35: runtime error: left shift of 194 by 24 places cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sources/parse_file.c:86:35 in 
+sources/parse_file.c:87:39: runtime error: left shift of 135 by 24 places cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sources/parse_file.c:87:39 in 
+sources/get_pixel_data.c:29:14: runtime error: left shift of 155 by 24 places cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sources/get_pixel_data.c:29:14 in 
+sources/parse_file.c:86:35: runtime error: left shift of 194 by 24 places cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sources/parse_file.c:86:35 in 
+sources/parse_file.c:87:39: runtime error: left shift of 135 by 24 places cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sources/parse_file.c:87:39 in 
+sources/get_pixel_data.c:29:14: runtime error: left shift of 155 by 24 places cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior sources/get_pixel_data.c:29:14 in 
+
