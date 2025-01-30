@@ -7889,8 +7889,8 @@ texture	MLX42/include/MLX42/MLX42_Int.h	/^	GLuint	texture;$/;"	m	struct:mlx_imag
 time	MLX42/include/lodepng/lodepng.h	/^  LodePNGTime time;$/;"	m	struct:LodePNGInfo	typeref:typename:LodePNGTime
 time_defined	MLX42/include/lodepng/lodepng.h	/^  unsigned time_defined; \/*set to 1 to make the encoder generate a tIME chunk*\/$/;"	m	struct:LodePNGInfo	typeref:typename:unsigned
 torch_animation	sources/torch_animation.c	/^void torch_animation(t_game *game)$/;"	f	typeref:typename:void
-torch_animation_images	includes/cub3d.h	/^	mlx_image_t			*torch_animation_images[8];$/;"	m	struct:s_game	typeref:typename:mlx_image_t * [8]
-torch_animation_textures	includes/cub3d.h	/^	mlx_texture_t		*torch_animation_textures[8];$/;"	m	struct:s_game	typeref:typename:mlx_texture_t * [8]
+flame_img	includes/cub3d.h	/^	mlx_image_t			*flame_img[8];$/;"	m	struct:s_game	typeref:typename:mlx_image_t * [8]
+flame_texture	includes/cub3d.h	/^	mlx_texture_t		*flame_texture[8];$/;"	m	struct:s_game	typeref:typename:mlx_texture_t * [8]
 torch_clear_img	includes/cub3d.h	/^	mlx_image_t			*torch_clear_img;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
 u	MLX42/include/MLX42/MLX42_Int.h	/^	float	u;$/;"	m	struct:vertex	typeref:typename:float
 ucvector	MLX42/lib/png/lodepng.c	/^typedef struct ucvector {$/;"	s	file:

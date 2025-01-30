@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:45:15 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/29 14:51:14 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:32:01 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,19 @@ static int	images_to_window(t_game *game, int x, int y)
 	return (1);
 }
 
+static void flame_images_to_window(t_game *game)
+{
+	int i;
+
+	i = 0;
+	while (i < 12)
+	{
+		if (mlx_image_to_window(game->mlx, game->flame_img[i], FLAME_X, FLAME_Y) < 0)
+			error_exit_and_free(game, "MLX could not display image in window");
+		i++;
+	}
+}
+
 void	display_images(t_game *game)
 {
 	int	x;
@@ -55,11 +68,12 @@ void	display_images(t_game *game)
 		y++;
 	}
 	if (mlx_image_to_window(game->mlx, game->player.player_img, game->player.x, game->player.y) < 0)
-		return ; //add fail check here
+		error_exit_and_free(game, "MLX could not display image in window");
 	if (mlx_image_to_window(game->mlx, game->minimap_img, 0, 0) < 0)
-		return ; //add fail check here
-	if (mlx_image_to_window(game->mlx, game->zippo_img, ZIPPO_X, ZIPPO_Y) < 0)
-		return ; //add fail check here
-	if (mlx_image_to_window(game->mlx, game->torch_img, FLAME_X, FLAME_Y) < 0)
-		return ; //add fail check here
+		error_exit_and_free(game, "MLX could not display image in window");
+	if (mlx_image_to_window(game->mlx, game->zippo_img, ZIPPO_X, ZIPPO_Y) < 0) 
+		error_exit_and_free(game, "MLX could not display image in window");
+	flame_images_to_window(game);
+	if (mlx_image_to_window(game->mlx, game->flame_mem_img, FLAME_X, FLAME_Y) < 0) //REMOVE MAYBE
+		error_exit_and_free(game, "MLX could not display image in window");
 }

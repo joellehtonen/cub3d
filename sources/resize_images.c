@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:42:02 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/29 14:49:51 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:48:45 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void resize_torch_images(t_game *game)
 	i = 0;
 	while (i < 8)
 	{
-		if (!mlx_resize_image((game->torch_animation_images)[i], FLAME_SIZE, FLAME_SIZE))
+		if (!mlx_resize_image((game->flame_img)[i], FLAME_SIZE, FLAME_SIZE))
 			error_exit_and_free(game, "MLX failed to resize an image");
 		i++;
 	}

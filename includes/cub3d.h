@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/30 09:53:39 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:13:05 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,15 @@ typedef struct s_game
 	mlx_image_t			*minimap_floor_img;
 	mlx_texture_t		*player_texture;
 	mlx_image_t			*minimap_img;
-	mlx_texture_t		*torch_animation_textures[12];
-	mlx_image_t			*torch_animation_images[12];
-	mlx_image_t			*torch_img;
+	mlx_texture_t		*flame_texture[12];
+	mlx_image_t			*flame_img[12];
+	mlx_image_t			*flame_mem_img;
 	mlx_texture_t		*zippo_texture;
 	mlx_image_t			*zippo_img;
+	int					flame_x;
+	int					flame_y;
+	int					zippo_x;
+	int					zippo_y;
 	int					frame_counter;
 	struct s_player		player;
 	int width_in_tiles;
@@ -164,5 +168,6 @@ void	copy_map(t_game *game, char **file);
 void	validate_map(t_game *game);
 void 	rgb_to_hex(t_game *game);
 void	torch_animation(t_game *game);
+void 	disable_all_flames(t_game *game);
 
 #endif

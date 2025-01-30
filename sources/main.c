@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/30 09:13:55 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:13:09 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,11 @@ static void	initialize_variables(t_game *game)
 	game->floor_RGB = 0;
 	game->ceiling_RGB = 0;
 	game->frame_counter = 0;
-	game->torch_img = NULL;
+	game->flame_mem_img = NULL;
+	game->flame_x = FLAME_X;
+	game->flame_y = FLAME_Y;
+	game->zippo_x = ZIPPO_X;
+	game->zippo_y = ZIPPO_Y;
 }
 
 int	main(int argc, char *argv[])
@@ -69,6 +73,7 @@ int	main(int argc, char *argv[])
 	create_images(&game);
 	resize_images(&game);
 	display_images(&game);
+	disable_all_flames(&game);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	// draw_background(&game);
 	game.player.angle = game.starting_direction;
