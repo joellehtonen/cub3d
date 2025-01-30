@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/30 09:49:28 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:49:46 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,31 @@ static bool	rotate_player(t_game *game, double direction)
 
 static bool	move_player(t_game *game, double direction)
 {
-	double	new_x;
-	double	new_y;
+	float	new_x;
+	float	new_y;
+	t_box	ghost_box;
 	
 	new_x = game->player.x + cos(game->player.angle + direction) * MOVE_SPEED;
 	new_y = game->player.y + sin(game->player.angle + direction) * MOVE_SPEED;
-	if (is_wall(game, new_x, new_y) == false)
+	ghost_box = (t_box){new_x - 4, new_y - 4, \
+		new_x + 4, new_y - 4, \
+		new_x - 4, new_y + 4, \
+		new_x + 4, new_y + 4};
+	// printf("player x: %d, player y:%d\n", game->player.x, game->player.y);
+	// printf("box tlx: %d, tly: %d\n", ghost_box.top_left_x, ghost_box.top_left_y);
+	// printf("box trx: %d, try: %d\n", ghost_box.top_right_x, ghost_box.top_right_y);
+	// printf("box blx: %d, bly: %d\n", ghost_box.bottom_left_x, ghost_box.bottom_left_y);
+	// printf("box brx: %d, bry: %d\n", ghost_box.bottom_right_x, ghost_box.bottom_right_y);
+	//if (is_wall(game, new_x, new_y) == false)
+	if (is_wall(game, ghost_box.top_left_x, ghost_box.top_left_y) == false \
+		&& is_wall(game, ghost_box.top_right_x, ghost_box.top_right_y) == false \
+		&& is_wall(game, ghost_box.bottom_left_x, ghost_box.bottom_left_y) == false \
+		&& is_wall(game, ghost_box.bottom_right_x, ghost_box.bottom_right_y) == false)
 	{
 		game->player.x = new_x;
 		game->player.y = new_y;
 		game->player.player_img->instances[0].x = new_x;
 		game->player.player_img->instances[0].y = new_y;
-		
 		return (true);
 	}
 	else

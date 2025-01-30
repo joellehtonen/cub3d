@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:08:49 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/29 11:17:21 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/01/30 11:59:10 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,13 @@ void	reset_angles(t_game *game)
 void	determine_ray_direction(t_game *game)
 {
 	if (game->ray.angle >= PI && game->ray.angle <= PI * 2)
-	{
 		game->ray.direction_up = true;
-		//printf("ray points up\n");
-	}
 	else
-	{
 		game->ray.direction_up = false;
-		//printf("ray points down\n");
-	}
 	if (game->ray.angle >= PI / 2 && game->ray.angle <= 3 * (PI / 2))
-	{
 		game->ray.direction_left = true;
-		//printf("ray points left\n");
-	}
 	else
-	{
 		game->ray.direction_left = false;
-		//printf("ray points right\n");
-	}
 	return ;
 }
 
@@ -57,7 +45,6 @@ void	choose_shorter_distance(t_game *game, double h_inter, double v_inter)
 		game->ray.x = game->ray.hx;
 		game->ray.y = game->ray.hy;
 		game->ray.horizontal = true;
-		//game->ray.wall_x_hit = fmod(game->ray.x, TILE_SIZE) / TILE_SIZE;
 	}
 	else
 	{
@@ -65,6 +52,5 @@ void	choose_shorter_distance(t_game *game, double h_inter, double v_inter)
 		game->ray.x = game->ray.vx;
 		game->ray.y = game->ray.vy;
 		game->ray.horizontal = false;
-		//game->ray.wall_x_hit = fmod(game->ray.y, TILE_SIZE) / TILE_SIZE;
 	}
 }

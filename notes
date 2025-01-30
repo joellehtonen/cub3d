@@ -20,6 +20,4 @@ TO DO:
 - separate bonus stuff to its files, add make bonus
 
 TO FIX:
-- movement still angled
-- issue is starting direction is anything except north. not starting in the map???
 - program slows down as it runs! 

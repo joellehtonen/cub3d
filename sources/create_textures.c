@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_textures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:30:46 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/30 10:48:31 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:15:04 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,17 @@ void	create_textures(t_game *game)
 	game->zippo_texture = mlx_load_png("textures/zippo_cartoon.png");
 	if (!game->zippo_texture)
 		error_exit_and_free(game, "MLX failed to load player texture");
+	game->north_texture = mlx_load_png(game->path_to_north_texture);
+	if (!game->north_texture)
+		error_exit_and_free(game, "MLX failed to load north texture");
+	game->east_texture = mlx_load_png(game->path_to_east_texture);
+	if (!game->east_texture)
+		error_exit_and_free(game, "MLX failed to load east texture");
+	game->south_texture = mlx_load_png(game->path_to_south_texture);
+	if (!game->south_texture)
+		error_exit_and_free(game, "MLX failed to load south texture");
+	game->west_texture = mlx_load_png(game->path_to_west_texture);
+	if (!game->west_texture)
+		error_exit_and_free(game, "MLX failed to load west texture");
 	create_torch_textures(game);
-	//add checks
-	// game->north_texture = mlx_load_png("textures/path_to_north_texture.png");
-	// game->east_texture = mlx_load_png("textures/path_to_east_texture.png");
-	// game->south_texture = mlx_load_png("textures/path_to_south_texture.png");
-	// game->west_texture = mlx_load_png("textures/path_to_west_texture.png");
-	// game->north_texture = mlx_load_png("textures/Brick_Wall_Brown.png");
-	// game->east_texture = mlx_load_png("textures/Brick_Wall_Grey.png");
-	// game->south_texture = mlx_load_png("textures/Brick_Wall_Red.png");
-	// game->west_texture = mlx_load_png("textures/Old_Brick_Wall.png");
-	game->north_texture = mlx_load_png("textures/Impression_Sunrise.png");
-	game->east_texture = mlx_load_png("textures/Sunflowers.png");
-	game->south_texture = mlx_load_png("textures/Wheat_Field.png");
-	game->west_texture = mlx_load_png("textures/the_starry_night.png");
 }
