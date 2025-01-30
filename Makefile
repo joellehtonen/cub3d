@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+         #
+#    By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/29 12:05:05 by kattimaijan      ###   ########.fr        #
+#    Updated: 2025/01/30 14:25:30 by jlehtone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := cub3d
 CC := cc
-FLAGS := -Wall -Wextra -Werror -ggdb3 -g -pg -O3 -ffast-math
+FLAGS := -Wall -Wextra -Werror -ggdb3 -g -pg -O3 -ffast-math -fsanitize=address
 CFILES := main.c \
 			check_for_path.c \
 			check_for_rgb.c \

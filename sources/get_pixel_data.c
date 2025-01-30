@@ -6,13 +6,13 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:22:12 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/30 10:11:06 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:40:08 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-uint32_t	extract_color_data(mlx_texture_t *texture, int location)
+uint32_t	extract_color_data(mlx_texture_t *texture, unsigned int location)
 {
 	uint8_t 	red;
 	uint8_t 	green;
@@ -20,6 +20,8 @@ uint32_t	extract_color_data(mlx_texture_t *texture, int location)
 	uint8_t 	alpha;
 	uint32_t 	rgba;
 
+	if (location < 0 || location + 3 >= (texture->width * texture->height * 4)) 
+    	return (0);
 	red = texture->pixels[location];
 	green = texture->pixels[location + 1];
 	blue = texture->pixels[location + 2];

@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/30 11:49:46 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/30 12:53:40 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ static bool	move_player(t_game *game, double direction)
 	
 	new_x = game->player.x + cos(game->player.angle + direction) * MOVE_SPEED;
 	new_y = game->player.y + sin(game->player.angle + direction) * MOVE_SPEED;
-	ghost_box = (t_box){new_x - 4, new_y - 4, \
-		new_x + 4, new_y - 4, \
-		new_x - 4, new_y + 4, \
-		new_x + 4, new_y + 4};
+	ghost_box = (t_box){new_x - MOVE_SIZE, new_y - MOVE_SIZE, \
+		new_x + MOVE_SIZE, new_y - MOVE_SIZE, \
+		new_x - MOVE_SIZE, new_y + MOVE_SIZE, \
+		new_x + MOVE_SIZE, new_y + MOVE_SIZE};
 	// printf("player x: %d, player y:%d\n", game->player.x, game->player.y);
 	// printf("box tlx: %d, tly: %d\n", ghost_box.top_left_x, ghost_box.top_left_y);
 	// printf("box trx: %d, try: %d\n", ghost_box.top_right_x, ghost_box.top_right_y);

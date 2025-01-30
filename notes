@@ -14,10 +14,20 @@ The flag (-O3 -ffast-math) is used for optimization.
 
 TO DO:
 - make a faster put_pixel by modifying mlx_image_t pixel data directly?
-- take rgb values from the map file
 - bobbing motion to animation when walking (up/down)
 - move zippo left/right when rotating
 - separate bonus stuff to its files, add make bonus
+- ADD DOCUMENTATION/COMMENTS
+- scale minimap, add background to it
 
 TO FIX:
 - program slows down as it runs! 
+
+ACCEPTABLE LEAKS (from mlx42)
+==270281== LEAK SUMMARY:
+==270281==    definitely lost: 0 bytes in 1 blocks
+==270281==    indirectly lost: 0 bytes in 0 blocks
+==270281==      possibly lost: 0 bytes in 0 blocks
+==270281==    still reachable: 317,955 bytes in 3,106 blocks
+==270281==         suppressed: 0 bytes in 0 blocks
+==270281== Rerun with --leak-check=full to see details of leaked memory

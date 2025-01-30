@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/30 11:53:09 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:32:39 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define MINIMAP_HEIGHT 300
 # define MAX_WIDTH_IN_TILES 120
 # define MAX_HEIGHT_IN_TILES 64
-# define MOVE_SIZE 16
+# define MOVE_SIZE 2
 # define MOVE_SPEED 6
 # define PI 3.14159265358979323846
 # define FOV (60 * (PI / 180))
@@ -168,13 +168,11 @@ void    render_ray_into_frame_dark(t_game *game, int ray);
 void	correct_distortion(t_game *game);
 int		get_color(t_game *game);
 bool	place_for_minimap(t_game* game, int y, int x);
-uint32_t	find_pixel_color(t_game *game, mlx_texture_t *texture, int y);
-uint32_t	extract_color_data(mlx_texture_t *texture, int location);
+uint32_t	extract_color_data(mlx_texture_t *texture, unsigned int location);
 
 void 	check_for_rgb(t_game *game, int i, int *j, int element);
 void	copy_map(t_game *game, char **file);
 void	validate_map(t_game *game);
-void 	rgb_to_hex(t_game *game);
 void	torch_animation(t_game *game);
 
 #endif
