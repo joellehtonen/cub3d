@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls_dark.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 09:55:49 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:19:16 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	render_ray_into_frame_dark(t_game *game, int ray)
 	float		wall_bottom;
 
 	correct_distortion(game);
-	game->ray.wall_height = TILE_SIZE * WINDOW_HEIGHT / game->ray.length;
+	game->ray.wall_height = game->tile_size * WINDOW_HEIGHT / game->ray.length;
 	wall_top = (WINDOW_HEIGHT / 2) - (game->ray.wall_height / 2);
 	if (wall_top < 0)
 		wall_top = 0;

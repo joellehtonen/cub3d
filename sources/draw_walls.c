@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 14:51:44 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:13:58 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ mlx_texture_t	*choose_texture(t_game *game)
 		else
 			texture = game->west_texture;
 	}
-	//game->ray.door_hit = false;
 	return (texture);
 }
 
@@ -56,16 +55,16 @@ int	get_x_coordinate(t_game *game, mlx_texture_t *texture)
 	if (game->ray.horizontal == true)
 	{
 		if (game->ray.direction_up == false)
-			x = (1 - fmod(game->ray.x, TILE_SIZE) / TILE_SIZE) * texture->width;
+			x = (1 - fmod(game->ray.x, game->tile_size) / game->tile_size) * texture->width;
 		else
-			x = fmod(game->ray.x, TILE_SIZE) / TILE_SIZE * texture->width;
+			x = fmod(game->ray.x, game->tile_size) / game->tile_size * texture->width;
 	}
 	else
 	{
 		if (game->ray.direction_left == true)
-			x = (1 - fmod(game->ray.y, TILE_SIZE) / TILE_SIZE) * texture->width;
+			x = (1 - fmod(game->ray.y, game->tile_size) / game->tile_size) * texture->width;
 		else
-			x = fmod(game->ray.y, TILE_SIZE) / TILE_SIZE * texture->width;
+			x = fmod(game->ray.y, game->tile_size) / game->tile_size * texture->width;
 	}
 	return (x);
 }
@@ -137,7 +136,7 @@ void	render_ray_into_frame(t_game *game, int ray)
 	float	wall_bottom;
 
 	correct_distortion(game);
-	game->ray.wall_height = TILE_SIZE * WINDOW_HEIGHT / game->ray.length;
+	game->ray.wall_height = game->tile_size * WINDOW_HEIGHT / game->ray.length;
 	wall_top = (WINDOW_HEIGHT / 2) - (game->ray.wall_height / 2);
 	if (wall_top < 0)
 		wall_top = 0;

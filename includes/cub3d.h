@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/31 15:11:04 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:12:32 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ typedef struct s_game
 	int					zippo_counter;
 	bool				doors_closed;
 	bool				can_close_doors;
+	int					tile_size;
 	struct s_player		player;
 	struct s_ray		ray;
 }	t_game;

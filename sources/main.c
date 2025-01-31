@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:39 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 14:44:20 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:13:22 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,16 @@ static void	initialize_variables(t_game *game)
 	game->zippo_x = ZIPPO_X;
 	game->zippo_y = ZIPPO_Y;
 	game->zippo_counter = 0;
+	game->tile_size = TILE_SIZE;
 	game->doors_closed = true;
 	game->can_close_doors = true;
 	// maybe lets memset these, except -1s
 }
+
+// static void resize_minimap(t_game *game)
+// {
+	
+// }
 
 int	main(int argc, char *argv[])
 {
@@ -70,6 +76,7 @@ int	main(int argc, char *argv[])
 	game.mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d", true);
 	if (!(game.mlx))
 		error_exit_and_free(&game, "MLX failed to initialize");
+	//resize_minimap(&game);
 	create_textures(&game);
 	create_images(&game);
 	resize_images(&game);
