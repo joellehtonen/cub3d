@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:42:01 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/27 14:06:38 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:21:02 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ void clear_line(t_game *game)
 
 void draw_line(t_game *game)
 {
-	//clear_line(game);
-    bresenham_line(game, game->player.x, game->player.y, (int)game->ray.x, (int)game->ray.y);
+	if (game->show_minimap == true)
+    	bresenham_line(game, game->player.x, game->player.y, (int)game->ray.x, (int)game->ray.y);
 }

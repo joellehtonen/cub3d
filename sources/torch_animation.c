@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:33:42 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/31 10:34:21 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:53:06 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void disable_all_flames(t_game *game)
 	int i;
 
 	i = 0;
-	while (i <  12)
+	while (i < 12)
 	{
 		game->flame_img[i]->enabled = false;
 		i++;

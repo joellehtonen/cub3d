@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:39 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 13:25:26 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:36:02 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,17 @@ static void	initialize_variables(t_game *game)
 	game->zippo_y = ZIPPO_Y;
 	game->zippo_counter = 0;
 	game->tile_size = TILE_SIZE;
+	game->show_minimap = true;
+	game->blank_tile_img = NULL;
 	// maybe lets memset these, except -1s
 }
 
-// static void resize_minimap(t_game *game)
-// {
-	
-// }
+static void initialize_mlx(t_game *game)
+{
+	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d", true);
+	if (!(game->mlx))
+		error_exit_and_free(game, "MLX failed to initialize");
+}
 
 int	main(int argc, char *argv[])
 {
@@ -71,10 +75,8 @@ int	main(int argc, char *argv[])
 	validate_filetype(argv[1]);
 	create_copy_of_file(&game, argv[1]);
 	parse_file(&game);
-	game.mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d", true);
-	if (!(game.mlx))
-		error_exit_and_free(&game, "MLX failed to initialize");
-	//resize_minimap(&game);
+	initialize_mlx(&game);
+	resize_minimap(&game);
 	create_textures(&game);
 	create_images(&game);
 	resize_images(&game);

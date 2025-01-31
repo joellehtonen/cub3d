@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+         #
+#    By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/31 11:58:06 by jlehtone         ###   ########.fr        #
+#    Updated: 2025/01/31 16:30:59 by eberkowi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ CFILES := main.c \
 			draw_walls_dark.c \
 			draw_utils.c \
 			torch_animation.c \
-			get_pixel_data.c
+			get_pixel_data.c \
+			resize_minimap.c
 HEADER = includes/cub3d.h
 LIBFT := libft/libft.a
 MLX42 := MLX42/build/libmlx42.a
