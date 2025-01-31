@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_for_wall.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:28:30 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 15:13:01 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:45:38 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	is_wall_ray(t_game *game, float x, float y, bool horizontal)
 	if (game->ray.direction_left == true && fabs(fmod(x, game->tile_size)) < 0.0001)
 		x_int -= 1;
 	y_int = floor(y / game->tile_size);
-	if (game->ray.direction_up == true && fabs(fmod(y, game->tile_size)) < 0.0001)
+	if (game->ray.direction_up == true && fabs(fmod(y,game->tile_size )) < 0.0001)
 		y_int -= 1;
 	if (x_int < 0 || y_int < 0 \
 		|| x_int > (game->width_in_tiles - 1) \
@@ -61,8 +61,8 @@ bool	is_wall_ray(t_game *game, float x, float y, bool horizontal)
 */
 bool	is_wall(t_game *game, int x, int y)
 {
-	if (game->map[y / TILE_SIZE][x / TILE_SIZE] == '1'
-		|| (game->map[y / TILE_SIZE][x / TILE_SIZE] == 'D' && game->doors_closed == true))
+	if (game->map[y / game->tile_size][x / game->tile_size] == '1'
+		|| (game->map[y / game->tile_size][x / game->tile_size] == 'D' && game->doors_closed == true))
 		return (true);
 	else
 		return (false);

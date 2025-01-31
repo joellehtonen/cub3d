@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doors.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:58:27 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 14:52:20 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:45:01 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	open_close_doors(t_game *game)
 
 	if (game->frame_counter % 9 == 0)
 		game->can_close_doors = true;
-	if (game->map[(int)game->player.y / TILE_SIZE][(int)game->player.x / TILE_SIZE] == 'D')
+	if (game->map[(int)game->player.y / game->tile_size][(int)game->player.x / game->tile_size] == 'D')
 	{
 		// string = "Cannot close doors. You are too close!";
 		// door = mlx_put_string(game->mlx, string, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);

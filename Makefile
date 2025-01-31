@@ -6,7 +6,7 @@
 #    By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/31 16:40:30 by eberkowi         ###   ########.fr        #
+#    Updated: 2025/01/31 16:42:47 by eberkowi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ CFILES := main.c \
 			draw_utils.c \
 			torch_animation.c \
 			get_pixel_data.c \
-			resize_minimap.c
+			resize_minimap.c \
 			doors.c
 HEADER = includes/cub3d.h
 LIBFT := libft/libft.a
