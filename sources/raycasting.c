@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/28 16:45:07 by eberkowi         ###   ########.fr       */
+/*   Created: 2025/01/31 09:43:56 by eberkowi          #+#    #+#             */
+/*   Updated: 2025/01/31 09:44:31 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/cub3d.h"
 
@@ -119,4 +120,3 @@ void raycasting(t_game *game)
 	//mlx_image_to_window(game->mlx, game->minimap_img, 0, 0);
 	//mlx_set_instance_depth(&game->frame->instances[0], game->layers);
 }
- 

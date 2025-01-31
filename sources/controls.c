@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/30 15:01:23 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/31 09:50:18 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ static void zippo_animation_recenter(t_game *game)
 
 static void zippo_animation_rotate(t_game *game, double direction)
 {
-	if (direction == LEFT)
+	if (direction == LEFT && (game->flame_x - FLAME_X) < 50)
 	{
 		game->flame_x += ZIPPO_MOVE_SPD;
 		game->zippo_x += ZIPPO_MOVE_SPD;
 	}
-	else
+	else if (direction == RIGHT && (FLAME_X - game->flame_x) < 50)
 	{
 		game->flame_x -= ZIPPO_MOVE_SPD;
 		game->zippo_x -= ZIPPO_MOVE_SPD;
