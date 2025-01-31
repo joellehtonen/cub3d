@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:45:15 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/31 13:19:16 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:25:12 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ static int	images_to_window(t_game *game, int x, int y)
 		game->player.x = x * game->tile_size + game->tile_size / 2;
 		game->player.y = y * game->tile_size + game->tile_size / 2;
 	}
-	// else
-	// {
-	// 	if (mlx_image_to_window(game->mlx, game->empty_map_img, x * game->tile_size, y * game->tile_size) < 0)
-	// 		return (0);
-	// }
+	if (game->map[y][x] == '.' || game->map[y][x] == ' ')
+	{
+		if (mlx_image_to_window(game->mlx, game->empty_map_img, x * game->tile_size, y * game->tile_size) < 0)
+			return (0);
+	}
 	
 	return (1);
 }
@@ -70,12 +70,12 @@ void	display_images(t_game *game)
 				error_exit_and_free(game, "MLX could not display image in window");
 			x++;
 		}
-		while (x < game->width_in_tiles)
-		{
-			if (mlx_image_to_window(game->mlx, game->empty_map_img, x * game->tile_size, y * game->tile_size) < 0)
-				error_exit_and_free(game, "MLX could not display image in window");
-			x++;
-		}
+		// while (x < game->width_in_tiles)
+		// {
+		// 	if (mlx_image_to_window(game->mlx, game->empty_map_img, x * game->tile_size, y * game->tile_size) < 0)
+		// 		error_exit_and_free(game, "MLX could not display image in window");
+		// 	x++;
+		// }
 		y++;
 	}
 	if (mlx_image_to_window(game->mlx, game->player.minimap_player_img, game->player.x, game->player.y) < 0)

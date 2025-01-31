@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:39 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 13:20:02 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:25:26 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ static void	initialize_variables(t_game *game)
 	// maybe lets memset these, except -1s
 }
 
+// static void resize_minimap(t_game *game)
+// {
+	
+// }
+
 int	main(int argc, char *argv[])
 {
 	t_game	game;
@@ -69,6 +74,7 @@ int	main(int argc, char *argv[])
 	game.mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d", true);
 	if (!(game.mlx))
 		error_exit_and_free(&game, "MLX failed to initialize");
+	//resize_minimap(&game);
 	create_textures(&game);
 	create_images(&game);
 	resize_images(&game);
