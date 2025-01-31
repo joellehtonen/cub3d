@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 13:19:16 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:13:58 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 	@brief Finds the corresponding texture depending on the ray direction
-	and which wall, horizontal or vertical, it hit.
+	 and which wall, horizontal or vertical, it hit.
 	@param *game Our game struct
 	@return The chosen texture
 */
@@ -22,7 +22,9 @@ mlx_texture_t	*choose_texture(t_game *game)
 {
 	mlx_texture_t	*texture;
 
-	if (game->ray.horizontal == true)
+	if (game->ray.horizontal_door_hit == true || game->ray.vertical_door_hit == true)
+		texture = game->door_texture;
+	else if (game->ray.horizontal == true)
 	{
 		if (game->ray.direction_up == true)
 			texture = game->south_texture;
@@ -41,7 +43,7 @@ mlx_texture_t	*choose_texture(t_game *game)
 
 /*
 	@brief Finds the x-coordinate within the texture that 
-	matches the relative position of where the ray hits the wall.
+	 matches the relative position of where the ray hits the wall.
 	@param *game Our game struct
 	@param *texture Texture to be drawn, contains the color information we need
 	@return The x-coordinate
@@ -101,7 +103,7 @@ static void	draw_walls(t_game *game, int start, int end, int ray)
 
 /*
 	@brief Draws floors (lower 50% of the image) and ceilings (upper 50%)
-	according to the values in the map file.
+	 according to the values in the map file.
 	@param *game Our game struct
 	@param ray Number of the ray, essentially the x-coordinate
 */
@@ -124,7 +126,7 @@ static void	draw_floor_ceiling(t_game *game, int ray)
 
 /*
 	@brief Calculates the dimensions of the wall,
-	then renders each one pixel wide ray into a pixel wide image onto window.
+	 then renders each one pixel wide ray into a pixel wide image onto window.
 	@param *game Our game struct
 	@param ray Number of the ray, essentially the x-coordinate
 */

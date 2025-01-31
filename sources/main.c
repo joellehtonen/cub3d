@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:39 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 16:36:02 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:39:50 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static void	initialize_variables(t_game *game)
 	game->tile_size = TILE_SIZE;
 	game->show_minimap = true;
 	game->blank_tile_img = NULL;
+	game->doors_closed = true;
+	game->can_close_doors = true;
 	// maybe lets memset these, except -1s
 }
 

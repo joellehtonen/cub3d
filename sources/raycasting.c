@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 13:19:16 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:13:46 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 /*
 	@brief Calculates how large a vertical "step" the ray needs to take,
-	and to which direction in order to find the next intersection to check.
+	 and to which direction in order to find 
+	 the next intersection to check.
 	@param *game Our game struct
 	@param *step_x Reference to the value of step in x-axis
 	@param *step_y Reference to the value of step in y-axis
@@ -35,7 +36,7 @@ static void	calculate_vertical_step(t_game *game, float *step_x, float *step_y)
 
 /*
 	@brief Calculates how large a horizontal "step" the ray needs to take,
-	and to which direction in order to find the next intersection to check.
+	 and to which direction in order to find the next intersection to check.
 	@param *game Our game struct
 	@param *step_x Reference to the value of step in x-axis
 	@param *step_y Reference to the value of step in y-axis
@@ -56,7 +57,7 @@ static void	calculate_horizontal_step(t_game *game, \
 
 /*
 	@brief Finds and records the first place where 
-	the ray hits a vertical wall.
+	 the ray hits a vertical wall.
 	@param *game Our game struct
 	@return The distance from the player to the hit location
 */
@@ -74,7 +75,7 @@ static double	find_vertical_intersection(t_game *game)
 	point_y = game->player.y + (point_x - game->player.x) \
 		* tan(game->ray.angle);
 	calculate_vertical_step(game, &step_x, &step_y);
-	while (is_wall_ray(game, point_x, point_y) == false)
+	while (is_wall_ray(game, point_x, point_y, false) == false)
 	{
 		point_x += step_x;
 		point_y += step_y;
@@ -87,7 +88,7 @@ static double	find_vertical_intersection(t_game *game)
 }
 /*
 	@brief Finds and records the first place where 
-	the ray hits a horizontal wall.
+	 the ray hits a horizontal wall.
 	@param *game Our game struct
 	@return The distance from the player to the hit location
 */
@@ -105,7 +106,7 @@ static double	find_horizontal_intersection(t_game *game)
 	point_x = game->player.x + (point_y - game->player.y) \
 		/ tan(game->ray.angle);
 	calculate_horizontal_step(game, &step_x, &step_y);
-	while (is_wall_ray(game, point_x, point_y) == false)
+	while (is_wall_ray(game, point_x, point_y, true) == false)
 	{
 		point_y += step_y;
 		point_x += step_x;
@@ -119,7 +120,8 @@ static double	find_horizontal_intersection(t_game *game)
 
 /*
 	@brief Shoots a ray into all directions the player can see.
-	We record the location where it hits a wall and render objects accordingly. 
+	 We record the location where it hits a wall 
+	 and render objects accordingly. 
 	@param *game Our game struct
 */
 void	raycasting(t_game *game)
@@ -132,6 +134,8 @@ void	raycasting(t_game *game)
 	ray = 0;
 	while (ray < WINDOW_WIDTH)
 	{
+		game->ray.horizontal_door_hit = false;
+		game->ray.vertical_door_hit = false;
 		reset_angles(game);
 		determine_ray_direction(game);
 		h_inter = find_horizontal_intersection(game);

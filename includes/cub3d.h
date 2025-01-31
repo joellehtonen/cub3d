@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/31 16:35:32 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:39:09 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct s_ray
 	bool				direction_left;
 	bool				direction_up;
 	bool				horizontal;
+	bool				horizontal_door_hit;
+	bool				vertical_door_hit;
 }	t_ray;
 
 typedef struct s_box
@@ -123,6 +125,7 @@ typedef struct s_game
 	mlx_texture_t		*east_texture;
 	mlx_texture_t		*south_texture;
 	mlx_texture_t		*west_texture;
+	mlx_texture_t		*door_texture;
 	mlx_texture_t		*wall_texture;
 	mlx_image_t			*minimap_wall_img;
 	mlx_texture_t		*floor_texture;
@@ -143,6 +146,8 @@ typedef struct s_game
 	int					zippo_y;
 	int					frame_counter;
 	int					zippo_counter;
+	bool				doors_closed;
+	bool				can_close_doors;
 	int					tile_size;
 	bool				show_minimap;
 	struct s_player		player;
@@ -177,15 +182,15 @@ void			choose_shorter_distance(t_game *game, \
 	double h_inter, double v_inter);
 // checks
 bool			is_wall(t_game *game, int x, int y);
-bool			is_wall_ray(t_game *game, float x, float y);
+bool			is_wall_ray(t_game *game, float x, float y, bool horizontal);
 void			check_for_rgb(t_game *game, int i, int *j, int element);
+void 			check_for_valid_door(t_game *game, int x, int y);
 // drawing functions
 void			draw_line(t_game *game);
 void			clear_line(t_game *game);
 void			render_ray_into_frame(t_game *game, int ray);
 void			render_ray_into_frame_dark(t_game *game, int ray);
 void			correct_distortion(t_game *game);
-int				get_color(t_game *game);
 int				get_x_coordinate(t_game *game, mlx_texture_t *texture);
 mlx_texture_t	*choose_texture(t_game *game);
 uint32_t		extract_color_data(mlx_texture_t *texture, uint32_t *rgba, \
@@ -193,5 +198,6 @@ uint32_t		extract_color_data(mlx_texture_t *texture, uint32_t *rgba, \
 // animation functions
 void			torch_animation(t_game *game);
 void			disable_all_flames(t_game *game);
+void			open_close_doors(t_game *game);
 
 #endif

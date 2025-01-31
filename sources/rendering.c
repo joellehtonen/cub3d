@@ -6,14 +6,14 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:35:13 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/31 10:24:35 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:08:09 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 /*
-	@brief Our main loop, raycasting and rendering whenever a movement occurs.acos
+	@brief Our main loop, raycasting and rendering whenever a movement occurs.
     @param content Our game struct as a void pointer
 */
 void    rendering(void *content)
