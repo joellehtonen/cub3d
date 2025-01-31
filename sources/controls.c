@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 10:36:37 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:27:58 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,6 @@ static bool	move_player(t_game *game, double direction)
 		new_x + MOVE_SIZE, new_y - MOVE_SIZE, \
 		new_x - MOVE_SIZE, new_y + MOVE_SIZE, \
 		new_x + MOVE_SIZE, new_y + MOVE_SIZE};
-	// printf("player x: %d, player y:%d\n", game->player.x, game->player.y);
-	// printf("box tlx: %d, tly: %d\n", ghost_box.top_left_x, ghost_box.top_left_y);
-	// printf("box trx: %d, try: %d\n", ghost_box.top_right_x, ghost_box.top_right_y);
-	// printf("box blx: %d, bly: %d\n", ghost_box.bottom_left_x, ghost_box.bottom_left_y);
-	// printf("box brx: %d, bry: %d\n", ghost_box.bottom_right_x, ghost_box.bottom_right_y);
-	//if (is_wall(game, new_x, new_y) == false)
 	if (is_wall(game, ghost_box.top_left_x, ghost_box.top_left_y) == false \
 		&& is_wall(game, ghost_box.top_right_x, ghost_box.top_right_y) == false \
 		&& is_wall(game, ghost_box.bottom_left_x, ghost_box.bottom_left_y) == false \
@@ -106,6 +100,21 @@ static bool	move_player(t_game *game, double direction)
 		return (false);
 }
 
+static bool	player_movement(t_game *game)
+{
+	bool	movement;
+	
+	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
+		movement = move_player(game, FORWARD);
+	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
+		movement = move_player(game, BACK);
+	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
+		movement = move_player(game, LEFT);
+	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
+		movement = move_player(game, RIGHT);
+	return (movement);
+}
+
 bool controls(t_game *game)
 {
 	bool	movement;
@@ -116,14 +125,7 @@ bool controls(t_game *game)
 		free_all(game);
 		exit (EXIT_SUCCESS);
 	}
-	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
-		movement = move_player(game, FORWARD);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
-		movement = move_player(game, BACK);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
-		movement = move_player(game, LEFT);
-	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
-		movement = move_player(game, RIGHT);
+	movement = player_movement(game);
 	if (movement == true)
 		zippo_up_and_down(game);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
@@ -132,5 +134,7 @@ bool controls(t_game *game)
 		movement = rotate_player(game, RIGHT);
 	else
 		zippo_animation_recenter(game);
+	if (mlx_is_key_down(game->mlx, MLX_KEY_SPACE))
+		open_close_doors(game);
 	return (movement);
 }

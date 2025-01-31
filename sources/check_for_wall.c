@@ -6,22 +6,22 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:28:30 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 10:28:05 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:51:55 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 /*
-	@brief Checks whether there is a wall in the map in the given coordinates.
-	This one is designed for the ray, taking into account which side of the tile
-	the ray hits. 
+	@brief Checks whether there is a wall or closed door 
+	 in the map in the given coordinates. This one is designed for the ray, 
+	 taking into account which side of the tile the ray hits. 
 	@param *game Our game struct
 	@param x X-coordinate to check
 	@param y Y-coordinate to check
 	@return boolean on whether there is a wall or not
 */
-bool	is_wall_ray(t_game *game, float x, float y)
+bool	is_wall_ray(t_game *game, float x, float y, bool horizontal)
 {
 	int	x_int;
 	int	y_int;
@@ -38,12 +38,22 @@ bool	is_wall_ray(t_game *game, float x, float y)
 		return (true);
 	if (game->map[y_int][x_int] == '1')
 		return (true);
+	else if (game->map[y_int][x_int] == 'D' \
+			&& game->doors_closed == true)
+	{
+		if (horizontal == true)
+			game->ray.horizontal_door_hit = true;
+		else
+			game->ray.vertical_door_hit = true;
+		return (true);
+	}
 	else
 		return (false);
 }
 
 /*
-	@brief Checks whether there is a wall in the map in the given coordinates.
+	@brief Checks whether there is a wall or a closed door 
+	 in the map in the given coordinates.
 	@param *game Our game struct
 	@param x X-coordinate to check
 	@param y Y-coordinate to check
@@ -51,7 +61,8 @@ bool	is_wall_ray(t_game *game, float x, float y)
 */
 bool	is_wall(t_game *game, int x, int y)
 {
-	if (game->map[y / TILE_SIZE][x / TILE_SIZE] == '1')
+	if (game->map[y / TILE_SIZE][x / TILE_SIZE] == '1'
+		|| (game->map[y / TILE_SIZE][x / TILE_SIZE] == 'D' && game->doors_closed == true))
 		return (true);
 	else
 		return (false);

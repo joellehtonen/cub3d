@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:39 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 10:56:52 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:44:20 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ static void	initialize_variables(t_game *game)
 	game->zippo_x = ZIPPO_X;
 	game->zippo_y = ZIPPO_Y;
 	game->zippo_counter = 0;
+	game->doors_closed = true;
+	game->can_close_doors = true;
 	// maybe lets memset these, except -1s
 }
 

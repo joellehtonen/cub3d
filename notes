@@ -18,6 +18,8 @@ TO DO:
 - separate bonus stuff to its files, add make bonus
 - ADD DOCUMENTATION/COMMENTS
 - scale minimap, add background to it
+- flame gets smaller as game continues
+-> dark mode walls get closer???
 
 TO FIX:
 - program slows down as it runs! 

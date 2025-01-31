@@ -6,12 +6,19 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:22:12 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/30 16:40:16 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:09:58 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+/*
+	@brief Gets pixel color data (red, green, blue and alpha)
+	 from the pixel at the given location.
+	@param *texture Texture where pixel is located
+	@param *rgba Reference to the color variable
+	@param location Location of the pixel
+*/
 uint32_t	extract_color_data(mlx_texture_t *texture, uint32_t *rgba, unsigned int location)
 {
 	uint8_t		red;
@@ -26,5 +33,5 @@ uint32_t	extract_color_data(mlx_texture_t *texture, uint32_t *rgba, unsigned int
 	blue = texture->pixels[location + 2];
 	alpha = texture->pixels[location + 3];
 	*rgba = (red << 24) | (green << 16) | (blue << 8) | (alpha);
-	return (*rgba);
+	return (*rgba); // THIS COULD BE VOID!
 }

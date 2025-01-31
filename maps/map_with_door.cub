@@ -1,0 +1,14 @@
+NO ./textures/Old_Brick_Wall.png
+SO ./textures/Stucco_Wall_White.png
+WE ./textures/Decorative_Brick_Sandstone.png
+EA ./textures/Decorative_Brick_Tan.png
+F 194,178,128
+C 135,206,235
+
+11111111111111
+10000000000001
+10100N10001111
+10000000001001
+11D11D11D11111
+10000000000001
+11111111111111

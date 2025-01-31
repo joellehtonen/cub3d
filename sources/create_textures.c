@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_textures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:30:46 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/30 15:13:55 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/31 14:56:42 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,8 @@ void	create_textures(t_game *game)
 	game->west_texture = mlx_load_png(game->path_to_west_texture);
 	if (!game->west_texture)
 		error_exit_and_free(game, "MLX failed to load west texture");
+	game->door_texture = mlx_load_png("textures/the_scream.png");
+	if (!game->door_texture)
+		error_exit_and_free(game, "MLX failed to load door texture");
 	create_torch_textures(game);
 }
