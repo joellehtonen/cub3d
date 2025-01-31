@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_images.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:45:15 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/31 10:56:22 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:19:16 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,25 @@ static int	images_to_window(t_game *game, int x, int y)
 {
 	if (game->map[y][x] == '1')
 	{
-		if (mlx_image_to_window(game->mlx, game->minimap_wall_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
+		if (mlx_image_to_window(game->mlx, game->minimap_wall_img, x * game->tile_size, y * game->tile_size) < 0)
 			return (0);
 	}
 	if (game->map[y][x] == '0')
 	{
-		if (mlx_image_to_window(game->mlx, game->minimap_floor_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
+		if (mlx_image_to_window(game->mlx, game->minimap_floor_img, x * game->tile_size, y * game->tile_size) < 0)
 			return (0);
 	}
 	if (game->map[y][x] == 'N' || game->map[y][x] == 'S' ||
 		game->map[y][x] == 'W' || game->map[y][x] == 'E')
 	{
-		if (mlx_image_to_window(game->mlx, game->minimap_floor_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
+		if (mlx_image_to_window(game->mlx, game->minimap_floor_img, x * game->tile_size, y * game->tile_size) < 0)
 			return (0);
-		game->player.x = x * TILE_SIZE + TILE_SIZE / 2;
-		game->player.y = y * TILE_SIZE + TILE_SIZE / 2;
+		game->player.x = x * game->tile_size + game->tile_size / 2;
+		game->player.y = y * game->tile_size + game->tile_size / 2;
 	}
 	// else
 	// {
-	// 	if (mlx_image_to_window(game->mlx, game->empty_map_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
+	// 	if (mlx_image_to_window(game->mlx, game->empty_map_img, x * game->tile_size, y * game->tile_size) < 0)
 	// 		return (0);
 	// }
 	
@@ -72,7 +72,7 @@ void	display_images(t_game *game)
 		}
 		while (x < game->width_in_tiles)
 		{
-			if (mlx_image_to_window(game->mlx, game->empty_map_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
+			if (mlx_image_to_window(game->mlx, game->empty_map_img, x * game->tile_size, y * game->tile_size) < 0)
 				error_exit_and_free(game, "MLX could not display image in window");
 			x++;
 		}

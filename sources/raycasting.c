@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 10:37:14 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:19:16 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 */
 static void	calculate_vertical_step(t_game *game, float *step_x, float *step_y)
 {
-	*step_x = TILE_SIZE;
+	*step_x = game->tile_size;
 	if (game->ray.direction_left == true)
 		*step_x *= -1;
 	*step_y = *step_x * tan(game->ray.angle);
@@ -43,7 +43,7 @@ static void	calculate_vertical_step(t_game *game, float *step_x, float *step_y)
 static void	calculate_horizontal_step(t_game *game, \
 	float *step_x, float *step_y)
 {
-	*step_y = TILE_SIZE;
+	*step_y = game->tile_size;
 	if (game->ray.direction_up == true)
 		*step_y *= -1;
 	*step_x = *step_y / tan(game->ray.angle);
@@ -68,9 +68,9 @@ static double	find_vertical_intersection(t_game *game)
 	float	step_y;
 	double	distance;
 
-	point_x = floor(game->player.x / TILE_SIZE) * TILE_SIZE;
+	point_x = floor(game->player.x / game->tile_size) * game->tile_size;
 	if (game->ray.direction_left == false)
-		point_x += TILE_SIZE;
+		point_x += game->tile_size;
 	point_y = game->player.y + (point_x - game->player.x) \
 		* tan(game->ray.angle);
 	calculate_vertical_step(game, &step_x, &step_y);
@@ -99,9 +99,9 @@ static double	find_horizontal_intersection(t_game *game)
 	float	step_y;
 	double	distance;
 
-	point_y = floor(game->player.y / TILE_SIZE) * TILE_SIZE;
+	point_y = floor(game->player.y / game->tile_size) * game->tile_size;
 	if (game->ray.direction_up == false)
-		point_y += TILE_SIZE;
+		point_y += game->tile_size;
 	point_x = game->player.x + (point_y - game->player.y) \
 		/ tan(game->ray.angle);
 	calculate_horizontal_step(game, &step_x, &step_y);

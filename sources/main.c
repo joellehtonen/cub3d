@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:39 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 10:56:52 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:20:02 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static void	initialize_variables(t_game *game)
 	game->zippo_x = ZIPPO_X;
 	game->zippo_y = ZIPPO_Y;
 	game->zippo_counter = 0;
+	game->tile_size = TILE_SIZE;
 	// maybe lets memset these, except -1s
 }
 

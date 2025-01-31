@@ -3668,7 +3668,7 @@ TEST_F	MLX42/tests/tests.cpp	/^TEST_F(Window, Basic)$/;"	f
 TEST_F	MLX42/tests/tests.cpp	/^TEST_F(Window, MultipleImages)$/;"	f
 TEST_F	MLX42/tests/tests.cpp	/^TEST_F(Window, SingleImage)$/;"	f
 TEST_F	MLX42/tests/tests.cpp	/^TEST_F(Window, stringTortureTest)$/;"	f
-TILE_SIZE	includes/cub3d.h	/^# define TILE_SIZE /;"	d
+game->tile_size	includes/cub3d.h	/^# define game->tile_size /;"	d
 TOOLS_DIR	MLX42/CMakeLists.txt	/^set(TOOLS_DIR ${CMAKE_CURRENT_SOURCE_DIR}\/tools)$/;"	v
 TearDown	MLX42/tests/WindowFixture.hpp	/^	inline void TearDown() override$/;"	f	class:Window	typeref:typename:void
 Technical comparison	MLX42/docs/42.md	/^# Technical comparison$/;"	c
