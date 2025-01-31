@@ -1,12 +1,11 @@
 MAP PARSING NOTES
 
--Map must be surrounded by walls.
--There can be islands
--can textures be opaque? pixels be opaque? can there be see-through wall etc?
-
-
-- put 1s to empty spaces when parsing
-
+TO DO:
+- map scaling
+- more map parsing tests
+- norminette
+- valgrind
+- malloc checks
 
 RAYCASTING NOTES
 

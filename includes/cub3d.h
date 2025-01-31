@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/31 09:34:21 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 10:55:32 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,6 @@ typedef struct s_game
 	mlx_image_t			*minimap_img;
 	mlx_texture_t		*flame_texture[12];
 	mlx_image_t			*flame_img[12];
-	mlx_image_t			*flame_mem_img;
 	mlx_texture_t		*zippo_texture;
 	mlx_image_t			*zippo_img;
 	mlx_texture_t		*empty_map_texture;

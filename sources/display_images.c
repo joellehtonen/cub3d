@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:45:15 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/31 09:38:31 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 10:56:22 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	display_images(t_game *game)
 		while (x < game->width_in_tiles)
 		{
 			if (mlx_image_to_window(game->mlx, game->empty_map_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
-				return ; //ADD ERROR
+				error_exit_and_free(game, "MLX could not display image in window");
 			x++;
 		}
 		y++;
@@ -85,6 +85,4 @@ void	display_images(t_game *game)
 	if (mlx_image_to_window(game->mlx, game->zippo_img, ZIPPO_X, ZIPPO_Y) < 0) 
 		error_exit_and_free(game, "MLX could not display image in window");
 	flame_images_to_window(game);
-	if (mlx_image_to_window(game->mlx, game->flame_mem_img, FLAME_X, FLAME_Y) < 0) //REMOVE MAYBE
-		error_exit_and_free(game, "MLX could not display image in window");
 }
