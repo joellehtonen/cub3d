@@ -6,13 +6,13 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/30 16:53:07 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 09:27:22 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static uint32_t	extract_color_data_dark(t_game *game, mlx_texture_t *texture, uint32_t *rgba, unsigned int location)
+static uint32_t	extract_color_data_dark(mlx_texture_t *texture, uint32_t *rgba, unsigned int location)
 {
 	uint8_t		red;
 	uint8_t		green;
@@ -48,7 +48,7 @@ static void draw_walls(t_game *game, int start, int end, int ray)
 	texture_x = get_x_coordinate(game, texture);
 	while (start <= end && start < WINDOW_HEIGHT)
 	{
-		extract_color_data_dark(game, texture, &color, ((texture->width * (int)texture_y + texture_x) * 4));
+		extract_color_data_dark(texture, &color, ((texture->width * (int)texture_y + texture_x) * 4));
 		mlx_put_pixel(game->frame, ray, start, color);
 		start++;
 		texture_y += step;

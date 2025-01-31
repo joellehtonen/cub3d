@@ -6,12 +6,12 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/30 16:51:20 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 09:25:54 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef cub3d_H
-# define cub3d_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -31,14 +31,14 @@
 # define MOVE_SIZE 2
 # define MOVE_SPEED 4
 # define PI 3.14159265358979323846
-# define FOV (60 * (PI / 180))
+# define FOV 1.0471975512 // (60 * (PI / 180))
 # define ROTATE_SPEED 0.2
-# define DEGREE FOV / WINDOW_WIDTH;
+# define DEGREE 0.00054541539 // FOV / WINDOW_WIDTH;
 
 # define FORWARD 0
-# define RIGHT (PI / 2)
-# define BACK PI
-# define LEFT (3 * PI / 2)
+# define RIGHT 1.57079632679 // (PI / 2)
+# define BACK 3.14159265358979323846 // PI
+# define LEFT 4.71238898038 // (3 * PI / 2)
 
 # define NORTH 200
 # define EAST 201
@@ -48,7 +48,7 @@
 # define FLOOR_RGB 100
 # define CEILING_RGB 101
 
-# define DARK 1
+# define DARK 0
 
 # define FLAME_SIZE 500
 # define FLAME_X 1160
@@ -61,19 +61,19 @@
 
 typedef struct s_ray
 {
-    float				x;
+	float				x;
 	float				y;
 	float				hx;
 	float				hy;
 	float				vx;
 	float				vy;
-    float				angle;
+	float				angle;
 	double				length;
 	float				wall_height;
 	bool				direction_left;
 	bool				direction_up;
 	bool				horizontal;
-} t_ray;
+}	t_ray;
 
 typedef struct s_box
 {
@@ -85,37 +85,37 @@ typedef struct s_box
 	float				bottom_left_y;
 	float				bottom_right_x;
 	float				bottom_right_y;
-} t_box;
+}	t_box;
 
 typedef struct s_player
 {
 	float				x;
 	float				y;
-    float 				angle;
+	float				angle;
 	float				initial_direction;
-	mlx_image_t			*player_img;
+	mlx_image_t			*minimap_player_img;
 }	t_player;
 
 typedef struct s_game
 {
-    char				**map;
+	char				**map;
 	char				**file;
-    char				*path_to_north_texture;
-    char				*path_to_south_texture;
-    char				*path_to_west_texture;
-    char				*path_to_east_texture;
-    int					floor_R;
-	int					floor_G;
-	int					floor_B;
-	unsigned int		floor_RGB;
-    int					ceiling_R;
-	int					ceiling_G;
-	int					ceiling_B;
-	unsigned int		ceiling_RGB;
+	char				*path_to_north_texture;
+	char				*path_to_south_texture;
+	char				*path_to_west_texture;
+	char				*path_to_east_texture;
+	int					floor_r;
+	int					floor_g;
+	int					floor_b;
+	unsigned int		floor_rgb;
+	int					ceiling_r;
+	int					ceiling_g;
+	int					ceiling_b;
+	unsigned int		ceiling_rgb;
 	bool				found_floor_rgb;
 	bool				found_ceiling_rgb;
-	int 				width_in_tiles;
-	int 				height_in_tiles;
+	int					width_in_tiles;
+	int					height_in_tiles;
 	float				starting_direction;
 	mlx_t				*mlx;
 	mlx_image_t			*frame;
@@ -142,45 +142,50 @@ typedef struct s_game
 	int					zippo_counter;
 	struct s_player		player;
 	struct s_ray		ray;
-} t_game;
+}	t_game;
 
-void	error_exit(char *error);
-void	error_exit_and_free(t_game *game, char *error);
-void	validate_filetype(char *filename);
-void	create_copy_of_file(t_game *game, char *filename);
-void    parse_file(t_game *game);
-void	free_all(t_game *game);
-void	check_for_path(t_game *game, int i, int *j, char **path);
-void	create_textures(t_game *game);
-void	create_images(t_game *game);
-void	resize_images(t_game *game);
-void	display_images(t_game *game);
-// raycasting functions
-void	raycasting(t_game *game);
-void	determine_ray_direction(t_game *game);
-void	reset_angles(t_game *game);
-void	choose_shorter_distance(t_game *game, double h_inter, double v_inter);
+// parsing functions
+void			validate_filetype(char *filename);
+void			create_copy_of_file(t_game *game, char *filename);
+void			parse_file(t_game *game);
+void			check_for_path(t_game *game, int i, int *j, char **path);
+void			copy_map(t_game *game, char **file);
+void			validate_map(t_game *game);
+// handling textures/images
+void			create_textures(t_game *game);
+void			create_images(t_game *game);
+void			resize_images(t_game *game);
+void			display_images(t_game *game);
 // main loop
-void	rendering(void *content);
-bool	controls(t_game *game);
+void			rendering(void *content);
+bool			controls(t_game *game);
+// exit functions
+void			error_exit(char *error);
+void			error_exit_and_free(t_game *game, char *error);
+void			free_all(t_game *game);
+// raycasting functions
+void			raycasting(t_game *game);
+void			determine_ray_direction(t_game *game);
+void			reset_angles(t_game *game);
+void			choose_shorter_distance(t_game *game, \
+	double h_inter, double v_inter);
 // checks
-bool	is_wall(t_game *game, int x, int y);
-bool	is_wall_ray(t_game *game, float x, float y);
+bool			is_wall(t_game *game, int x, int y);
+bool			is_wall_ray(t_game *game, float x, float y);
+void			check_for_rgb(t_game *game, int i, int *j, int element);
 // drawing functions
-void 	draw_line(t_game *game);
-void 	clear_line(t_game *game);
-void    render_ray_into_frame(t_game *game, int ray);
-void    render_ray_into_frame_dark(t_game *game, int ray);
-void	correct_distortion(t_game *game);
-int		get_color(t_game *game);
-int		get_x_coordinate(t_game *game, mlx_texture_t *texture);
+void			draw_line(t_game *game);
+void			clear_line(t_game *game);
+void			render_ray_into_frame(t_game *game, int ray);
+void			render_ray_into_frame_dark(t_game *game, int ray);
+void			correct_distortion(t_game *game);
+int				get_color(t_game *game);
+int				get_x_coordinate(t_game *game, mlx_texture_t *texture);
 mlx_texture_t	*choose_texture(t_game *game);
-uint32_t		extract_color_data(mlx_texture_t *texture, uint32_t *rgba, unsigned int location);
-
-void 	check_for_rgb(t_game *game, int i, int *j, int element);
-void	copy_map(t_game *game, char **file);
-void	validate_map(t_game *game);
-void	torch_animation(t_game *game);
-void 	disable_all_flames(t_game *game);
+uint32_t		extract_color_data(mlx_texture_t *texture, uint32_t *rgba, \
+	unsigned int location);
+// animation functions
+void			torch_animation(t_game *game);
+void			disable_all_flames(t_game *game);
 
 #endif

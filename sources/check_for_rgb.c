@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_for_rgb.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:16:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/28 09:55:21 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/31 09:26:21 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,14 @@ void check_for_rgb(t_game *game, int i, int *j, int element)
 	*j += 2;
 	if (element == FLOOR_RGB)
 	{
-		add_r_and_g(game, i, j, &game->floor_R);
-		add_r_and_g(game, i, j, &game->floor_G);
-		add_b(game, i, j, &game->floor_B);
+		add_r_and_g(game, i, j, &game->floor_r);
+		add_r_and_g(game, i, j, &game->floor_g);
+		add_b(game, i, j, &game->floor_b);
 	}
 	else
 	{
-		add_r_and_g(game, i, j, &game->ceiling_R);
-		add_r_and_g(game, i, j, &game->ceiling_G);
-		add_b(game, i, j, &game->ceiling_B);
+		add_r_and_g(game, i, j, &game->ceiling_r);
+		add_r_and_g(game, i, j, &game->ceiling_g);
+		add_b(game, i, j, &game->ceiling_b);
 	}
 }

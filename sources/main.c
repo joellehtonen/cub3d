@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/30 15:12:49 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 09:10:40 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ static void	initialize_variables(t_game *game)
 	game->path_to_south_texture = NULL;
 	game->path_to_west_texture = NULL;
 	game->path_to_east_texture = NULL;
-	game->floor_R = -1;
-	game->floor_G = -1;
-	game->floor_B = -1;
-	game->ceiling_R = -1;
-	game->ceiling_G = -1;
-	game->ceiling_B = -1;
-	game->floor_RGB = 0;
-	game->ceiling_RGB = 0;
+	game->floor_r = -1;
+	game->floor_g = -1;
+	game->floor_b = -1;
+	game->ceiling_r = -1;
+	game->ceiling_g = -1;
+	game->ceiling_b = -1;
+	game->floor_rgb = 0;
+	game->ceiling_rgb = 0;
 	game->frame_counter = 0;
 	game->flame_mem_img = NULL;
 	game->flame_x = FLAME_X;

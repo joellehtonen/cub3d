@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_through_file.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:05:00 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/22 11:51:08 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/31 09:26:42 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

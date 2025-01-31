@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/30 14:51:22 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 09:18:11 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ static bool	move_player(t_game *game, double direction)
 		zippo_up_and_down(game);
 		game->player.x = new_x;
 		game->player.y = new_y;
-		game->player.player_img->instances[0].x = new_x;
-		game->player.player_img->instances[0].y = new_y;
+		game->player.minimap_player_img->instances[0].x = new_x;
+		game->player.minimap_player_img->instances[0].y = new_y;
 		return (true);
 	}
 	else

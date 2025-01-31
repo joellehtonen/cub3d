@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/30 16:43:19 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 09:09:58 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,12 @@ static void	draw_floor_ceiling(t_game *game, int ray)
 	i = 0;
 	while (i < WINDOW_HEIGHT / 2)
 	{
-		mlx_put_pixel(game->frame, ray, i, game->ceiling_RGB);
+		mlx_put_pixel(game->frame, ray, i, game->ceiling_rgb);
 		i++;
 	}
 	while (i < WINDOW_HEIGHT)
 	{
-		mlx_put_pixel(game->frame, ray, i, game->floor_RGB);
+		mlx_put_pixel(game->frame, ray, i, game->floor_rgb);
 		i++;
 	}
 }

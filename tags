@@ -61,7 +61,7 @@ Build system	MLX42/docs/42.md	/^### Build system$/;"	S	section:Technical compari
 CC	Makefile	/^CC := cc$/;"	m
 CCSHADER	MLX42/CMakeLists.txt	/^	set(CCSHADER ${PROJECT_SOURCE_DIR}\/tools\/compile_shader.bat)$/;"	v
 CCSHADER	MLX42/CMakeLists.txt	/^	set(CCSHADER ${PROJECT_SOURCE_DIR}\/tools\/compile_shader.sh)$/;"	v
-CEILING_RGB	includes/cub3d.h	/^# define CEILING_RGB /;"	d
+ceiling_rgb	includes/cub3d.h	/^# define ceiling_rgb /;"	d
 CERROR_BREAK	MLX42/lib/png/lodepng.c	/^#define CERROR_BREAK(/;"	d	file:
 CERROR_RETURN	MLX42/lib/png/lodepng.c	/^#define CERROR_RETURN(/;"	d	file:
 CERROR_RETURN_ERROR	MLX42/lib/png/lodepng.c	/^#define CERROR_RETURN_ERROR(/;"	d	file:
@@ -295,7 +295,7 @@ FIRSTBITS	MLX42/lib/png/lodepng.c	/^#define FIRSTBITS /;"	d	file:
 FIRST_LENGTH_CODE_INDEX	MLX42/lib/png/lodepng.c	/^#define FIRST_LENGTH_CODE_INDEX /;"	d	file:
 FLAGS	Makefile	/^FLAGS := -Wall -Wextra -Werror -ggdb3 -g -pg -O3 -ffast-math$/;"	m
 FLAME_SIZE	includes/cub3d.h	/^# define FLAME_SIZE /;"	d
-FLOOR_RGB	includes/cub3d.h	/^# define FLOOR_RGB /;"	d
+floor_rgb	includes/cub3d.h	/^# define floor_rgb /;"	d
 FONT_H	MLX42/src/font/font.h	/^# define FONT_H$/;"	d
 FONT_HEIGHT	MLX42/src/font/font.h	/^# define FONT_HEIGHT /;"	d
 FONT_WIDTH	MLX42/src/font/font.h	/^# define FONT_WIDTH /;"	d
@@ -3764,10 +3764,10 @@ buffer	MLX42/lib/png/lodepng.c	/^  unsigned buffer; \/*buffer for reading bits. 
 bytes_per_pixel	MLX42/include/MLX42/MLX42.h	/^	uint8_t		bytes_per_pixel;$/;"	m	struct:mlx_texture	typeref:typename:uint8_t
 calculate_horizontal_step	sources/raycasting.c	/^static void	calculate_horizontal_step(t_game *game, float *step_x, float *step_y)$/;"	f	typeref:typename:void	file:
 calculate_vertical_step	sources/raycasting.c	/^static void	calculate_vertical_step(t_game *game, float *step_x, float *step_y)$/;"	f	typeref:typename:void	file:
-ceiling_B	includes/cub3d.h	/^	int		ceiling_B;$/;"	m	struct:s_game	typeref:typename:int
-ceiling_G	includes/cub3d.h	/^	int		ceiling_G;$/;"	m	struct:s_game	typeref:typename:int
-ceiling_R	includes/cub3d.h	/^    int		ceiling_R;$/;"	m	struct:s_game	typeref:typename:int
-ceiling_RGB	includes/cub3d.h	/^	unsigned int		ceiling_RGB;$/;"	m	struct:s_game	typeref:typename:unsigned int
+ceiling_b	includes/cub3d.h	/^	int		ceiling_b;$/;"	m	struct:s_game	typeref:typename:int
+ceiling_g	includes/cub3d.h	/^	int		ceiling_g;$/;"	m	struct:s_game	typeref:typename:int
+ceiling_r	includes/cub3d.h	/^    int		ceiling_r;$/;"	m	struct:s_game	typeref:typename:int
+ceiling_rgb	includes/cub3d.h	/^	unsigned int		ceiling_rgb;$/;"	m	struct:s_game	typeref:typename:unsigned int
 chain	MLX42/lib/png/lodepng.c	/^  unsigned short* chain;$/;"	m	struct:Hash	typeref:typename:unsigned short *	file:
 chains0	MLX42/lib/png/lodepng.c	/^  BPMNode** chains0;$/;"	m	struct:BPMLists	typeref:typename:BPMNode **	file:
 chains1	MLX42/lib/png/lodepng.c	/^  BPMNode** chains1;$/;"	m	struct:BPMLists	typeref:typename:BPMNode **	file:
@@ -3914,10 +3914,10 @@ find_extensionsGL	MLX42/lib/glad/glad.c	/^static int find_extensionsGL(void) {$/
 find_horizontal_intersection	sources/raycasting.c	/^static double find_horizontal_intersection(t_game *game)$/;"	f	typeref:typename:double	file:
 find_vertical_intersection	sources/raycasting.c	/^static double find_vertical_intersection(t_game *game)$/;"	f	typeref:typename:double	file:
 flags	libft/ft_printf/ft_printf.c	/^int	flags(char index, int fd, va_list *args)$/;"	f	typeref:typename:int
-floor_B	includes/cub3d.h	/^	int		floor_B;$/;"	m	struct:s_game	typeref:typename:int
-floor_G	includes/cub3d.h	/^	int		floor_G;$/;"	m	struct:s_game	typeref:typename:int
-floor_R	includes/cub3d.h	/^    int		floor_R;$/;"	m	struct:s_game	typeref:typename:int
-floor_RGB	includes/cub3d.h	/^	unsigned int		floor_RGB;$/;"	m	struct:s_game	typeref:typename:unsigned int
+floor_b	includes/cub3d.h	/^	int		floor_b;$/;"	m	struct:s_game	typeref:typename:int
+floor_g	includes/cub3d.h	/^	int		floor_g;$/;"	m	struct:s_game	typeref:typename:int
+floor_r	includes/cub3d.h	/^    int		floor_r;$/;"	m	struct:s_game	typeref:typename:int
+floor_rgb	includes/cub3d.h	/^	unsigned int		floor_rgb;$/;"	m	struct:s_game	typeref:typename:unsigned int
 floor_texture	includes/cub3d.h	/^	mlx_texture_t		*floor_texture;$/;"	m	struct:s_game	typeref:typename:mlx_texture_t *
 fnotfound	MLX42/tools/compile_shader.bat	/^:fnotfound$/;"	l
 font_atlas	MLX42/src/font/font.h	/^}	font_atlas = {$/;"	v	typeref:struct:s_font
@@ -7689,7 +7689,7 @@ pixels	MLX42/include/MLX42/MLX42.h	/^	uint8_t*	pixels;$/;"	m	struct:mlx_texture	
 pixels	MLX42/src/font/font.h	/^	char*			pixels;$/;"	m	struct:s_font	typeref:typename:char *
 place_for_minimap	sources/draw_utils.c	/^bool	place_for_minimap(t_game* game, int x, int y)$/;"	f	typeref:typename:bool
 player	includes/cub3d.h	/^	struct s_player		player;$/;"	m	struct:s_game	typeref:struct:s_player
-player_img	includes/cub3d.h	/^	mlx_image_t		*player_img;$/;"	m	struct:s_player	typeref:typename:mlx_image_t *
+minimap_player_img	includes/cub3d.h	/^	mlx_image_t		*minimap_player_img;$/;"	m	struct:s_player	typeref:typename:mlx_image_t *
 player_texture	includes/cub3d.h	/^	mlx_texture_t		*player_texture;$/;"	m	struct:s_game	typeref:typename:mlx_texture_t *
 postProcessScanlines	MLX42/lib/png/lodepng.c	/^static unsigned postProcessScanlines(unsigned char* out, unsigned char* in,$/;"	f	typeref:typename:unsigned	file:
 preProcessScanlines	MLX42/lib/png/lodepng.c	/^static unsigned preProcessScanlines(unsigned char** out, size_t* outsize, const unsigned char* i/;"	f	typeref:typename:unsigned	file:
