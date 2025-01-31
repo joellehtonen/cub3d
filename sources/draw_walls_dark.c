@@ -6,19 +6,20 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 09:27:22 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 09:55:49 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static uint32_t	extract_color_data_dark(mlx_texture_t *texture, uint32_t *rgba, unsigned int location)
+static uint32_t	extract_color_data_dark(mlx_texture_t *texture, \
+	uint32_t *rgba, unsigned int location)
 {
 	uint8_t		red;
 	uint8_t		green;
 	uint8_t		blue;
 	uint8_t		alpha;
-	uint8_t 	gray;
+	uint8_t		gray;
 
 	if (location < 0 || location + 3 >= (texture->width * texture->height * 4))
 		return (0);
@@ -27,28 +28,30 @@ static uint32_t	extract_color_data_dark(mlx_texture_t *texture, uint32_t *rgba, 
 	blue = texture->pixels[location + 2];
 	alpha = texture->pixels[location + 3];
 	gray = 0.299 * red + 0.587 * green + 0.114 * blue;
-	red	= gray;
+	red = gray;
 	green = gray;
 	blue = gray;
 	*rgba = (red << 24) | (green << 16) | (blue << 8) | (alpha);
 	return (*rgba);
 }
 
-static void draw_walls(t_game *game, int start, int end, int ray)
+static void	draw_walls(t_game *game, int start, int end, int ray)
 {
 	mlx_texture_t	*texture;
-	uint32_t 		color;
+	uint32_t		color;
 	int				texture_x;
 	float			texture_y;
 	float			step;
-	
+
 	texture = choose_texture(game);
 	step = texture->height / game->ray.wall_height;
-	texture_y = (start - (WINDOW_HEIGHT / 2) + (game->ray.wall_height / 2)) * step;
+	texture_y = (start - (WINDOW_HEIGHT / 2) \
+		+ (game->ray.wall_height / 2)) * step;
 	texture_x = get_x_coordinate(game, texture);
 	while (start <= end && start < WINDOW_HEIGHT)
 	{
-		extract_color_data_dark(texture, &color, ((texture->width * (int)texture_y + texture_x) * 4));
+		extract_color_data_dark(texture, &color, \
+			((texture->width * (int)texture_y + texture_x) * 4));
 		mlx_put_pixel(game->frame, ray, start, color);
 		start++;
 		texture_y += step;
@@ -64,7 +67,6 @@ static void	draw_floor_ceiling_dark(t_game *game, int ray)
 	int			counter;
 
 	i = WINDOW_HEIGHT - 1;
-	//color = 0x50400000;
 	color = 0x0000000;
 	counter = 0;
 	while (i > WINDOW_HEIGHT / 2)
@@ -83,12 +85,12 @@ static void	draw_floor_ceiling_dark(t_game *game, int ray)
 	}
 }
 
-static void draw_gradient(t_game *game, float top, float bottom, int ray)
+static void	draw_gradient(t_game *game, float top, float bottom, int ray)
 {
-	int	color;
-	int	minimum_ray;
-	float step;
-	
+	int		color;
+	int		minimum_ray;
+	float	step;
+
 	minimum_ray = 60;
 	step = (game->ray.length - minimum_ray) / 10;
 	color = 0x000000FF * step;

@@ -6,11 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:36:29 by eberkowi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/01/31 09:31:55 by jlehtone         ###   ########.fr       */
-=======
-/*   Updated: 2025/01/30 15:14:41 by eberkowi         ###   ########.fr       */
->>>>>>> main
+/*   Updated: 2025/01/31 09:38:22 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +39,7 @@ void	create_images(t_game *game)
 	game->empty_map_img = mlx_texture_to_image(game->mlx, game->empty_map_texture);
 	if (!game->empty_map_img)
 		error_exit_and_free(game, "MLX failed to create empty_map image");
-<<<<<<< HEAD
 	game->player.minimap_player_img = mlx_texture_to_image(game->mlx,
-=======
-	game->player.player_img = mlx_texture_to_image(game->mlx,
->>>>>>> main
 			game->player_texture);
 	if (!game->player.minimap_player_img)
 		error_exit_and_free(game, "MLX failed to create player image");

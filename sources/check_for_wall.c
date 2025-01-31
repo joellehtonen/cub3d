@@ -6,12 +6,21 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:28:30 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/30 15:45:32 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 10:28:05 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+/*
+	@brief Checks whether there is a wall in the map in the given coordinates.
+	This one is designed for the ray, taking into account which side of the tile
+	the ray hits. 
+	@param *game Our game struct
+	@param x X-coordinate to check
+	@param y Y-coordinate to check
+	@return boolean on whether there is a wall or not
+*/
 bool	is_wall_ray(t_game *game, float x, float y)
 {
 	int	x_int;
@@ -27,14 +36,19 @@ bool	is_wall_ray(t_game *game, float x, float y)
 		|| x_int > (game->width_in_tiles - 1) \
 		|| y_int > (game->height_in_tiles - 1))
 		return (true);
-	// printf("Accessing map at x_int = %d, y_int = %d\n", x_int, y_int);
-	// printf("Map width in tiles = %d, map height in tiles = %d\n", game->width_in_tiles, game->height_in_tiles);
 	if (game->map[y_int][x_int] == '1')
 		return (true);
 	else
 		return (false);
 }
 
+/*
+	@brief Checks whether there is a wall in the map in the given coordinates.
+	@param *game Our game struct
+	@param x X-coordinate to check
+	@param y Y-coordinate to check
+	@return boolean on whether there is a wall or not
+*/
 bool	is_wall(t_game *game, int x, int y)
 {
 	if (game->map[y / TILE_SIZE][x / TILE_SIZE] == '1')

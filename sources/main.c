@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/01/31 09:10:40 by jlehtone         ###   ########.fr       */
+/*   Created: 2025/01/31 09:57:39 by jlehtone          #+#    #+#             */
+/*   Updated: 2025/01/31 09:58:09 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,18 @@ static void	initialize_variables(t_game *game)
 	game->zippo_x = ZIPPO_X;
 	game->zippo_y = ZIPPO_Y;
 	game->zippo_counter = 0;
+	// maybe lets memset these, except -1s
 }
 
 int	main(int argc, char *argv[])
 {
 	t_game	game;
 
-	//Init and parsing --------------------------------------------------------
 	initialize_variables(&game);
 	check_number_of_arguments(argc);
 	validate_filetype(argv[1]);
 	create_copy_of_file(&game, argv[1]);
 	parse_file(&game);
-	
-	//MLX ---------------------------------------------------------------------
 	game.mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d", true);
 	if (!(game.mlx))
 		error_exit_and_free(&game, "MLX failed to initialize");

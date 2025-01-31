@@ -6,12 +6,19 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/30 15:02:25 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 10:23:12 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+/*
+	@brief Calculates how large a vertical "step" the ray needs to take,
+	and to which direction in order to find the next intersection to check.
+	@param *game Our game struct
+	@param *step_x Reference to the value of step in x-axis
+	@param *step_y Reference to the value of step in y-axis
+*/
 static void	calculate_vertical_step(t_game *game, float *step_x, float *step_y)
 {
 	*step_x = TILE_SIZE;
@@ -25,7 +32,15 @@ static void	calculate_vertical_step(t_game *game, float *step_x, float *step_y)
 	}
 }
 
-static void	calculate_horizontal_step(t_game *game, float *step_x, float *step_y)
+/*
+	@brief Calculates how large a horizontal "step" the ray needs to take,
+	and to which direction in order to find the next intersection to check.
+	@param *game Our game struct
+	@param *step_x Reference to the value of step in x-axis
+	@param *step_y Reference to the value of step in y-axis
+*/
+static void	calculate_horizontal_step(t_game *game, \
+	float *step_x, float *step_y)
 {
 	*step_y = TILE_SIZE;
 	if (game->ray.direction_up == true)
@@ -38,7 +53,13 @@ static void	calculate_horizontal_step(t_game *game, float *step_x, float *step_y
 	}
 }
 
-static double find_vertical_intersection(t_game *game)
+/*
+	@brief Finds and records the first place where 
+	the ray hits a vertical wall.
+	@param *game Our game struct
+	@return The distance from the player to the hit location
+*/
+static double	find_vertical_intersection(t_game *game)
 {
 	float	point_x;
 	float	point_y;
@@ -49,7 +70,8 @@ static double find_vertical_intersection(t_game *game)
 	point_x = floor(game->player.x / TILE_SIZE) * TILE_SIZE;
 	if (game->ray.direction_left == false)
 		point_x += TILE_SIZE;
-	point_y = game->player.y + (point_x - game->player.x) * tan(game->ray.angle);
+	point_y = game->player.y + (point_x - game->player.x) \
+		* tan(game->ray.angle);
 	calculate_vertical_step(game, &step_x, &step_y);
 	while (is_wall_ray(game, point_x, point_y) == false)
 	{
@@ -58,11 +80,17 @@ static double find_vertical_intersection(t_game *game)
 	}
 	game->ray.vx = point_x;
 	game->ray.vy = point_y;
-	distance = sqrt(pow(point_x - game->player.x, 2) + pow(point_y - game->player.y, 2));
+	distance = sqrt(pow(point_x - game->player.x, 2) \
+		+ pow(point_y - game->player.y, 2));
 	return (distance);
 }
-
-static double find_horizontal_intersection(t_game *game)
+/*
+	@brief Finds and records the first place where 
+	the ray hits a horizontal wall.
+	@param *game Our game struct
+	@return The distance from the player to the hit location
+*/
+static double	find_horizontal_intersection(t_game *game)
 {
 	float	point_x;
 	float	point_y;
@@ -73,7 +101,8 @@ static double find_horizontal_intersection(t_game *game)
 	point_y = floor(game->player.y / TILE_SIZE) * TILE_SIZE;
 	if (game->ray.direction_up == false)
 		point_y += TILE_SIZE;
-	point_x = game->player.x + (point_y - game->player.y) / tan(game->ray.angle);
+	point_x = game->player.x + (point_y - game->player.y) \
+		/ tan(game->ray.angle);
 	calculate_horizontal_step(game, &step_x, &step_y);
 	while (is_wall_ray(game, point_x, point_y) == false)
 	{
@@ -82,20 +111,23 @@ static double find_horizontal_intersection(t_game *game)
 	}
 	game->ray.hx = point_x;
 	game->ray.hy = point_y;
-	distance = sqrt(pow(point_x - game->player.x, 2) + pow(point_y - game->player.y, 2));
+	distance = sqrt(pow(point_x - game->player.x, 2) \
+		+ pow(point_y - game->player.y, 2));
 	return (distance);
 }
 
-void raycasting(t_game *game)
+/*
+	@brief Shoots a ray into all directions the player can see.
+	We record the location where it hits a wall and render objects accordingly. 
+	@param *game Our game struct
+*/
+void	raycasting(t_game *game)
 {
 	double	h_inter;
 	double	v_inter;
 	int		ray;
 
 	game->ray.angle = game->player.angle - (FOV / 2);
-	//clear_frame(game);
-	// if (game->frame != NULL)
-	// 	mlx_delete_image(game->mlx, game->frame);
 	ray = 0;
 	while (ray < WINDOW_WIDTH)
 	{
@@ -108,15 +140,8 @@ void raycasting(t_game *game)
 			render_ray_into_frame(game, ray);
 		else
 			render_ray_into_frame_dark(game, ray);
-		//display_map(game);
-		draw_line(game); //maybe rename this
+		draw_line(game);
 		game->ray.angle += DEGREE;
 		ray++;
 	}
-	// mlx_image_to_window(game->mlx, game->frame, 0, 0);
-	
-	//mlx_set_instance_depth(&game->frame->instances[0], 1);
-	//mlx_image_to_window(game->mlx, game->minimap_img, 0, 0);
-	//mlx_set_instance_depth(&game->frame->instances[0], game->layers);
 }
- 
