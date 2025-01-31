@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:45:15 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/31 09:18:11 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 09:32:32 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ static int	images_to_window(t_game *game, int x, int y)
 		game->player.x = x * TILE_SIZE + TILE_SIZE / 2;
 		game->player.y = y * TILE_SIZE + TILE_SIZE / 2;
 	}
+	// else
+	// {
+	// 	if (mlx_image_to_window(game->mlx, game->empty_map_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
+	// 		return (0);
+	// }
 	
 	return (1);
 }
@@ -63,6 +68,12 @@ void	display_images(t_game *game)
 		{
 			if (!(images_to_window(game, x, y)))
 				error_exit_and_free(game, "MLX could not display image in window");
+			x++;
+		}
+		while (x < game->width_in_tiles)
+		{
+			if (mlx_image_to_window(game->mlx, game->empty_map_img, x * TILE_SIZE, y * TILE_SIZE) < 0)
+				return ; //ADD ERROR
 			x++;
 		}
 		y++;

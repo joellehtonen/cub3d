@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_textures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:30:46 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/30 12:15:04 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:13:55 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ static void create_torch_textures(t_game *game)
 {
 	int i;
 
-	(game->flame_texture)[0] = mlx_load_png("textures/torch/flame1.png");
-	(game->flame_texture)[1] = mlx_load_png("textures/torch/flame2.png");
-	(game->flame_texture)[2] = mlx_load_png("textures/torch/flame3.png");
-	(game->flame_texture)[3] = mlx_load_png("textures/torch/flame4.png");
-	(game->flame_texture)[4] = mlx_load_png("textures/torch/flame5.png");
-	(game->flame_texture)[5] = mlx_load_png("textures/torch/flame6.png");
-	(game->flame_texture)[6] = mlx_load_png("textures/torch/flame7.png");
-	(game->flame_texture)[7] = mlx_load_png("textures/torch/flame8.png");
-	(game->flame_texture)[8] = mlx_load_png("textures/torch/flame9.png");
-	(game->flame_texture)[9] = mlx_load_png("textures/torch/flame10.png");
-	(game->flame_texture)[10] = mlx_load_png("textures/torch/flame11.png");
-	(game->flame_texture)[11] = mlx_load_png("textures/torch/flame12.png");
+	(game->flame_texture)[0] = mlx_load_png("textures/flame/flame1.png");
+	(game->flame_texture)[1] = mlx_load_png("textures/flame/flame2.png");
+	(game->flame_texture)[2] = mlx_load_png("textures/flame/flame3.png");
+	(game->flame_texture)[3] = mlx_load_png("textures/flame/flame4.png");
+	(game->flame_texture)[4] = mlx_load_png("textures/flame/flame5.png");
+	(game->flame_texture)[5] = mlx_load_png("textures/flame/flame6.png");
+	(game->flame_texture)[6] = mlx_load_png("textures/flame/flame7.png");
+	(game->flame_texture)[7] = mlx_load_png("textures/flame/flame8.png");
+	(game->flame_texture)[8] = mlx_load_png("textures/flame/flame9.png");
+	(game->flame_texture)[9] = mlx_load_png("textures/flame/flame10.png");
+	(game->flame_texture)[10] = mlx_load_png("textures/flame/flame11.png");
+	(game->flame_texture)[11] = mlx_load_png("textures/flame/flame12.png");
 	i = 0;
 	while (i < 12)
 	{
@@ -45,6 +45,9 @@ void	create_textures(t_game *game)
 	game->floor_texture = mlx_load_png("textures/floor.png");
 	if (!game->floor_texture)
 		error_exit_and_free(game, "MLX failed to load floor texture");
+	game->empty_map_texture = mlx_load_png("textures/empty_map.png");
+	if (!game->empty_map_texture)
+		error_exit_and_free(game, "MLX failed to load empty_map texture");
 	game->player_texture = mlx_load_png("textures/player.png");
 	if (!game->player_texture)
 		error_exit_and_free(game, "MLX failed to load player texture");
