@@ -6,9 +6,10 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 10:23:12 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/01/31 10:37:14 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/cub3d.h"
 
@@ -145,3 +146,4 @@ void	raycasting(t_game *game)
 		ray++;
 	}
 }
+
