@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:36:29 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/30 15:14:41 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/31 10:33:50 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void create_torch_images(t_game *game)
 {
 	int i;
 
-	game->flame_mem_img = mlx_new_image(game->mlx, FLAME_SIZE, FLAME_SIZE);
 	i = 0;
 	while (i < 12)
 	{

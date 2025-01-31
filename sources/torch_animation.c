@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:33:42 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/30 12:22:57 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/31 10:34:21 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,5 @@ void torch_animation(t_game *game)
 	update_positions(game);
 	game->flame_img[game->frame_counter / 6]->enabled = false;
 	game->frame_counter = (game->frame_counter + 1) % 33;
-	//ft_memcpy(game->flame_mem_img->pixels, game->flame_img[game->frame_counter / 6]->pixels, FLAME_SIZE * FLAME_SIZE * 4);
-	//disable_all_flames(game);
 	game->flame_img[game->frame_counter / 6]->enabled = true;
 }
