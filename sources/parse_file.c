@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/31 09:50:58 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/01/31 10:08:15 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,30 +75,44 @@ static void	loop_through_file(t_game *game, int *i)
 	}
 }
 
-// static void fill_in_gaps_for_map(t_game *game)
-// {
-// 	int		i;
-// 	char	*temp;
+static void free_map_in_middle(t_game  *game, int i)
+{
+	i++;
+	while (game->map[i])
+	{
+		free(game->map[i]);
+		i++;
+	}
+}
 
-// 	temp = NULL;
-// 	i = 0;
-// 	while (game->map[i])
-// 	{
-// 		while (ft_strlen(game->map[i]) < game->width_in_tiles)
-// 		{
-// 			temp = ft_strdup(game->map[i]);
-// 			if (!temp)
-// 				error_exit_and_free(game, "Failed to malloc");
-			
-// 			free(game->map[i]);
-// 			free(temp);
-// 			temp = NULL;
-// 		}
-		
-// 		printf("%s\n", game->map[i]);
-// 		i++;
-// 	}
-// }
+static void fill_in_gaps_for_map(t_game *game)
+{
+	int		i;
+	char	*temp;
+
+	temp = NULL;
+	i = 0;
+	while (game->map[i])
+	{
+		while ((int)ft_strlen(game->map[i]) < game->width_in_tiles)
+		{
+			temp = ft_strdup(game->map[i]);
+			if (!temp)
+				error_exit_and_free(game, "Failed to malloc fill in gaps for map");
+			free(game->map[i]);
+			game->map[i] = NULL;
+			game->map[i] = ft_strjoin(temp, ".");
+			if (!game->map[i])
+			{
+				free_map_in_middle(game, i);
+				error_exit_and_free(game, "Failed to malloc fill in gaps for map");
+			}
+			free(temp);
+			temp = NULL;
+		}
+		i++;
+	}
+}
 
 void	parse_file(t_game *game)
 {
@@ -114,7 +128,7 @@ void	parse_file(t_game *game)
 		i++;
 	copy_map(game, game->file + i);
 	validate_map(game);
-	//fill_in_gaps_for_map(game);
+	fill_in_gaps_for_map(game);
 	if (game->starting_direction == 0)
 		error_exit_and_free(game, "Missing player on map");
 }
