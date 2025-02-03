@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:36:29 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/31 10:55:46 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 09:57:46 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void create_torch_images(t_game *game)
 	i = 0;
 	while (i < 12)
 	{
-		(game->flame_img)[i] = mlx_texture_to_image(game->mlx, (game->flame_texture)[i]);
-		if (!(game->flame_img)[i])
+		(game->animation.flame_img)[i] = mlx_texture_to_image(game->mlx, (game->animation.flame_texture)[i]);
+		if (!(game->animation.flame_img)[i])
 			error_exit_and_free(game, "MLX failed to create torch image");
 		i++;
 	}
@@ -29,23 +29,23 @@ static void create_torch_images(t_game *game)
 void	create_images(t_game *game)
 {
 	game->frame = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-	game->minimap_wall_img = mlx_texture_to_image(game->mlx, game->wall_texture);
-	if (!game->minimap_wall_img)
+	game->minimap.wall_img = mlx_texture_to_image(game->mlx, game->minimap.wall_texture);
+	if (!game->minimap.wall_img)
 		error_exit_and_free(game, "MLX failed to create wall image");
-	game->minimap_floor_img = mlx_texture_to_image(game->mlx, game->floor_texture);
-	if (!game->minimap_floor_img)
+	game->minimap.floor_img = mlx_texture_to_image(game->mlx, game->minimap.floor_texture);
+	if (!game->minimap.floor_img)
 		error_exit_and_free(game, "MLX failed to create floor image");
-	game->empty_map_img = mlx_texture_to_image(game->mlx, game->empty_map_texture);
-	if (!game->empty_map_img)
+	game->minimap.empty_map_img = mlx_texture_to_image(game->mlx, game->minimap.empty_map_texture);
+	if (!game->minimap.empty_map_img)
 		error_exit_and_free(game, "MLX failed to create empty_map image");
 	game->player.minimap_player_img = mlx_texture_to_image(game->mlx,
-			game->player_texture);
+			game->minimap.player_texture);
 	if (!game->player.minimap_player_img)
 		error_exit_and_free(game, "MLX failed to create player image");
-	game->minimap_img = mlx_new_image(game->mlx,
+	game->minimap.minimap_img = mlx_new_image(game->mlx,
 			MINIMAP_WIDTH, MINIMAP_HEIGHT);
-	game->zippo_img = mlx_texture_to_image(game->mlx, game->zippo_texture);
-	if (!game->zippo_img)
+	game->animation.zippo_img = mlx_texture_to_image(game->mlx, game->animation.zippo_texture);
+	if (!game->animation.zippo_img)
 		error_exit_and_free(game, "MLX failed to create floor image");
 	create_torch_images(game);
 }

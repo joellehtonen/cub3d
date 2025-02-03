@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:33:42 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/31 14:32:35 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 10:10:07 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void disable_all_flames(t_game *game)
 	i = 0;
 	while (i <  12)
 	{
-		game->flame_img[i]->enabled = false;
+		game->animation.flame_img[i]->enabled = false;
 		i++;
 	}
 }
@@ -28,13 +28,13 @@ static void update_positions(t_game *game)
 {
 	int i;
 
-	game->zippo_img->instances->x = game->zippo_x;
-	game->zippo_img->instances->y = game->zippo_y;
+	game->animation.zippo_img->instances->x = game->animation.zippo_x;
+	game->animation.zippo_img->instances->y = game->animation.zippo_y;
 	i = 0;
 	while (i < 12)
 	{
-		game->flame_img[i]->instances->x = game->flame_x;
-		game->flame_img[i]->instances->y = game->flame_y;
+		game->animation.flame_img[i]->instances->x = game->animation.flame_x;
+		game->animation.flame_img[i]->instances->y = game->animation.flame_y;
 		i++;
 	}
 }
@@ -42,7 +42,7 @@ static void update_positions(t_game *game)
 void torch_animation(t_game *game)
 {
 	update_positions(game);
-	game->flame_img[game->frame_counter / 6]->enabled = false;
-	game->frame_counter = (game->frame_counter + 1) % 33;
-	game->flame_img[game->frame_counter / 6]->enabled = true;
+	game->animation.flame_img[game->animation.frame_counter / 6]->enabled = false;
+	game->animation.frame_counter = (game->animation.frame_counter + 1) % 33;
+	game->animation.flame_img[game->animation.frame_counter / 6]->enabled = true;
 }

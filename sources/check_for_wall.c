@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:28:30 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 15:13:01 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 12:54:58 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,3 +67,4 @@ bool	is_wall(t_game *game, int x, int y)
 	else
 		return (false);
 }
+

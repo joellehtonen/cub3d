@@ -6,13 +6,13 @@
 #    By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/01/31 13:09:42 by jlehtone         ###   ########.fr        #
+#    Updated: 2025/02/03 10:57:43 by jlehtone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := cub3d
 CC := cc
-FLAGS := -Wall -Wextra -Werror -ggdb3 -g -O3 -ffast-math #-fsanitize=address,undefined -fno-omit-frame-pointer
+FLAGS := -Wall -Wextra -Werror -ggdb3 -g -O3 -ffast-math #-fsanitize=address,leak,undefined -fno-omit-frame-pointer
 CFILES := main.c \
 			check_for_path.c \
 			check_for_rgb.c \
@@ -38,6 +38,7 @@ CFILES := main.c \
 			draw_walls_dark.c \
 			draw_utils.c \
 			torch_animation.c \
+			torch_animation_utils.c \
 			get_pixel_data.c \
 			doors.c
 HEADER = includes/cub3d.h

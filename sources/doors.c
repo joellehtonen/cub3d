@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:58:27 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 14:52:20 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 10:36:57 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 void	open_close_doors(t_game *game)
 {
-	// mlx_image_t	*door;
-	// char		*string;
+	char		*string;
 
-	if (game->frame_counter % 9 == 0)
-		game->can_close_doors = true;
+	if (game->door_text)
+		mlx_delete_image(game->mlx, game->door_text);
 	if (game->map[(int)game->player.y / TILE_SIZE][(int)game->player.x / TILE_SIZE] == 'D')
 	{
-		// string = "Cannot close doors. You are too close!";
-		// door = mlx_put_string(game->mlx, string, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-		printf("Cannot close doors. You are too close!\n");
+		string = "Cannot close the door. You are too close!";
+		game->door_text = mlx_put_string(game->mlx, string, \
+			WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+		if (game->door_text)
+			mlx_resize_image(game->door_text, 500, 50);
 		return ;
 	}
+	if (game->animation.frame_counter % 9 == 0)
+		game->can_close_doors = true;
 	if (game->can_close_doors == true)
 		game->doors_closed = !game->doors_closed;
 	game->can_close_doors = false;

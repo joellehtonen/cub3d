@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/01/31 15:12:32 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 12:55:05 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define MOVE_SPEED 4
 # define PI 3.14159265358979323846
 # define FOV 1.0471975512 // (60 * (PI / 180))
-# define ROTATE_SPEED 0.2
+# define ROTATE_SPEED 0.1
 # define DEGREE 0.00054541539 // FOV / WINDOW_WIDTH;
 
 # define FORWARD 0
@@ -98,6 +98,33 @@ typedef struct s_player
 	mlx_image_t			*minimap_player_img;
 }	t_player;
 
+typedef struct s_minimap
+{
+	mlx_texture_t		*wall_texture;
+	mlx_image_t			*wall_img;
+	mlx_texture_t		*floor_texture;
+	mlx_image_t			*floor_img;
+	mlx_texture_t		*player_texture;
+	mlx_image_t			*minimap_img;
+	mlx_texture_t		*empty_map_texture;
+	mlx_image_t			*empty_map_img;
+}	t_minimap;
+
+typedef struct s_animation
+{
+	mlx_texture_t		*flame_texture[12];
+	mlx_image_t			*flame_img[12];
+	mlx_image_t			*flame_mem_img;
+	mlx_texture_t		*zippo_texture;
+	mlx_image_t			*zippo_img;
+	int					flame_x;
+	int					flame_y;
+	int					zippo_x;
+	int					zippo_y;
+	int					frame_counter;
+	int					zippo_counter;
+}	t_animation;
+
 typedef struct s_game
 {
 	char				**map;
@@ -126,30 +153,33 @@ typedef struct s_game
 	mlx_texture_t		*south_texture;
 	mlx_texture_t		*west_texture;
 	mlx_texture_t		*door_texture;
-	mlx_texture_t		*wall_texture;
-	mlx_image_t			*minimap_wall_img;
-	mlx_texture_t		*floor_texture;
-	mlx_image_t			*minimap_floor_img;
-	mlx_texture_t		*player_texture;
-	mlx_image_t			*minimap_img;
-	mlx_texture_t		*flame_texture[12];
-	mlx_image_t			*flame_img[12];
-	mlx_image_t			*flame_mem_img;
-	mlx_texture_t		*zippo_texture;
-	mlx_image_t			*zippo_img;
-	mlx_texture_t		*empty_map_texture;
-	mlx_image_t			*empty_map_img;
-	int					flame_x;
-	int					flame_y;
-	int					zippo_x;
-	int					zippo_y;
-	int					frame_counter;
-	int					zippo_counter;
+	// mlx_texture_t		*wall_texture;
+	// mlx_image_t			*minimap_wall_img;
+	// mlx_texture_t		*floor_texture;
+	// mlx_image_t			*minimap_floor_img;
+	// mlx_texture_t		*player_texture;
+	// mlx_image_t			*minimap_img;
+	// mlx_texture_t		*empty_map_texture;
+	// mlx_image_t			*empty_map_img;
+	// mlx_texture_t		*flame_texture[12];
+	// mlx_image_t			*flame_img[12];
+	// mlx_image_t			*flame_mem_img;
+	// mlx_texture_t		*zippo_texture;
+	// mlx_image_t			*zippo_img;
+	// int					flame_x;
+	// int					flame_y;
+	// int					zippo_x;
+	// int					zippo_y;
+	// int					frame_counter;
+	// int					zippo_counter;
 	bool				doors_closed;
 	bool				can_close_doors;
+	mlx_image_t			*door_text;
 	int					tile_size;
 	struct s_player		player;
 	struct s_ray		ray;
+	struct s_minimap	minimap;
+	struct s_animation	animation;
 }	t_game;
 
 // parsing functions
@@ -192,9 +222,14 @@ int				get_x_coordinate(t_game *game, mlx_texture_t *texture);
 mlx_texture_t	*choose_texture(t_game *game);
 uint32_t		extract_color_data(mlx_texture_t *texture, uint32_t *rgba, \
 	unsigned int location);
+uint32_t	extract_color_data_dark(mlx_texture_t *texture, \
+	uint32_t *rgba, unsigned int location);
 // animation functions
 void			torch_animation(t_game *game);
 void			disable_all_flames(t_game *game);
 void			open_close_doors(t_game *game);
+void 			zippo_animation_recenter(t_game *game);
+void 			zippo_animation_rotate(t_game *game, double direction);
+void 			zippo_up_and_down(t_game *game);
 
 #endif

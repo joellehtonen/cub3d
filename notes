@@ -2,6 +2,7 @@ MAP PARSING NOTES
 
 TO DO:
 - map scaling
+- door image for minimap
 - more map parsing tests
 - norminette
 - valgrind
@@ -13,16 +14,19 @@ The flag (-O3 -ffast-math) is used for optimization.
 
 TO DO:
 - make a faster put_pixel by modifying mlx_image_t pixel data directly?
-- bobbing motion to animation when walking (up/down)
-- move zippo left/right when rotating
 - separate bonus stuff to its files, add make bonus
 - ADD DOCUMENTATION/COMMENTS
-- scale minimap, add background to it
-- flame gets smaller as game continues
--> dark mode walls get closer???
+- flame gets smaller as game continues? (optional)
+-> dark mode walls get closer??? (optional)
+- move with mouse 
+- open/close doors individually (optional)
+- divide our game struct to substructs DONE (at least partly)
+- cannot close door text to screen DONE
 
 TO FIX:
-- program slows down as it runs! 
+- program slows down as it runs! (not so much anymore?)
+- fix leaks
+- S and W starting directions slightly angled DONE
 
 ACCEPTABLE LEAKS (from mlx42) (without suppression)
 ==270281== LEAK SUMMARY:
@@ -32,7 +36,6 @@ ACCEPTABLE LEAKS (from mlx42) (without suppression)
 ==270281==    still reachable: 317,955 bytes in 3,106 blocks
 ==270281==         suppressed: 0 bytes in 0 blocks
 ==270281== Rerun with --leak-check=full to see details of leaked memory
-
 
 LEAKS AND STUFF
 ASAN_OPTIONS=detect_leaks=1 ./cub3d
