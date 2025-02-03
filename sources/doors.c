@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:58:27 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 14:02:55 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:04:53 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ void	open_close_doors(t_game *game)
 {
 	char		*string;
 
-	if (game->door_text)
-		mlx_delete_image(game->mlx, game->door_text);
+	if (game->door_warning)
+		mlx_delete_image(game->mlx, game->door_warning);
 	if (game->map[(int)game->player.y / TILE_SIZE][(int)game->player.x / TILE_SIZE] == 'D')
 	{
 		string = "Cannot close the door. You are too close!";
-		game->door_text = mlx_put_string(game->mlx, string, \
+		game->door_warning = mlx_put_string(game->mlx, string, \
 			WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-		if (game->door_text)
-			mlx_resize_image(game->door_text, 500, 50);
+		if (game->door_warning)
+			mlx_resize_image(game->door_warning, 500, 50);
 		return ;
 	}
 	game->doors_closed = !game->doors_closed;

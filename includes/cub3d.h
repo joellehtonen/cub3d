@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/03 14:31:32 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:09:15 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ typedef struct s_player
 	float				y;
 	float				angle;
 	float				initial_direction;
-	mlx_image_t			*minimap_player_img;
 }	t_player;
 
 typedef struct s_minimap
@@ -106,9 +105,10 @@ typedef struct s_minimap
 	mlx_texture_t		*floor_texture;
 	mlx_image_t			*floor_img;
 	mlx_texture_t		*player_texture;
-	mlx_image_t			*minimap_img;
+	mlx_image_t			*player_img;
 	mlx_texture_t		*empty_map_texture;
 	mlx_image_t			*empty_map_img;
+	mlx_image_t			*minimap_img;
 }	t_minimap;
 
 typedef struct s_animation
@@ -175,7 +175,7 @@ typedef struct s_game
 	// int					zippo_counter;
 	int32_t				mouse_x;
 	bool				doors_closed;
-	mlx_image_t			*door_text;
+	mlx_image_t			*door_warning;
 	int					tile_size;
 	int					frame_counter;
 	struct s_player		player;
@@ -200,10 +200,13 @@ void			display_images(t_game *game);
 void			rendering(void *content);
 bool			controls(t_game *game);
 void			rotate_player(t_game *game, double direction);
-// exit functions
+// exit and free functions
 void			error_exit(char *error);
 void			error_exit_and_free(t_game *game, char *error);
 void			free_all(t_game *game);
+void			free_images(t_game *game);
+void			free_textures(t_game *game);
+//void			press_x(void *param);
 // raycasting functions
 void			raycasting(t_game *game);
 void			determine_ray_direction(t_game *game);
@@ -225,7 +228,7 @@ int				get_x_coordinate(t_game *game, mlx_texture_t *texture);
 mlx_texture_t	*choose_texture(t_game *game);
 uint32_t		extract_color_data(mlx_texture_t *texture, uint32_t *rgba, \
 	unsigned int location);
-uint32_t	extract_color_data_dark(mlx_texture_t *texture, \
+uint32_t		extract_color_data_dark(mlx_texture_t *texture, \
 	uint32_t *rgba, unsigned int location);
 // animation functions
 void			torch_animation(t_game *game);
@@ -236,7 +239,6 @@ void 			zippo_up_and_down(t_game *game);
 // misc
 void			open_close_doors(t_game *game);
 void			set_up_space_bar(mlx_key_data_t key, void *data);
-void			set_up_mouse(void *data);
 void			check_mouse_movement(t_game *game);
 
 #endif

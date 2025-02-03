@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:42:02 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/03 10:08:12 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:14:41 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	resize_images(t_game *game)
 		error_exit_and_free(game, "MLX failed to resize an image");
 	if (!mlx_resize_image(game->minimap.empty_map_img, game->tile_size, game->tile_size))
 		error_exit_and_free(game, "MLX failed to resize an image");
-	if (!mlx_resize_image(game->player.minimap_player_img, game->tile_size / 4,
+	if (!mlx_resize_image(game->minimap.player_img, game->tile_size / 4,
 			game->tile_size / 4))
 		error_exit_and_free(game, "MLX failed to resize an image");
 	if (!mlx_resize_image(game->animation.zippo_img, ZIPPO_SIZE, ZIPPO_SIZE))

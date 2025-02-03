@@ -18,15 +18,11 @@ TO DO:
 - ADD DOCUMENTATION/COMMENTS
 - flame gets smaller as game continues? (optional)
 -> dark mode walls get closer??? (optional)
-- move with mouse 
 - open/close doors individually (optional)
-- divide our game struct to substructs DONE (at least partly)
-- cannot close door text to screen DONE
 
 TO FIX:
 - program slows down as it runs! (not so much anymore?)
-- fix leaks
-- S and W starting directions slightly angled DONE
+- fix leaks (FUCKING DONE)
 
 ACCEPTABLE LEAKS (from mlx42) (without suppression)
 ==270281== LEAK SUMMARY:

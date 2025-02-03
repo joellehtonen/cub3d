@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:39 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 14:17:04 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:21:58 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,44 +20,19 @@ static void	check_number_of_arguments(int n)
 
 static void	initialize_variables(t_game *game)
 {
-	game->file = NULL;
-	game->frame = NULL;
-	game->minimap.floor_img = NULL;
-	game->minimap.floor_texture = NULL;
-	game->found_ceiling_rgb = 0;
-	game->found_floor_rgb = 0;
-	game->height_in_tiles = 0;
-	game->minimap.minimap_img = NULL;
-	game->mlx = NULL;
-	game->starting_direction = 0;
-	game->minimap.wall_img = NULL;
-	game->minimap.wall_texture = NULL;
-	game->width_in_tiles = 0;
-	game->map = NULL;
-	game->path_to_north_texture = NULL;
-	game->path_to_south_texture = NULL;
-	game->path_to_west_texture = NULL;
-	game->path_to_east_texture = NULL;
+	ft_memset(game, 0, sizeof(t_game));
 	game->floor_r = -1;
 	game->floor_g = -1;
 	game->floor_b = -1;
 	game->ceiling_r = -1;
 	game->ceiling_g = -1;
 	game->ceiling_b = -1;
-	game->floor_rgb = 0;
-	game->ceiling_rgb = 0;
-	game->frame_counter = 0;
-	game->animation.frame_counter = 0;
-	game->animation.flame_mem_img = NULL;
 	game->animation.flame_x = FLAME_X;
 	game->animation.flame_y = FLAME_Y;
 	game->animation.zippo_x = ZIPPO_X;
 	game->animation.zippo_y = ZIPPO_Y;
-	game->animation.zippo_counter = 0;
 	game->tile_size = TILE_SIZE;
 	game->doors_closed = true;
-	//game->can_close_doors = true;
-	// maybe lets memset these, except -1s
 }
 
 // static void resize_minimap(t_game *game)
@@ -98,7 +73,6 @@ int	main(int argc, char *argv[])
 	determine_player_starting_direction(&game);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	mlx_key_hook(game.mlx, &set_up_space_bar, &game);
-	//mlx_loop_hook(game.mlx, &set_up_mouse, &game);
 	mlx_loop_hook(game.mlx, &rendering, &game);
 	mlx_loop(game.mlx);
 	free_all(&game);

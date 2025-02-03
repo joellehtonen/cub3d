@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 14:28:48 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:13:14 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ static bool	move_player(t_game *game, double direction)
 	{
 		game->player.x = new_x;
 		game->player.y = new_y;
-		game->player.minimap_player_img->instances[0].x = new_x;
-		game->player.minimap_player_img->instances[0].y = new_y;
+		game->minimap.player_img->instances[0].x = new_x;
+		game->minimap.player_img->instances[0].y = new_y;
 		return (true);
 	}
 	else

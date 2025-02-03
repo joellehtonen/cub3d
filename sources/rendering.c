@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:35:13 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/03 13:54:24 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:14:25 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static void increment_frame_counter(t_game *game)
 	@brief Intermittently deletes on-screen warning text about doors. 
     @param content Our game struct
 */
-static void    delete_door_text(t_game *game)
+static void    delete_door_warning(t_game *game)
 {
-    if (game->door_text && game->frame_counter % 50 == 0)
-		mlx_delete_image(game->mlx, game->door_text);
+    if (game->door_warning && game->frame_counter % 50 == 0)
+		mlx_delete_image(game->mlx, game->door_warning);
 }
 
 /*
@@ -48,5 +48,5 @@ void    rendering(void *content)
     }
     increment_frame_counter(game);
 	torch_animation(game);
-    delete_door_text(game);
+    delete_door_warning(game);
 }

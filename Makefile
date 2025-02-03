@@ -6,7 +6,7 @@
 #    By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/02/03 14:30:36 by jlehtone         ###   ########.fr        #
+#    Updated: 2025/02/03 15:05:54 by jlehtone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ CFILES := main.c \
 			draw_line.c \
 			error_exit.c \
 			free_all.c \
+			free_images.c \
 			loop_through_file.c \
 			parse_file.c \
 			raycasting_utils.c \
