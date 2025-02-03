@@ -6,7 +6,7 @@
 #    By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/02/03 10:57:43 by jlehtone         ###   ########.fr        #
+#    Updated: 2025/02/03 14:30:36 by jlehtone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ CFILES := main.c \
 			torch_animation.c \
 			torch_animation_utils.c \
 			get_pixel_data.c \
-			doors.c
+			doors.c \
+			mouse.c
 HEADER = includes/cub3d.h
 LIBFT := libft/libft.a
 MLX42 := MLX42/build/libmlx42.a

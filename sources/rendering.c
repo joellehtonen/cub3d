@@ -6,11 +6,28 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:35:13 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/03 12:23:26 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 13:54:24 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+static void increment_frame_counter(t_game *game)
+{
+    game->frame_counter++;
+    if (game->frame_counter == INT_MAX - 1)
+        game->frame_counter = 0;
+}
+
+/*
+	@brief Intermittently deletes on-screen warning text about doors. 
+    @param content Our game struct
+*/
+static void    delete_door_text(t_game *game)
+{
+    if (game->door_text && game->frame_counter % 50 == 0)
+		mlx_delete_image(game->mlx, game->door_text);
+}
 
 /*
 	@brief Our main loop, raycasting and rendering whenever a movement occurs.
@@ -19,9 +36,9 @@
 void    rendering(void *content)
 {
     t_game  *game;
-    game =  (t_game *)content;
     bool     movement;
 
+    game = (t_game *)content;
     raycasting(game);
     movement = controls(game);
     if (movement == true)
@@ -29,7 +46,7 @@ void    rendering(void *content)
         clear_line(game);
         raycasting(game);
     }
+    increment_frame_counter(game);
 	torch_animation(game);
-    if (game->door_text && game->animation.frame_counter % 30 == 0)
-		mlx_delete_image(game->mlx, game->door_text);
+    delete_door_text(game);
 }

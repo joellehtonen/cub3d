@@ -6,13 +6,13 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:33:42 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/03 10:10:07 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 13:23:14 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void disable_all_flames(t_game *game)
+void	disable_all_flames(t_game *game)
 {
 	int i;
 
@@ -24,7 +24,7 @@ void disable_all_flames(t_game *game)
 	}
 }
 
-static void update_positions(t_game *game)
+static void	update_positions(t_game *game)
 {
 	int i;
 
@@ -39,7 +39,7 @@ static void update_positions(t_game *game)
 	}
 }
 
-void torch_animation(t_game *game)
+void	torch_animation(t_game *game)
 {
 	update_positions(game);
 	game->animation.flame_img[game->animation.frame_counter / 6]->enabled = false;

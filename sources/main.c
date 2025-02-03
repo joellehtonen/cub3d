@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:39 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 12:27:17 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:17:04 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void	initialize_variables(t_game *game)
 	game->ceiling_b = -1;
 	game->floor_rgb = 0;
 	game->ceiling_rgb = 0;
+	game->frame_counter = 0;
 	game->animation.frame_counter = 0;
 	game->animation.flame_mem_img = NULL;
 	game->animation.flame_x = FLAME_X;
@@ -55,7 +56,7 @@ static void	initialize_variables(t_game *game)
 	game->animation.zippo_counter = 0;
 	game->tile_size = TILE_SIZE;
 	game->doors_closed = true;
-	game->can_close_doors = true;
+	//game->can_close_doors = true;
 	// maybe lets memset these, except -1s
 }
 
@@ -96,6 +97,8 @@ int	main(int argc, char *argv[])
 	disable_all_flames(&game);
 	determine_player_starting_direction(&game);
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
+	mlx_key_hook(game.mlx, &set_up_space_bar, &game);
+	//mlx_loop_hook(game.mlx, &set_up_mouse, &game);
 	mlx_loop_hook(game.mlx, &rendering, &game);
 	mlx_loop(game.mlx);
 	free_all(&game);

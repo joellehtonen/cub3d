@@ -6,11 +6,21 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:58:27 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 10:36:57 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:02:55 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	set_up_space_bar(mlx_key_data_t key, void *data)
+{
+	t_game *game;
+	
+	game = (t_game *)data;
+	if (key.key == MLX_KEY_SPACE && key.action == MLX_PRESS)
+		open_close_doors(game);
+	return ;
+}
 
 void	open_close_doors(t_game *game)
 {
@@ -27,11 +37,7 @@ void	open_close_doors(t_game *game)
 			mlx_resize_image(game->door_text, 500, 50);
 		return ;
 	}
-	if (game->animation.frame_counter % 9 == 0)
-		game->can_close_doors = true;
-	if (game->can_close_doors == true)
-		game->doors_closed = !game->doors_closed;
-	game->can_close_doors = false;
+	game->doors_closed = !game->doors_closed;
 }
 
 void check_for_valid_door(t_game *game, int x, int y)

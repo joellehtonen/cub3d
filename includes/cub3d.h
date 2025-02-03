@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/03 12:55:05 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:31:32 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
+# include <limits.h>
 # include "../libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 
@@ -121,8 +122,8 @@ typedef struct s_animation
 	int					flame_y;
 	int					zippo_x;
 	int					zippo_y;
-	int					frame_counter;
 	int					zippo_counter;
+	int					frame_counter;
 }	t_animation;
 
 typedef struct s_game
@@ -172,10 +173,11 @@ typedef struct s_game
 	// int					zippo_y;
 	// int					frame_counter;
 	// int					zippo_counter;
+	int32_t				mouse_x;
 	bool				doors_closed;
-	bool				can_close_doors;
 	mlx_image_t			*door_text;
 	int					tile_size;
+	int					frame_counter;
 	struct s_player		player;
 	struct s_ray		ray;
 	struct s_minimap	minimap;
@@ -197,6 +199,7 @@ void			display_images(t_game *game);
 // main loop
 void			rendering(void *content);
 bool			controls(t_game *game);
+void			rotate_player(t_game *game, double direction);
 // exit functions
 void			error_exit(char *error);
 void			error_exit_and_free(t_game *game, char *error);
@@ -227,9 +230,13 @@ uint32_t	extract_color_data_dark(mlx_texture_t *texture, \
 // animation functions
 void			torch_animation(t_game *game);
 void			disable_all_flames(t_game *game);
-void			open_close_doors(t_game *game);
 void 			zippo_animation_recenter(t_game *game);
 void 			zippo_animation_rotate(t_game *game, double direction);
 void 			zippo_up_and_down(t_game *game);
+// misc
+void			open_close_doors(t_game *game);
+void			set_up_space_bar(mlx_key_data_t key, void *data);
+void			set_up_mouse(void *data);
+void			check_mouse_movement(t_game *game);
 
 #endif

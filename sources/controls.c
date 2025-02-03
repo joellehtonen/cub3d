@@ -6,32 +6,39 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 12:54:49 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:28:48 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static bool	rotate_player(t_game *game)
+void	rotate_player(t_game *game, double direction)
 {
-	double	direction;
-	
-	direction = 0.0;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
+	if (direction == LEFT)
 	{
-		direction = LEFT;
 		game->player.angle -= ROTATE_SPEED;
 		game->ray.angle -= ROTATE_SPEED;
 	}
-	else if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
+	else if (direction == RIGHT)
 	{
-		direction = RIGHT;
 		game->player.angle += ROTATE_SPEED;
 		game->ray.angle += ROTATE_SPEED;
 	}
 	else
 		zippo_animation_recenter(game);
 	zippo_animation_rotate(game, direction);
+}
+
+static bool	player_rotation(t_game *game)
+{
+	double	direction;
+	
+	direction = 0.0;
+	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
+		direction = LEFT;
+	else if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
+		direction = RIGHT;
+	rotate_player(game, direction);
 	reset_angles(game);
 	determine_ray_direction(game);
 	return (true);
@@ -64,10 +71,10 @@ static bool	move_player(t_game *game, double direction)
 		return (false);
 }
 
-static bool player_movement(t_game *game)
+static bool	player_movement(t_game *game)
 {
 	bool	movement;
-	
+
 	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
 		movement = move_player(game, FORWARD);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
@@ -81,19 +88,18 @@ static bool player_movement(t_game *game)
 	return (movement);
 }
 
-bool controls(t_game *game)
+bool	controls(t_game *game)
 {
 	bool	movement;
-	
+
 	movement = false;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 	{
 		free_all(game);
 		exit (EXIT_SUCCESS);
 	}
-	if (mlx_is_key_down(game->mlx, MLX_KEY_SPACE))
-		open_close_doors(game);
+	check_mouse_movement(game);
 	movement = player_movement(game);
-	movement = rotate_player(game);
+	movement = player_rotation(game);
 	return (movement);
 }
