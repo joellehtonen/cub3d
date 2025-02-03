@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/03 16:35:06 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:38:58 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,13 +156,13 @@ typedef struct s_game
 	mlx_texture_t		*west_texture;
 	mlx_texture_t		*door_texture;
 	// mlx_texture_t		*wall_texture;
-	// mlx_image_t			*minimap_wall_img;
+	// mlx_image_t			*minimap.wall_img;
 	// mlx_texture_t		*floor_texture;
-	// mlx_image_t			*minimap_floor_img;
+	// mlx_image_t			*minimap.floor_img;
 	// mlx_texture_t		*player_texture;
 	// mlx_image_t			*minimap_img;
 	// mlx_texture_t		*empty_map_texture;
-	// mlx_image_t			*empty_map_img;
+	// mlx_image_t			*minimap.empty_map_img;
 	// mlx_texture_t		*flame_texture[12];
 	// mlx_image_t			*flame_img[12];
 	// mlx_image_t			*flame_mem_img;

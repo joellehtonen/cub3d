@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:58:27 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 16:32:53 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:48:20 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	open_close_doors(t_game *game)
 
 	if (game->door_warning)
 		mlx_delete_image(game->mlx, game->door_warning);
-	if (game->map[(int)game->player.y / TILE_SIZE][(int)game->player.x / TILE_SIZE] == 'D')
+	if (game->map[(int)game->player.y / game->tile_size]\
+		[(int)game->player.x / game->tile_size] == 'D')
 	{
 		string = "Cannot close the door. You are too close!";
 		game->door_warning = mlx_put_string(game->mlx, string, \
@@ -46,11 +47,14 @@ void check_for_valid_door(t_game *game, int x, int y)
 		return ;
 	else if (game->map[y][x] == 'D')
 	{
-		if (!(game->map[y + 1][x] == '1' && game->map[y - 1][x] == '1' && game->map[y][x + 1] == '0' && game->map[y][x - 1] == '0') 
-			&& !(game->map[y + 1][x] == '0' && game->map[y - 1][x] == '0' && game->map[y][x + 1] == '1' && game->map[y][x - 1] == '1'))
+		if (!(game->map[y + 1][x] == '1' && game->map[y - 1][x] == '1' \
+			&& game->map[y][x + 1] == '0' && game->map[y][x - 1] == '0') 
+			&& !(game->map[y + 1][x] == '0' && game->map[y - 1][x] == '0' \
+			&& game->map[y][x + 1] == '1' && game->map[y][x - 1] == '1'))
 		{
 			printf("Door position not valid at x:%d, y:%d\n", x, y);
-			error_exit_and_free(game, "A door needs to be next to both walls and open spaces");
+			error_exit_and_free(game, \
+				"A door needs to be next to both walls and open spaces");
 		}
 	}
 	return ;

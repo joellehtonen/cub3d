@@ -7483,9 +7483,9 @@ max_text_size	MLX42/include/lodepng/lodepng.h	/^  size_t max_text_size;$/;"	m	st
 maxbitlen	MLX42/lib/png/lodepng.c	/^  unsigned maxbitlen; \/*maximum number of bits a single code can get*\/$/;"	m	struct:HuffmanTree	typeref:typename:unsigned	file:
 memory	MLX42/lib/png/lodepng.c	/^  BPMNode* memory;$/;"	m	struct:BPMLists	typeref:typename:BPMNode *	file:
 memsize	MLX42/lib/png/lodepng.c	/^  unsigned memsize;$/;"	m	struct:BPMLists	typeref:typename:unsigned	file:
-minimap_floor_img	includes/cub3d.h	/^	mlx_image_t			*minimap_floor_img;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
+minimap.floor_img	includes/cub3d.h	/^	mlx_image_t			*minimap.floor_img;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
 minimap_img	includes/cub3d.h	/^	mlx_image_t			*minimap_img;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
-minimap_wall_img	includes/cub3d.h	/^	mlx_image_t			*minimap_wall_img;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
+minimap.wall_img	includes/cub3d.h	/^	mlx_image_t			*minimap.wall_img;$/;"	m	struct:s_game	typeref:typename:mlx_image_t *
 minmatch	MLX42/include/lodepng/lodepng.h	/^  unsigned minmatch; \/*minimum lz77 length. 3 is normally best, 6 can be better for some PNGs. /;"	m	struct:LodePNGCompressSettings	typeref:typename:unsigned
 minor	MLX42/include/glad/glad.h	/^    int minor;$/;"	m	struct:gladGLversionStruct	typeref:typename:int
 minute	MLX42/include/lodepng/lodepng.h	/^  unsigned minute;  \/*0-59*\/$/;"	m	struct:LodePNGTime	typeref:typename:unsigned

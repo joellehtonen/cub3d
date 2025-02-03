@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:30:46 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/03 16:32:21 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:44:34 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ static void create_torch_textures(t_game *game)
 
 static void create_minimap_textures(t_game *game)
 {
-	game->wall_texture = mlx_load_png("textures/wall.png");
-	if (!game->wall_texture)
+	game->minimap.wall_texture = mlx_load_png("textures/wall.png");
+	if (!game->minimap.wall_texture)
 		error_exit_and_free(game, "MLX failed to load wall texture");
-	game->floor_texture = mlx_load_png("textures/floor.png");
-	if (!game->floor_texture)
+	game->minimap.floor_texture = mlx_load_png("textures/floor.png");
+	if (!game->minimap.floor_texture)
 		error_exit_and_free(game, "MLX failed to load floor texture");
-	game->player_texture = mlx_load_png("textures/player.png");
-	if (!game->player_texture)
+	game->minimap.player_texture = mlx_load_png("textures/player.png");
+	if (!game->minimap.player_texture)
 		error_exit_and_free(game, "MLX failed to load player texture");
 }
 
@@ -64,6 +64,9 @@ static void create_wall_textures(t_game *game)
 	game->west_texture = mlx_load_png(game->path_to_west_texture);
 	if (!game->west_texture)
 		error_exit_and_free(game, "MLX failed to load west texture");	
+	game->door_texture = mlx_load_png("textures/the_scream.png");
+	if (!game->door_texture)
+		error_exit_and_free(game, "MLX failed to load door texture");
 }
 
 void	create_textures(t_game *game)
@@ -72,10 +75,10 @@ void	create_textures(t_game *game)
 	create_wall_textures(game);
 	if (game->show_minimap == true)
 		create_minimap_textures(game);
-	game->empty_map_texture = mlx_load_png("textures/empty_map.png");
-	if (!game->empty_map_texture)
+	game->minimap.empty_map_texture = mlx_load_png("textures/empty_map.png");
+	if (!game->minimap.empty_map_texture)
 		error_exit_and_free(game, "MLX failed to load empty_map texture");
-	game->zippo_texture = mlx_load_png("textures/zippo_cartoon.png");
-	if (!game->zippo_texture)
+	game->animation.zippo_texture = mlx_load_png("textures/zippo_cartoon.png");
+	if (!game->animation.zippo_texture)
 		error_exit_and_free(game, "MLX failed to load zippo texture");	
 }
