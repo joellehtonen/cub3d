@@ -6,11 +6,12 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:08:49 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 15:07:45 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:55:12 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
 /*
 	@brief Resets the angles in case they exceed 360
 	 or get lower than 0.

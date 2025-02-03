@@ -6,18 +6,17 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:52:26 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/03 16:25:15 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:57:14 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void free_array_of_strings(char ***arr)
+static void	free_array_of_strings(char ***arr)
 {
 	int i;
 
 	i = 0;
-
 	while ((*arr)[i])
 		free((*arr)[i++]);
 	free(*arr);

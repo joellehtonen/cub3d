@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 15:13:14 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:55:48 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	rotate_player(t_game *game, double direction)
 static bool	player_rotation(t_game *game)
 {
 	double	direction;
-	
+
 	direction = 0.0;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
 		direction = LEFT;

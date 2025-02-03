@@ -6,10 +6,9 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 15:13:46 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:55:36 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/cub3d.h"
 
@@ -86,6 +85,7 @@ static double	find_vertical_intersection(t_game *game)
 		+ pow(point_y - game->player.y, 2));
 	return (distance);
 }
+
 /*
 	@brief Finds and records the first place where 
 	 the ray hits a horizontal wall.
@@ -150,4 +150,3 @@ void	raycasting(t_game *game)
 		ray++;
 	}
 }
-

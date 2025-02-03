@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:39 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 16:35:55 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:52:39 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	initialize_variables(t_game *game)
 	game->doors_closed = true;
 }
 
-static void initialize_mlx(t_game *game)
+static void	initialize_mlx(t_game *game)
 {
 	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d", true);
 	if (!(game->mlx))
@@ -50,7 +50,7 @@ static void	determine_player_starting_direction(t_game *game)
 	else if (game->starting_direction == SOUTH)
 		game->player.angle = RIGHT;
 	else if (game->starting_direction == EAST)
-		game->player.angle = FORWARD;	
+		game->player.angle = FORWARD;
 	else if (game->starting_direction == WEST)
 		game->player.angle = BACK;
 }

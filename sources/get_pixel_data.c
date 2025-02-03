@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:22:12 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 10:08:25 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:54:20 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 	@param *rgba Reference to the color variable
 	@param location Location of the pixel
 */
-uint32_t	extract_color_data(mlx_texture_t *texture, uint32_t *rgba, unsigned int location)
+void	extract_color_data(mlx_texture_t *texture, uint32_t *rgba, \
+	unsigned int location)
 {
 	uint8_t		red;
 	uint8_t		green;
@@ -33,7 +34,7 @@ uint32_t	extract_color_data(mlx_texture_t *texture, uint32_t *rgba, unsigned int
 	blue = texture->pixels[location + 2];
 	alpha = texture->pixels[location + 3];
 	*rgba = (red << 24) | (green << 16) | (blue << 8) | (alpha);
-	return (*rgba); // THIS COULD BE VOID!
+	return ;
 }
 
 /*
@@ -43,7 +44,7 @@ uint32_t	extract_color_data(mlx_texture_t *texture, uint32_t *rgba, unsigned int
 	@param *rgba Reference to the color variable
 	@param location Location of the pixel
 */
-uint32_t	extract_color_data_dark(mlx_texture_t *texture, \
+void	extract_color_data_dark(mlx_texture_t *texture, \
 	uint32_t *rgba, unsigned int location)
 {
 	uint8_t		red;
@@ -63,5 +64,5 @@ uint32_t	extract_color_data_dark(mlx_texture_t *texture, \
 	green = gray;
 	blue = gray;
 	*rgba = (red << 24) | (green << 16) | (blue << 8) | (alpha);
-	return (*rgba);
+	return ;
 }

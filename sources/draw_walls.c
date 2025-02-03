@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/01/31 15:13:58 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:54:38 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ mlx_texture_t	*choose_texture(t_game *game)
 {
 	mlx_texture_t	*texture;
 
-	if (game->ray.horizontal_door_hit == true || game->ray.vertical_door_hit == true)
+	if (game->ray.horizontal_door_hit == true \
+		|| game->ray.vertical_door_hit == true)
+	{
 		texture = game->door_texture;
+	}
 	else if (game->ray.horizontal == true)
 	{
 		if (game->ray.direction_up == true)
@@ -55,16 +58,20 @@ int	get_x_coordinate(t_game *game, mlx_texture_t *texture)
 	if (game->ray.horizontal == true)
 	{
 		if (game->ray.direction_up == false)
-			x = (1 - fmod(game->ray.x, game->tile_size) / game->tile_size) * texture->width;
+			x = (1 - fmod(game->ray.x, game->tile_size) / game->tile_size) \
+				* texture->width;
 		else
-			x = fmod(game->ray.x, game->tile_size) / game->tile_size * texture->width;
+			x = fmod(game->ray.x, game->tile_size) / game->tile_size \
+				* texture->width;
 	}
 	else
 	{
 		if (game->ray.direction_left == true)
-			x = (1 - fmod(game->ray.y, game->tile_size) / game->tile_size) * texture->width;
+			x = (1 - fmod(game->ray.y, game->tile_size) / game->tile_size) \
+				* texture->width;
 		else
-			x = fmod(game->ray.y, game->tile_size) / game->tile_size * texture->width;
+			x = fmod(game->ray.y, game->tile_size) / game->tile_size \
+				* texture->width;
 	}
 	return (x);
 }
@@ -91,8 +98,8 @@ static void	draw_walls(t_game *game, int start, int end, int ray)
 	texture_x = get_x_coordinate(game, texture);
 	while (start <= end && start < WINDOW_HEIGHT)
 	{
-		color = extract_color_data(texture, &color, ((texture->width * \
-			(int)texture_y + texture_x) * 4));
+		extract_color_data(texture, &color, ((texture->width \
+			* (int)texture_y + texture_x) * 4));
 		mlx_put_pixel(game->frame, ray, start, color);
 		start++;
 		texture_y += step;

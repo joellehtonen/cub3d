@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:05:46 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 16:40:42 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:56:12 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	free_images(t_game *game)
 		mlx_delete_image(game->mlx, game->minimap.minimap_img);
 }
 
-static void free_animation_textures(t_game *game)
+static void	free_animation_textures(t_game *game)
 {
 	int	i;
 

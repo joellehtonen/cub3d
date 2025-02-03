@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:59:00 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 15:27:09 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:53:15 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_mouse_movement(t_game *game)
 {
 	int32_t	x;
 	int32_t	y;
-	
+
 	x = 0;
 	y = 0;
 	mlx_get_mouse_pos(game->mlx, &x, &y);
