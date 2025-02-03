@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:42:01 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/03 10:04:24 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:32:58 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ void clear_line(t_game *game)
 
 void draw_line(t_game *game)
 {
-	//clear_line(game);
-    bresenham_line(game, game->player.x, game->player.y, (int)game->ray.x, (int)game->ray.y);
+	if (game->show_minimap == true)
+    	bresenham_line(game, game->player.x, game->player.y, (int)game->ray.x, (int)game->ray.y);
 }

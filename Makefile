@@ -6,7 +6,7 @@
 #    By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/02/03 15:05:54 by jlehtone         ###   ########.fr        #
+#    Updated: 2025/02/03 16:34:12 by jlehtone         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ CFILES := main.c \
 			torch_animation.c \
 			torch_animation_utils.c \
 			get_pixel_data.c \
+			resize_minimap.c \
 			doors.c \
 			mouse.c
 HEADER = includes/cub3d.h

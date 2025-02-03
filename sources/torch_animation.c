@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:33:42 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/03 13:23:14 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:33:59 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	disable_all_flames(t_game *game)
 	int i;
 
 	i = 0;
-	while (i <  12)
+	while (i < 12)
 	{
 		game->animation.flame_img[i]->enabled = false;
 		i++;

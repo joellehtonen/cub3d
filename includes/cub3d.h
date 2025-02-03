@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/03 16:09:15 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:35:06 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@
 # include "../libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 
-# define TILE_SIZE 32
+# define TILE_SIZE 8
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
-# define MINIMAP_WIDTH 640
-# define MINIMAP_HEIGHT 320
-# define MAX_WIDTH_IN_TILES 80
-# define MAX_HEIGHT_IN_TILES 40
+# define MINIMAP_WIDTH 256
+# define MINIMAP_HEIGHT 128
+# define MAX_WIDTH_IN_TILES 1000
+# define MAX_HEIGHT_IN_TILES 1000
 # define MOVE_SIZE 2
 # define MOVE_SPEED 4
 # define PI 3.14159265358979323846
@@ -109,6 +109,7 @@ typedef struct s_minimap
 	mlx_texture_t		*empty_map_texture;
 	mlx_image_t			*empty_map_img;
 	mlx_image_t			*minimap_img;
+	mlx_image_t			*blank_tile_img;
 }	t_minimap;
 
 typedef struct s_animation
@@ -178,6 +179,7 @@ typedef struct s_game
 	mlx_image_t			*door_warning;
 	int					tile_size;
 	int					frame_counter;
+	bool				show_minimap;
 	struct s_player		player;
 	struct s_ray		ray;
 	struct s_minimap	minimap;
@@ -192,6 +194,7 @@ void			check_for_path(t_game *game, int i, int *j, char **path);
 void			copy_map(t_game *game, char **file);
 void			validate_map(t_game *game);
 // handling textures/images
+void 			resize_minimap(t_game *game);
 void			create_textures(t_game *game);
 void			create_images(t_game *game);
 void			resize_images(t_game *game);
@@ -206,7 +209,6 @@ void			error_exit_and_free(t_game *game, char *error);
 void			free_all(t_game *game);
 void			free_images(t_game *game);
 void			free_textures(t_game *game);
-//void			press_x(void *param);
 // raycasting functions
 void			raycasting(t_game *game);
 void			determine_ray_direction(t_game *game);

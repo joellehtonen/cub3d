@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:39 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 16:21:58 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:33:30 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,17 @@ static void	initialize_variables(t_game *game)
 	game->animation.zippo_x = ZIPPO_X;
 	game->animation.zippo_y = ZIPPO_Y;
 	game->tile_size = TILE_SIZE;
+	game->show_minimap = true;
+	game->blank_tile_img = NULL;
 	game->doors_closed = true;
 }
 
-// static void resize_minimap(t_game *game)
-// {
-	
-// }
+static void initialize_mlx(t_game *game)
+{
+	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d", true);
+	if (!(game->mlx))
+		error_exit_and_free(game, "MLX failed to initialize");
+}
 
 static void	determine_player_starting_direction(t_game *game)
 {
@@ -61,10 +65,8 @@ int	main(int argc, char *argv[])
 	validate_filetype(argv[1]);
 	create_copy_of_file(&game, argv[1]);
 	parse_file(&game);
-	game.mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d", true);
-	if (!(game.mlx))
-		error_exit_and_free(&game, "MLX failed to initialize");
-	//resize_minimap(&game);
+	initialize_mlx(&game);
+	resize_minimap(&game);
 	create_textures(&game);
 	create_images(&game);
 	resize_images(&game);
