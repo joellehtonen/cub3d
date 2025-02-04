@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 09:42:38 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 10:36:39 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	rotate_player(t_game *game, double direction)
 		game->player.angle += ROTATE_SPEED;
 		game->ray.angle += ROTATE_SPEED;
 	}
-	else
-		zippo_animation_recenter(game);
+	// else
+	// 	zippo_animation_recenter(game);
 	zippo_animation_rotate(game, direction);
 }
 

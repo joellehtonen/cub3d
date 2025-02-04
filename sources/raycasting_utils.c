@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:08:49 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 16:55:12 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 10:04:18 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	choose_shorter_distance(t_game *game, double h_inter, double v_inter)
 		game->ray.length = h_inter;
 		game->ray.x = game->ray.hx;
 		game->ray.y = game->ray.hy;
-		game->ray.horizontal = true;
+		game->ray.horizontal_wall_hit = true;
 		if (game->ray.vertical_door_hit == true)
 			game->ray.vertical_door_hit = false;
 	}
@@ -69,7 +69,7 @@ void	choose_shorter_distance(t_game *game, double h_inter, double v_inter)
 		game->ray.length = v_inter;
 		game->ray.x = game->ray.vx;
 		game->ray.y = game->ray.vy;
-		game->ray.horizontal = false;
+		game->ray.horizontal_wall_hit = false;
 		if (game->ray.horizontal_door_hit == true)
 			game->ray.horizontal_door_hit = false;
 	}

@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 09:50:59 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 10:04:37 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ mlx_texture_t	*choose_texture(t_game *game)
 	{
 		texture = game->door_texture;
 	}
-	else if (game->ray.horizontal == true)
+	else if (game->ray.horizontal_wall_hit == true)
 	{
 		if (game->ray.direction_up == true)
 			texture = game->south_texture;
@@ -55,7 +55,7 @@ int	get_x_coordinate(t_game *game, mlx_texture_t *texture)
 {
 	int	x;
 
-	if (game->ray.horizontal == true)
+	if (game->ray.horizontal_wall_hit == true)
 	{
 		if (game->ray.direction_up == false)
 			x = (1 - fmod(game->ray.x, game->tile_size) / game->tile_size) \

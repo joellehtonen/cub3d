@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 09:35:40 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 10:00:04 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	draw_black(t_game *game, float top, float bottom, int ray)
 	}
 }
 
-void	render_ray_into_frame_dark_mode(t_game *game, int ray)
+void	render_ray_into_frame_dark(t_game *game, int ray)
 {
 	float		wall_top;
 	float		wall_bottom;

@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/04 09:51:15 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 10:38:13 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 # define FLOOR_RGB 100
 # define CEILING_RGB 101
 
-# define DARK 0
+# define DARK 1
 
 # define FLAME_SIZE 500
 # define FLAME_X 1160
@@ -57,8 +57,8 @@
 # define ZIPPO_SIZE 700
 # define ZIPPO_X FLAME_X - 228
 # define ZIPPO_Y FLAME_Y + 100
-# define ZIPPO_MOVE_SPD 6
-# define ZIPPO_BOB_SPD 8
+# define ZIPPO_MOVE_SPEED 6
+# define ZIPPO_BOB_SPEED 8
 
 typedef struct s_ray
 {
@@ -73,7 +73,7 @@ typedef struct s_ray
 	float				wall_height;
 	bool				direction_left;
 	bool				direction_up;
-	bool				horizontal;
+	bool				horizontal_wall_hit;
 	bool				horizontal_door_hit;
 	bool				vertical_door_hit;
 }	t_ray;
@@ -119,12 +119,14 @@ typedef struct s_animation
 	mlx_image_t			*flame_mem_img;
 	mlx_texture_t		*zippo_texture;
 	mlx_image_t			*zippo_img;
-	int					flame_x;
-	int					flame_y;
+	float				flame_x;
+	float				flame_y;
 	int					zippo_x;
 	int					zippo_y;
 	int					zippo_counter;
 	int					frame_counter;
+	int					new_flame_size_x;
+	int					new_flame_size_y;
 }	t_animation;
 
 typedef struct s_game
@@ -155,25 +157,6 @@ typedef struct s_game
 	mlx_texture_t		*south_texture;
 	mlx_texture_t		*west_texture;
 	mlx_texture_t		*door_texture;
-	// mlx_texture_t		*wall_texture;
-	// mlx_image_t			*minimap.wall_img;
-	// mlx_texture_t		*floor_texture;
-	// mlx_image_t			*minimap.floor_img;
-	// mlx_texture_t		*player_texture;
-	// mlx_image_t			*minimap_img;
-	// mlx_texture_t		*empty_map_texture;
-	// mlx_image_t			*minimap.empty_map_img;
-	// mlx_texture_t		*flame_texture[12];
-	// mlx_image_t			*flame_img[12];
-	// mlx_image_t			*flame_mem_img;
-	// mlx_texture_t		*zippo_texture;
-	// mlx_image_t			*zippo_img;
-	// int					flame_x;
-	// int					flame_y;
-	// int					zippo_x;
-	// int					zippo_y;
-	// int					frame_counter;
-	// int					zippo_counter;
 	int32_t				mouse_x;
 	bool				doors_closed;
 	mlx_image_t			*door_warning;
@@ -225,7 +208,7 @@ void 			check_for_valid_door(t_game *game, int x, int y);
 void			draw_line(t_game *game);
 void			clear_line(t_game *game);
 void			render_ray_into_frame(t_game *game, int ray);
-void			render_ray_into_frame_dark_mode(t_game *game, int ray);
+void			render_ray_into_frame_dark(t_game *game, int ray);
 void			draw_walls(t_game *game, int start, int end, int ray);
 void			correct_distortion(t_game *game);
 int				get_x_coordinate(t_game *game, mlx_texture_t *texture);
