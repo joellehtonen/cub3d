@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_walls.c                                       :+:      :+:    :+:   */
+/*   draw_walls_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 16:44:44 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:21:09 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 /*
 	@brief Finds the corresponding texture depending on the ray direction
@@ -21,8 +21,13 @@
 mlx_texture_t	*choose_texture(t_game *game)
 {
 	mlx_texture_t	*texture;
-	
-	if (game->ray.horizontal_wall_hit == true)
+
+	if (game->ray.horizontal_door_hit == true \
+		|| game->ray.vertical_door_hit == true)
+	{
+		texture = game->door_texture;
+	}
+	else if (game->ray.horizontal_wall_hit == true)
 	{
 		if (game->ray.direction_up == true)
 			texture = game->south_texture;
@@ -93,7 +98,11 @@ void	draw_walls(t_game *game, int start, int end, int ray)
 	texture_x = get_x_coordinate(game, texture);
 	while (start <= end && start < WINDOW_HEIGHT)
 	{
-		extract_color_data(texture, &color, \
+		if (DARK == 0)
+			extract_color_data(texture, &color, \
+				((texture->width * (int)texture_y + texture_x) * 4));
+		else
+			extract_color_data_bw(texture, &color, \
 				((texture->width * (int)texture_y + texture_x) * 4));
 		mlx_put_pixel(game->frame, ray, start, color);
 		start++;

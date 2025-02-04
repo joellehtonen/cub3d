@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendering.c                                        :+:      :+:    :+:   */
+/*   draw_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 09:19:38 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 16:26:08 by jlehtone         ###   ########.fr       */
+/*   Created: 2025/01/27 12:59:10 by jlehtone          #+#    #+#             */
+/*   Updated: 2025/02/04 16:21:08 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 /*
-	@brief Our main loop, raycasting and rendering whenever a movement occurs.
-    @param content Our game struct as a void pointer
+	@brief Corrects the fish eye-effect that comes when the rays hit the wall 
+	 at slightly different angles.
+	@param *game Our game struct
 */
-void	rendering(void *data)
+void	correct_distortion(t_game *game)
 {
-	t_game	*game;
-	bool	movement;
-
-	game = (t_game *)data;
-	raycasting(game);
-	movement = controls(game);
-	if (movement == true)
-	{
-		raycasting(game);
-	}
+	game->ray.length = game->ray.length * \
+		cos(game->ray.angle - game->player.angle);
 }

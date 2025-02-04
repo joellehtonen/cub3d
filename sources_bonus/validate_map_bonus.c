@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
+/*   validate_map_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:23:16 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/04 16:26:50 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:21:26 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 static void check_for_invalid_char(t_game *game, char c)
 {
 	if (c != '0' && c != '1' && c != 'N' && c != 'S' &&
-		c != 'W' && c != 'E' && c != ' ')
+		c != 'W' && c != 'E' && c != ' ' && c != 'D')
 		error_exit_and_free(game, "Map contains invalid char");
 }
 
@@ -94,6 +94,7 @@ void validate_map(t_game *game)
 			check_for_invalid_char(game, game->map[y][x]);
 			check_for_player_direction(game, game->map[y][x]);
 			check_for_surrounding_walls(game, x, y);
+			check_for_valid_door(game, x, y);
 			validate_width_and_height_in_tiles(game);
 			x++;
 		}

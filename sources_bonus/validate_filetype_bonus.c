@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendering.c                                        :+:      :+:    :+:   */
+/*   validate_filetype_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 09:19:38 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 16:26:08 by jlehtone         ###   ########.fr       */
+/*   Created: 2024/07/18 12:15:06 by eberkowi          #+#    #+#             */
+/*   Updated: 2025/02/04 16:21:26 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
-/*
-	@brief Our main loop, raycasting and rendering whenever a movement occurs.
-    @param content Our game struct as a void pointer
-*/
-void	rendering(void *data)
+void	validate_filetype(char *filename)
 {
-	t_game	*game;
-	bool	movement;
-
-	game = (t_game *)data;
-	raycasting(game);
-	movement = controls(game);
-	if (movement == true)
+	while (*filename)
 	{
-		raycasting(game);
+		if (*filename == '.')
+		{
+			if (ft_strncmp(filename, ".cub", 5))
+				error_exit("Invalid File: Invalid filetype");
+		}
+		filename++;
 	}
 }

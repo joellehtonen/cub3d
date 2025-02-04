@@ -6,11 +6,11 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 14:12:37 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:21:11 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 static void	draw_floor_ceiling_dark(t_game *game, int ray)
 {

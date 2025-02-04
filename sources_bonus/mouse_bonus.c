@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse.c                                            :+:      :+:    :+:   */
+/*   mouse_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:59:00 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 09:30:51 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:21:18 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 /*
 	@brief Checks if mouse has moved on x-axis, 

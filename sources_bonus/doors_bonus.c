@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   doors.c                                            :+:      :+:    :+:   */
+/*   doors_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:58:27 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 09:52:53 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:21:06 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 /*
 	@brief Checks if the door placement on the map follows the rules or not.
@@ -53,6 +53,10 @@ void	set_up_space_bar(mlx_key_data_t key, void *data)
 	return ;
 }
 
+/*
+	@brief Opens or closes all the doors.
+	@param key Our game struct
+*/
 void	open_close_doors(t_game *game)
 {
 	char		*string;

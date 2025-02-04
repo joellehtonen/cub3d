@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   torch_animation_utils.c                            :+:      :+:    :+:   */
+/*   torch_animation_utils_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:49:09 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 11:10:51 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:21:25 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 void	zippo_animation_recenter(t_game *game)
 {

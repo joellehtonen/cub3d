@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   torch_animation.c                                  :+:      :+:    :+:   */
+/*   torch_animation_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:33:42 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/04 14:11:04 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:59:07 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 void	disable_all_flames(t_game *game)
 {

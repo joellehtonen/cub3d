@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting_utils.c                                 :+:      :+:    :+:   */
+/*   raycasting_utils_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 09:08:49 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 16:25:35 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:21:20 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 /*
 	@brief Resets the angles in case they exceed 360
@@ -61,6 +61,8 @@ void	choose_shorter_distance(t_game *game, double h_inter, double v_inter)
 		game->ray.x = game->ray.hx;
 		game->ray.y = game->ray.hy;
 		game->ray.horizontal_wall_hit = true;
+		if (game->ray.vertical_door_hit == true)
+			game->ray.vertical_door_hit = false;
 	}
 	else
 	{
@@ -68,5 +70,7 @@ void	choose_shorter_distance(t_game *game, double h_inter, double v_inter)
 		game->ray.x = game->ray.vx;
 		game->ray.y = game->ray.vy;
 		game->ray.horizontal_wall_hit = false;
+		if (game->ray.horizontal_door_hit == true)
+			game->ray.horizontal_door_hit = false;
 	}
 }
