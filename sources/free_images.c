@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_images.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:05:46 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 16:24:56 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:04:25 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,4 @@ void	free_textures(t_game *game)
 		mlx_delete_texture(game->south_texture);
 	if (game->west_texture)
 		mlx_delete_texture(game->west_texture);
-	if (game->door_texture)
-		mlx_delete_texture(game->door_texture);
 }
