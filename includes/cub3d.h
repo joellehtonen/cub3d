@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/04 14:10:54 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:13:36 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ void			check_for_path(t_game *game, int i, int *j, char **path);
 void			copy_map(t_game *game, char **file);
 void			validate_map(t_game *game);
 // handling textures/images
-void 			resize_minimap(t_game *game);
+void			resize_minimap(t_game *game);
 void			create_textures(t_game *game);
 void			create_images(t_game *game);
 void			resize_images(t_game *game);
@@ -204,7 +204,7 @@ void			choose_shorter_distance(t_game *game, \
 bool			is_wall(t_game *game, int x, int y);
 bool			is_wall_ray(t_game *game, float x, float y, bool horizontal);
 void			check_for_rgb(t_game *game, int i, int *j, int element);
-void 			check_for_valid_door(t_game *game, int x, int y);
+void			check_for_valid_door(t_game *game, int x, int y);
 // drawing functions
 void			draw_line(t_game *game);
 void			clear_line(t_game *game);
@@ -221,9 +221,9 @@ void			extract_color_data_bw(mlx_texture_t *texture, \
 // animation functions
 void			torch_animation(t_game *game);
 void			disable_all_flames(t_game *game);
-void 			zippo_animation_recenter(t_game *game);
-void 			zippo_animation_rotate(t_game *game, double direction);
-void 			zippo_up_and_down(t_game *game);
+void			zippo_animation_recenter(t_game *game);
+void			zippo_animation_rotate(t_game *game, double direction);
+void			zippo_up_and_down(t_game *game);
 // misc
 void			open_close_doors(t_game *game);
 void			set_up_space_bar(mlx_key_data_t key, void *data);

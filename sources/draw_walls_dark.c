@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 14:10:14 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:12:37 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ static void	draw_floor_ceiling_dark(t_game *game, int ray)
 	int			i;
 	uint32_t	color;
 	int			counter;
-	
+
 	i = WINDOW_HEIGHT - 1;
 	color = 0x0000000;
 	counter = 0;
-	while (i > WINDOW_HEIGHT / 2 + (FLAME_SIZE - game->animation.new_flame_size_x))
+	while (i > WINDOW_HEIGHT / 2 \
+		+ (FLAME_SIZE - game->animation.new_flame_size_x))
 	{
 		mlx_put_pixel(game->frame, ray, i, color);
 		i--;
@@ -56,10 +57,8 @@ void	render_ray_into_frame_dark(t_game *game, int ray)
 	float		wall_top;
 	float		wall_bottom;
 	double		min_ray;
-	// double		max_ray;
 
 	min_ray = game->animation.new_flame_size_x / 10;
-	// max_ray = game->animation.new_flame_size_x / 10 + 10;
 	correct_distortion(game);
 	game->ray.wall_height = game->tile_size * WINDOW_HEIGHT / game->ray.length;
 	wall_top = (WINDOW_HEIGHT / 2) - (game->ray.wall_height / 2);
