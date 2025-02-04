@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:39 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 09:31:40 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 10:51:30 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static void	initialize_variables(t_game *game)
 	game->animation.zippo_y = ZIPPO_Y;
 	game->tile_size = TILE_SIZE;
 	game->show_minimap = true;
+	if (DARK == 1)
+		game->show_minimap = false;
 	game->doors_closed = true;
 }
 

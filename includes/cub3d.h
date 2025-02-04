@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/04 10:38:13 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:10:54 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 # define CEILING_RGB 101
 
 # define DARK 1
+# define SHRINK_RATE 0.05
 
 # define FLAME_SIZE 500
 # define FLAME_X 1160
@@ -125,8 +126,8 @@ typedef struct s_animation
 	int					zippo_y;
 	int					zippo_counter;
 	int					frame_counter;
-	int					new_flame_size_x;
-	int					new_flame_size_y;
+	double				new_flame_size_x;
+	double				new_flame_size_y;
 }	t_animation;
 
 typedef struct s_game
