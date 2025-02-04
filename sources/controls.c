@@ -6,12 +6,17 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 16:55:48 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 09:42:38 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+/*
+	@brief Rotates the player based on the direction provided. 
+	 Updates lighter animation if movement occurs. 
+	@param *game Our game struct
+*/
 void	rotate_player(t_game *game, double direction)
 {
 	if (direction == LEFT)
@@ -29,6 +34,12 @@ void	rotate_player(t_game *game, double direction)
 	zippo_animation_rotate(game, direction);
 }
 
+/*
+	@brief Checks which key was pressed, and based on it
+	 calls for the appropriate rotate function.
+	@param *game Our game struct
+	@return boolean on whether the player has moved
+*/
 static bool	player_rotation(t_game *game)
 {
 	double	direction;
@@ -44,6 +55,13 @@ static bool	player_rotation(t_game *game)
 	return (true);
 }
 
+/*
+	@brief Checks if there is a wall in the direction
+	 where player is moving. If not, moves player. 
+	@param *game Our game struct
+	@param direction Where player is going, expressed in radians
+	@return boolean on whether the player has moved
+*/
 static bool	move_player(t_game *game, double direction)
 {
 	float	new_x;
@@ -71,6 +89,13 @@ static bool	move_player(t_game *game, double direction)
 		return (false);
 }
 
+/*
+	@brief Checks for keypresses and calls the actual
+	 movement function with the right direction based on it. 
+	 Updates lighter animation if movement occurs. 
+	@param *game Our game struct
+	@return boolean on whether the player has moved
+*/
 static bool	player_movement(t_game *game)
 {
 	bool	movement;
@@ -88,6 +113,12 @@ static bool	player_movement(t_game *game)
 	return (movement);
 }
 
+/*
+	@brief Moves player based on keypresses and mouse, 
+		and updates movement boolean. 
+	@param *game Our game struct
+	@return boolean on whether the player has moved
+*/
 bool	controls(t_game *game)
 {
 	bool	movement;

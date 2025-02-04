@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/03 16:38:58 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 09:51:15 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,7 @@ typedef struct s_game
 	mlx_image_t			*door_warning;
 	int					tile_size;
 	int					frame_counter;
+	int					frame_value;
 	bool				show_minimap;
 	struct s_player		player;
 	struct s_ray		ray;
@@ -224,13 +225,14 @@ void 			check_for_valid_door(t_game *game, int x, int y);
 void			draw_line(t_game *game);
 void			clear_line(t_game *game);
 void			render_ray_into_frame(t_game *game, int ray);
-void			render_ray_into_frame_dark(t_game *game, int ray);
+void			render_ray_into_frame_dark_mode(t_game *game, int ray);
+void			draw_walls(t_game *game, int start, int end, int ray);
 void			correct_distortion(t_game *game);
 int				get_x_coordinate(t_game *game, mlx_texture_t *texture);
 mlx_texture_t	*choose_texture(t_game *game);
-uint32_t		extract_color_data(mlx_texture_t *texture, uint32_t *rgba, \
+void			extract_color_data(mlx_texture_t *texture, uint32_t *rgba, \
 	unsigned int location);
-uint32_t		extract_color_data_dark(mlx_texture_t *texture, \
+void			extract_color_data_bw(mlx_texture_t *texture, \
 	uint32_t *rgba, unsigned int location);
 // animation functions
 void			torch_animation(t_game *game);

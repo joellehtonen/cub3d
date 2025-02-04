@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:52:26 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/03 16:57:14 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 09:17:25 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	free_array_of_strings(char ***arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while ((*arr)[i])
@@ -38,7 +38,5 @@ void	free_all(t_game *game)
 		free(game->path_to_east_texture);
 	free_textures(game);
 	free_images(game);
-	// if (game->mlx->window)
-	// 	mlx_close_window(game->mlx);
 	mlx_terminate(game->mlx);
 }

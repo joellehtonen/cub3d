@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:22:12 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 16:54:20 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 09:50:49 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	extract_color_data(mlx_texture_t *texture, uint32_t *rgba, \
 	uint8_t		alpha;
 
 	if (location < 0 || location + 3 >= (texture->width * texture->height * 4))
-		return (0);
+		return ;
 	red = texture->pixels[location];
 	green = texture->pixels[location + 1];
 	blue = texture->pixels[location + 2];
@@ -44,7 +44,7 @@ void	extract_color_data(mlx_texture_t *texture, uint32_t *rgba, \
 	@param *rgba Reference to the color variable
 	@param location Location of the pixel
 */
-void	extract_color_data_dark(mlx_texture_t *texture, \
+void	extract_color_data_bw(mlx_texture_t *texture, \
 	uint32_t *rgba, unsigned int location)
 {
 	uint8_t		red;
@@ -54,7 +54,7 @@ void	extract_color_data_dark(mlx_texture_t *texture, \
 	uint8_t		gray;
 
 	if (location < 0 || location + 3 >= (texture->width * texture->height * 4))
-		return (0);
+		return ;
 	red = texture->pixels[location];
 	green = texture->pixels[location + 1];
 	blue = texture->pixels[location + 2];

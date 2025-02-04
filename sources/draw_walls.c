@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 16:54:38 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 09:50:59 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	get_x_coordinate(t_game *game, mlx_texture_t *texture)
 	@param end Location of the last pixel of the wall to be drawn
 	@param ray Number of the ray, essentially the x-coordinate
 */
-static void	draw_walls(t_game *game, int start, int end, int ray)
+void	draw_walls(t_game *game, int start, int end, int ray)
 {
 	mlx_texture_t	*texture;
 	uint32_t		color;
@@ -98,8 +98,12 @@ static void	draw_walls(t_game *game, int start, int end, int ray)
 	texture_x = get_x_coordinate(game, texture);
 	while (start <= end && start < WINDOW_HEIGHT)
 	{
-		extract_color_data(texture, &color, ((texture->width \
-			* (int)texture_y + texture_x) * 4));
+		if (DARK == 0)
+			extract_color_data(texture, &color, \
+				((texture->width * (int)texture_y + texture_x) * 4));
+		else
+			extract_color_data_bw(texture, &color, \
+				((texture->width * (int)texture_y + texture_x) * 4));
 		mlx_put_pixel(game->frame, ray, start, color);
 		start++;
 		texture_y += step;

@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 16:55:36 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 09:35:54 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ void	raycasting(t_game *game)
 		if (DARK == 0)
 			render_ray_into_frame(game, ray);
 		else
-			render_ray_into_frame_dark(game, ray);
+			render_ray_into_frame_dark_mode(game, ray);
 		draw_line(game);
 		game->ray.angle += DEGREE;
 		ray++;

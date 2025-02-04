@@ -6,7 +6,7 @@
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 09:57:39 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/03 16:52:39 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 09:31:40 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ static void	initialize_mlx(t_game *game)
 		error_exit_and_free(game, "MLX failed to initialize");
 }
 
+/*
+	@brief Orients player based on the character in the map file.
+    @param content Our game struct as a void pointer
+*/
 static void	determine_player_starting_direction(t_game *game)
 {
 	if (game->starting_direction == NORTH)
