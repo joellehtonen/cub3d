@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendering.c                                        :+:      :+:    :+:   */
+/*   error_exit_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 09:19:38 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 16:26:08 by jlehtone         ###   ########.fr       */
+/*   Created: 2025/01/10 17:15:57 by eberkowi          #+#    #+#             */
+/*   Updated: 2025/02/04 16:21:11 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
-/*
-	@brief Our main loop, raycasting and rendering whenever a movement occurs.
-    @param content Our game struct as a void pointer
-*/
-void	rendering(void *data)
+void	error_exit_and_free(t_game *game, char *error)
 {
-	t_game	*game;
-	bool	movement;
+	free_all(game);
+	printf("Error\n%s\n", error);
+	exit (1);
+}
 
-	game = (t_game *)data;
-	raycasting(game);
-	movement = controls(game);
-	if (movement == true)
-	{
-		raycasting(game);
-	}
+void	error_exit(char *error)
+{
+	printf("Error\n%s\n", error);
+	exit (1);
 }

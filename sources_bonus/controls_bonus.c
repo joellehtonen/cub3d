@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   controls.c                                         :+:      :+:    :+:   */
+/*   controls_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 09:41:04 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 16:29:14 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:21:02 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 /*
 	@brief Rotates the player based on the direction provided. 
@@ -29,6 +29,9 @@ void	rotate_player(t_game *game, double direction)
 		game->player.angle += ROTATE_SPEED;
 		game->ray.angle += ROTATE_SPEED;
 	}
+	else if (DARK == 0)
+		zippo_animation_recenter(game);
+	zippo_animation_rotate(game, direction);
 }
 
 /*
@@ -78,6 +81,8 @@ static bool	move_player(t_game *game, double direction)
 	{
 		game->player.x = new_x;
 		game->player.y = new_y;
+		game->minimap.player_img->instances[0].x = new_x;
+		game->minimap.player_img->instances[0].y = new_y;
 		return (true);
 	}
 	else
@@ -103,6 +108,8 @@ static bool	player_movement(t_game *game)
 		movement = move_player(game, LEFT);
 	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
 		movement = move_player(game, RIGHT);
+	if (movement == true)
+		zippo_up_and_down(game);
 	return (movement);
 }
 
@@ -122,6 +129,7 @@ bool	controls(t_game *game)
 		free_all(game);
 		exit (EXIT_SUCCESS);
 	}
+	check_mouse_movement(game);
 	movement = player_movement(game);
 	movement = player_rotation(game);
 	return (movement);

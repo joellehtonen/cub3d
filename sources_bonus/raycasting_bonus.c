@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   raycasting_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 16:29:05 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:21:19 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 /*
 	@brief Calculates how large a vertical "step" the ray needs to take,
@@ -74,7 +74,7 @@ static double	find_vertical_intersection(t_game *game)
 	point_y = game->player.y + (point_x - game->player.x) \
 		* tan(game->ray.angle);
 	calculate_vertical_step(game, &step_x, &step_y);
-	while (is_wall_ray(game, point_x, point_y) == false)
+	while (is_wall_ray(game, point_x, point_y, false) == false)
 	{
 		point_x += step_x;
 		point_y += step_y;
@@ -106,7 +106,7 @@ static double	find_horizontal_intersection(t_game *game)
 	point_x = game->player.x + (point_y - game->player.y) \
 		/ tan(game->ray.angle);
 	calculate_horizontal_step(game, &step_x, &step_y);
-	while (is_wall_ray(game, point_x, point_y) == false)
+	while (is_wall_ray(game, point_x, point_y, true) == false)
 	{
 		point_y += step_y;
 		point_x += step_x;
@@ -134,12 +134,18 @@ void	raycasting(t_game *game)
 	ray = 0;
 	while (ray < WINDOW_WIDTH)
 	{
+		game->ray.horizontal_door_hit = false;
+		game->ray.vertical_door_hit = false;
 		reset_angles(game);
 		determine_ray_direction(game);
 		h_inter = find_horizontal_intersection(game);
 		v_inter = find_vertical_intersection(game);
 		choose_shorter_distance(game, h_inter, v_inter);
-		render_ray_into_frame(game, ray);;
+		if (DARK == 0)
+			render_ray_into_frame(game, ray);
+		else
+			render_ray_into_frame_dark(game, ray);
+		draw_line(game);
 		game->ray.angle += DEGREE;
 		ray++;
 	}

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/10 11:47:29 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:20:25 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -25,6 +25,8 @@
 # define TILE_SIZE 8
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
+# define MINIMAP_WIDTH 256
+# define MINIMAP_HEIGHT 128
 # define MAX_WIDTH_IN_TILES 1000
 # define MAX_HEIGHT_IN_TILES 1000
 # define MOVE_SIZE 2
@@ -47,6 +49,18 @@
 # define FLOOR_RGB 100
 # define CEILING_RGB 101
 
+# define DARK 0
+# define SHRINK_RATE 0.05
+
+# define FLAME_SIZE 500
+# define FLAME_X 1160
+# define FLAME_Y 600
+# define ZIPPO_SIZE 700
+# define ZIPPO_X FLAME_X - 228
+# define ZIPPO_Y FLAME_Y + 100
+# define ZIPPO_MOVE_SPEED 6
+# define ZIPPO_BOB_SPEED 8
+
 typedef struct s_ray
 {
 	float				x;
@@ -61,6 +75,8 @@ typedef struct s_ray
 	bool				direction_left;
 	bool				direction_up;
 	bool				horizontal_wall_hit;
+	bool				horizontal_door_hit;
+	bool				vertical_door_hit;
 }	t_ray;
 
 typedef struct s_box
@@ -82,6 +98,37 @@ typedef struct s_player
 	float				angle;
 	float				initial_direction;
 }	t_player;
+
+typedef struct s_minimap
+{
+	mlx_texture_t		*wall_texture;
+	mlx_image_t			*wall_img;
+	mlx_texture_t		*floor_texture;
+	mlx_image_t			*floor_img;
+	mlx_texture_t		*player_texture;
+	mlx_image_t			*player_img;
+	mlx_texture_t		*empty_map_texture;
+	mlx_image_t			*empty_map_img;
+	mlx_image_t			*minimap_img;
+	mlx_image_t			*blank_tile_img;
+}	t_minimap;
+
+typedef struct s_animation
+{
+	mlx_texture_t		*flame_texture[12];
+	mlx_image_t			*flame_img[12];
+	mlx_image_t			*flame_mem_img;
+	mlx_texture_t		*zippo_texture;
+	mlx_image_t			*zippo_img;
+	float				flame_x;
+	float				flame_y;
+	int					zippo_x;
+	int					zippo_y;
+	int					zippo_counter;
+	int					frame_counter;
+	double				new_flame_size_x;
+	double				new_flame_size_y;
+}	t_animation;
 
 typedef struct s_game
 {
@@ -111,9 +158,17 @@ typedef struct s_game
 	mlx_texture_t		*south_texture;
 	mlx_texture_t		*west_texture;
 	mlx_texture_t		*door_texture;
+	int32_t				mouse_x;
+	bool				doors_closed;
+	mlx_image_t			*door_warning;
 	int					tile_size;
+	int					frame_counter;
+	int					frame_value;
+	bool				show_minimap;
 	struct s_player		player;
-	struct s_ray		ray;;
+	struct s_ray		ray;
+	struct s_minimap	minimap;
+	struct s_animation	animation;
 }	t_game;
 
 // parsing functions
@@ -147,18 +202,31 @@ void			choose_shorter_distance(t_game *game, \
 	double h_inter, double v_inter);
 // checks
 bool			is_wall(t_game *game, int x, int y);
-bool			is_wall_ray(t_game *game, float x, float y);
+bool			is_wall_ray(t_game *game, float x, float y, bool horizontal);
 void			check_for_rgb(t_game *game, int i, int *j, int element);
 void			check_for_valid_door(t_game *game, int x, int y);
 // drawing functions
 void			draw_line(t_game *game);
 void			clear_line(t_game *game);
 void			render_ray_into_frame(t_game *game, int ray);
+void			render_ray_into_frame_dark(t_game *game, int ray);
 void			draw_walls(t_game *game, int start, int end, int ray);
 void			correct_distortion(t_game *game);
 int				get_x_coordinate(t_game *game, mlx_texture_t *texture);
 mlx_texture_t	*choose_texture(t_game *game);
 void			extract_color_data(mlx_texture_t *texture, uint32_t *rgba, \
 	unsigned int location);
+void			extract_color_data_bw(mlx_texture_t *texture, \
+	uint32_t *rgba, unsigned int location);
+// animation functions
+void			torch_animation(t_game *game);
+void			disable_all_flames(t_game *game);
+void			zippo_animation_recenter(t_game *game);
+void			zippo_animation_rotate(t_game *game, double direction);
+void			zippo_up_and_down(t_game *game);
+// misc
+void			open_close_doors(t_game *game);
+void			set_up_space_bar(mlx_key_data_t key, void *data);
+void			check_mouse_movement(t_game *game);
 
 #endif
