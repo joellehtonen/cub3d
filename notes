@@ -1,14 +1,8 @@
-MAP PARSING NOTES
+ETHAN NOTES
 
 TO DO:
-- create blank_tile to replace floor and wall images when minimap cannot be displayed
-    -need to replace texture, image, and maybe resize?
-- map scaling
-- door image for minimap
-- more map parsing tests
-- norminette
-- valgrind
-- malloc checks
+- What is tags file?
+- What is leaks file?
 
 RAYCASTING NOTES
 

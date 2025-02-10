@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   check_for_path_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:48:28 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/04 16:20:59 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:10:05 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
 
-static int get_path_length(int j, char *fileline)
+static int	get_path_length(int j, char *fileline)
 {
-	int result;
+	int	result;
 
 	result = 0;
 	while (fileline[j])
@@ -27,9 +27,9 @@ static int get_path_length(int j, char *fileline)
 	return (result);
 }
 
-static void copy_path(int j, char *fileline, char **path)
+static void	copy_path(int j, char *fileline, char **path)
 {
-	int i;
+	int	i;
 
 	(*path)[0] = '.';
 	(*path)[1] = '/';
@@ -45,9 +45,9 @@ static void copy_path(int j, char *fileline, char **path)
 	(*path)[i] = '\0';
 }
 
-void check_for_path(t_game *game, int i, int *j, char **path)
+void	check_for_path(t_game *game, int i, int *j, char **path)
 {
-	int path_length;
+	int	path_length;
 
 	if (*path)
 		error_exit_and_free(game, "Duplicate paths to textures");

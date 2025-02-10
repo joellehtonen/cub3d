@@ -3,45 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 13:42:01 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/04 16:21:07 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:02:41 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
 
-static void bresenham_line(t_game *game, int x1, int y1, int x2, int y2)
+static void	init_struct(t_line *line)
 {
-    int dx = ft_abs(x2 - x1);
-    int dy = ft_abs(y2 - y1);
-    int sx = (x1 < x2) ? 1 : -1;
-    int sy = (y1 < y2) ? 1 : -1;
-    int err = dx - dy;
-
-    while (1) 
-	{
-		if (x1 > 0 && x1 < WINDOW_WIDTH && y1 > 0 && y1 < WINDOW_HEIGHT)
-        	mlx_put_pixel(game->minimap.minimap_img, x1, y1, 0xff000088);
-        if (x1 == x2 && y1 == y2)
-			break;
-        int e2 = 2 * err;
-        if (e2 > -dy) {
-            err -= dy;
-            x1 += sx;
-        }
-        if (e2 < dx) {
-            err += dx;
-            y1 += sy;
-        }
-    }
+	line->dx = ft_abs(line->x2 - line->x1);
+	line->dy = ft_abs(line->y2 - line->y1);
+	if (line->x1 < line->x2)
+		line->sx = 1;
+	else
+		line->sx = -1;
+	if (line->y1 < line->y2)
+		line->sy = 1;
+	else
+		line->sy = -1;
+	line->err = line->dx - line->dy;
 }
 
-void clear_line(t_game *game)
+static void	bresenham_line(t_game *game, t_line line)
 {
-	int y;
-	int x;
+	init_struct(&line);
+	while (1)
+	{
+		if (line.x1 > 0 && line.x1 < WINDOW_WIDTH
+			&& line.y1 > 0 && line.y1 < WINDOW_HEIGHT)
+			mlx_put_pixel(game->minimap.minimap_img,
+				line.x1, line.y1, 0xff000088);
+		if (line.x1 == line.x2 && line.y1 == line.y2)
+			break ;
+		line.e2 = 2 * line.err;
+		if (line.e2 > -line.dy)
+		{
+			line.err -= line.dy;
+			line.x1 += line.sx;
+		}
+		if (line.e2 < line.dx)
+		{
+			line.err += line.dx;
+			line.y1 += line.sy;
+		}
+	}
+}
+
+void	clear_line(t_game *game)
+{
+	int	y;
+	int	x;
 
 	y = 0;
 	while (y < (int)game->minimap.minimap_img->height)
@@ -56,8 +70,16 @@ void clear_line(t_game *game)
 	}
 }
 
-void draw_line(t_game *game)
+void	draw_line(t_game *game)
 {
+	t_line	line;
+
 	if (game->show_minimap == true)
-    	bresenham_line(game, game->player.x, game->player.y, (int)game->ray.x, (int)game->ray.y);
+	{
+		line.x1 = game->player.x;
+		line.y1 = game->player.y;
+		line.x2 = (int)game->ray.x;
+		line.y2 = (int)game->ray.y;
+		bresenham_line(game, line);
+	}
 }

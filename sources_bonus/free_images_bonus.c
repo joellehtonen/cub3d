@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_images_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:05:46 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 16:21:12 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:02:37 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ static void	free_animation_textures(t_game *game)
 	i = 0;
 	while (i < 12)
 	{
-		if (game->animation.flame_texture[i])
-			mlx_delete_texture(game->animation.flame_texture[i]);
+		if (game->animation.flame_t[i])
+			mlx_delete_texture(game->animation.flame_t[i]);
 		i++;
 	}
 }

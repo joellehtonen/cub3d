@@ -3,38 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/04 16:21:19 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/10 13:41:21 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
-
-static void	check_for_path_or_rgb(t_game *game, int i, int *j)
-{
-	if (!ft_strncmp("NO ./", (game->file)[i] + *j, 5))
-		check_for_path(game, i, j, &game->path_to_north_texture);
-	if (!ft_strncmp("SO ./", (game->file)[i] + *j, 5))
-		check_for_path(game, i, j, &game->path_to_south_texture);
-	if (!ft_strncmp("WE ./", (game->file)[i] + *j, 5))
-		check_for_path(game, i, j, &game->path_to_west_texture);
-	if (!ft_strncmp("EA ./", (game->file)[i] + *j, 5))
-		check_for_path(game, i, j, &game->path_to_east_texture);
-	if (!ft_strncmp("F ", (game->file)[i] + *j, 2))
-		check_for_rgb(game, i, j, FLOOR_RGB);
-	if (!ft_strncmp("C ", (game->file)[i] + *j, 2))
-		check_for_rgb(game, i, j, CEILING_RGB);
-}
-
-static int	check_for_all_paths(t_game *game)
-{
-	if (!game->path_to_north_texture || !game->path_to_south_texture
-		|| !game->path_to_west_texture || !game->path_to_east_texture)
-		return (0);
-	return (1);
-}
 
 static void	validate_rgb(t_game *game)
 {
@@ -47,35 +23,7 @@ static void	validate_rgb(t_game *game)
 		error_exit_and_free(game, "RGB missing or out of range");
 }
 
-static void	loop_through_file(t_game *game, int *i)
-{
-	int	j;
-	int	break_while;
-
-	break_while = 0;
-	*i = 0;
-	while ((game->file)[*i])
-	{
-		j = 0;
-		while ((game->file)[*i][j])
-		{
-			check_for_path_or_rgb(game, *i, &j);
-			if (check_for_all_paths(game) && game->found_floor_rgb
-				&& game->found_ceiling_rgb)
-			{
-				break_while = 1;
-				break ;
-			}
-			if ((game->file)[*i][j])
-				j++;
-		}
-		(*i)++;
-		if (break_while)
-			break ;
-	}
-}
-
-static void free_map_in_middle(t_game  *game, int i)
+static void	free_map_in_middle(t_game *game, int i)
 {
 	i++;
 	while (game->map[i])
@@ -85,7 +33,7 @@ static void free_map_in_middle(t_game  *game, int i)
 	}
 }
 
-static void fill_in_gaps_for_map(t_game *game)
+static void	fill_in_gaps_for_map(t_game *game)
 {
 	int		i;
 	char	*temp;
@@ -98,14 +46,14 @@ static void fill_in_gaps_for_map(t_game *game)
 		{
 			temp = ft_strdup(game->map[i]);
 			if (!temp)
-				error_exit_and_free(game, "Failed to malloc fill in gaps for map");
+				error_exit_and_free(game, "Failed to malloc gaps for map");
 			free(game->map[i]);
 			game->map[i] = NULL;
 			game->map[i] = ft_strjoin(temp, ".");
 			if (!game->map[i])
 			{
 				free_map_in_middle(game, i);
-				error_exit_and_free(game, "Failed to malloc fill in gaps for map");
+				error_exit_and_free(game, "Failed to malloc gaps for map");
 			}
 			free(temp);
 			temp = NULL;
@@ -118,12 +66,14 @@ void	parse_file(t_game *game)
 {
 	int	i;
 
-	loop_through_file(game, &i);
+	get_paths_and_rgb(game, &i);
 	if (!(check_for_all_paths(game)))
 		error_exit_and_free(game, "Missing path to texture");
 	validate_rgb(game);
-	game->floor_rgb = (game->floor_r << 24) | (game->floor_g  << 16) | game->floor_b << 8 | 255;
-	game->ceiling_rgb = (game->ceiling_r << 24) | (game->ceiling_g  << 16) | game->ceiling_b << 8 | 255;
+	game->floor_rgb = (game->floor_r << 24) | \
+	(game->floor_g << 16) | game->floor_b << 8 | 255;
+	game->ceiling_rgb = (game->ceiling_r << 24) | \
+	(game->ceiling_g << 16) | game->ceiling_b << 8 | 255;
 	while (game->file[i][0] == '\n')
 		i++;
 	copy_map(game, game->file + i);

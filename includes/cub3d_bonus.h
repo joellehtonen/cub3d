@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/04 16:20:25 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:24:37 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,24 @@
 # define FLAME_X 1160
 # define FLAME_Y 600
 # define ZIPPO_SIZE 700
-# define ZIPPO_X FLAME_X - 228
-# define ZIPPO_Y FLAME_Y + 100
+# define ZIPPO_X 932
+# define ZIPPO_Y 700
 # define ZIPPO_MOVE_SPEED 6
 # define ZIPPO_BOB_SPEED 8
+
+typedef struct line
+{
+	int					x1;
+	int					x2;
+	int					y1;
+	int					y2;
+	int					dx;
+	int					dy;
+	int					sx;
+	int					sy;
+	int					err;
+	int					e2;
+}	t_line;
 
 typedef struct s_ray
 {
@@ -103,6 +117,9 @@ typedef struct s_minimap
 {
 	mlx_texture_t		*wall_texture;
 	mlx_image_t			*wall_img;
+	mlx_texture_t		*closed_door_texture;
+	mlx_image_t			*closed_door_img;
+	mlx_image_t			*open_door_img;
 	mlx_texture_t		*floor_texture;
 	mlx_image_t			*floor_img;
 	mlx_texture_t		*player_texture;
@@ -115,7 +132,7 @@ typedef struct s_minimap
 
 typedef struct s_animation
 {
-	mlx_texture_t		*flame_texture[12];
+	mlx_texture_t		*flame_t[12];
 	mlx_image_t			*flame_img[12];
 	mlx_image_t			*flame_mem_img;
 	mlx_texture_t		*zippo_texture;
@@ -178,6 +195,9 @@ void			parse_file(t_game *game);
 void			check_for_path(t_game *game, int i, int *j, char **path);
 void			copy_map(t_game *game, char **file);
 void			validate_map(t_game *game);
+int				is_empty_space(char c);
+void			get_paths_and_rgb(t_game *game, int *i);
+int				check_for_all_paths(t_game *game);
 // handling textures/images
 void			resize_minimap(t_game *game);
 void			create_textures(t_game *game);

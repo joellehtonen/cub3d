@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   copy_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:37:40 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/04 16:21:03 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:09:09 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
 
-static int get_num_of_lines(char **file)
+static int	get_num_of_lines(char **file)
 {
-	int result;
+	int	result;
 
 	result = 0;
 	while (*file)
@@ -25,10 +25,10 @@ static int get_num_of_lines(char **file)
 	return (result);
 }
 
-static void remove_newlines(t_game *game)
+static void	remove_newlines(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (game->map[i])
@@ -46,8 +46,8 @@ static void remove_newlines(t_game *game)
 
 void	copy_map(t_game *game, char **file)
 {
-	int num_of_lines;
-	int i;
+	int	num_of_lines;
+	int	i;
 
 	num_of_lines = get_num_of_lines(file);
 	game->map = (char **)malloc((num_of_lines + 1) * sizeof(char *));

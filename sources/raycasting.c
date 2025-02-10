@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:03:55 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 16:29:05 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:12:23 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void	raycasting(t_game *game)
 		h_inter = find_horizontal_intersection(game);
 		v_inter = find_vertical_intersection(game);
 		choose_shorter_distance(game, h_inter, v_inter);
-		render_ray_into_frame(game, ray);;
+		render_ray_into_frame(game, ray);
 		game->ray.angle += DEGREE;
 		ray++;
 	}

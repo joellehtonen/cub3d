@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+         #
+#    By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 14:44:03 by eberkowi          #+#    #+#              #
-#    Updated: 2025/02/04 17:03:36 by jlehtone         ###   ########.fr        #
+#    Updated: 2025/02/10 15:19:24 by eberkowi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,9 @@ CFILES := 	main.c \
 			validate_map.c \
 			draw_walls.c \
 			draw_utils.c \
-			get_pixel_data.c
+			get_pixel_data.c \
+			utilities.c \
+			get_paths_and_rgb.c
 CFILES_BONUS := main_bonus.c \
 				check_for_path_bonus.c \
 				check_for_rgb_bonus.c \
@@ -67,7 +69,9 @@ CFILES_BONUS := main_bonus.c \
 				get_pixel_data_bonus.c \
 				resize_minimap_bonus.c \
 				doors_bonus.c \
-				mouse_bonus.c
+				mouse_bonus.c \
+				utilities_bonus.c \
+				get_paths_and_rgb_bonus.c
 HEADER = includes/cub3d.h
 LIBFT := libft/libft.a
 MLX42 := MLX42/build/libmlx42.a

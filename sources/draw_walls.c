@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:57:18 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 16:44:44 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:12:39 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 mlx_texture_t	*choose_texture(t_game *game)
 {
 	mlx_texture_t	*texture;
-	
+
 	if (game->ray.horizontal_wall_hit == true)
 	{
 		if (game->ray.direction_up == true)

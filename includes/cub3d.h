@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/10 11:47:29 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:27:03 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # define TILE_SIZE 8
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1080
-# define MAX_WIDTH_IN_TILES 1000
-# define MAX_HEIGHT_IN_TILES 1000
+# define MAX_WIDTH_IN_TILES 200
+# define MAX_HEIGHT_IN_TILES 200
 # define MOVE_SIZE 2
 # define MOVE_SPEED 4
 # define PI 3.14159265358979323846
@@ -113,7 +113,7 @@ typedef struct s_game
 	mlx_texture_t		*door_texture;
 	int					tile_size;
 	struct s_player		player;
-	struct s_ray		ray;;
+	struct s_ray		ray;
 }	t_game;
 
 // parsing functions
@@ -123,6 +123,9 @@ void			parse_file(t_game *game);
 void			check_for_path(t_game *game, int i, int *j, char **path);
 void			copy_map(t_game *game, char **file);
 void			validate_map(t_game *game);
+int				is_empty_space(char c);
+void			get_paths_and_rgb(t_game *game, int *i);
+int				check_for_all_paths(t_game *game);
 // handling textures/images
 void			resize_minimap(t_game *game);
 void			create_textures(t_game *game);

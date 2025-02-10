@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:19:38 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 16:21:21 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/10 13:25:32 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 	@brief Increments frame counter as the game loops.
-    @param content Our game struct as a void pointer
+    @param *game Our game struct
 */
 static void	increment_frame_counter(t_game *game)
 {
@@ -27,7 +27,7 @@ static void	increment_frame_counter(t_game *game)
 
 /*
 	@brief Intermittently deletes on-screen warning text about doors. 
-    @param content Our game struct
+    @param *game Our game struct
 */
 static void	delete_door_warning(t_game *game)
 {
@@ -38,8 +38,22 @@ static void	delete_door_warning(t_game *game)
 }
 
 /*
+	@brief Toggles the door open or closed on the minimap display
+    @param *game Our game struct
+*/
+static void	toggle_door_on_minimap(t_game *game)
+{
+	if (game->doors_closed == true)
+	{
+		game->minimap.closed_door_img->enabled = true;
+	}
+	else
+		game->minimap.closed_door_img->enabled = false;
+}
+
+/*
 	@brief Our main loop, raycasting and rendering whenever a movement occurs.
-    @param content Our game struct as a void pointer
+    @param *data Our game struct as a void pointer
 */
 void	rendering(void *data)
 {
@@ -57,4 +71,5 @@ void	rendering(void *data)
 	increment_frame_counter(game);
 	torch_animation(game);
 	delete_door_warning(game);
+	toggle_door_on_minimap(game);
 }

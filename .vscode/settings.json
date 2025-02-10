@@ -11,6 +11,7 @@
 		"unordered_map": "c",
 		"string_view": "c",
 		"cstdlib": "c",
-		"format": "c"
+		"format": "c",
+		"cub3d_bonus.h": "c"
 	}
 }

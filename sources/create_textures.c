@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_textures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:30:46 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/04 16:30:20 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:13:18 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ void	create_textures(t_game *game)
 		error_exit_and_free(game, "MLX failed to load south texture");
 	game->west_texture = mlx_load_png(game->path_to_west_texture);
 	if (!game->west_texture)
-		error_exit_and_free(game, "MLX failed to load west texture");	
+		error_exit_and_free(game, "MLX failed to load west texture");
 }

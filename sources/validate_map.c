@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:23:16 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/04 20:04:35 by kattimaijan      ###   ########.fr       */
+/*   Updated: 2025/02/10 15:12:03 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void check_for_invalid_char(t_game *game, char c)
+static void	check_for_invalid_char(t_game *game, char c)
 {
-	if (c != '0' && c != '1' && c != 'N' && c != 'S' &&
-		c != 'W' && c != 'E' && c != ' ')
+	if (c != '0' && c != '1' && c != 'N' && c != 'S'
+		&& c != 'W' && c != 'E' && c != ' ')
 		error_exit_and_free(game, "Map contains invalid char");
 }
 
-static void check_for_player_direction(t_game *game, char c, int x, int y)
+static void	check_for_player_direction(t_game *game, char c, int x, int y)
 {
-	if (game->starting_direction && 
-		(c == 'N' || c == 'S' || c == 'W' || c == 'E'))
-		error_exit_and_free(game, "Map contains more than one player position");
+	if (game->starting_direction
+		&& (c == 'N' || c == 'S' || c == 'W' || c == 'E'))
+		error_exit_and_free(game, "Map contains more than one player");
 	if (c == 'N')
 		game->starting_direction = NORTH;
 	else if (c == 'S')
@@ -39,14 +39,7 @@ static void check_for_player_direction(t_game *game, char c, int x, int y)
 	}
 }
 
-static int is_empty_space(char c)
-{
-	if (c == ' ' || c == '\0')
-		return (1);
-	return (0);
-}
-
-static void check_for_surrounding_walls(t_game *game, int x, int y)
+static void	check_for_surrounding_walls(t_game *game, int x, int y)
 {
 	if (game->map[y][x] == '1' || game->map[y][x] == ' ')
 		return ;
@@ -54,21 +47,22 @@ static void check_for_surrounding_walls(t_game *game, int x, int y)
 		error_exit_and_free(game, "Map not surrounded by wall on edge");
 	if ((int)ft_strlen(game->map[y]) - 1 == x)
 		error_exit_and_free(game, "Map not surrounded by wall on edge");
-	if ((int)ft_strlen(game->map[y - 1]) < x || is_empty_space(game->map[y - 1][x]))
+	if ((int)ft_strlen(game->map[y - 1]) < x
+		|| is_empty_space(game->map[y - 1][x]))
 		error_exit_and_free(game, "Map not surrounded by wall above");
-	if ((int)ft_strlen(game->map[y + 1]) < x || is_empty_space(game->map[y + 1][x]))
+	if ((int)ft_strlen(game->map[y + 1]) < x
+		|| is_empty_space(game->map[y + 1][x]))
 		error_exit_and_free(game, "Map not surrounded by wall below");
 	if (is_empty_space(game->map[y][x - 1]))
 		error_exit_and_free(game, "Map not surrounded by wall to the left");
 	if (is_empty_space(game->map[y][x + 1]))
 		error_exit_and_free(game, "Map not surrounded by wall to the right");
-	
 }
 
-static void validate_width_and_height_in_tiles(t_game *game)
+static void	validate_width_and_height_in_tiles(t_game *game)
 {
-	int i;
-	int temp;
+	int	i;
+	int	temp;
 
 	i = 0;
 	while (game->map[i])
@@ -85,10 +79,10 @@ static void validate_width_and_height_in_tiles(t_game *game)
 		game->height_in_tiles = i;
 }
 
-void validate_map(t_game *game)
+void	validate_map(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (game->map[y])
@@ -102,6 +96,6 @@ void validate_map(t_game *game)
 			validate_width_and_height_in_tiles(game);
 			x++;
 		}
-		y++;	
+		y++;
 	}
 }
