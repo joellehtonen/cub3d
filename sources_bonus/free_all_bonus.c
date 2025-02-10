@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:52:26 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/04 16:21:12 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:08:32 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ void	free_all(t_game *game)
 		free(game->path_to_east_texture);
 	free_textures(game);
 	free_images(game);
-	mlx_terminate(game->mlx);
+	if (game->mlx)
+		mlx_terminate(game->mlx);
 }

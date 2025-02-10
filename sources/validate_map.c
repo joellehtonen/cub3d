@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:23:16 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/04 16:26:50 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 20:04:35 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void check_for_invalid_char(t_game *game, char c)
 		error_exit_and_free(game, "Map contains invalid char");
 }
 
-static void check_for_player_direction(t_game *game, char c)
+static void check_for_player_direction(t_game *game, char c, int x, int y)
 {
 	if (game->starting_direction && 
 		(c == 'N' || c == 'S' || c == 'W' || c == 'E'))
@@ -32,6 +32,11 @@ static void check_for_player_direction(t_game *game, char c)
 		game->starting_direction = WEST;
 	else if (c == 'E')
 		game->starting_direction = EAST;
+	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
+	{
+		game->player.x = x * game->tile_size + game->tile_size / 2;
+		game->player.y = y * game->tile_size + game->tile_size / 2;
+	}
 }
 
 static int is_empty_space(char c)
@@ -92,7 +97,7 @@ void validate_map(t_game *game)
 		while (game->map[y][x])
 		{
 			check_for_invalid_char(game, game->map[y][x]);
-			check_for_player_direction(game, game->map[y][x]);
+			check_for_player_direction(game, game->map[y][x], x, y);
 			check_for_surrounding_walls(game, x, y);
 			validate_width_and_height_in_tiles(game);
 			x++;

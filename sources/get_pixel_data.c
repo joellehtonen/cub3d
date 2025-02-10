@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kattimaijanen <kattimaijanen@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:22:12 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 16:25:02 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:03:33 by kattimaijan      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	extract_color_data(mlx_texture_t *texture, uint32_t *rgba, \
 	uint8_t		blue;
 	uint8_t		alpha;
 
-	if (location < 0 || location + 3 >= (texture->width * texture->height * 4))
+	if (location + 3 >= (texture->width * texture->height * 4))
 		return ;
 	red = texture->pixels[location];
 	green = texture->pixels[location + 1];
