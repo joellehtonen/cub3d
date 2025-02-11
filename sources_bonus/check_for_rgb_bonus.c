@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:16:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/11 10:39:48 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:38:50 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	check_for_rgb(t_game *game, int i, int *j, int element)
 {
 	check_for_duplicate_rgb(game, element);
 	*j += 2;
+	while (game->file[i][*j] == ' ')
+		(*j)++;
 	if (element == FLOOR_RGB)
 	{
 		add_r_and_g(game, i, j, &game->floor_r);

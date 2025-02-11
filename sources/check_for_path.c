@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:48:28 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/11 10:48:38 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:30:55 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	check_for_path(t_game *game, int i, int *j, char **path)
 	if (*path)
 		error_exit_and_free(game, "Duplicate paths to textures");
 	*j += 3;
+	while (game->file[i][*j] == ' ')
+		(*j)++;
 	path_length = get_path_length(*j, game->file[i]);
 	if (!path_length)
 		error_exit_and_free(game, "Given map is missing a path to texture");
