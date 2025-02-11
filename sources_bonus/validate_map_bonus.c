@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:23:16 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/10 13:18:32 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/11 10:08:05 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	check_for_invalid_char(t_game *game, char c)
 {
 	if (c != '0' && c != '1' && c != 'N' && c != 'S'
 		&& c != 'W' && c != 'E' && c != ' ' && c != 'D')
-		error_exit_and_free(game, "Map contains invalid char");
+		error_exit_and_free_invalid_char(game, "Map contains invalid char", c);
 }
 
 static void	check_for_player_direction(t_game *game, char c)

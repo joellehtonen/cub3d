@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 10:16:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/10 15:09:42 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/11 10:39:48 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ static void	add_b(t_game *game, int i, int *j, int *element)
 	*element = ft_atoi(game->file[i] + *j);
 	while (game->file[i][*j] && ft_isdigit(game->file[i][*j]))
 		(*j)++;
-	while (game->file[i][*j] == ' ' || game->file[i][*j] == '\t')
-	{
-		(*j)++;
-	}
+	if (game->file[i][*j] != '\n')
+		error_exit_and_free(game, "RGB contains non-digit or negative");
 }
 
 static void	add_r_and_g(t_game *game, int i, int *j, int *element)

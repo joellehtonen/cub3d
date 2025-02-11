@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/10 15:27:03 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/11 10:03:15 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,8 @@ void			rotate_player(t_game *game, double direction);
 // exit and free functions
 void			error_exit(char *error);
 void			error_exit_and_free(t_game *game, char *error);
+void			error_exit_and_free_invalid_char(t_game *game, char *error, \
+	char c);
 void			free_all(t_game *game);
 void			free_images(t_game *game);
 void			free_textures(t_game *game);

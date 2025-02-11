@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/10 15:19:09 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/11 09:46:38 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	parse_file(t_game *game)
 	(game->floor_g << 16) | game->floor_b << 8 | 255;
 	game->ceiling_rgb = (game->ceiling_r << 24) | \
 	(game->ceiling_g << 16) | game->ceiling_b << 8 | 255;
-	while (game->file[i][0] == '\n')
+	while (game->file[i] && game->file[i][0] == '\n')
 		i++;
 	copy_map(game, game->file + i);
 	validate_map(game);
