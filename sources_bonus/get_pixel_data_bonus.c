@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_pixel_data_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:22:12 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 16:21:13 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:05:46 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	extract_color_data(mlx_texture_t *texture, uint32_t *rgba, \
 	green = texture->pixels[location + 1];
 	blue = texture->pixels[location + 2];
 	alpha = texture->pixels[location + 3];
-	*rgba = (red << 24) | (green << 16) | (blue << 8) | (alpha);
+	*rgba = ((unsigned int)red << 24) | ((unsigned int)green << 16) \
+	| ((unsigned int)blue << 8) | (alpha);
 	return ;
 }
 
