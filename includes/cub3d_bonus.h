@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/11 10:07:41 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:05:27 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # define WINDOW_HEIGHT 1080
 # define MINIMAP_WIDTH 256
 # define MINIMAP_HEIGHT 128
-# define MAX_WIDTH_IN_TILES 1000
-# define MAX_HEIGHT_IN_TILES 1000
+# define MAX_WIDTH_IN_TILES 200
+# define MAX_HEIGHT_IN_TILES 200
 # define MOVE_SIZE 2
 # define MOVE_SPEED 4
 # define PI 3.14159265358979323846

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_filetype_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 12:15:06 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/04 16:21:26 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:49:24 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ void	validate_filetype(char *filename)
 {
 	while (*filename)
 	{
-		if (*filename == '.')
-		{
-			if (ft_strncmp(filename, ".cub", 5))
-				error_exit("Invalid File: Invalid filetype");
-		}
+		if (!ft_strncmp(filename, ".cub", 5))
+			return ;
 		filename++;
 	}
+	error_exit("Invalid File: Invalid filetype");
 }
