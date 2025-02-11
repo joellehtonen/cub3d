@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:48:28 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/10 15:10:05 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:11:24 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ static void	copy_path(int j, char *fileline, char **path)
 {
 	int	i;
 
-	(*path)[0] = '.';
-	(*path)[1] = '/';
-	i = 2;
+	i = 0;
 	while (fileline[j])
 	{
 		if (fileline[j] == ' ' || fileline[j] == '\t' || fileline[j] == '\n')
@@ -51,11 +49,11 @@ void	check_for_path(t_game *game, int i, int *j, char **path)
 
 	if (*path)
 		error_exit_and_free(game, "Duplicate paths to textures");
-	*j += 5;
+	*j += 3;
 	path_length = get_path_length(*j, game->file[i]);
 	if (!path_length)
 		error_exit_and_free(game, "Given map is missing a path to texture");
-	*path = (char *)malloc(path_length + 3);
+	*path = (char *)malloc(path_length + 1);
 	if (!*path)
 		error_exit_and_free(game, "Failed to malloc path to texture");
 	copy_path(*j, game->file[i], path);

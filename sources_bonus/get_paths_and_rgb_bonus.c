@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:32:55 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/11 10:39:28 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:12:19 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void	check_for_path_or_rgb(t_game *game, int i, int *j)
 {
-	if (!ft_strncmp("NO ./", (game->file)[i] + *j, 5))
+	if (!ft_strncmp("NO ", (game->file)[i] + *j, 3))
 		check_for_path(game, i, j, &game->path_to_north_texture);
-	else if (!ft_strncmp("SO ./", (game->file)[i] + *j, 5))
+	else if (!ft_strncmp("SO ", (game->file)[i] + *j, 3))
 		check_for_path(game, i, j, &game->path_to_south_texture);
-	else if (!ft_strncmp("WE ./", (game->file)[i] + *j, 5))
+	else if (!ft_strncmp("WE ", (game->file)[i] + *j, 3))
 		check_for_path(game, i, j, &game->path_to_west_texture);
-	else if (!ft_strncmp("EA ./", (game->file)[i] + *j, 5))
+	else if (!ft_strncmp("EA ", (game->file)[i] + *j, 3))
 		check_for_path(game, i, j, &game->path_to_east_texture);
 	else if (!ft_strncmp("F ", (game->file)[i] + *j, 2))
 		check_for_rgb(game, i, j, FLOOR_RGB);

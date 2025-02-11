@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 15:05:46 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/10 15:02:37 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:49:36 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ void	free_images(t_game *game)
 		mlx_delete_image(game->mlx, game->minimap.player_img);
 	if (game->minimap.minimap_img)
 		mlx_delete_image(game->mlx, game->minimap.minimap_img);
+	if (game->minimap.closed_door_img)
+		mlx_delete_image(game->mlx, game->minimap.closed_door_img);
+	if (game->minimap.open_door_img)
+		mlx_delete_image(game->mlx, game->minimap.open_door_img);
+	if (game->minimap.blank_tile_img)
+		mlx_delete_image(game->mlx, game->minimap.blank_tile_img);
 }
 
 static void	free_animation_textures(t_game *game)
@@ -84,4 +90,6 @@ void	free_textures(t_game *game)
 		mlx_delete_texture(game->minimap.player_texture);
 	if (game->minimap.empty_map_texture)
 		mlx_delete_texture(game->minimap.empty_map_texture);
+	if (game->minimap.closed_door_texture)
+		mlx_delete_texture(game->minimap.closed_door_texture);
 }

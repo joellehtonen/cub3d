@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:36:29 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/10 15:08:23 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:32:21 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,14 @@ static void	images_for_minimap(t_game *game)
 		error_exit_and_free(game, "MLX failed to create open door image");
 }
 
-static void	image_without_minimap(t_game *game)
+static void	disable_minimap_images(t_game *game)
 {
-	game->minimap.wall_img = mlx_new_image(game->mlx,
-			game->tile_size, game->tile_size);
-	if (!game->minimap.wall_img)
-		error_exit_and_free(game, "MLX failed to create wall image");
-	game->minimap.floor_img = mlx_new_image(game->mlx,
-			game->tile_size, game->tile_size);
-	if (!game->minimap.floor_img)
-		error_exit_and_free(game, "MLX failed to create floor image");
-	game->minimap.empty_map_img = mlx_new_image(game->mlx,
-			game->tile_size, game->tile_size);
-	if (!game->minimap.empty_map_img)
-		error_exit_and_free(game, "MLX failed to create empty_map image");
-	game->minimap.player_img = mlx_new_image(game->mlx,
-			game->tile_size / 4, game->tile_size / 4);
-	if (!game->minimap.player_img)
-		error_exit_and_free(game, "MLX failed to create player image");
+	game->minimap.wall_img->enabled = false;
+	game->minimap.floor_img->enabled = false;
+	game->minimap.empty_map_img->enabled = false;
+	game->minimap.player_img->enabled = false;
+	game->minimap.closed_door_img->enabled = false;
+	game->minimap.open_door_img->enabled = false;
 }
 
 void	create_images(t_game *game)
@@ -89,8 +79,7 @@ void	create_images(t_game *game)
 	if (!game->animation.zippo_img)
 		error_exit_and_free(game, "MLX failed to create floor image");
 	create_torch_images(game);
-	if (game->show_minimap == true)
-		images_for_minimap(game);
-	else
-		image_without_minimap(game);
+	images_for_minimap(game);
+	if (game->show_minimap == false)
+		disable_minimap_images(game);
 }

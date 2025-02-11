@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:30:46 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/10 15:03:08 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/11 12:59:57 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,7 @@ void	create_textures(t_game *game)
 {
 	create_torch_textures(game);
 	create_wall_textures(game);
-	if (game->show_minimap == true)
-		create_minimap_textures(game);
+	create_minimap_textures(game);
 	game->minimap.empty_map_texture = mlx_load_png("textures/empty_map.png");
 	if (!game->minimap.empty_map_texture)
 		error_exit_and_free(game, "MLX failed to load empty_map texture");

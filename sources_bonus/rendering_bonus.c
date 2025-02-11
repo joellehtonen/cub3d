@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 09:19:38 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/10 13:25:32 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/11 12:53:49 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	delete_door_warning(t_game *game)
 */
 static void	toggle_door_on_minimap(t_game *game)
 {
-	if (game->doors_closed == true)
+	if (game->show_minimap && game->doors_closed == true)
 	{
 		game->minimap.closed_door_img->enabled = true;
 	}

@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   doors_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:58:27 by jlehtone          #+#    #+#             */
-/*   Updated: 2025/02/04 16:21:06 by jlehtone         ###   ########.fr       */
+/*   Updated: 2025/02/11 13:31:50 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
+
+static int	is_open(char c)
+{
+	if (c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E')
+		return (1);
+	return (0);
+}
 
 /*
 	@brief Checks if the door placement on the map follows the rules or not.
@@ -25,8 +32,8 @@ void	check_for_valid_door(t_game *game, int x, int y)
 	else if (game->map[y][x] == 'D')
 	{
 		if (!(game->map[y + 1][x] == '1' && game->map[y - 1][x] == '1' \
-			&& game->map[y][x + 1] == '0' && game->map[y][x - 1] == '0')
-			&& !(game->map[y + 1][x] == '0' && game->map[y - 1][x] == '0' \
+			&& is_open(game->map[y][x + 1]) && is_open(game->map[y][x - 1]))
+			&& !(is_open(game->map[y + 1][x]) && is_open(game->map[y - 1][x]) \
 			&& game->map[y][x + 1] == '1' && game->map[y][x - 1] == '1'))
 		{
 			printf("Door position not valid at x:%d, y:%d\n", x, y);
