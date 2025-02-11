@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jlehtone <jlehtone@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:57 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/11 13:59:08 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:42:32 by jlehtone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define MAX_WIDTH_IN_TILES 200
 # define MAX_HEIGHT_IN_TILES 200
 # define MOVE_SIZE 2
-# define MOVE_SPEED 4
+# define MOVE_SPEED 1
 # define PI 3.14159265358979323846
 # define FOV 1.0471975512 // (60 * (PI / 180))
 # define ROTATE_SPEED 0.1
