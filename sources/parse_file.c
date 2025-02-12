@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/12 10:43:48 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/12 11:32:40 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	fill_in_gaps_for_map(t_game *game)
 	}
 }
 
-static void validate_paths(t_game *game)
+static void	validate_paths(t_game *game)
 {
 	int		fd;
 

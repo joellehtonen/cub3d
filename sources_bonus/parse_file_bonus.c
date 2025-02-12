@@ -6,7 +6,7 @@
 /*   By: eberkowi <eberkowi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:07:19 by eberkowi          #+#    #+#             */
-/*   Updated: 2025/02/11 14:05:28 by eberkowi         ###   ########.fr       */
+/*   Updated: 2025/02/12 11:32:47 by eberkowi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,28 @@ static void	fill_in_gaps_for_map(t_game *game)
 	}
 }
 
+static void	validate_paths(t_game *game)
+{
+	int		fd;
+
+	fd = open(game->path_to_north_texture, O_RDONLY);
+	if (fd == -1)
+		error_exit_and_free(game, "Failed to open north texture file");
+	close(fd);
+	fd = open(game->path_to_south_texture, O_RDONLY);
+	if (fd == -1)
+		error_exit_and_free(game, "Failed to open south texture file");
+	close(fd);
+	fd = open(game->path_to_west_texture, O_RDONLY);
+	if (fd == -1)
+		error_exit_and_free(game, "Failed to open west texture file");
+	close(fd);
+	fd = open(game->path_to_east_texture, O_RDONLY);
+	if (fd == -1)
+		error_exit_and_free(game, "Failed to open east texture file");
+	close(fd);
+}
+
 void	parse_file(t_game *game)
 {
 	int	i;
@@ -69,6 +91,7 @@ void	parse_file(t_game *game)
 	get_paths_and_rgb(game, &i);
 	if (!(check_for_all_paths(game)))
 		error_exit_and_free(game, "Missing path to texture");
+	validate_paths(game);
 	validate_rgb(game);
 	game->floor_rgb = ((unsigned int)game->floor_r << 24) | \
 	((unsigned int)game->floor_g << 16) | \
