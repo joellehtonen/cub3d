@@ -11,8 +11,11 @@ I think this was the first project where we were concerned about perfomance, and
 
 WHAT I WOULD DO DIFFERENTLY?
 I would probably try to use another, perhaps more efficient or simpler way of calculating ray trajectories, as that was the biggest hurdle of this project. 
-I am not also happy how I developed the door opening mechanism, it was fairly straightforward and simple solution made at the end of the project. Something more elegant would have taken more time than we had left. 
+
+I am not also happy how I developed the door opening mechanism, it was fairly straightforward and simple solution made at the end of the project. Something more elegant would have taken more time than we had left.
+
 Although I am very happy with our minimap, it would be nice if it would be centered on the player at all times. 
+
 Some other students made enemies and weapons to their game, and even though I was always happy with the approach we took, it would be nice challenge to incorporate those as well. 
 
 WHAT ELSE?
