@@ -25,6 +25,7 @@ Although I am very happy with our minimap, it would be nice if it would be cente
 Some other students made enemies and weapons to their game, and even though I was always happy with the approach we took, it would be nice challenge to incorporate those as well. 
 
 WHAT ELSE?
+
 Honestly, I am pretty happy with how this turned out. I would like one day to come back to this project and develop it a bit further (although I probably won't). 
 
 I made a bonus mode to the game, where the light is slowly dwindling, and it could be fairly easily expanded it a mode where the player has to look for keys, and lighter fluid with the labyrinthian levels, to escape before the light goes completely out. 
