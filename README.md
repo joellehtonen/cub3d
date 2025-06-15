@@ -15,6 +15,7 @@ As I used trigonometrics to calculate the ray trajectories, I became familiar wi
 I think this was the first project where we were concerned about perfomance, and a lot of the coding choices were made with efficiency and framerate in mind. Making the 1st person animation look right, consists of surprisingly many elements and movements on different axises. 
 
 WHAT I WOULD DO DIFFERENTLY?
+
 I would probably try to use another, perhaps more efficient or simpler way of calculating ray trajectories, as that was the biggest hurdle of this project. 
 
 I am not also happy how I developed the door opening mechanism, it was fairly straightforward and simple solution made at the end of the project. Something more elegant would have taken more time than we had left.
