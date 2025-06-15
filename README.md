@@ -17,7 +17,7 @@ WHAT I LEARNED?
 
 WHAT I WOULD DO DIFFERENTLY?
 
--I would probably try to use another, perhaps more efficient or simpler way of calculating ray trajectories, as that was the biggest hurdle of this project. 
+- I would probably try to use another, perhaps more efficient or simpler way of calculating ray trajectories, as that was the biggest hurdle of this project. 
 
 - I am not also happy how I developed the door opening mechanism, it was fairly straightforward and simple solution made at the end of the project. Something more elegant would have taken more time than we had left.
 
